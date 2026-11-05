@@ -316,9 +316,13 @@ var QUIZ = [ {q:"Cover menulis 'untuk enam bulan yang berakhir 30 Juni 2026' (il
 (function(){
   var h = "";
   QUIZ.forEach(function(q,i){
+    /* Acak urutan opsi tiap pemuatan (Fisher-Yates); petakan ulang indeks jawaban benar ke posisi tampil baru — kunci jawaban tetap terlacak. */
+    var order = q.o.map(function(_,k){ return k; });
+    for(var k=order.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)), t=order[k]; order[k]=order[r]; order[r]=t; }
+    q.a = order.indexOf(q.a);
     h += '<div class="quiz-q" id="qq'+i+'"><h3>'+(i+1)+'. '+q.q+'</h3>';
-    q.o.forEach(function(o,j){
-      h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>';
+    order.forEach(function(oi,j){
+      h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+q.o[oi]+'</label>';
     });
     h += '</div>';
   });

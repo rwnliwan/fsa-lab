@@ -438,7 +438,7 @@ function runChecks(){
   var q2n=F("q2_nii"), q2i=F("q2_ni"), q2c=F("q2_ckpn");
   function i1row(id,label,mine,exp){
     if(mine.nd) return chkRow(id,label,"DILEWATI","kamu tidak menginput derivasi ini (atau 'tidak diungkapkan').","Derivasi Q2 = H1 − Q1 untuk FLOW. Wajib diinput — ini ujian M38.");
-    var tol=Math.max(0.03*Math.abs(exp),100000);
+    var tol=Math.max(0.03*Math.abs(exp),25000);
     var ok=Math.abs(mine.jt-exp)<=tol;
     return chkRow(id,label,ok?"LULUS":"GAGAL",
       "Derivasimu "+fmtJt(mine.jt)+" vs H1 − Q1 = "+fmtJt(exp)+" (tol ±"+fmtJt(tol)+").",
