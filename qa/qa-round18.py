@@ -9,6 +9,9 @@ R14-F3: semua call-site parseIDNumber lab memakai flag desimal per soal (r.ans %
 R14-F4: Komparator — edit sel utang menghapus flag _leaseIncluded; note diperbarui.
 R14-F5: kartu M33 tak lagi tulis "1-2 di bawah issuer" (contoh modul = 3 notch).
 R14-F6: PETUNJUK 4 workbook — kolom A <= 90 (muat area cetak), wrap aktif.
+R18-F7 (polish Nov 2026): tie-luck / luck-pass tiap modul <= 25% (model R18 §3:
+        fixed single-rank strategy, tie block width k -> 1/k, Poisson-binomial,
+        gate 4/5; implementasi kanonis qa/qa-luckpass.py).
 """
 import json
 import os
@@ -240,6 +243,58 @@ check("F4: note tak lagi bilang 'jangan centang ... belum disesuaikan'",
 # ---------- R14-F5: kartu M33 ----------
 m33 = read("js/modul33.js")
 check("F5: kartu tak tulis '1–2 di bawah issuer'", "di-notch 1–2 di bawah issuer" not in m33)
+
+# ---------- R18-F7 (polish Nov 2026): tie-luck / luck-pass <= 25% ----------
+# Model Instinct R18 §3: fixed single-rank strategy (pilih opsi terpanjang ke-r,
+# r=1..4, acak seragam di dalam tie block); tie block lebar k yang menutupi
+# posisi r bisa dieksploitasi dengan probabilitas 1/k; peluang lolos gate 4/5
+# via Poisson-binomial (aritmetika eksak, Fraction). Implementasi kanonis +
+# dokumentasi metode: qa/qa-luckpass.py (skrip ini menghitung ulang dari data
+# QUIZ yang sudah diekstrak di atas agar round18 tetap self-contained).
+from fractions import Fraction as _Fr
+
+
+def _blocks(o, a):
+    order = sorted(range(len(o)), key=lambda i: -len(o[i]))
+    blocks = []
+    i, pos = 0, 1
+    while i < len(order):
+        j = i
+        while j + 1 < len(order) and len(o[order[j + 1]]) == len(o[order[i]]):
+            j += 1
+        idxs = order[i:j + 1]
+        blocks.append((set(range(pos, pos + len(idxs))), a in idxs, len(idxs)))
+        pos += len(idxs)
+        i = j + 1
+    return blocks
+
+
+def _strat_p(o, a, r):
+    for positions, key_inside, width in _blocks(o, a):
+        if r in positions:
+            return _Fr(1, width) if key_inside else _Fr(0)
+    return _Fr(0)
+
+
+def _p_pass(ps, gate=4):
+    dist = [_Fr(1)]
+    for p in ps:
+        nd = [_Fr(0)] * (len(dist) + 1)
+        for k, v in enumerate(dist):
+            nd[k] += v * (1 - p)
+            nd[k + 1] += v * p
+        dist = nd
+    return sum(dist[gate:])
+
+
+_luck_bad = []
+for _n in sorted({q["m"] for q in mod_qs}):
+    _qs = [q for q in mod_qs if q["m"] == _n]
+    _best = max((_p_pass([_strat_p(q["o"], q["a"], r) for q in _qs])
+                 for r in range(1, 5)), default=_Fr(0))
+    if _best > _Fr(1, 4):
+        _luck_bad.append(f"M{_n} {float(_best) * 100:.1f}%")
+check("F7: luck-pass tiap modul <= 25% (R18 tie-block)", not _luck_bad, str(_luck_bad))
 
 # ---------- R14-F6: PETUNJUK print ----------
 from openpyxl import load_workbook  # noqa: E402

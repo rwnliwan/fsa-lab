@@ -233,7 +233,7 @@ setLens("invest");
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
  {q:"ECL 3,8% artinya…", o:["Piutang neto ÷ penjualan","Cadangan ÷ piutang bruto","Cadangan ÷ piutang neto setelah hapus buku","Kerugian aktual ÷ piutang bruto"], a:1},
- {q:"Harga naik + metode FIFO → laba…", o:["Lebih tinggi","Lebih rendah","Sama saja","Tetap seperti LIFO"], a:0},
+ {q:"Harga naik + metode FIFO → laba…", o:["Lebih tinggi","Lebih kecil","Sama saja","Tetap seperti LIFO"], a:0},
  {q:"Stage 3 dalam PSAK 109 = …", o:["Menunggak ringan","Lancar","Baru dicairkan","Gagal bayar"], a:3},
  {q:"Allowance naik tajam tiba-tiba bisa berarti…", o:["Big bath / antisipasi kerugian","Kualitas kredit membaik","Manajemen menaikkan laba tahun ini","Kolektibilitas debitur membaik"], a:0},
  {q:"PSAK 109 memakai pendekatan…", o:["Incurred loss","Nilai wajar","Tanpa cadangan","Expected loss"], a:3}

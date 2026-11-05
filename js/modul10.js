@@ -227,7 +227,7 @@ setLens("invest");
 
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
- {q:"Bedanya metode langsung vs tidak langsung?", o:["Mulai dari laba vs mulai dari kas","Direct = kas masuk, indirect = kas keluar","Mulai dari kas vs mulai dari laba","Keduanya mulai dari laba bersih"], a:2},
+ {q:"Bedanya metode langsung vs tidak langsung?", o:["Mulai dari laba bersih vs mulai dari kas","Direct = kas masuk, indirect = kas keluar","Mulai dari kas vs mulai dari laba","Keduanya mulai dari laba bersih"], a:2},
  {q:"Kas dari pelanggan 2025?", o:["30.800","520.000","104.000","471.000"], a:3},
  {q:"Capex 156% dari CFO artinya…", o:["Capex dibiayai penuh dari kas operasi","Investasi melebihi kas operasi","Arus kas operasi sangat kuat","Perusahaan kelebihan kas"], a:1},
  {q:"CFF +5.440 terutama karena…", o:["Dividen 6.000 > utang neto 11.440","Utang neto 11.440 > dividen 6.000","Penerbitan saham baru 11.440","Penjualan aset tetap 5.440"], a:1},
