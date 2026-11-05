@@ -1,0 +1,15 @@
+/* Proposed FSA Lab identity, not an applied live-site theme. */
+:root {
+  --fsa-ink: #192B2B;
+  --fsa-paper: #FAF6ED;
+  --fsa-teal: #B9DDD2;
+  --fsa-apricot: #F3C9A7;
+  --fsa-lilac: #D9D1EB;
+  --fsa-muted: #526260;
+  --fsa-line: #D8DED8;
+  --fsa-white: #FFFFFF;
+  --fsa-font-display: "Noto Serif Display", Georgia, serif;
+  --fsa-font-body: "Noto Sans", system-ui, sans-serif;
+  --fsa-border: 2px solid var(--fsa-ink);
+  --fsa-radius: 10px;
+}
