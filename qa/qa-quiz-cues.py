@@ -19,7 +19,7 @@ G1: longest-option-is-key rate vs target (<=35%, Septian's stated target).
     round 13) has not landed yet. It turns green when the rewrite lands.
 G2: qualifier-cue rate == 0. Round-13 bug class: hedge phrases present in
     wrong options but absent from the key => exploitable by pattern.
-G3: review-bank <-> module quizzes must hold the same 185 questions with
+G3: review-bank <-> module quizzes must hold the same 190 questions with
     identical key text ("stale second copy" class). Found 2026-11-04: modul23
     DSCR question key text differs (bank still carries the pre-R2 wording
     "tak cukup menutup kewajiban" while the module teaches breach-vs-cash
@@ -80,8 +80,8 @@ mods = parse_modules()
 bank = parse_bank()
 
 # ---------- coverage ----------
-check("module MCQ count == 185", len(mods) == 185, "got %d" % len(mods))
-check("review-bank MCQ count == 185", len(bank) == 185, "got %d" % len(bank))
+check("module MCQ count == 190", len(mods) == 190, "got %d" % len(mods))
+check("review-bank MCQ count == 190", len(bank) == 190, "got %d" % len(bank))
 
 
 def rates(items):
