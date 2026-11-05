@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 21 — Aturan Main &amp; Provisi · FSA Lab</title>
+<meta name="description" content="Modul 21 FSA Lab: principles-based PSAK/IFRS vs rules-based US GAAP, dan provisi/kontinjensi PSAK 237.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-21/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M21</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 4</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 21</span>
+</nav>
+<p class="mod-count">Modul 21 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 4 · Sumber &amp; Fondasi Filing · Modul 21</p>
+  <h1>Aturan Mainnya <em>Beda</em></h1>
+  <p class="lede"><strong>PSAK/IFRS</strong> itu <em>principles-based</em>, <strong>US GAAP</strong> itu
+    <em>rules-based</em> — ekonomi yang sama bisa menghasilkan angka berbeda.
+    Di modul ini kamu kuasai peta perbedaannya dan <strong>provisi</strong> (PSAK 237):
+    kewajiban yang waktunya belum pasti tapi <strong>Rp7.800</strong>-nya nyata.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Dua Sistem Aturan</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>sebelum bandingkan dua perusahaan, samakan dulu aturan mainnya</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="sys">Principles vs Rules</button>
+    <button class="stmt-tab" data-stmt="prov">Anatomi Provisi</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Gerakkan Aturannya</h2>
+  <p class="sub">Enam keputusan. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Ukur Provisinya</h2>
+  <p class="sub">Empat ukuran provisi &amp; perbedaan sistem — hitung, lalu nilai: kehati-hatian atau cookie-jar?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Garansi Naik, Litigasi Masuk</h2>
+  <p class="sub">Manajemen menaikkan estimasi garansi <strong>1,5% → 2,5%</strong> dan mencatat provisi litigasi
+    <strong>Rp10.000</strong>. Covenant pinjaman berbasis EBITDA. Tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> sebelum membandingkan si kembar PSAK vs US GAAP, tiga penyesuaian wajib saya: (1) persediaan &mdash; LIFO (GAAP) vs rata-rata (PSAK): samakan via <em>LIFO reserve</em> <span class="num">12.000</span> (ilustratif); (2) <em>impairment</em> &mdash; GAAP melarang <em>reversal</em>, PSAK membolehkan (kecuali <em>goodwill</em>): keluarkan <em>reversal</em> dari laba PSAK; (3) <em>leases</em> &amp; R&amp;D &mdash; pastikan definisi EBITDA identik sebelum bandingkan margin &amp; ROE. Tanpa ini, &ldquo;ROE lebih tinggi&rdquo; hanyalah dialek akuntansi.</p>
+<p><strong>Lensa kredit:</strong> provisi garansi naik <span class="num">1,5% &rarr; 2,5%</span> (angka modul) menekan EBITDA &mdash; dan <em>covenant</em> pinjaman berbasis EBITDA ikut tertekan. Respons saya sebagai kreditur: pertama cek apakah kenaikan provisi ini wajar (klaim garansi aktual naik?) atau &ldquo;manajemen laba&rdquo;. Bila wajar: beri <em>waiver</em> sempit untuk kuartal ini + definisi EBITDA <em>covenant</em> dikunci (<em>add-back</em> hanya yang disepakati). Bila tidak wajar: tolak <em>waiver</em> &mdash; <em>covenant</em> ada untuk ditaati, bukan dinegosiasi tiap kuartal.</p>
+<p><strong>Lensa forensik:</strong> tiga cek membuktikan <em>cookie-jar</em>: (1) pola 8 kuartal &mdash; apakah &ldquo;lain-lain&rdquo; selalu naik Q4 dan turun Q1?; (2) bandingkan provisi vs realisasi &mdash; provisi yang tidak pernah dipakai = cadangan laba; (3) siapa yang menyetujui jurnal Q4 &mdash; direksi yang bonusnya berbasis laba? Satu hal yang membunuh tesis &ldquo;ini kehati-hatian&rdquo;: <em>big bath</em> &mdash; bila tahun buruk dipakai untuk &ldquo;membersihkan&rdquo; semua provisi sekaligus agar tahun depan terlihat cemerlang, maka kehati-hatian itu adalah teater.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> — Gerbang Lolos ✓ Phase 4 Tuntas! <a href="../modul-22/">Modul 22 →</a></p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-20/" class="pn-prev">← Modul 20</a>
+  <a href="/modul-22/" class="pn-next">Modul 22 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 21 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul21.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

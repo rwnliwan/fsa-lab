@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 12 — Aset Tetap, Impairment &amp; Sewa · FSA Lab</title>
+<meta name="description" content="Modul 12 FSA Lab: breakdown aset tetap, impairment PSAK 236, dan sewa PSAK 116.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-12/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M12</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 2</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 12</span>
+</nav>
+<p class="mod-count">Modul 12 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 2 · Judgment · Modul 12</p>
+  <h1>Asetnya <em>Beneran Ada?</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): aset tetap <strong>230.000</strong> —
+    51% dari total aset. Di modul ini kamu bedah <strong>isi aset tetap</strong>, kapan nilainya
+    <strong>turun (impairment)</strong>, dan kenapa <strong>sewa</strong> ikut tercatat.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Isi Aset Tetap</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>komposisi aset tetap</strong> dan
+    <strong>kapan nilainya harus diturunkan</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="ppe">Aset Tetap</button>
+    <button class="stmt-tab" data-stmt="imp">Impairment &amp; Sewa</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Gerakkan Asetnya</h2>
+  <p class="sub">Enam keputusan aset. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Ukur Asetnya</h2>
+  <p class="sub">Empat ukuran aset tetap. Hitung — lalu nilai: padat modal atau ramping?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Bangun vs Sewa Pabrik?</h2>
+  <p class="sub">Cemerlang butuh pabrik baru: <strong>bangun Rp80.000</strong> (capex, depresiasi 20 tahun)
+    atau <strong>sewa 10 tahun</strong> (PSAK 116: aset ROU + liabilitas sewa). Tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> SEWA 10 tahun lebih baik untuk fleksibilitas; BANGUN lebih baik untuk <em>return</em> jangka panjang &mdash; pilih berdasarkan keyakinan. Bangun: <em>capex</em> <span class="num">80.000</span> (ilustratif), depresiasi <span class="num">4.000</span>/tahun selama 20 tahun, tanah <span class="num">40.000</span> tidak disusutkan dan menyimpan nilai. Sewa: ROU + liabilitas ~80.000 masuk neraca (PSAK 116) &mdash; tidak ada lagi &ldquo;<em>off-balance-sheet</em>&rdquo; seperti era lama. Bila bisnisnya siklikal dan lokasi belum pasti: sewa. Bila lokasi strategis 20 tahun: bangun.</p>
+<p><strong>Lensa kredit:</strong> untuk bank, BANGUN lebih aman &mdash; ada tanah &amp; bangunan sebagai agunan nyata (aset tetap neto kini <span class="num">230.000</span>, termasuk ROU <span class="num">58.000</span>). Sewa menambah liabilitas <span class="num">60.000</span> yang sudah ada &rarr; D/E naik tanpa agunan tambahan. Tapi <em>coverage</em>: sewa menambah beban bunga+depresiasi yang menekan EBIT. Opsi saya sebagai kreditur: dukung bangun dengan agunan tanah, tolak sewa jangka panjang tanpa <em>covenant</em>.</p>
+<p><strong>Lensa forensik:</strong> tiga cek: (1) apakah &ldquo;sewa&rdquo; ini sewa beneran atau utang terselubung &mdash; cek opsi beli &amp; jangka vs umur aset; (2) apakah <em>capex</em> bangun dikapitalisasi wajar &mdash; bandingkan dengan depresiasi <span class="num">30.000</span>/tahun yang ada; jangan sampai beban operasi ikut dikapitalisasi; (3) <em>impairment</em>: ilustrasi modul (<em>carrying</em> <span class="num">50.000</span> &rarr; <em>recoverable</em> <span class="num">42.000</span> = rugi <span class="num">8.000</span>, ilustratif) menunjukkan betapa <em>judgmental</em>-nya nilai pakai. Satu hal yang membunuh tesis &ldquo;bangun lebih murah&rdquo;: bila nilai wajar tanah turun dan <em>impairment</em> 8.000+ menimpa ekuitas &mdash; D/E melonjak tanpa satu rupiah kas keluar.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 13.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-11/" class="pn-prev">← Modul 11</a>
+  <a href="/modul-13/" class="pn-next">Modul 13 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 12 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul12.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

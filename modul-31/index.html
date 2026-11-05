@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 31 — 3-Statement Modeling · FSA Lab</title>
+<meta name="description" content="Modul 31 FSA Lab: membangun model 3-statement PT Cemerlang Abadi — forecast 2026 ilustratif dari base 2025 kanonis, building blocks, sensitivitas, circularity bunga, dan artikulasi penuh.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-31/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M31</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 8</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 31</span>
+</nav>
+<p class="mod-count">Modul 31 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 8 · 3-Statement Modeling · Modul 31</p>
+  <h1>Tiga Laporan, <em>Satu Mesin yang Terartikulasi</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> <span class="tag">(base 2025: angka KANONIS persis)</span>:
+    kamu membangun forecast <strong>2026 yang ILUSTRATIF</strong> dari enam building blocks —
+    revenue drivers, margin, working capital, capex, debt schedule, dan circularity bunga.
+    Aturan mainnya keras: <span style="font-family:var(--font-mono)">NI = PBT − pajak</span>,
+    <span style="font-family:var(--font-mono)">A = L + E</span>, dan
+    <span style="font-family:var(--font-mono)">CFO = NI + dep + ΔWC</span> — semuanya harus cocok
+    sampai rupiah terakhir. Model yang tidak terartikulasi bukan model, melainkan tebakan berformat Excel.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Model Explorer: 6 Building Blocks</h2>
+  <p class="sub">Klik baris mana pun. Setiap blok = satu asumsi eksplisit dengan angka 2026-nya.
+    Tiga lensa bekerja di sini: <strong>investasi</strong> (tuas valuasi &amp; kerapuhan asumsi),
+    <strong>kredit</strong> (kualitas kas &amp; leverage), dan <strong>forensik</strong>
+    (di mana asumsi 'tetap' bisa menyembunyikan masalah).</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="blocks">6 Building Blocks 2026</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu building block ↑</h3>
+    <p>Asumsi, angka, dan catatan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Uji Sensitivitas Model</h2>
+  <p class="sub">Enam skenario vs <strong>base 2026</strong> (NI 53.695, CFO 70.735). Tebak arah <strong>dua ukuran</strong> per skenario — laba bersih dan CFO.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Ukur: Hitung Forecast-nya</h2>
+  <p class="sub">Empat perhitungan forecast 2026. Hitung — lalu nilai: model ini sehat atau rapuh?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Model Sederhana Ini Rapuh di Mana?"</h2>
+  <p class="sub">Model 2026 ini terartikulasi sempurna — dan justru itu jebakannya. Artikulasi ≠ kebenaran:
+    enam asumsi 'tetap' (growth +12%, GM 35%, DSO/DIO/DPO tetap, capex 50.000, utang flat, bunga flat)
+    adalah enam tempat model bisa salah dengan rapi. Tugasmu: temukan titik rapuhnya dari tiga lensa,
+    dan tulis di jurnal — asumsi mana yang kamu potong duluan sebelum memakai NI 53.695 untuk keputusan.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> model memproyeksi NI <span class="num">53.695</span> (+18,7% vs 2025) dan CFO <span class="num">70.735</span> (angka modul, ilustratif) &mdash; asumsi paling rapuh: GM dipertahankan <span class="num">35%</span> SEMENTARA DSO/DIO/DPO diasumsikan tetap, padahal ketiganya sedang memburuk. Uji sensitivitas yang saya jalankan: GM &minus;2 poin &rarr; NI turun ~<span class="num">12.000</span> (hitungan saya: 2% &times; 598.000 penjualan proyeksi); DSO +10 hari &rarr; CFO turun ~<span class="num">16.000</span>. <em>Margin of safety</em>: potong 25% dari NI proyeksi sebelum membayar &mdash; bayar untuk 40.000, bukan 53.695.</p>
+<p><strong>Lensa kredit:</strong> <span class="num">D/E 1,24x</span> dan <span class="num">coverage 5,92x</span> (ilustratif) terlihat membaik &mdash; tapi kerapuhannya: utang bank <em>flat</em> <span class="num">141.440</span> adalah ASUMSI, bukan jadwal. Skenario yang bikin <em>covenant</em> jebol: penjualan hanya +5% (bukan +15%) sementara <em>capex</em> tetap &rarr; CFO jatuh, DSCR &lt; 1,2x. Mitigasi saya: <em>covenant</em> diuji atas angka aktual (bukan proyeksi), plus <em>cash sweep</em> bila CFO &lt; 90% proyeksi dua kuartal berturut-turut.</p>
+<p><strong>Lensa forensik:</strong> model &ldquo;menghindari&rdquo; <em>circularity</em> dengan asumsi utang tetap &mdash; nyaman, tapi juga menyembunyikan: bila kas kurang, utang PASTI naik (dunia nyata tidak &ldquo;<em>flat</em>&rdquo;). Asumsi paling mencurigakan: DSO/DIO/DPO &ldquo;tetap&rdquo; &mdash; tiga rasio yang justru menjadi <em>red flag</em> modul M4/M11. Angka yang saya cek ulang: penjualan proyeksi <span class="num">598.000</span> vs kapasitas &mdash; dari mana +15% bila piutang sudah macet? Langkah berikut: jalankan skenario &ldquo;kas nyata&rdquo; &mdash; biarkan utang menyeimbangkan, dan lihat D/E hasilnya. Satu hal yang membunuh tesis model ini: bila <em>circularity</em> dihidupkan dan D/E melejit ke &gt; 2x &mdash; maka &ldquo;perbaikan&rdquo; rasio hanyalah artefak asumsi.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Phase 8.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-30/" class="pn-prev">← Modul 30</a>
+  <a href="/modul-32/" class="pn-next">Modul 32 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 31 · base 2025 angka kanonis; forecast 2026 ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul31.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

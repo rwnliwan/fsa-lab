@@ -1,0 +1,167 @@
+[
+ {
+  "m": 1,
+  "q": "Standar sewa versi penomoran BARU (efektif 1 Jan 2024) adalah…",
+  "o": [
+   "PSAK 73",
+   "PSAK 115",
+   "PSAK 118",
+   "PSAK 116"
+  ],
+  "a": 3
+ },
+ {
+  "m": 1,
+  "q": "Laba bersih naik 3 tahun berturut-turut, tapi CFO selalu di bawah laba dan selisihnya melebar. Sinyal apa?",
+  "o": [
+   "Kualitas laba memburuk — red flag",
+   "Laba bertumbuh — gap kas wajar saat ekspansi",
+   "Laba ditahan naik — perusahaan makin kuat",
+   "Modal kerja membesar — operasi makin besar"
+  ],
+  "a": 0
+ },
+ {
+  "m": 1,
+  "q": "Kenaikan beban depresiasi Rp7.000 berpengaruh ke kas sebesar…",
+  "o": [
+   "Rp7.000 keluar",
+   "Rp7.000 masuk",
+   "Nol — non-kas",
+   "Tergantung metode"
+  ],
+  "a": 2
+ },
+ {
+  "m": 1,
+  "q": "Fokus utama lensa KREDIT adalah…",
+  "o": [
+   "Pertumbuhan penjualan",
+   "Arus kas & kemampuan bayar utang",
+   "Valuasi harga saham perusahaan",
+   "Rencana ekspansi & inovasi produk"
+  ],
+  "a": 1
+ },
+ {
+  "m": 1,
+  "q": "Current ratio 2,27x artinya…",
+  "o": [
+   "Total utang 2,27x total aset",
+   "Aset lancar 2,27x liabilitas lancar",
+   "Laba 2,27x lebih besar dari tahun lalu",
+   "Kas 2,27x liabilitas lancar"
+  ],
+  "a": 1
+ },
+ {
+  "m": 2,
+  "q": "Beneish M-score dipakai untuk mengukur…",
+  "o": [
+   "Risiko manipulasi laba",
+   "Risiko kebangkrutan",
+   "Tingkat likuiditas perusahaan",
+   "Efisiensi modal kerja"
+  ],
+  "a": 0
+ },
+ {
+  "m": 2,
+  "q": "DSO naik 50 → 73 hari dalam setahun. Artinya…",
+  "o": [
+   "Penagihan justru membaik tahun ini",
+   "DSO berfluktuasi wajar tiap tahun",
+   "Piutang menumpuk karena penjualan turun",
+   "Penagihan melambat — red flag"
+  ],
+  "a": 3
+ },
+ {
+  "m": 2,
+  "q": "Standar pengakuan pendapatan versi penomoran BARU adalah…",
+  "o": [
+   "PSAK 72",
+   "PSAK 116",
+   "PSAK 115",
+   "PSAK 118"
+  ],
+  "a": 2
+ },
+ {
+  "m": 2,
+  "q": "CFO/NI turun dari 1,48x (2024) ke 0,68x (2025) artinya…",
+  "o": [
+   "Kualitas laba membaik karena laba bersih terus bertumbuh",
+   "Laba makin tidak menjadi kas — kualitas memburuk",
+   "Perusahaan merugi karena kas operasinya turun",
+   "Wajar — rasio di bawah 1x biasa terjadi di ritel"
+  ],
+  "a": 1
+ },
+ {
+  "m": 2,
+  "q": "Kapitalisasi beban operasi Rp12.000 efeknya…",
+  "o": [
+   "Laba turun, kas naik",
+   "Laba & aset naik, kas tetap",
+   "Tidak ada efek ke laporan lain",
+   "Kas berkurang Rp12.000 saat dibayar"
+  ],
+  "a": 1
+ },
+ {
+  "m": 3,
+  "q": "Gross margin naik 34% → 35% terutama karena…",
+  "o": [
+   "Penjualan naik sehingga margin ikut terdongkrak naik",
+   "HPP turun dari 66% ke 65% dari penjualan",
+   "Beban operasi turun menekan total biaya",
+   "Beban pajak turun sehingga margin naik"
+  ],
+  "a": 1
+ },
+ {
+  "m": 3,
+  "q": "ROE 28,3% jauh di atas ROA 10,9%. Penyebab utama selisihnya…",
+  "o": [
+   "Margin sangat tinggi",
+   "Perputaran aset sangat tinggi",
+   "Leverage: aset 2,6x ekuitas",
+   "Saldo kas yang sangat besar"
+  ],
+  "a": 2
+ },
+ {
+  "m": 3,
+  "q": "Buyback Rp20.000 dengan kas membuat ROE…",
+  "o": [
+   "Naik — tapi bukan dari kinerja operasi",
+   "Turun karena kas berkurang Rp20.000 untuk buyback",
+   "Tetap karena laba bersih tidak berubah",
+   "Naik karena perusahaan makin efisien mengelola modal"
+  ],
+  "a": 0
+ },
+ {
+  "m": 3,
+  "q": "ROIC 15,8% vs WACC 12% artinya perusahaan…",
+  "o": [
+   "Menghancurkan nilai",
+   "Menciptakan nilai",
+   "Tidak mencipta nilai",
+   "Keduanya tak berkaitan"
+  ],
+  "a": 1
+ },
+ {
+  "m": 3,
+  "q": "Common-size analysis paling berguna untuk…",
+  "o": [
+   "Melihat struktur biaya antar periode / antar perusahaan",
+   "Menghitung saldo kas akhir tiap periode",
+   "Memprediksi pergerakan harga saham",
+   "Menggantikan seluruh prosedur audit atas laporan keuangan"
+  ],
+  "a": 0
+ }
+]

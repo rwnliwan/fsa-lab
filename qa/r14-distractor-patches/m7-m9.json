@@ -1,0 +1,167 @@
+[
+  {
+    "m": 7,
+    "q": "Opini 'wajar tanpa modifikasian' artinya…",
+    "o": [
+      "Catatan tak perlu dibaca karena auditor telah memverifikasi semua asumsi di dalamnya",
+      "Jaminan mutlak bahwa seluruh angka laporan pasti benar tanpa kecuali",
+      "Auditor menyatakan semua estimasi manajemen — termasuk ECL dan impairment — pasti akurat",
+      "Bebas salah saji material — menurut reasonable assurance auditor (bukan jaminan mutlak)"
+    ],
+    "a": 3
+  },
+  {
+    "m": 7,
+    "q": "KAM (Key Audit Matters) adalah…",
+    "o": [
+      "Ringkasan eksekutif hasil audit yang disederhanakan agar mudah dibaca investor ritel",
+      "Hal paling signifikan dalam audit — dipilih dari yang dikomunikasikan ke tata kelola (bukan daftar semua risiko fraud)",
+      "Seluruh temuan salah saji dan kelemahan pengendalian yang wajib diperbaiki manajemen sebelum auditor menandatangani opini audit",
+      "Daftar lengkap semua risiko fraud yang ditemukan selama pemeriksaan tahun berjalan"
+    ],
+    "a": 1
+  },
+  {
+    "m": 7,
+    "q": "Estimasi yang paling butuh skeptisisme analis?",
+    "o": [
+      "ECL & impairment",
+      "Pinjaman bank",
+      "Saldo kas di bank",
+      "Modal saham disetor"
+    ],
+    "a": 0
+  },
+  {
+    "m": 7,
+    "q": "Ada paragraf penekanan going concern — analis harus…",
+    "o": [
+      "Menjual semua saham karena kebangkrutan sudah pasti",
+      "Mengabaikannya karena bukan modifikasi opini",
+      "Cek arus kas & jadwal jatuh tempo utang",
+      "Menaikkan valuasi karena risiko sudah diungkap"
+    ],
+    "a": 2
+  },
+  {
+    "m": 7,
+    "q": "Transaksi pihak berelasi yang material — lensa utama?",
+    "o": [
+      "Lensa investasi",
+      "Lensa kredit",
+      "Bukan masalah besar",
+      "Lensa forensik"
+    ],
+    "a": 3
+  },
+  {
+    "m": 8,
+    "q": "DuPont 5 langkah mengurai ROE menjadi…",
+    "o": [
+      "Lima laporan keuangan utama yang wajib dibaca berurutan",
+      "Beban pajak, beban bunga, margin EBIT, perputaran aset, leverage",
+      "Lima rasio likuiditas untuk menilai kemampuan perusahaan membayar utang jangka pendek",
+      "Data ROE lima tahun terakhir yang dirata-ratakan"
+    ],
+    "a": 1
+  },
+  {
+    "m": 8,
+    "q": "Tax burden 78% artinya…",
+    "o": [
+      "Pajak 78% dari laba",
+      "Perusahaan rugi fiskal",
+      "Pajak 22% dari PBT",
+      "Tarif pajak efektif 78%"
+    ],
+    "a": 2
+  },
+  {
+    "m": 8,
+    "q": "Segmen yang lebih profitable?",
+    "o": [
+      "Ritel (margin 15,0% vs 12,1%)",
+      "Distribusi, karena diusulkan spin-off",
+      "Tak bisa dibandingkan langsung",
+      "Sama saja karena satu perusahaan"
+    ],
+    "a": 0
+  },
+  {
+    "m": 8,
+    "q": "Interest burden turun artinya…",
+    "o": [
+      "Beban bunga turun sehingga porsi bunga mengecil",
+      "Laba pasti naik karena beban berkurang",
+      "Perusahaan bebas dari beban bunga",
+      "Bunga memakan porsi laba lebih besar"
+    ],
+    "a": 3
+  },
+  {
+    "m": 8,
+    "q": "Segment analysis terutama untuk…",
+    "o": [
+      "Menentukan dividen untuk pemegang saham",
+      "Alokasi modal & menilai tiap segmen",
+      "Mengganti prosedur audit atas laporan keuangan",
+      "Menghitung pajak tiap segmen secara terpisah"
+    ],
+    "a": 1
+  },
+  {
+    "m": 9,
+    "q": "EPS dasar 2025?",
+    "o": [
+      "452,4",
+      "390,0",
+      "514,8",
+      "296,4"
+    ],
+    "a": 0
+  },
+  {
+    "m": 9,
+    "q": "Continuing EPS lebih rendah karena…",
+    "o": [
+      "Saham beredar bertambah sehingga EPS terencer",
+      "Dividen yang dibagikan tahun ini lebih besar",
+      "Beban pajak tahun ini naik cukup besar",
+      "Mengeluarkan one-off jual aset 8.000"
+    ],
+    "a": 3
+  },
+  {
+    "m": 9,
+    "q": "Piutang +89% vs penjualan +30% → kualitas…",
+    "o": [
+      "Membaik",
+      "Normal saja",
+      "Memburuk",
+      "Pasti fraud"
+    ],
+    "a": 2
+  },
+  {
+    "m": 9,
+    "q": "EPS dilusian = EPS dasar karena…",
+    "o": [
+      "Stock split menambah jumlah saham",
+      "Tak ada opsi/saham konversi",
+      "Rugi membuat efek dilusi diabaikan",
+      "Saham beredar sudah terlalu banyak"
+    ],
+    "a": 1
+  },
+  {
+    "m": 9,
+    "q": "Continuing EPS dipakai untuk…",
+    "o": [
+      "Valuasi laba berulang",
+      "Dasar pembagian dividen",
+      "Mengganti opini audit",
+      "Menghitung pajak penghasilan"
+    ],
+    "a": 0
+  }
+]

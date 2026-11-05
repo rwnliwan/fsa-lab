@@ -1,0 +1,167 @@
+[
+ {
+  "m": 4,
+  "q": "CCC naik 91,7 → 109,7 hari artinya…",
+  "o": [
+   "Kas terikat 18 hari lebih lama di operasi",
+   "Putaran modal kerja makin cepat",
+   "Pemasok dibayar lebih cepat dari biasanya",
+   "Laba operasi pasti ikut turun juga"
+  ],
+  "a": 0
+ },
+ {
+  "m": 4,
+  "q": "DSO 73 hari vs 50 hari tahun lalu menunjukkan…",
+  "o": [
+   "Koleksi piutang justru membaik",
+   "Persediaan menumpuk akibat pembelian berlebihan",
+   "Utang usaha dilunasi lebih cepat",
+   "Koleksi memburuk — waspadai kualitas penjualan"
+  ],
+  "a": 3
+ },
+ {
+  "m": 4,
+  "q": "Cara tercepat memperbaiki CCC tanpa tambah utang…",
+  "o": [
+   "Tarik utang bank jangka pendek",
+   "Tambah stok agar penjualan naik",
+   "Tagih piutang lebih agresif",
+   "Naikkan dividen tunai tahun ini"
+  ],
+  "a": 2
+ },
+ {
+  "m": 4,
+  "q": "DPO naik tajam tiba-tiba bisa berarti…",
+  "o": [
+   "Perbaikan efisiensi operasional murni",
+   "Stretch payables — tunda bayar agar CFO terlihat bagus",
+   "Penjualan naik tajam sehingga utang usaha ikut membengkak",
+   "Modal kerja membaik secara permanen"
+  ],
+  "a": 1
+ },
+ {
+  "m": 4,
+  "q": "Modal kerja positif Rp119.440 artinya…",
+  "o": [
+   "Aset lancar melebihi liabilitas lancar",
+   "Perusahaan pasti mencetak rugi tahun ini",
+   "Saldo kas perusahaan negatif",
+   "Perusahaan bebas utang sama sekali"
+  ],
+  "a": 0
+ },
+ {
+  "m": 5,
+  "q": "Current ratio 2,17x artinya…",
+  "o": [
+   "Aset lancar 2,17x liabilitas lancar",
+   "Total utang 2,17x ekuitas perusahaan",
+   "Laba operasi 2,17x beban bunga",
+   "Kas 2,17x utang jangka pendek"
+  ],
+  "a": 0
+ },
+ {
+  "m": 5,
+  "q": "Quick ratio mengecualikan…",
+  "o": [
+   "Kas di bank",
+   "Piutang usaha",
+   "Persediaan",
+   "Utang usaha"
+  ],
+  "a": 2
+ },
+ {
+  "m": 5,
+  "q": "D/E naik 1,2x → 1,8x dalam setahun. Artinya…",
+  "o": [
+   "Leverage naik — risiko kredit naik",
+   "Perusahaan makin aman bagi kreditur",
+   "Ekuitas tumbuh lebih cepat",
+   "Aset tumbuh seiring utang"
+  ],
+  "a": 0
+ },
+ {
+  "m": 5,
+  "q": "Interest coverage di bawah 2x = …",
+  "o": [
+   "Kondisi keuangan sangat aman",
+   "Zona bahaya — laba hampir habis untuk bunga",
+   "Masih wajar untuk startup yang agresif bertumbuh",
+   "Aman selama arus kas positif"
+  ],
+  "a": 1
+ },
+ {
+  "m": 5,
+  "q": "Net debt/EBITDA 1,76x artinya…",
+  "o": [
+   "Beban bunga 1,76x laba operasi tahunan",
+   "Dividen 1,76x laba bersih",
+   "Kerugian 1,76x ekuitas",
+   "Utang lunas ~1,8 tahun dari EBITDA"
+  ],
+  "a": 3
+ },
+ {
+  "m": 6,
+  "q": "FCFF dihitung sebagai…",
+  "o": [
+   "CFO + bunga(1−pajak) − capex",
+   "CFO + depresiasi − capex",
+   "Laba bersih + depresiasi − ΔWC",
+   "Laba bersih + bunga − capex"
+  ],
+  "a": 0
+ },
+ {
+  "m": 6,
+  "q": "FCFF negatif artinya…",
+  "o": [
+   "Perusahaan pasti bangkrut dalam waktu dekat",
+   "Laba bersih perusahaan pasti negatif juga",
+   "Kas keluar > kas masuk — cek kenapa: ekspansi atau boros",
+   "Dividen wajib dipangkas karena kas perusahaan habis total"
+  ],
+  "a": 2
+ },
+ {
+  "m": 6,
+  "q": "Bedanya FCFE dan FCFF…",
+  "o": [
+   "Tidak ada bedanya, keduanya sama persis",
+   "FCFF adalah kas bebas yang menjadi hak pemegang saham",
+   "FCFE dihitung sebelum capex dikurangkan dari CFO",
+   "FCFE setelah bunga & utang — untuk pemegang saham"
+  ],
+  "a": 3
+ },
+ {
+  "m": 6,
+  "q": "FCFF naik karena capex dipotong setengah = …",
+  "o": [
+   "Kualitas kas murni membaik",
+   "Waspada — pertumbuhan dikorbankan",
+   "Kenaikan FCFF-nya pasti sustainable",
+   "Efisiensi operasi yang membaik"
+  ],
+  "a": 1
+ },
+ {
+  "m": 6,
+  "q": "Dividen > FCFE bertahun-tahun = …",
+  "o": [
+   "Praktik dividen yang sustainable",
+   "Tidak sustainable — dibayar dari utang/tabungan",
+   "Perusahaan wajib menaikkan dividennya setiap tahun",
+   "Menguntungkan posisi para kreditur"
+  ],
+  "a": 1
+ }
+]

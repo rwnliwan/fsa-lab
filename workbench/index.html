@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Workbench · FSA Lab</title>
+<meta name="description" content="Toolkit forensik Python: Beneish M-score, DSO screen, uji Benford, parser XBRL. Siap jalan di Colab/lokal.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/workbench/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.code-card{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.2rem;box-shadow:4px 4px 0 var(--ink)}
+.code-card h3{font-family:var(--font-display);color:var(--mustard);margin-bottom:.3rem}
+.code-card p{font-size:.88rem;color:#cbbfa5;margin-bottom:.8rem}
+.code-card pre{background:#14110c;border-radius:8px;padding:1rem;overflow-x:auto;font-family:var(--font-mono);
+  font-size:.8rem;line-height:1.5;max-height:22rem;overflow-y:auto}
+.code-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.copy-btn{border:2px solid var(--mustard);background:transparent;color:var(--mustard);border-radius:8px;
+  padding:.3rem .8rem;font-weight:600;cursor:pointer;font-size:.82rem}
+.copy-btn:hover{background:var(--mustard);color:#1e1a14}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">WB</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Pembeda analis</p>
+  <h1>Python <em>Workbench.</em></h1>
+  <p class="dataset-tag"><strong>PT Cemerlang Abadi</strong> · Ilustratif · Dataset kanonis</p>
+  <p class="lede">Kebanyakan orang belajar FSA cuma bisa baca. Kamu kelar dengan <strong>toolkit screening</strong>
+    yang jalan. Salin skripnya, jalankan di Colab/lokal, commit ke repomu — jadi portofolio.</p>
+  <p><a class="btn btn-primary" href="fsa_toolkit.py" download>Download fsa_toolkit.py</a></p>
+</header>
+
+<section class="modul-sec" id="wb-list"></section>
+
+<!-- 9 · FOOTNOTE DIFF — demo interaktif -->
+<section class="modul-sec" id="footnote-diff">
+  <h2>9 · Footnote Diff — Coba Langsung</h2>
+  <p class="sub">Tempel dua versi catatan kaki (mis. catatan 2024 vs 2025), lalu klik
+    <strong>Bandingkan</strong>. Kalimat yang <strong style="color:var(--teal-deep)">ditambah</strong>,
+    <strong style="color:var(--sunset-deep)">dihapus</strong>, dan
+    <strong style="color:#a67c1a">diubah diam-diam</strong> akan dipisahkan otomatis —
+    logika yang sama dengan <span class="num">footnote_diff()</span> di toolkit.</p>
+  <style>
+    .fd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    @media(max-width:720px){.fd-grid{grid-template-columns:1fr}}
+    .fd-grid label{font-weight:600;font-size:.9rem;display:block;margin-bottom:.4rem}
+    .fd-grid textarea{width:100%;min-height:11rem;font-family:var(--font-body);font-size:.88rem;line-height:1.6;
+      border:2px solid var(--ink);border-radius:12px;padding:.8rem;background:var(--card);color:var(--ink);resize:vertical}
+    .fd-grid textarea:focus{outline:3px solid var(--mustard)}
+    #fd-out .fd-group{margin-bottom:1.1rem}
+    #fd-out .fd-head{font-weight:700;font-size:.9rem;margin-bottom:.45rem;font-family:var(--font-mono)}
+    #fd-out .fd-item{border-radius:10px;padding:.6rem .85rem;margin-bottom:.4rem;font-size:.88rem;line-height:1.55;
+      border:2px solid var(--ink)}
+    #fd-out .fd-add{background:#e4f2ee;border-color:var(--teal-deep)}
+    #fd-out .fd-add .fd-head{color:var(--teal-deep)}
+    #fd-out .fd-rem{background:#fbe7df;border-color:var(--sunset-deep)}
+    #fd-out .fd-rem .fd-head{color:var(--sunset-deep)}
+    #fd-out .fd-chg{background:#fbf3dd;border-color:#a67c1a}
+    #fd-out .fd-chg .fd-head{color:#a67c1a}
+    #fd-out .fd-arrow{font-family:var(--font-mono);font-size:.75rem;color:var(--ink-soft);display:block;margin:.15rem 0}
+    #fd-out .fd-none{color:var(--ink-soft);font-size:.88rem;font-style:italic}
+  </style>
+  <div class="fd-grid">
+    <div>
+      <label for="fd-old">Versi lama <span style="font-weight:400;color:var(--ink-soft)">(mis. catatan 2024)</span></label>
+      <textarea id="fd-old">Perusahaan mengakui pendapatan saat barang diserahkan kepada pelanggan. Liabilitas kontinjensi tidak diakui dalam laporan keuangan. Kas dan setara kas terdiri dari kas di tangan.</textarea>
+    </div>
+    <div>
+      <label for="fd-new">Versi baru <span style="font-weight:400;color:var(--ink-soft)">(mis. catatan 2025)</span></label>
+      <textarea id="fd-new">Perusahaan mengakui pendapatan saat jasa diserahkan kepada pelanggan. Kas dan setara kas terdiri dari kas di tangan dan deposito berjangka. Manajemen menyatakan tidak terdapat keraguan atas kelangsungan usaha.</textarea>
+    </div>
+  </div>
+  <p><button class="btn btn-primary" id="fd-btn">Bandingkan</button>
+     <button class="btn btn-ghost" id="fd-clear" style="margin-left:.5rem">Bersihkan</button></p>
+  <div id="fd-out" style="margin-top:1.2rem"></div>
+</section>
+
+<!-- inline-workbench.js dimuat sekali di akhir body (guard idempoten di file) -->
+
+<!-- 10 · COVENANT BREAK PREDICTOR — demo interaktif -->
+<section class="modul-sec" id="covenant-break">
+  <h2>10 · Covenant Break Predictor — Coba Langsung</h2>
+  <p class="sub">Kreditur hidup dari <em>downside</em>: berapa besar shock <strong>CFO setelah bunga</strong> yang membuat
+    <strong>DSCR</strong> (debt service coverage ratio) menembus batas covenant? Geser slider shock,
+    lihat DSCR baru + status <strong>JEBOL</strong>/<strong>AMAN</strong> + titik jebol
+    (shock % di mana DSCR tepat = minimum). Logika yang sama dengan
+    <span class="num">covenant_break()</span> di toolkit. Asumsi: debt service tetap.</p>
+  <p class="sub" style="margin-top:.4rem"><strong>Konvensi:</strong> DSCR = CFO setelah bunga ÷ (bunga + cicilan pokok) — sama seperti M23 (konservatif).</p>
+  <style>
+    .cb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin-bottom:1rem}
+    .cb-grid label{font-weight:600;font-size:.85rem;display:block;margin-bottom:.4rem}
+    .cb-grid input{width:100%;font-family:var(--font-mono);font-size:1rem;border:2px solid var(--ink);
+      border-radius:10px;padding:.55rem .8rem;background:var(--card);color:var(--ink)}
+    .cb-grid input:focus{outline:3px solid var(--mustard)}
+    .cb-shock{display:flex;align-items:center;gap:1rem;margin:1rem 0;flex-wrap:wrap}
+    .cb-shock input[type=range]{flex:1;min-width:12rem;accent-color:var(--sunset-deep)}
+    #cb-shockval{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;min-width:5rem}
+    .cb-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1rem;margin-top:1rem}
+    .cb-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+      padding:1rem 1.2rem;box-shadow:4px 4px 0 var(--ink)}
+    .cb-card .k{font-size:.75rem;color:var(--ink-soft);font-weight:600;margin-bottom:.25rem}
+    .cb-card .v{font-family:var(--font-mono);font-size:1.5rem;font-weight:700}
+    #cb-status{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;padding:.15rem .8rem;
+      border-radius:10px;border:2px solid var(--ink);display:inline-block}
+    #cb-status.jebol{background:#fbe7df;color:var(--sunset-deep)}
+    #cb-status.aman{background:#e4f2ee;color:var(--teal-deep)}
+    .cb-note{font-size:.8rem;color:var(--ink-soft);margin-top:1rem}
+  </style>
+  <div class="cb-grid">
+    <div><label for="cb-dscr">DSCR saat ini</label>
+      <input id="cb-dscr" type="number" step="0.01" value="1.35"></div>
+    <div><label for="cb-min">Covenant minimum</label>
+      <input id="cb-min" type="number" step="0.01" value="1.20"></div>
+    <div><label for="cb-cfo">CFO setelah bunga (Rp juta, ilustratif)</label>
+      <input id="cb-cfo" type="number" step="1000" value="110000"></div>
+  </div>
+  <div class="cb-shock">
+    <label for="cb-shock" style="font-weight:600;font-size:.9rem">Shock CFO</label>
+    <input id="cb-shock" type="range" min="-60" max="20" step="1" value="-20">
+    <span id="cb-shockval">−20%</span>
+  </div>
+  <div class="cb-out">
+    <div class="cb-card"><div class="k">DSCR setelah shock</div><div class="v" id="cb-dscrbaru">—</div></div>
+    <div class="cb-card"><div class="k">Status covenant</div><div style="margin-top:.3rem"><span id="cb-status">—</span></div></div>
+    <div class="cb-card"><div class="k">CFO setelah shock</div><div class="v" id="cb-cfobaru">—</div></div>
+    <div class="cb-card"><div class="k">Titik jebol (shock %)</div><div class="v" id="cb-titik">—</div></div>
+  </div>
+  <p class="cb-note">Angka ilustratif. Linear approx: DSCR baru = DSCR × (1 + shock). Titik jebol = shock di mana DSCR = minimum. Konvensi: DSCR = CFO setelah bunga ÷ debt service (konservatif, seperti M23).</p>
+</section>
+
+<!-- 11 · DCF INPUT BUILDER — demo interaktif -->
+<section class="modul-sec" id="dcf-builder">
+  <h2>11 · DCF Input Builder — Coba Langsung</h2>
+  <p class="sub">Lensa investasi: bangun input DCF 2 tahap — proyeksi FCFF 5 tahun,
+    <strong>Terminal Value</strong> = FCFF₅ × (1+g) ÷ (WACC − g), lalu
+    <strong>Enterprise Value</strong> = Σ PV(FCFF) + PV(TV). Default = angka kanonis
+    <strong>M18</strong> (ilustratif): EV harus <strong>277.778</strong>. Logika yang sama dengan
+    <span class="num">dcf_inputs()</span> di toolkit.</p>
+  <style>
+    .dcf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin-bottom:1rem}
+    .dcf-grid label{font-weight:600;font-size:.85rem;display:block;margin-bottom:.4rem}
+    .dcf-grid input{width:100%;font-family:var(--font-mono);font-size:1rem;border:2px solid var(--ink);
+      border-radius:10px;padding:.55rem .8rem;background:var(--card);color:var(--ink)}
+    .dcf-grid input:focus{outline:3px solid var(--mustard)}
+    .dcf-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.5rem}
+    .dcf-table th{background:var(--ink);color:var(--paper);text-align:right;padding:.55rem .7rem;
+      font-family:var(--font-mono);font-size:.75rem}
+    .dcf-table th:first-child{text-align:left}
+    .dcf-table td{border-bottom:1px solid var(--line);padding:.5rem .7rem;text-align:right;font-family:var(--font-mono)}
+    .dcf-table td:first-child{text-align:left;font-family:var(--font-body)}
+    .dcf-table tr.hl td{background:#fbf3dd;font-weight:700}
+    .dcf-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper)}
+  </style>
+  <div class="dcf-grid">
+    <div><label for="dcf-fcff">FCFF tahun 1 (Rp juta)</label>
+      <input id="dcf-fcff" type="number" step="100" value="25000"></div>
+    <div><label for="dcf-growth">Growth fase eksplisit (%)</label>
+      <input id="dcf-growth" type="number" step="0.5" value="3"></div>
+    <div><label for="dcf-wacc">WACC (%)</label>
+      <input id="dcf-wacc" type="number" step="0.5" value="12"></div>
+    <div><label for="dcf-g">g terminal (%)</label>
+      <input id="dcf-g" type="number" step="0.5" value="3"></div>
+  </div>
+  <div class="dcf-scroll"><table class="dcf-table" id="dcf-table"></table></div>
+  <p class="cb-note">Input = FCFF tahun 1 (tahun proyeksi pertama); pertumbuhan mulai tahun 2. Angka ilustratif — DCF sangat sensitif ke WACC &amp; g.</p>
+</section>
+
+<!-- inline-workbench.js dimuat sekali di akhir body (guard idempoten di file) -->
+
+<section class="modul-sec">
+  <h2>Cara pakai</h2>
+  <div class="ratio-card">
+    <h3>1 · Colab (tanpa install)</h3>
+    <p class="sub" style="font-size:.9rem">Buka colab.research.google.com → upload <span class="num">fsa_toolkit.py</span> → <span class="num">!python fsa_toolkit.py</span>. Ganti angka contoh dengan angka emiten incaranmu.</p>
+  </div>
+  <div class="ratio-card">
+    <h3>2 · Screening massal</h3>
+    <p class="sub" style="font-size:.9rem">Looping <span class="num">beneish_mscore()</span> + <span class="num">dso_screen()</span> ke puluhan emiten IDX (tarik datanya via API/CSV) → urutkan by M-score → investigasi 5 teratas. Itulah kerja analis forensik.</p>
+  </div>
+  <div class="ratio-card">
+    <h3>3 · Catatan jujur</h3>
+    <p class="sub" style="font-size:.9rem">Uji Benford butuh <strong>n besar</strong> (ratusan angka jurnal) agar bermakna — demo di toolkit hanya ilustrasi mekanik. M-score adalah <em>screening</em>, bukan vonis.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Python Workbench · MIT — pakai bebas untuk portofoliomu.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/inline-workbench.js"></script>
+</body>
+</html>

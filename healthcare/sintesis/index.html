@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sintesis Sektor Healthcare · FSA Lab</title>
+<meta name="description" content="Pola lintas subsektor healthcare: farmasi vs rumah sakit vs alat kesehatan — model bisnis, metrik kunci, jebakan, dan peta case.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/healthcare/sintesis/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../../css/fonts.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.exp{border:3px dashed var(--ink);border-radius:var(--radius);background:#fdf3d7;
+  padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.92rem}
+.exp strong{font-family:var(--font-display)}
+.subsec{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1rem}
+.subsec h3{font-family:var(--font-display);margin:0 0 .5rem;font-size:1.05rem}
+.subsec ul{margin:.4rem 0;padding-left:1.2rem;font-size:.9rem}
+.subsec li{margin-bottom:.35rem}
+.trap{border-left:6px solid #a33;padding:.5rem .9rem;margin:.6rem 0;background:#fff;font-size:.88rem}
+.trap strong{color:#a33}
+.trap.ok{border-left-color:#2e5d33}
+.trap.ok strong{color:#2e5d33}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1rem}
+.ccard{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem}
+.ccard h3{font-family:var(--font-display);margin:0 0 .4rem;font-size:1.08rem}
+.ccard p{font-size:.88rem;color:var(--ink-soft)}
+.ccard.soon{opacity:.65;border-style:dashed}
+.tag{font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:20px;border:1px solid var(--ink)}
+.tag.live{background:#eef7e8;color:#2e5d33;border-color:#2e5d33}
+.tag.soon-t{background:#fff;color:var(--ink-soft)}
+table.stmt td.num{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+.verdict{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.2rem;margin:1rem 0;font-size:.92rem}
+.verdict strong{font-family:var(--font-display)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../">← Track Healthcare</a>
+  <span class="brand"><span class="brand-badge">HC</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Healthcare · Sintesis Sektor (Eksperimen)</p>
+  <h1>Satu sektor, <em>tiga mesin uang.</em></h1>
+  <p class="lede">"Healthcare" bukan satu model bisnis. Farmasi menjual <strong>produk</strong>,
+  rumah sakit menjual <strong>kapasitas</strong>, distributor alat menjual <strong>logistik + tender</strong> —
+  dan ketiganya dibaca dengan metrik berbeda.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="exp">
+    <strong>🧪 Label eksperimen — baca dulu.</strong>
+    Sintesis ini ditulis dari <strong>2 case live</strong> (KLBF blind, TSPC guided) + catatan sektor.
+    Subsektor RS dan alkes <strong>belum punya case live</strong> — bagian tentangnya adalah
+    <em>kerangka tunggu data</em>, bukan kesimpulan. Sintesis ini akan ditulis ulang saat case RS live.
+  </div>
+
+  <h2>1 · Tiga mesin uang</h2>
+  <div class="tblwrap"><table class="stmt">
+    <thead><tr><th>Dimensi</th><th>💊 Farmasi (manufaktur)</th><th>🏥 Rumah sakit</th><th>🔬 Alkes &amp; distributor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Yang dijual</strong></td><td>Produk (obat, suplemen, consumer health)</td><td>Kapasitas layanan (tempat tidur, tindakan)</td><td>Logistik + hak distribusi prinsipal</td></tr>
+      <tr><td><strong>Driver pendapatan</strong></td><td>Volume × harga; brand &amp; iklan</td><td>Utilisasi (BOR) × tarif; jumlah RS</td><td>Nilai kontrak/tender; retensi prinsipal</td></tr>
+      <tr><td><strong>Margin bruto tipikal</strong></td><td class="num">~38–55%</td><td class="num">~30–45%*</td><td class="num">~8–15%</td></tr>
+      <tr><td><strong>Aset terberat</strong></td><td>Persediaan + brand (tak berwujud)</td><td>Gedung + alat kesehatan (capex)</td><td>Persediaan + piutang tender</td></tr>
+      <tr><td><strong>Metrik kunci</strong></td><td>Inventory days, receivable days, R&amp;D intensity, intensitas iklan</td><td>BOR, receivable days (split BPJS), capex ÷ penjualan</td><td>Cash conversion cycle, konsentrasi piutang/pemasok</td></tr>
+      <tr><td><strong>Jebakan utama</strong></td><td>Kapitalisasi R&amp;D; piutang distributor berelasi; write-down kedaluwarsa</td><td>Goodwill akuisisi; piutang BPJS menumpuk; depresiasi vs kas</td><td>Revenue recognition tender; ketergantungan satu prinsipal</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.82rem;color:var(--ink-soft)">* Rentang RS = kerangka umum industri, bukan dari case live — akan dikalibrasi saat case RS rilis.</p>
+
+  <h2>2 · Head-to-head: dua case farmasi</h2>
+  <p style="font-size:.9rem;color:var(--ink-soft)">KLBF (blind) vs TSPC (guided) — FY2024, angka terverifikasi dari filing masing-masing.</p>
+  <div class="tblwrap"><table class="stmt">
+    <thead><tr><th>Metrik FY2024</th><th>KLBF (Kalbe Farma)</th><th>TSPC (Tempo Scan Pacific)</th></tr></thead>
+    <tbody>
+      <tr><td>Penjualan neto</td><td class="num">Rp32,63 T</td><td class="num">Rp13,65 T</td></tr>
+      <tr><td>Laba neto (atribusi)</td><td class="num">Rp3,24 T</td><td class="num">Rp1,45 T</td></tr>
+      <tr><td>Margin bruto</td><td class="num">39,7%</td><td class="num">37,9%</td></tr>
+      <tr><td>ROE</td><td class="num">14,7%</td><td class="num">16,7%</td></tr>
+      <tr><td>Inventory days</td><td class="num">120,6 hari</td><td class="num">94,4 hari</td></tr>
+      <tr><td>Receivable days</td><td class="num">54,4 hari</td><td class="num">38,2 hari</td></tr>
+      <tr><td>Model bisnis</td><td>Farmasi terintegrasi (manufaktur + distribusi sendiri)</td><td>3 segmen: 2 pabrikan (margin ~50%) + 1 distributor (margin 8%)</td></tr>
+      <tr><td>Driver pertumbuhan 2024</td><td>—</td><td>Farmasi +16,9%; bauran bergeser ke margin tinggi</td></tr>
+      <tr><td>1 anomali per case</td><td><em>Lihat benchmark reveal di drill</em></td><td>Laba usaha +68% dari iklan −Rp218 M + ayunan operasi lain Rp284 M</td></tr>
+      <tr><td>Tipe case</td><td><a href="../../bedah-sendiri/klbf/">Blind →</a></td><td><a href="../guided-tspc/">Guided →</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="verdict">
+    <strong>Pola vs anomali.</strong>
+    <strong>Pola</strong> (berlaku di keduanya): margin bruto farmasi ~38–40%, inventory days tinggi (94–121 hari — obat memang menumpuk di gudang),
+    receivable days moderat. <strong>Anomali</strong> (khas masing-masing): TSPC = distributor 8% margin yang menyusut −11,9%
+    + tuas iklan Rp1,54 T; KLBF = skala 2,4× dengan struktur lebih terintegrasi.
+    Pelajaran sektor: <em>angka "normal" sektor hanya bermakna setelah model bisnisnya dipetakan</em> — TSPC tidak bisa dibaca sebagai "KLBF kecil".
+  </div>
+
+  <h2>3 · Peta 5 jebakan × case</h2>
+  <div class="trap"><strong>1 · Kapitalisasi vs expense R&amp;D.</strong>
+    TSPC: <span style="color:#2e5d33"><strong>diperiksa — tidak berbunyi</strong></span> (R&amp;D 0,03% revenue, full expense).
+    KLBF: cek di drill blind. Prinsip: hanya berbahaya bila R&amp;D material.</div>
+  <div class="trap"><strong>2 · Revenue recognition kontrak/tender.</strong>
+    TSPC: distribusi ke prinsipal (Nutricia Rp3,7 T) — risiko di <strong>sisi pemasok</strong>, bukan pengakuan prematur.
+    Pola tender murni menunggu case alkes.</div>
+  <div class="trap"><strong>3 · Piutang related-party distributor.</strong>
+    TSPC: <span style="color:#2e5d33"><strong>diperiksa — tidak berbunyi</strong></span> (2,18% penjualan; piutang berelasi TURUN).
+    Ini pola yang <em>seharusnya</em> dicurigai di distributor grup — dan pemeriksaannya justru memperkuat vonis.</div>
+  <div class="trap"><strong>4 · Akuisisi RS: goodwill + NCI.</strong>
+    Menunggu case RS (MIKA/SILO/HEAL). Di TSPC ada versi mininya: Tempo Scan Industry asosiasi → anak (jebakan #5).</div>
+  <div class="trap"><strong>5 · Pertumbuhan akuisisi vs organik.</strong>
+    TSPC: <strong>berbunyi sebagian</strong> — konsolidasi Tempo Scan Industry Juni 2024 menggelembungkan pertumbuhan segmen farmasi;
+    porsi organiknya tidak diungkapkan (= pertanyaan analis).</div>
+
+  <h2>4 · Peta case track</h2>
+  <div class="casegrid">
+    <div class="ccard">
+      <h3>Bedah Sendiri: KLBF <span class="tag live">live</span></h3>
+      <p>Farmasi murni · blind · AR 2024 auditan. Uji semua 5 jebakan tanpa panduan.</p>
+      <p><a class="btn btn-primary" href="../../bedah-sendiri/klbf/">Mulai →</a></p>
+    </div>
+    <div class="ccard">
+      <h3>Guided: TSPC <span class="tag live">live</span></h3>
+      <p>Farmasi + konsumen + distribusi · guided 12-stop · LK auditan 2024. Pintu masuk sektor.</p>
+      <p><a class="btn btn-primary" href="../guided-tspc/">Mulai →</a></p>
+    </div>
+    <div class="ccard">
+      <h3>Healthcare blind #2 — MIKA</h3>
+      <p>Rumah sakit · blind · 26 angka terverifikasi. Temuan forensik: misteri penarikan saham treasuri Rp760 M.</p>
+      <p><a class="btn btn-primary" href="../../bedah-sendiri/mika/">Mulai →</a></p>
+    </div>
+  </div>
+  <div class="honest" style="margin-top:1.2rem">
+    <strong>Jalur disarankan:</strong> <a href="../guided-tspc/">Guided TSPC</a> (pintu masuk, berpemandu)
+    → <a href="../../bedah-sendiri/klbf/">Blind KLBF</a> (uji mandiri)
+    → <a href="../../bedah-sendiri/mika/">Blind MIKA</a> (uji pola lintas subsektor: farmasi vs RS).
+  </div>
+
+  <h2>5 · Yang belum dijawab (jujur)</h2>
+  <ul style="font-size:.9rem">
+    <li>Rentang margin &amp; metrik RS/alkes di tabel §1 = kerangka umum — <strong>belum dikalibrasi</strong> ke case live.</li>
+    <li>Anomali KLBF dirujuk ke drill-nya (tidak diduplikasi di sini — anti duplikasi konten).</li>
+    <li>Pertanyaan terbuka TSPC (keberlanjutan efisiensi iklan 2025) hanya bisa dijawab LK 2025.</li>
+  </ul>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">
+  <a href="../">← Track Healthcare</a> · <a href="../../kasus/">Perpustakaan Kasus</a> · <a href="../../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../../js/tblwrap.js"></script>
+</body>
+</html>

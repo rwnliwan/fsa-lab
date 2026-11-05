@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedah Buta · FSA Lab</title>
+<meta name="description" content="Template latihan analisis buta: pilih 1 emiten yang belum pernah dibedah, hitung 5 rasio wajib, tulis vonis 5 baris, cek dengan rubrik.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/bedah-buta/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.bb-steps{list-style:none;margin:0;padding:0;counter-reset:bb}
+.bb-steps li{counter-increment:bb;position:relative;padding:.7rem .9rem .7rem 3.4rem;border:2px solid var(--ink);
+  border-radius:var(--radius);background:#fffdf7;margin-bottom:.7rem}
+.bb-steps li::before{content:counter(bb);position:absolute;left:.9rem;top:.7rem;width:1.7rem;height:1.7rem;
+  border-radius:50%;background:var(--ink);color:#fffdf7;font-family:var(--font-mono);font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.bb-steps li strong{display:block;margin-bottom:.2rem}
+.bb-steps li p{font-size:.88rem;margin:0;color:var(--ink-soft)}
+.rubric{list-style:none;margin:0;padding:0}
+.rubric li{display:flex;gap:.7rem;align-items:flex-start;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.7rem .9rem;margin-bottom:.6rem;background:#fffdf7;cursor:pointer}
+.rubric li.done{background:#eef7e8;text-decoration:line-through}
+.rubric input{margin-top:.25rem;transform:scale(1.25);accent-color:var(--ink)}
+.rubric .rq{font-size:.92rem}
+.rubric .rq small{display:block;color:var(--ink-soft);font-size:.8rem;margin-top:.15rem}
+#rubric-verdict{border:2px dashed var(--ink);border-radius:var(--radius);padding:.9rem 1.1rem;margin-top:.8rem;
+  font-size:.92rem;background:#fffdf7}
+.log-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.8rem}
+.log-form input{border:2px solid var(--ink);border-radius:8px;padding:.5rem .7rem;font-family:var(--font-body);font-size:.88rem}
+.log-form .full{grid-column:1/-1}
+.log-item{display:flex;justify-content:space-between;align-items:center;gap:.8rem;border:2px solid var(--ink);
+  border-radius:var(--radius);padding:.6rem .9rem;margin-bottom:.55rem;background:#fffdf7;font-size:.88rem}
+.log-item .d{font-family:var(--font-mono);font-weight:700;font-size:.78rem}
+.btn-sm{border:2px solid var(--ink);background:#fff;border-radius:8px;padding:.3rem .8rem;
+  font-weight:600;cursor:pointer;font-size:.82rem}
+.btn-sm.danger{border-color:#a33;color:#a33}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.note-guide{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:720px){.log-form{grid-template-columns:1fr}.note-guide{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">BB</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Latihan · Transfer Skill · Self-Serve</p>
+  <h1>Bedah <em>Buta.</em></h1>
+  <p class="lede">Semua drill angka di lab ini memakai dua perusahaan fiksi yang angkanya sudah kamu hafal.
+    Bedah Buta memutus hafalan itu: <strong>1 emiten asing bagimu</strong>, 5 rasio yang kamu hitung sendiri,
+    vonis 5 baris — tanpa kunci jawaban, tanpa contoh yang sudah dibedah.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>Aturan mainnya jujur:</strong> halaman ini MURNI template + instruksi. Tidak ada emiten contoh,
+    tidak ada analisis jadi, tidak ada "jawaban benar" yang bisa diintip. Kalau kamu merasa butuh contoh dulu,
+    buka <a href="../analisis-mingguan/">Analyst Note Mingguan</a> (ada 1 contoh lengkap) atau
+    <a href="../bedah-filing/">Bedah Filing SOCI</a> (walkthrough filing asli, terpandu).
+    Bedah Buta baru dimulai setelah itu — dengan emiten yang <em>belum pernah</em> kamu bedah.<br><br>Sudah coba latihan kurasi ber-benchmark? <a href="../bedah-sendiri/">Bedah Sendiri: KLBF →</a> (filing asli + benchmark terverifikasi, 3 lensa dijawab blind dulu).
+  </div>
+
+  <h2>Cara pakai — 7 langkah</h2>
+  <p class="sub">Satu drill = satu emiten, ±90 menit, sekali jalan tanpa mengintip analisis orang lain.</p>
+  <ol class="bb-steps">
+    <li><strong>Pilih 1 emiten yang belum pernah kamu bedah</strong>
+      <p>IDX atau 1 filing 10-K dari EDGAR. Belum pernah dibaca analisisnya, belum pernah jadi case di lab ini.
+      Lihat tips memilih di bawah.</p></li>
+    <li><strong>Unduh laporan tahunan terbarunya</strong>
+      <p>Dari sumber filing resmi (bagian 6 di bawah). PDF 100+ halaman itu normal — kamu tidak perlu baca semuanya.</p></li>
+    <li><strong>Baca 3 tempat dulu, 30 menit</strong>
+      <p>Laporan direksi (cerita manajemen), Ikhtisar Data Keuangan (angka 3–5 tahun), lalu laporan auditor
+      (opini + hal audit utama). Catat 3 hal yang mengganjal — sebelum melihat angkanya detail.</p></li>
+    <li><strong>Hitung 5 rasio wajib dari LK-nya</strong>
+      <p>Pakai template di bagian 3. Hitung SENDIRI dari laporan posisi keuangan + laba rugi + arus kas —
+      jangan salin dari tabel ikhtisar perusahaan.</p></li>
+    <li><strong>Baca 1 catatan (notes) sampai paham</strong>
+      <p>Pilih yang paling relevan dengan bisnismya: piutang/ECL, utang &amp; covenant, pihak berelasi, segmen, atau pajak.
+      Analis dibedakan dari pembaca laporan di titik ini.</p></li>
+    <li><strong>Tulis vonis 5 baris</strong>
+      <p>Pakai format di bagian 4. Bahasa Indonesia boleh, istilah teknis Inggris.</p></li>
+    <li><strong>Self-check dengan rubrik, lalu catat di log</strong>
+      <p>Rubrik di bagian 5. Lolos 6/6 = drill sah. Catat emiten + vonis 1 kalimat di log drill (bagian 7).</p></li>
+  </ol>
+</section>
+
+<section class="modul-sec">
+  <h2>Template 5 rasio wajib</h2>
+  <p class="sub">Satu dari tiap lensa baca. Formula ditulis eksplisit — denominator yang benar adalah setengah dari pekerjaannya.</p>
+  <div class="tblwrap"><table class="stmt">
+    <thead><tr><th>#</th><th>Lensa</th><th>Rasio</th><th>Formula</th><th>Ambil dari</th><th>Batas waspada</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td><strong>Likuiditas</strong></td><td><em>Current ratio</em></td>
+        <td class="mono">aset lancar ÷ liabilitas lancar</td><td>Laporan posisi keuangan</td>
+        <td><span class="mono">&lt; 1,0×</span> = kewajiban jangka pendek tak tertutup aset lancar</td></tr>
+      <tr><td class="mono">2</td><td><strong>Solvabilitas</strong></td><td><em>Debt-to-equity</em> (total)</td>
+        <td class="mono">total liabilitas ÷ total ekuitas</td><td>Laporan posisi keuangan</td>
+        <td>Tren naik 3 tahun berturut-turut, atau &gt; kebijakan modal perusahaan sendiri</td></tr>
+      <tr><td class="mono">3</td><td><strong>Profitabilitas</strong></td><td><em>Net profit margin</em></td>
+        <td class="mono">laba bersih ÷ pendapatan</td><td>Laba rugi (pakai basis yang sama: total vs pemilik)</td>
+        <td>Margin naik sementara pendapatan turun = curigai one-off / beban ditunda</td></tr>
+      <tr><td class="mono">4</td><td><strong>Efisiensi</strong></td><td><em>Asset turnover</em></td>
+        <td class="mono">pendapatan ÷ rata-rata total aset</td><td>Laba rugi + posisi keuangan (rata-rata awal–akhir)</td>
+        <td>Turun 2 tahun beruntun sementara aset naik = ekspansi belum menghasilkan</td></tr>
+      <tr><td class="mono">5</td><td><strong>Kualitas laba</strong></td><td><em>CFO ÷ laba bersih</em></td>
+        <td class="mono">arus kas operasi ÷ laba bersih</td><td>Arus kas + laba rugi (perhatikan: CFO PSAK sudah setelah bunga dibayar)</td>
+        <td><span class="mono">&lt; 1,0×</span> persisten = laba tidak jadi kas (cek piutang &amp; persediaan)</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.85rem;color:var(--ink-soft)">Catatan: untuk emiten bank/asuransi/Syariah, rasio 1–4 diganti metrik sektornya
+  (mis. <em>CASA, NPL, KPMM</em> untuk bank — lihat M31). Jangan paksakan rasio manufaktur ke bank.</p>
+</section>
+
+<section class="modul-sec">
+  <h2>Format vonis 5 baris</h2>
+  <p class="sub">Salin format ini apa adanya. Lima baris, tidak lebih — analis dibayar dari ketajaman vonis, bukan panjangnya.</p>
+  <div class="pg-card">
+    <p class="mono" style="font-size:.9rem;line-height:2">
+      Baris 1 — VONIS: [beli / tahan / jual / hindari] karena [satu kalimat alasan utama].<br>
+      Baris 2 — BUKTI: [angka 1], [angka 2], [angka 3] (sumber: hal./catatan __).<br>
+      Baris 3 — KEKUATAN: [satu hal yang bisnis ini lakukan benar, dengan angka].<br>
+      Baris 4 — RISIKO: [satu hal yang paling mengkhawatirkan, dengan angka].<br>
+      Baris 5 — PEMBUNUH TESIS: vonis ini gugur jika [satu fakta yang akan membatalkannya].
+    </p>
+  </div>
+</section>
+
+<section class="modul-sec">
+  <h2>Rubrik self-check</h2>
+  <p class="sub">Centang dengan jujur. 6/6 = drill sah dan boleh dicatat di log. Tidak ada nilai — yang ada cuma standar.</p>
+  <ul class="rubric" id="rubric">
+    <li><input type="checkbox" id="rq1"><label class="rq" for="rq1">Vonis tertulis dalam 1 kalimat: beli / tahan / jual / hindari + alasan.
+      <small>Bukan "menarik untuk dipantau". Analis yang tidak berani vonis belum mulai.</small></label></li>
+    <li><input type="checkbox" id="rq2"><label class="rq" for="rq2">Minimal 3 angka dikutip dengan sumbernya (halaman / nomor catatan).
+      <small>"Laba naik" tanpa angka = opini, bukan analisis.</small></label></li>
+    <li><input type="checkbox" id="rq3"><label class="rq" for="rq3">1 "pembunuh tesis" dinamai secara spesifik.
+      <small>Bukan "risiko makro". Contoh: "vonis gugur jika piutang &gt;90 hari naik lagi di atas 30%".</small></label></li>
+    <li><input type="checkbox" id="rq4"><label class="rq" for="rq4">Kelima rasio dihitung sendiri dari LK, bukan disalin dari tabel ikhtisar emiten.
+      <small>Menyalin = latihan membaca tabel. Menghitung = latihan analis.</small></label></li>
+    <li><input type="checkbox" id="rq5"><label class="rq" for="rq5">Minimal 1 catatan (notes) dibaca penuh sampai paham logikanya.
+      <small>Wajah kedua laporan ada di CALK — kebijakan akuntansi, segmen, covenant, pihak berelasi.</small></label></li>
+    <li><input type="checkbox" id="rq6"><label class="rq" for="rq6">Emiten ini benar-benar buta bagimu: belum pernah dibedah, belum baca analisis orang.
+      <small>Kalau sudah tahu "jawabannya", ini bukan Bedah Buta — pilih emiten lain.</small></label></li>
+  </ul>
+  <div id="rubric-verdict">Centang rubrik di atas — verdict drill muncul di sini.</div>
+</section>
+
+<section class="modul-sec">
+  <h2>Tips memilih emiten + sumber filing</h2>
+  <div class="note-guide">
+    <div class="pg-card" style="margin:0">
+      <h3>🎯 Tips memilih</h3>
+      <ol style="margin:.4rem 0 .4rem 1.2rem;font-size:.88rem">
+        <li style="margin-bottom:.45rem"><strong>Mulai dari mid-cap non-keuangan.</strong> Manufaktur, ritel, perkebunan, pelayaran:
+          LK-nya "normal" dan bisa dibaca dengan 5 rasio di atas. Bank/asuransi/Syariah = level lanjut (modul M31 dulu).</li>
+        <li style="margin-bottom:.45rem"><strong>Hindari yang sudah jadi case di lab.</strong> Garuda, Enron, Wirecard, Jiwasraya, SNP Finance,
+          Indosurya, dan SOCI (Bedah Filing) = tidak buta lagi.</li>
+        <li style="margin-bottom:.45rem"><strong>Satu emiten, satu drill.</strong> Jangan bandingkan dua emiten di drill buta pertamamu —
+          pembanding datang setelah kamu bisa membaca satu.</li>
+        <li style="margin-bottom:.45rem"><strong>Pilih yang laporan tahunannya lengkap</strong> (ada MD&amp;A + CALK + laporan auditor),
+          bukan cuma LK kuartalan 10 halaman.</li>
+        <li style="margin-bottom:.45rem"><strong>Untuk 10-K:</strong> pilih emiten US yang bisnisnya kamu pahami sebagai konsumen
+          (ritel, makanan, software) — narasi MD&amp;A-nya lebih mudah diuji dengan akal sehat.</li>
+      </ol>
+    </div>
+    <div class="pg-card" style="margin:0">
+      <h3>📥 Sumber filing (terverifikasi bisa diakses publik)</h3>
+      <ol style="margin:.4rem 0 .4rem 1.2rem;font-size:.88rem">
+        <li style="margin-bottom:.45rem"><strong>IDX — idx.co.id</strong><br>
+          Laporan tahunan &amp; LK auditan emiten Indonesia tersedia gratis sebagai PDF di situs Bursa Efek Indonesia
+          (bagian pengumuman perusahaan tercatat). Dicek 3 Nov 2026: situs terbuka, PDF laporan emiten bisa diunduh langsung.</li>
+        <li style="margin-bottom:.45rem"><strong>Situs investor emiten</strong><br>
+          Kebanyakan emiten IDX memajang <em>Annual Report</em> + <em>Financial Report</em> di halaman investor relations-nya
+          sendiri (contoh terverifikasi: halaman investor PT Soechi Lines Tbk memuat Annual Report 2017–2025).</li>
+        <li style="margin-bottom:.45rem"><strong>EDGAR — sec.gov</strong><br>
+          <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany">EDGAR company search</a> (SEC, AS):
+          cari perusahaan → buka filing <strong>10-K</strong> (laporan tahunan) — gratis, tanpa login.
+          Dicek 3 Nov 2026: halaman pencarian filing terbuka dan menampilkan daftar 10-K/10-Q.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="modul-sec">
+  <h2>Log drill</h2>
+  <p class="sub">Catatan drill yang sudah lolos rubrik 6/6. Tersimpan di browser-mu (localStorage) — bukan nilai, cuma jejak latihan.</p>
+  <div class="log-form">
+    <input id="log-emiten" class="full" type="text" placeholder="Emiten — mis. PT Contoh Makmur Tbk (XXXX)" maxlength="80">
+    <input id="log-tanggal" type="date">
+    <input id="log-vonis" type="text" placeholder="Vonis 1 kalimat" maxlength="140">
+  </div>
+  <p><button class="btn btn-primary" id="log-add">Catat drill →</button></p>
+  <div id="log-list" style="margin-top:1rem"></div>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">Bedah Buta = mekanisme latihan untuk gerbang Phase 2
+  ("bedah 1 emiten IDX + 1 peer US, tiga lensa penuh"). Template + rubrik di halaman ini; vonis dan angkanya 100% punyamu.
+  <a href="../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/bedah-buta.js"></script>
+</body>
+</html>

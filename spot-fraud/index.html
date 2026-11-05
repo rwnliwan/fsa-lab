@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot the Fraud · FSA Lab</title>
+<meta name="description" content="Game forensik FSA Lab: bedah 3 laporan keuangan fiktif, tandai item yang mencurigakan, dan uji ketajamanmu melawan kunci jawaban.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/spot-fraud/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.sf-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.sf-case{display:none}
+.sf-case.active{display:block}
+.sf-story{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:1.2rem}
+.sf-story h3{font-family:var(--font-display);color:var(--mustard);font-size:1.3rem;margin-bottom:.35rem}
+.sf-story p{font-size:.9rem;color:#d9cdb4;line-height:1.6}
+.sf-story .tag{display:inline-block;font-family:var(--font-mono);font-size:.72rem;background:var(--sunset);
+  color:#fff;border-radius:6px;padding:.15rem .6rem;margin-bottom:.5rem}
+.sf-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:1.4rem}
+.sf-table th{background:var(--ink);color:var(--paper);text-align:left;padding:.55rem .7rem;font-family:var(--font-mono);font-size:.75rem}
+.sf-table td{border-bottom:1px solid var(--line);padding:.5rem .7rem}
+.sf-table tr:nth-child(even) td{background:var(--card)}
+.sf-table .num{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+.sf-table .lbl{font-weight:500}
+.sf-note{background:var(--paper-deep);border-left:4px solid var(--mustard);padding:.6rem .9rem;font-size:.83rem;
+  margin:-0.8rem 0 1.4rem;color:var(--ink-soft)}
+.sf-items{display:grid;gap:.7rem;margin-bottom:1.2rem}
+.sf-item{border:2px solid var(--ink);border-radius:12px;padding:.8rem 1rem;background:var(--card);
+  cursor:pointer;transition:transform .08s}
+.sf-item:hover{transform:translateY(-2px)}
+.sf-item.picked{background:#fbf3dd;border-color:var(--sunset);box-shadow:3px 3px 0 var(--sunset)}
+.sf-item .tick{font-family:var(--font-mono);font-weight:700;margin-right:.5rem;color:var(--ink-soft)}
+.sf-item.picked .tick{color:var(--sunset-deep)}
+.sf-item.locked{cursor:default}
+.sf-item.locked:hover{transform:none}
+.sf-result{border:2px solid var(--ink);border-radius:var(--radius);padding:1.3rem 1.5rem;background:var(--card);
+  box-shadow:4px 4px 0 var(--ink);margin-top:1.2rem}
+.sf-score{font-family:var(--font-display);font-size:2.6rem;color:var(--sunset-deep)}
+.sf-verdict{font-weight:700;font-size:1.05rem;margin:.3rem 0 .8rem}
+.sf-review{margin-top:.8rem;display:grid;gap:.6rem}
+.sf-rev{border-radius:10px;padding:.7rem .95rem;font-size:.87rem;line-height:1.55;border:2px solid var(--ink)}
+.sf-rev.hit{background:#e4f2ee;border-color:var(--teal-deep)}
+.sf-rev.miss{background:#fbe7df;border-color:var(--sunset-deep)}
+.sf-rev.fp{background:#fbf3dd;border-color:#a67c1a}
+.sf-rev.ok{background:var(--paper)}
+.sf-rev .st{font-weight:700;display:block;margin-bottom:.2rem}
+.sf-illus{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-soft);margin-bottom:.8rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">SF</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Game · Lensa forensik</p>
+  <h1>Spot the <em>Fraud.</em></h1>
+  <p class="lede">Tiga perusahaan <strong>fiktif</strong>, tiga laporan yang "terlalu bagus".
+    Tugasmu: klik setiap item yang menurutmu <strong>mencurigakan</strong>, lalu submit —
+    skormu diadu melawan kunci jawaban plus pembahasan tiap red flag.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="sf-tabs" id="sf-tabs"></div>
+  <div id="sf-cases"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Spot the Fraud · semua perusahaan dan angka fiktif, untuk latihan.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="spot-fraud.js"></script>
+</body>
+</html>

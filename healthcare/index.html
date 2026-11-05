@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Healthcare (Eksperimen) · FSA Lab</title>
+<meta name="description" content="Sector track pilot FSA Lab: catatan sektor healthcare (farmasi, rumah sakit, alat kesehatan) + case kurasi ber-benchmark. Berlabel eksperimen.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/healthcare/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.exp{border:3px dashed var(--ink);border-radius:var(--radius);background:#fdf3d7;
+  padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.92rem}
+.exp strong{font-family:var(--font-display)}
+.subsec{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1rem}
+.subsec h3{font-family:var(--font-display);margin:0 0 .5rem;font-size:1.05rem}
+.subsec ul{margin:.4rem 0;padding-left:1.2rem;font-size:.9rem}
+.subsec li{margin-bottom:.35rem}
+.trap{border-left:6px solid #a33;padding:.5rem .9rem;margin:.6rem 0;background:#fff;font-size:.88rem}
+.trap strong{color:#a33}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1rem}
+.ccard{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem}
+.ccard h3{font-family:var(--font-display);margin:0 0 .4rem;font-size:1.08rem}
+.ccard p{font-size:.88rem;color:var(--ink-soft)}
+.ccard.soon{opacity:.65;border-style:dashed}
+.tag{font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:20px;border:1px solid var(--ink)}
+.tag.live{background:#eef7e8;color:#2e5d33;border-color:#2e5d33}
+.tag.soon-t{background:#fff;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../kasus/">← Perpustakaan Kasus</a>
+  <span class="brand"><span class="brand-badge">HC</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Sector Track · Pilot</p>
+  <h1>Healthcare <em>(Eksperimen).</em></h1>
+  <p class="lede">Track sektor pertama FSA Lab: karakteristik keuangan farmasi, rumah sakit, dan alat kesehatan —
+  dibaca lewat case nyata ber-benchmark, bukan teori generik.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="exp">
+    <strong>🧪 Label eksperimen — baca dulu.</strong>
+    Track ini menguji hipotesis <em>"sector depth menambah nilai belajar"</em>.
+    Ini <strong>bukan klaim keunggulan</strong> FSA Lab di healthcare — kalau pilot ini tidak terbukti berguna,
+    track akan ditulis ulang atau ditutup. Penilaian jujurmu (prompt kalibrasi di tiap case) adalah datanya.
+  </div>
+
+  <h2>1 · Catatan Sektor</h2>
+  <p style="font-size:.9rem;color:var(--ink-soft)">Bacaan ±15 menit — peta karakteristik keuangan 3 subsektor sebelum menyentuh case.</p>
+
+  <div class="subsec">
+    <h3>💊 Farmasi (contoh: KLBF, SIDO)</h3>
+    <ul>
+      <li><strong>Inventory days tinggi</strong> — obat punya umur simpan &amp; batch; persediaan kedaluwarsa = write-down yang "tiba-tiba".</li>
+      <li><strong>R&amp;D dan iklan</strong> — beban R&amp;D vs kapitalisasi (aturan PSAK 224/216); belanja iklan consumer healthcare menggerus margin.</li>
+      <li><strong>Distribusi berlapis</strong> — distributor pihak berelasi = jebakan klasik: piutang related-party yang membengkak.</li>
+      <li><strong>Regulasi harga</strong> — HET (harga eceran tertinggi) membatasi pricing power obat tertentu.</li>
+      <li><strong>Metrik khas:</strong> inventory days, receivable days, R&amp;D intensity (R&amp;D ÷ penjualan).</li>
+    </ul>
+  </div>
+
+  <div class="subsec">
+    <h3>🏥 Rumah sakit (contoh: MIKA, SILO, HEAL)</h3>
+    <ul>
+      <li><strong>Capex intensif</strong> — gedung + alat kesehatan mahal; depresiasi menekan laba akuntansi walau kas kuat.</li>
+      <li><strong>Receivable days BPJS/asuransi</strong> — piutang klaim BPJS bisa menumpuk; split BPJS vs swasta/asuransi wajib dibaca terpisah.</li>
+      <li><strong>Utilisasi tempat tidur (BOR)</strong> sebagai driver pendapatan — bukan jumlah RS-nya saja.</li>
+      <li><strong>Akuisisi sebagai growth</strong> — RS tumbuh lewat beli RS lain: goodwill + NCI muncul di neraca (tie-in M20, M35).</li>
+      <li><strong>Metrik khas:</strong> BOR, receivable days (split BPJS), capex ÷ penjualan.</li>
+    </ul>
+  </div>
+
+  <div class="subsec">
+    <h3>🔬 Alat kesehatan &amp; distributor</h3>
+    <ul>
+      <li><strong>Modal kerja berat</strong> — stok alat mahal + piutang tender.</li>
+      <li><strong>Tender pemerintah</strong> — receivable risk terkonsentrasi ke satu jenis pelanggan.</li>
+      <li><strong>Metrik khas:</strong> cash conversion cycle, konsentrasi piutang.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:1.2rem">5 jebakan sektor (jadi materi latihan)</h3>
+  <div class="trap"><strong>1 · Kapitalisasi vs expense R&amp;D.</strong> R&amp;D yang dikapitalisasi mempercantik laba hari ini dan membebani amortisasi esok. Cek kebijakan akuntansinya, bukan cuma angkanya.</div>
+  <div class="trap"><strong>2 · Revenue recognition kontrak pemerintah/tender.</strong> Kapan pendapatan diakui — saat kontrak ditandatangani atau saat alat diserahterimakan? (Tie-in M34.)</div>
+  <div class="trap"><strong>3 · Piutang related-party distributor farmasi.</strong> Penjualan ke distributor afiliasi + piutangnya membengkak = pola channel stuffing. Selalu baca catatan pihak berelasi.</div>
+  <div class="trap"><strong>4 · Akuisisi RS: goodwill + NCI.</strong> Pertumbuhan pendapatan yang dibeli (bukan organik) menyembunyikan tren same-store. Pisahkan organik vs akuisisi.</div>
+  <div class="trap"><strong>5 · "Pertumbuhan" dari akuisisi vs organik.</strong> Lihat catatan segmen &amp; proforma — kalau tidak diungkapkan, itu sendiri pertanyaan.</div>
+
+  <h2 style="margin-top:1.8rem">2 · Case track</h2>
+  <div class="casegrid">
+    <div class="ccard">
+      <h3>Bedah Sendiri: KLBF <span class="tag live">live</span></h3>
+      <p>Farmasi · blind · AR 2024 auditan · benchmark terverifikasi. Inventory days, R&amp;D, distributor — semua jebakan farmasi di atas bisa diuji di sini.</p>
+      <p><a class="btn btn-primary" href="/bedah-sendiri/klbf/">Mulai →</a></p>
+    </div>
+    <div class="ccard">
+      <h3>Bedah Sendiri: MIKA <span class="tag live">live</span></h3>
+      <p>Healthcare blind #1 — rumah sakit · blind · LK auditan 2024 · benchmark terverifikasi. Margin operasi 31%, D/E 0,13x, misteri penarikan saham treasuri Rp760 M. Impostor-free.</p>
+      <p><a class="btn btn-primary" href="/bedah-sendiri/mika/">Mulai →</a></p>
+    </div>
+    <div class="ccard">
+      <h3>Guided: TSPC <span class="tag live">live</span></h3>
+      <p>Farmasi + konsumen + distribusi · guided 12-stop · LK auditan 2024. Revenue +4% tapi laba usaha +68% — dari mana? Pintu masuk sektor sebelum blind.</p>
+      <p><a class="btn btn-primary" href="/healthcare/guided-tspc/">Mulai →</a></p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:1.8rem">3 · Sintesis sektor</h2>
+  <div class="subsec">
+    <h3>📊 Sintesis: satu sektor, tiga mesin uang <span class="tag live">live</span></h3>
+    <p style="font-size:.9rem">Pola lintas subsektor dari 2 case live (KLBF blind, TSPC guided):
+    model bisnis farmasi vs RS vs alkes-distributor, head-to-head KLBF vs TSPC (margin, inventory days, ROE),
+    peta 5 jebakan × case, dan pola vs anomali. Bagian RS/alkes = kerangka tunggu data — ditulis ulang saat case RS live.</p>
+    <p><a class="btn btn-primary" href="/healthcare/sintesis/">Baca sintesis →</a></p>
+  </div>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">
+  Track healthcare = lapisan kurasi di atas case, bukan modul teori baru. Indeks semua case:
+  <a href="../kasus/">Perpustakaan Kasus</a>. <a href="../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+</body>
+</html>

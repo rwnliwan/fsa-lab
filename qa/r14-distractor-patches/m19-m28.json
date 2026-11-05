@@ -1,0 +1,552 @@
+[
+ {
+  "m": 19,
+  "q": "10-K itu…",
+  "o": [
+   "Laporan tahunan perusahaan AS yang diaudit",
+   "Proxy statement untuk rapat pemegang saham",
+   "Laporan kuartalan perusahaan AS yang diaudit",
+   "Pengumuman insiden material ke SEC"
+  ],
+  "a": 0
+ },
+ {
+  "m": 19,
+  "q": "Merger diumumkan pagi ini. Dokumen resmi tercepat yang dibuka…",
+  "o": [
+   "10-K",
+   "8-K",
+   "Proxy DEF 14A",
+   "10-Q"
+  ],
+  "a": 1
+ },
+ {
+  "m": 19,
+  "q": "Gaji CEO dan transaksi pihak berelasi dicari di…",
+  "o": [
+   "8-K",
+   "Item 1 (bisnis)",
+   "Proxy DEF 14A",
+   "Item 7 (MD&A)"
+  ],
+  "a": 2
+ },
+ {
+  "m": 19,
+  "q": "Laporan keuangan auditan emiten Indonesia diunduh dari…",
+  "o": [
+   "sec.gov",
+   "BPS",
+   "idx.co.id",
+   "Kantor OJK"
+  ],
+  "a": 2
+ },
+ {
+  "m": 19,
+  "q": "Data keuangan SEC yang mesin-terbaca untuk diolah Python…",
+  "o": [
+   "Koran bisnis terbitan pagi",
+   "Screenshot tabel dari 10-K",
+   "PDF hasil scan filing",
+   "XBRL via data.sec.gov"
+  ],
+  "a": 3
+ },
+ {
+  "m": 20,
+  "q": "Goodwill muncul ketika…",
+  "o": [
+   "Harga akuisisi > nilai wajar aset neto teridentifikasi",
+   "Perusahaan mencetak rugi bersih tahun berjalan",
+   "Total aset perusahaan bertambah karena revaluasi",
+   "Kapitalisasi pasar melebihi nilai buku ekuitas perusahaan"
+  ],
+  "a": 0
+ },
+ {
+  "m": 20,
+  "q": "Apakah goodwill diamortisasi?",
+  "o": [
+   "Hanya diuji impairment saat perusahaan dijual ke pihak ketiga",
+   "Ya — diamortisasi selama 10 tahun",
+   "Ya — diamortisasi selama 20 tahun",
+   "Tidak — diuji impairment minimal setahun sekali"
+  ],
+  "a": 3
+ },
+ {
+  "m": 20,
+  "q": "Merek dagang dengan umur manfaat 8 tahun…",
+  "o": [
+   "Diamortisasi selama 8 tahun",
+   "Dibebankan penuh sekaligus tahun ini",
+   "Hanya diuji impairment tahunan",
+   "Tidak diamortisasi — hanya impairment"
+  ],
+  "a": 0
+ },
+ {
+  "m": 20,
+  "q": "Rugi impairment goodwill yang sudah diakui…",
+  "o": [
+   "Wajib dibalik dalam dua tahun buku",
+   "Bisa dibalik hanya di bawah US GAAP",
+   "Bisa dibalik bila nilai wajarnya pulih di periode berikut",
+   "Tidak bisa dibalik — di PSAK maupun US GAAP"
+  ],
+  "a": 3
+ },
+ {
+  "m": 20,
+  "q": "Kreditur menilai goodwill Rp20.000 di neraca sebagai…",
+  "o": [
+   "Jaminan utama pinjaman bila gagal bayar",
+   "Aset likuid yang mudah dicairkan",
+   "Setara kas untuk covenant",
+   "Dikurangkan dari tangible net worth"
+  ],
+  "a": 3
+ },
+ {
+  "m": 21,
+  "q": "Karakter kedua sistem standar…",
+  "o": [
+   "PSAK/IFRS principles-based, US GAAP rules-based",
+   "Keduanya identik persis tanpa perbedaan",
+   "Keduanya rules-based secara murni",
+   "PSAK/IFRS rules-based, US GAAP principles-based juga"
+  ],
+  "a": 0
+ },
+ {
+  "m": 21,
+  "q": "Provisi diakui bila tiga syarat terpenuhi…",
+  "o": [
+   "Manajemen menginginkannya untuk meratakan laba tahun berjalan",
+   "Dewan direksi sudah menyetujui rencana pembayaran",
+   "Ada kewajiban kini + arus keluar probable + estimasi andal",
+   "Kas sudah benar-benar keluar dari perusahaan"
+  ],
+  "a": 2
+ },
+ {
+  "m": 21,
+  "q": "Kewajiban yang possible tapi tidak probable…",
+  "o": [
+   "Diabaikan sama sekali oleh manajemen",
+   "Diungkap sebagai liabilitas kontinjensi",
+   "Diakui penuh di neraca sebagai utang jangka panjang",
+   "Dicatat sebagai aset kontinjensi"
+  ],
+  "a": 1
+ },
+ {
+  "m": 21,
+  "q": "Rentang 8.000–12.000 tanpa titik terbaik: US GAAP memakai…",
+  "o": [
+   "Midpoint 10.000 — tengah rentang",
+   "Low end 8.000",
+   "High end 12.000 — paling konservatif",
+   "Rata-rata tertimbang probabilitas"
+  ],
+  "a": 1
+ },
+ {
+  "m": 21,
+  "q": "Kontrak memberatkan → provisi sebesar…",
+  "o": [
+   "Nol — tunggu rugi benar-benar terealisasi",
+   "Total pendapatan yang dijanjikan kontrak",
+   "Total manfaat ekonomik dari kontrak",
+   "Biaya tak terhindarkan − manfaat ekonomik"
+  ],
+  "a": 3
+ },
+ {
+  "m": 22,
+  "q": "PSAK 224 (dulu PSAK 7) mengatur…",
+  "o": [
+   "Penurunan nilai aset non-keuangan dan pengujian impairment",
+   "Sewa dan hak-guna aset: pengakuan oleh penyewa dan lessor",
+   "Pengungkapan pihak berelasi (definisi, sifat transaksi, saldo, syarat)",
+   "Pengakuan pendapatan dari kontrak pelanggan termasuk estimasi imbalan variabel"
+  ],
+  "a": 2
+ },
+ {
+  "m": 22,
+  "q": "Tunneling lewat transfer pricing artinya…",
+  "o": [
+   "Menjual aset di bawah nilai buku ke pihak ketiga independen",
+   "Menggelapkan pajak dengan faktur fiktif",
+   "Mencuri kas tunai dari brankas perusahaan",
+   "Memindahkan laba lewat harga tidak wajar ke afiliasi"
+  ],
+  "a": 3
+ },
+ {
+  "m": 22,
+  "q": "Red flag paling tajam di catatan pihak berelasi…",
+  "o": [
+   "Afiliasi utama berdomisili di yurisdiksi luar negeri",
+   "Piutang berelasi tumbuh jauh lebih cepat dari penjualan berelasi",
+   "Seluruh transaksi berelasi dalam mata uang rupiah saja",
+   "Struktur grup dengan puluhan entitas afiliasi di banyak negara berbeda"
+  ],
+  "a": 1
+ },
+ {
+  "m": 22,
+  "q": "Pinjaman ke afiliasi bunga 4% saat pasar 12% = …",
+  "o": [
+   "Investasi jangka panjang perusahaan",
+   "Subsidi tersembunyi — dividen untuk pengendali",
+   "Biaya bunga yang wajar dan normal",
+   "Efisiensi pendanaan di dalam grup usaha yang terintegrasi"
+  ],
+  "a": 1
+ },
+ {
+  "m": 22,
+  "q": "Jaminan silang (cross guarantee) berbahaya karena…",
+  "o": [
+   "Melanggar ketentuan PSAK 338 yang berlaku saat ini",
+   "Menaikkan beban bunga pinjaman perusahaan induk",
+   "Kewajiban afiliasi bisa jatuh ke perusahaan tanpa tercatat di neraca",
+   "Jaminan silang selalu menguntungkan karena menurunkan bunga pinjaman grup"
+  ],
+  "a": 2
+ },
+ {
+  "m": 23,
+  "q": "Maintenance covenant artinya…",
+  "o": [
+   "Diuji hanya saat perusahaan pertama kali menerbitkan utang baru",
+   "Diuji berkala (mis. tiap kuartal) selama fasilitas berjalan",
+   "Hanya membatasi pembayaran dividen perusahaan",
+   "Tidak pernah diuji selama fasilitas berjalan"
+  ],
+  "a": 1
+ },
+ {
+  "m": 23,
+  "q": "DSCR 0,91× artinya…",
+  "o": [
+   "Laba bersih naik 9% dari tahun lalu sehingga DSCR ikut membaik — perusahaan aman dan jauh dari risiko gagal bayar utang",
+   "Rasio di bawah 1,00 berarti perusahaan pasti bangkrut dan wajib mengajukan PKPU minggu ini tanpa bisa dinegosiasi sama sekali",
+   "CFO setelah bunga 30.800 ÷ (bunga+pokok) 34.000 = 0,91x BREACH definisi kontrak (konservatif). Catatan: kalau yang diuji hanya pokok, 30.800÷20.000=1,54x (cukup) — kontrak menguji bunga+pokok",
+   "CFO 30.800 ÷ total liabilitas 272.000 = 0,11x — kemampuan bayar sangat lemah, kreditur pasti mempercepat pelunasan seluruh fasilitas seketika dan membekukan rekening operasional perusahaan tanpa pemberitahuan"
+  ],
+  "a": 2
+ },
+ {
+  "m": 23,
+  "q": "Technical default bisa berujung pada…",
+  "o": [
+   "Otomatis dinyatakan pailit oleh pengadilan niaga tanpa proses PKPU seketika",
+   "Direksi langsung dipidana penjara oleh jaksa",
+   "Saham perusahaan dibekukan dari perdagangan bursa",
+   "Kreditur meminta pelunasan dipercepat, atau waiver dengan repricing"
+  ],
+  "a": 3
+ },
+ {
+  "m": 23,
+  "q": "Angka covenant vs angka akuntansi…",
+  "o": [
+   "Angka akuntansi selalu mengalahkan definisi yang tertulis di kontrak",
+   "Keduanya tidak berhubungan — covenant diuji dari data operasional mentah",
+   "Selalu identik — definisi kontrak wajib mengikuti angka laporan keuangan",
+   "Bisa berbeda — definisi di perjanjian yang berlaku, bukan angka laporan"
+  ],
+  "a": 3
+ },
+ {
+  "m": 23,
+  "q": "Covenant pressure sebagai motif fraud…",
+  "o": [
+   "Perusahaan di ambang breach punya insentif memoles laba — fraud triangle: pressure",
+   "Membuat laporan lebih jujur karena manajemen takut diawasi kreditur",
+   "Hanya terjadi di bank karena covenant tidak dipakai di perusahaan non-bank",
+   "Tidak ada kaitannya dengan kecurangan — covenant murni urusan legal antara bank dan debitur"
+  ],
+  "a": 0
+ },
+ {
+  "m": 24,
+  "q": "EV berbeda dari market cap karena EV…",
+  "o": [
+   "Menambah utang bersih — harga beli seluruh perusahaan",
+   "Hanya dipakai untuk valuasi bank dan asuransi",
+   "Sama persis dengan market cap, hanya nama lain yang dipakai analis",
+   "Mengabaikan utang dan hanya memakai ekuitas"
+  ],
+  "a": 0
+ },
+ {
+  "m": 24,
+  "q": "Perusahaan merugi. Multiple yang PALING tidak bermakna adalah…",
+  "o": [
+   "EV/penjualan",
+   "P/E",
+   "P/B",
+   "EV/EBITDA"
+  ],
+  "a": 1
+ },
+ {
+  "m": 24,
+  "q": "P/E Cemerlang versi US GAAP (LIFO) vs PSAK (FIFO)…",
+  "o": [
+   "Tidak bisa dihitung tanpa data harga pasar sahamnya",
+   "Identik — metode persediaan tidak mengubah laba bersih perusahaan",
+   "GAAP 15,6x > PSAK 12,4x — normalisasi dulu sebelum bandingkan",
+   "GAAP lebih rendah karena LIFO menaikkan laba saat harga naik"
+  ],
+  "a": 2
+ },
+ {
+  "m": 24,
+  "q": "PEG 0,68x (di bawah 1) berarti…",
+  "o": [
+   "Mahal — PEG rendah menandakan pasar menghindari saham ini",
+   "Murah relatif terhadap pertumbuhan forecast — tapi forecast bisa salah",
+   "Tidak ada artinya — PEG tidak dipakai analis profesional",
+   "Saham pasti murah — beli sekarang juga tanpa analisis tambahan apa pun lagi"
+  ],
+  "a": 1
+ },
+ {
+  "m": 24,
+  "q": "Revaluasi tanah +50.000 (PSAK 216). Efek ke P/B…",
+  "o": [
+   "Tetap — revaluasi tidak mengubah rasio valuasi",
+   "Naik — ekuitas bertambah sehingga valuasinya ikut naik",
+   "Turun — terlihat murah padahal bisnisnya tetap",
+   "Menjadi negatif karena ekuitas terkoreksi"
+  ],
+  "a": 2
+ },
+ {
+  "m": 25,
+  "q": "F-score Cemerlang 2025 = 8/9, tapi tes ACCRUAL gagal: CFO 30.800 < NI 45.240. Interpretasi yang PALING tepat…",
+  "o": [
+   "Fundamental kuat, tapi ada peringatan kualitas laba (akrual 14.440) yang wajib diselidiki — baca rincian, bukan cuma angka 8",
+   "Skor 8 dari 9 berarti perusahaan bersih — satu tes yang gagal tidak penting dan boleh diabaikan sepenuhnya oleh analis fundamental",
+   "Satu tes yang gagal membuat seluruh F-score tidak valid — hitung ulang dari nol dengan data berbeda",
+   "Perusahaan pasti memanipulasi laba — jual semua sahamnya sekarang juga tanpa analisis tambahan"
+  ],
+  "a": 0
+ },
+ {
+  "m": 25,
+  "q": "Menurut Piotroski (2000), skor 8 dari 9 menempatkan perusahaan di zona…",
+  "o": [
+   "Hanya skor 9 yang dianggap value stock oleh Piotroski",
+   "7–9: general strength — kekuatan fundamental umum yang kuat",
+   "Skor 8 masih di bawah ambang 'winner' Piotroski",
+   "Skor 4–6: zona abu-abu tanpa sinyal investasi yang jelas bagi analis"
+  ],
+  "a": 1
+ },
+ {
+  "m": 25,
+  "q": "Altman Z′ Cemerlang = 2,26 dengan cut-off Z′ (aman >2,90; distress <1,23). Artinya…",
+  "o": [
+   "Grey zone 1,23–2,90: belum aman, belum distress — kreditur perlu covenant & monitoring",
+   "Aman — Z′ 2,26 sudah jauh dari ambang distress 1,23 sehingga risiko bangkrut kecil sekali dalam waktu dekat",
+   "Distress — harus segera restrukturisasi utang perusahaan",
+   "Model Altman tidak bisa dipakai untuk perusahaan di Indonesia"
+  ],
+  "a": 0
+ },
+ {
+  "m": 25,
+  "q": "Cemerlang diasumsikan tidak tercatat di bursa (tanpa harga pasar). Varian Altman yang PALING tepat…",
+  "o": [
+   "Z klasik dengan harga pasar yang ditebak-tebak analis",
+   "Z″: hilangkan komponen X4 sekalian karena perusahaan tidak tercatat di bursa efek",
+   "Z′: ganti market value di X4 dengan book value of equity ÷ total liabilities",
+   "Tidak ada — Altman hanya berlaku untuk perusahaan TBK"
+  ],
+  "a": 2
+ },
+ {
+  "m": 25,
+  "q": "Modified Jones mengukur discretionary accruals dengan cara…",
+  "o": [
+   "Meregresi total accruals terhadap Δrevenue (dikurangi Δreceivables), PPE — residunya = discretionary accruals",
+   "Menghitung Beneish M-score dari delapan rasio keuangan perusahaan tercatat",
+   "Menghitung Dechow F-score dari sembilan sinyal dalam laporan keuangan untuk mendeteksi manipulasi laba perusahaan",
+   "Selisih NI − CFO secara langsung tanpa regresi — itu pendekatan Sloan terhadap kualitas akrual, bukan Modified Jones"
+  ],
+  "a": 0
+ },
+ {
+  "m": 26,
+  "q": "Setelah renumbering PSAK syariah (efektif 1 Januari 2024), standar penyajian laporan keuangan entitas syariah adalah…",
+  "o": [
+   "PSAK 401",
+   "PSAK 101",
+   "PSAK 410",
+   "PSAK 201"
+  ],
+  "a": 0
+ },
+ {
+  "m": 26,
+  "q": "Bank Barakah menjual barang Rp20 jt + margin Rp4 jt, tenor 2 tahun (ilustratif). Margin Rp4 jt diakui…",
+  "o": [
+   "Seluruhnya saat akad ditandatangani di awal periode",
+   "Proporsional selama periode akad (accrual)",
+   "Sebagai liabilitas bank yang harus dibayar",
+   "Hanya bila nasabah melunasi seluruhnya"
+  ],
+  "a": 1
+ },
+ {
+  "m": 26,
+  "q": "Pembiayaan mudharabah Rp100 jt merugi Rp10 jt TANPA kelalaian nasabah (ilustratif). Yang menanggung kerugian finansial…",
+  "o": [
+   "Kerugian dibagi otomatis 50:50 ke nasabah",
+   "Ditalangi dana zakat bank sementara waktu",
+   "Bank (shahibul maal) — nasabah rugi waktu dan tenaga",
+   "Nasabah wajib mengganti penuh semua kerugian ke bank syariah"
+  ],
+  "a": 2
+ },
+ {
+  "m": 26,
+  "q": "Perbedaan utama ijarah dengan sewa konvensional (PSAK 116) adalah…",
+  "o": [
+   "Ijarah tidak mengenal aset sama sekali — hanya jasa pemakaian yang diperjualbelikan tanpa perpindahan kepemilikan",
+   "Ijarah memindahkan manfaat pakai tanpa bunga; kepemilikan tetap pada lessor dalam akad syariah",
+   "PSAK 116 melarang semua bentuk sewa oleh perusahaan penyewa",
+   "Tidak ada beda dengan sewa biasa — hanya istilahnya diganti"
+  ],
+  "a": 1
+ },
+ {
+  "m": 26,
+  "q": "Kenapa sukuk ijarah BUKAN 'obligasi berbunga' di laporan?",
+  "o": [
+   "Karena kupon sukuk selalu mengambang mengikuti suku bunga pasar",
+   "Imbal hasil berasal dari sewa aset underlying yang menjadi hak investor — bukan bunga atas utang",
+   "Karena sukuk ijarah tidak dicatat di laporan keuangan penerbit",
+   "Karena sukuk ijarah hanya diterbitkan pemerintah untuk proyek infrastruktur negara sehingga bebas riba"
+  ],
+  "a": 1
+ },
+ {
+  "m": 27,
+  "q": "Fakta kanonis: PT Cemerlang Abadi TIDAK punya ESOP. Maka contoh 'MSOP 5 juta opsi' di modul ini adalah…",
+  "o": [
+   "Fakta yang dikutip dari CALK 2025 perusahaan",
+   "ILUSTRATIF — andaikan ada, untuk latihan hitung dilusi",
+   "Kewajiban pelaporan ESOP yang harus disampaikan ke OJK",
+   "Hasil temuan audit forensik tahun lalu"
+  ],
+  "a": 1
+ },
+ {
+  "m": 27,
+  "q": "Menurut PSAK 102, beban share-based payment diakui…",
+  "o": [
+   "Selama periode vesting, berdasar fair value pada grant date",
+   "Tidak diakui — cukup diungkap di CALK",
+   "Saat opsi di-exercise oleh karyawan yang bersangkutan",
+   "Hanya bila harga saham naik di atas strike price yang disepakati"
+  ],
+  "a": 0
+ },
+ {
+  "m": 27,
+  "q": "Dilusi MAKSIMUM ilustratif = 45.240 ÷ 105 (tanpa treasury stock method) sama dengan… (Rp)",
+  "o": [
+   "445,0",
+   "430,9",
+   "460,2",
+   "452,4"
+  ],
+  "a": 1
+ },
+ {
+  "m": 27,
+  "q": "Treasury stock method intinya…",
+  "o": [
+   "Metode ini hanya berlaku untuk opsi yang sudah vesting penuh oleh karyawan",
+   "Opsi karyawan tidak pernah bersifat dilutif bagi pemegang saham lama perusahaan",
+   "Proceeds dari exercise DIANGGAP dipakai buyback saham di pasar — tambahan bersih lebih kecil dari jumlah opsi",
+   "Semua opsi karyawan langsung dihitung penuh sebagai saham baru yang beredar tanpa asumsi buyback dari proceeds exercise"
+  ],
+  "a": 2
+ },
+ {
+  "m": 27,
+  "q": "POJK 51/2017 mewajibkan…",
+  "o": [
+   "Semua perusahaan di Indonesia wajib menerbitkan laporan keuangan bilingual setiap tahun buku",
+   "Semua ESOP wajib diganti dengan bonus tunai bagi karyawan",
+   "Hanya BUMN yang wajib melaporkan emisi karbonnya ke KLHK",
+   "Emiten & lembaga jasa keuangan menyusun RAKB dan menerbitkan laporan keberlanjutan"
+  ],
+  "a": 3
+ },
+ {
+  "m": 28,
+  "q": "MD&A Tunas Cemerlang: kalimat rata-rata 18 → 34 kata, tone optimis → defensif. Interpretasi forensik yang TEPAT…",
+  "o": [
+   "Hanya gaya bahasa baru dari tim humas — abaikan saja tidak penting",
+   "Bukti kuat manipulasi laba — segera laporkan ke regulator bursa dan hentikan analisis lebih lanjut karena sudah terbukti",
+   "Hanya masalah editor naskah — tidak ada arti analitis sama sekali bagi analis fundamental yang membaca",
+   "Sinyal untuk investigasi lebih dalam — readability turun + tone defensif = pola pengaburan, bukan vonis"
+  ],
+  "a": 3
+ },
+ {
+  "m": 28,
+  "q": "Benford's Law PALING valid untuk menguji…",
+  "o": [
+   "10.000 entri jurnal dengan angka natural (nilai transaksi)",
+   "Kode akun 4 digit yang ditetapkan perusahaan",
+   "Nomor faktur yang diberi nomor berurutan oleh sistem akuntansi",
+   "Sampel kecil berisi 40 transaksi pilihan auditor"
+  ],
+  "a": 0
+ },
+ {
+  "m": 28,
+  "q": "Langkah PERTAMA yang benar saat menerima short-seller report adalah…",
+  "o": [
+   "Memisahkan klaim faktual dari opini/interpretasi",
+   "Langsung menjual semua saham sebelum harganya jatuh",
+   "Menunggu klarifikasi manajemen",
+   "Menyebarluaskannya agar pasar tahu"
+  ],
+  "a": 0
+ },
+ {
+  "m": 28,
+  "q": "Saat membaca catatan atas laporan keuangan, urutan baca yang disarankan DIMULAI dari…",
+  "o": [
+   "Peristiwa setelah periode pelaporan yang memerlukan penyesuaian",
+   "Kebijakan akuntansi — apa yang berubah tahun-ke-tahun",
+   "Catatan pihak berelasi perusahaan",
+   "Liabilitas kontinjensi dan komitmen modal"
+  ],
+  "a": 1
+ },
+ {
+  "m": 28,
+  "q": "Dari daftar berikut, yang BUKAN red flag dokumen adalah…",
+  "o": [
+   "Pergantian auditor 3x dalam 4 tahun",
+   "KAM baru tentang pengakuan pendapatan",
+   "Restatement laba −30% karena kesalahan penyajian tahun lalu",
+   "Opini WTP konsisten 5 tahun tanpa paragraf penekanan"
+  ],
+  "a": 3
+ }
+]

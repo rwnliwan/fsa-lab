@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedah Filing: SOCI Annual Report 2024 · FSA Lab</title>
+<meta name="description" content="Walkthrough terpandu atas filing asli: PT Soechi Lines Tbk (SOCI) Annual Report 2024, section per section, dipetakan ke modul FSA Lab.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/bedah-filing/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.stop{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;margin-bottom:1.1rem;overflow:hidden}
+.stop-head{background:var(--ink);color:#fffdf7;padding:.6rem 1.1rem;display:flex;gap:.7rem;align-items:baseline}
+.stop-head .n{font-family:var(--font-mono);font-weight:700;background:var(--mustard);color:var(--ink);
+  border-radius:50%;width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.stop-head h3{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.stop-body{padding:1rem 1.2rem}
+.stop-body .loc{font-size:.8rem;color:var(--ink-soft);margin-bottom:.5rem}
+.stop-body .loc .mono{background:#f0e9d8;padding:.1rem .4rem;border-radius:4px}
+.fact{background:#f7f3e8;border-left:4px solid var(--mustard);padding:.6rem .9rem;margin:.6rem 0;font-size:.88rem}
+.fact .mono{font-weight:700}
+.modmap{font-size:.88rem;margin:.6rem 0}
+.modmap .tag{display:inline-block;background:var(--ink);color:#fffdf7;font-family:var(--font-mono);font-size:.75rem;
+  font-weight:700;padding:.15rem .55rem;border-radius:20px;margin:.12rem .2rem .12rem 0}
+.stop details{margin-top:.6rem;border-top:1px dashed var(--ink-soft);padding-top:.6rem}
+.stop summary{cursor:pointer;font-weight:600;font-size:.9rem}
+.stop details p{font-size:.88rem;color:var(--ink-soft);margin:.4rem 0}
+/* F09: label provenans per blok — Kutipan / Hitungan FSA Lab / Interpretasi analis */
+.src-tag{display:inline-block;font-family:var(--font-mono);font-size:.68rem;font-weight:700;
+  letter-spacing:.04em;padding:.14rem .55rem;border-radius:20px;margin:0 .5rem .4rem 0;vertical-align:middle}
+.src-tag.q{background:#e8f0e4;color:#2e5d33;border:1px solid #2e5d33}
+.src-tag.c{background:#fdf3d7;color:#8a6d1a;border:1px solid #b89b2e}
+.src-tag.i{background:#e9ecf5;color:#3a4a7a;border:1px solid #5a6fa8}
+.src-legend{font-size:.85rem;background:#fffdf7;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.8rem 1.1rem;margin:.8rem 0 1.2rem;line-height:1.7}
+.toc{columns:2;font-size:.88rem;margin:.6rem 0 1.2rem 1.2rem}
+.toc li{margin-bottom:.3rem}
+@media (max-width:720px){.toc{columns:1}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">BF</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Praktik · Guided Filing Walkthrough</p>
+  <h1>Bedah Filing: <em>SOCI.</em></h1>
+  <p class="lede">Satu laporan tahunan asli, dibaca bareng — section per section — dan setiap temuan dipetakan ke modul:
+  "catatan ini = tabel ECL-nya M16", "segmen ini = M8", "covenant ini = M23".</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>Kotak jujur — baca dulu.</strong>
+    Ini <strong>filing asli</strong>: <em>Annual Report 2024 (final)</em> PT Soechi Lines Tbk (ticker: SOCI),
+    diunduh dari halaman investor resmi perusahaan dan dibaca teksnya per 3 Nov 2026.
+    Semua angka di halaman ini <strong>dikutip dari filing tersebut</strong> (atau dari pengumuman LK-nya di idx.co.id) —
+    bukan angka ilustratif, bukan "disederhanakan". Nomor halaman = nomor cetak di PDF.
+    Yang <strong>tidak</strong> dilakukan: memverifikasi ke kertas kerja auditor, mengaudit ulang angka perusahaan,
+    atau memberi rekomendasi investasi. Kalau angka di sini beda dengan yang kamu unduh, percayai filing-nya — lalu kabari.
+  </div>
+
+  <h2>Identitas filing</h2>
+  <div class="tblwrap"><table class="stmt">
+    <tbody>
+      <tr><th style="text-align:left">Emiten</th><td>PT Soechi Lines Tbk — pelayaran tanker &amp; galangan kapal, Grup Soechi</td></tr>
+      <tr><th style="text-align:left">Ticker / papan</th><td><span class="mono">SOCI</span> — skala mid-cap (kapitalisasi pasar <span class="mono">Rp1.179 miliar</span> per Q4 2024 menurut AR-nya sendiri)</td></tr>
+      <tr><th style="text-align:left">Dokumen</th><td><em>Annual Report 2024 (final)</em> — dwibahasa Indonesia–Inggris, LK konsolidasian auditan 2024 vs 2023</td></tr>
+      <tr><th style="text-align:left">Mata uang</th><td><span class="mono">US$</span> — mata uang fungsional &amp; pelaporan (bukan rupiah!)</td></tr>
+      <tr><th style="text-align:left">Sumber</th><td><a href="https://soechi.com/images/pdf/Annual%20Report%202024-SOCI%20final.pdf">PDF Annual Report 2024</a>
+        (soechi.com, halaman investor) · LK tahunan juga diumumkan di <a href="https://www.idx.co.id/">idx.co.id</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Peta jalan</h2>
+  <p class="sub">12 pemberhentian. Setiap stop: di mana di filing → apa yang tertulis (real) → peta modul → pertanyaan analis.</p>
+  <div class="src-legend"><strong>Legenda label tiap stop:</strong>
+    <span class="src-tag q">📄 Kutipan</span>teks/angka persis dari Annual Report SOCI 2024 (filing) ·
+    <span class="src-tag c">🧮 Hitungan FSA Lab</span>perhitungan kami dari angka-angka laporan ·
+    <span class="src-tag i">🧭 Interpretasi analis</span>opini &amp; panduan membaca — bukan isi filing.</div>
+  <ol class="toc">
+    <li><a href="#s1">Ikhtisar Data Keuangan (hal. 12)</a></li>
+    <li><a href="#s2">Informasi Saham (hal. 13)</a></li>
+    <li><a href="#s3">Laporan Direksi: armada &amp; grup (hal. 15)</a></li>
+    <li><a href="#s4">MD&A: laba rugi, arus kas, rasio (hal. 47–50)</a></li>
+    <li><a href="#s5">Laporan auditor &amp; hal audit utama</a></li>
+    <li><a href="#s6">Laba rugi: anomali pajak final (ETR 10,4%)</a></li>
+    <li><a href="#s7">Arus kas metode langsung: kualitas laba 2,38×</a></li>
+    <li><a href="#s8">Catatan 7: ECL piutang 20,2%</a></li>
+    <li><a href="#s9">Catatan 11–12: kapal, docking, sewa pihak berelasi</a></li>
+    <li><a href="#s10">Catatan 17 &amp; 19: afiliasi, utang &amp; covenant</a></li>
+    <li><a href="#s11">Catatan 24 &amp; 30: konsentrasi pelanggan &amp; segmen</a></li>
+    <li><a href="#s12">Kebijakan akuntansi: USD + PSAK 338</a></li>
+  </ol>
+</section>
+
+<section class="modul-sec">
+
+<div class="stop" id="s1">
+  <div class="stop-head"><span class="n">1</span><h3>Ikhtisar Data Keuangan — angka 3 tahun, dihitung perusahaan</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">hal. 12</span>, tabel "A. Ikhtisar Data Keuangan Penting" (2024–2022, dalam US$).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>Pendapatan neto <span class="mono">165.638.994</span> (2023: <span class="mono">169.963.708</span>) ·
+      laba bruto <span class="mono">41.881.808</span> · laba usaha <span class="mono">30.625.783</span> ·
+      laba pemilik entitas induk <span class="mono">17.130.116</span> (2023: <span class="mono">8.923.474</span>) ·
+      total aset <span class="mono">602.681.935</span> · rasio lancar <span class="mono">0,86×</span> (2023: <span class="mono">1,24×</span>) ·
+      liabilitas/ekuitas <span class="mono">0,51×</span>.</div>
+    <p class="modmap"><span class="tag">M4</span><span class="tag">M5</span><span class="tag">M6</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Tabel ikhtisar = tempat latihan membaca tren 3 tahun. Perhatikan: perusahaan yang menghitung rasionya sendiri —
+      analis menghitung ulang dari LK (aset lancar ÷ liabilitas lancar, LK hal. 1–2).</p>
+    <p class="modmap"><span class="tag">G2</span>
+      Baris laba ditulis TERPISAH<span class="src-tag i">🧭 Interpretasi analis</span>: pemilik entitas induk <span class="mono">17.130.116</span> vs kepentingan nonpengendali
+      <span class="mono">12.285</span>. Inilah split "pemilik vs total" — salah basis di sini = salah vonis.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Rasio lancar jatuh dari 1,24× ke 0,86× dalam setahun. Liabilitas lancar naik dari 60,3 jt ke 75,1 jt —
+      pos apa yang paling mendorongnya? (Petunjuk: stop 10.) Apakah ini masalah likuiditas atau kalender jatuh tempo utang?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s2">
+  <div class="stop-head"><span class="n">2</span><h3>Informasi Saham — harga Rp, LK US$</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">hal. 13</span>, tabel "B. Informasi Saham".</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>Saham beredar <span class="mono">7.059.000.000</span> lembar · harga Q4 2024: tertinggi <span class="mono">Rp197</span>,
+      terendah <span class="mono">Rp146</span>, penutupan <span class="mono">Rp167</span> ·
+      kapitalisasi pasar Q4 2024 <span class="mono">Rp1.179 miliar</span> · EPS dasar <span class="mono">US$0,0024</span>.</div>
+    <p class="modmap"><span class="tag">M24</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Latihan <em>currency mismatch</em>: harga saham dalam rupiah, LK dalam dolar. Setiap multiple (P/E, P/B) wajib
+      konversi dulu — pakai kurs mana? (LK Tahunan SOCI 2025, tahun buku berakhir 31 Des 2025 — koreksi diumumkan ke
+      IDX <span class="mono">18 Juni 2026</span>, No. <span class="mono">041/CORSEC-SOCI/VI/2026</span> — menyebut kurs konversi <span class="mono">16.782</span>
+      per tanggal pelaporan.)</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Hitung P/E kasar dari harga penutupan Rp167 dan EPS US$0,0024. Berapa asumsi kurs yang kamu pakai —
+      dan kenapa pilihan kurs itu mengubah kesimpulan "murah/mahal"?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s3">
+  <div class="stop-head"><span class="n">3</span><h3>Laporan Direksi — cerita armada &amp; grup</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">hal. 15</span>, "C.1 Kinerja Perusahaan".</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>31 Des 2024: <strong>30 unit kapal tanker</strong>, total <strong>1,58 juta DWT</strong>,
+      utilisasi <strong>±86%</strong> · akuisisi 1 tanker <em>medium range</em> ±50.000 DWT (kontrak <em>time charter</em> sudah diamankan) ·
+      konversi 1 kapal <em>large range</em> jadi <strong>FSO</strong> · disposal 2 tanker tua (usia &amp; efisiensi) ·
+      <strong>3 entitas anak baru</strong> 2024: Glory Shipping Maritime Pte. Ltd., Global Ocean Lines Ltd., Pacific Ocean Maritime Ltd. ·
+      <em>joint venture</em> <strong>PT Merah Biru Regas</strong> (anak usaha ABPL × Kawasaki Kisen Kaisha/K Line Jepang).</div>
+    <p class="modmap"><span class="tag">M28</span> Baca narasi<span class="src-tag i">🧭 Interpretasi analis</span> manajemen DULU, angka kemudian — lalu uji narasinya dengan angka (stop 4).</p>
+    <p class="modmap"><span class="tag">M22</span><span class="tag">G2</span> Tiga anak baru<span class="src-tag i">🧭 Interpretasi analis</span> + 1 JV dalam setahun = struktur grup bergerak.
+      Setiap akuisisi/pendirian baru wajib dilacak ke Catatan 1d &amp; 4: berapa yang dikonsolidasi penuh, berapa yang jadi JV.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Disposal 2 kapal tua + akuisisi 1 kapal + konversi 1 kapal: apakah ini ekspansi atau peremajaan armada?
+      Cek jawabannya di arus kas (stop 7): hasil disposal 31,0 jt vs capex kapal 53,2 jt.</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s4">
+  <div class="stop-head"><span class="n">4</span><h3>MD&amp;A — manajemen menjelaskan angkanya sendiri</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">hal. 47–50</span>, "F.2.d / F.2.e / F.3 / F.4 / F.5".</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Laba rugi:</strong> pendapatan −2,5% ("lebih rendahnya pendapatan <em>spot charter</em>",
+      sementara <em>time charter</em> + galangan tumbuh solid) · beban pokok −5,8% · laba bruto +8,5% ·
+      laba usaha +12,4% · total laba komprehensif +106,4% ("pertumbuhan laba usaha + beban keuangan turun").</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Arus kas:</strong> CFO +11,7% ("penurunan pembayaran beban keuangan &amp; pemasok") ·
+      kas investasi melonjak 1.318,7% ("akuisisi dan konversi kapal") · pendanaan: bayar pinjaman bank
+      <span class="mono">US$56,0 jt</span>, terima pinjaman <span class="mono">US$29,6 jt</span> · kas akhir <span class="mono">US$21,5 jt</span>.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Rasio (manajemen):</strong> rasio lancar <span class="mono">0,86×</span> (2023: 1,24×) ·
+      perputaran utang usaha <span class="mono">28 hari</span> (2023: 22) · perputaran piutang <span class="mono">29 hari</span> (2023: 21) ·
+      <strong>kebijakan struktur modal: liabilitas/ekuitas maks 1×</strong> — realisasi <span class="mono">0,51×</span>.</div>
+    <p class="modmap"><span class="tag">M28</span><span class="tag">M5</span><span class="tag">M6</span><span class="tag">M10</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      MD&amp;A = klaim manajemen yang WAJIB diuji: "pendapatan turun tapi laba naik" — cek margin; "CFO naik" — cek komponennya;
+      "kebijakan leverage maks 1×" — ini <em>self-imposed covenant</em>, catat untuk stop 10.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>DSO naik 21→29 hari dan DPO naik 22→28 hari BERSAMAAN. Apa cerita yang konsisten dengan keduanya?
+      (Petunjuk: lihat aging piutang di stop 8 dan aging utang di Catatan 14.)</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s5">
+  <div class="stop-head"><span class="n">5</span><h3>Laporan auditor — hal audit utama: kapal</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: laporan auditor independen (bagian LK) + formulir pengumuman LK di <span class="mono">idx.co.id</span>.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Hal audit utama (KAM)</strong> menurut auditor: <strong>"Penilaian atas nilai tercatat kapal"</strong> —
+      kapal Grup dicatat sebagai bagian dari aset tetap dan nilainya bergantung pada asumsi estimasi.
+      Sementara itu <strong>manajemen menilai tidak ada indikasi penurunan nilai aset tetap</strong> per 31 Des 2024 maupun 2023
+      (Catatan 11).</div>
+    <p class="modmap"><span class="tag">M7</span><span class="tag">M12</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Inilah gunanya membaca KAM: auditor dan manajemen bisa beda penekanan atas pos yang SAMA.
+      Kapal = aset terbesar grup pelayaran; penilaiannya = estimasi (umur, nilai sisa, tarif charter masa depan).</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>"Tidak ada indikasi impairment" adalah <em>penilaian manajemen</em>, bukan fakta. Asumsi apa yang paling bisa
+      meruntuhkannya? (Petunjuk: utilisasi 86%, tarif spot turun — dua-duanya ada di filing ini.)</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s6">
+  <div class="stop-head"><span class="n">6</span><h3>Laba rugi — anomali pajak: ETR 10,4%</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">LK hal. 4–5</span>, laporan laba rugi + <span class="mono">Catatan 15</span> perpajakan.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>Laba sebelum pajak <span class="mono">19.136.874</span> · beban pajak <span class="mono">(1.994.473)</span>.
+      Rinciannya: pajak <strong>final <span class="mono">1.951.120</span></strong> + kini tidak final <span class="mono">66.351</span> −
+      <strong>benefit pajak tangguhan <span class="mono">(22.998)</span></strong> = total beban pajak <span class="mono">(1.994.473)</span>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>ETR <span class="mono">10,4%</span></strong> = 1.994.473 ÷ 19.136.874 — jauh di bawah tarif badan 22%.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Catatan 15d:</strong> entitas anak pelayaran dikenai <strong>PPh final Pasal 15 sebesar 1,2% dari peredaran bruto</strong>
+      (KMK No. 416/KMK.04/1996). Pajak final = pajak atas OMZET, bukan atas laba — ETR akuntansi jadi tidak bermakna.</div>
+    <p class="modmap"><span class="tag">M32</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Kasus nyata "rekonsiliasi fiskal vs tarif": jangan hafal 22% — baca komposisi beban pajaknya.
+      Beban keuangan <span class="mono">(12.766.369)</span> vs bunga yang DIBAYAR di arus kas <span class="mono">(11.818.443)</span>:
+      selisihnya = akrual. (Dan ingat: CFO PSAK sudah setelah bunga dibayar.)</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Kalau tarif charter naik 20% tahun depan, beban pajak final naik berapa? Kenapa analis yang memproyeksikan
+      "pajak = 22% × PBT" akan salah total untuk emiten ini?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s7">
+  <div class="stop-head"><span class="n">7</span><h3>Arus kas — metode LANGSUNG, kualitas laba 2,38×</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">LK hal. 7–8</span>, laporan arus kas konsolidasian.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Operasi (direct method):</strong> penerimaan pelanggan <span class="mono">162.702.341</span> ·
+      pembayaran pemasok <span class="mono">(101.118.218)</span> · beban keuangan dibayar <span class="mono">(11.818.443)</span> ·
+      <strong>CFO <span class="mono">40.866.814</span></strong> (2023: 36.589.762) vs laba bersih <span class="mono">17.142.401</span>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>CFO/NI = <span class="mono">2,38×</span></strong> — 40.866.814 ÷ 17.142.401.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Investasi:</strong> hasil pelepasan aset tetap <span class="mono">31.007.619</span> ·
+      perolehan aset tetap <span class="mono">(53.246.403)</span> · neto <span class="mono">(22.175.930)</span>.
+      <strong>Pendanaan:</strong> terima pinjaman <span class="mono">29.650.000</span> · bayar pinjaman <span class="mono">(56.045.303)</span> ·
+      neto <span class="mono">(29.822.944)</span>. Kas akhir <span class="mono">21.513.147</span> (termasuk kas dibatasi <span class="mono">10.199.002</span>).</div>
+    <p class="modmap"><span class="tag">M10</span><span class="tag">M4</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Filing ini memakai <strong>metode langsung</strong> — langka dan enak dibaca: kas dari pelanggan vs pendapatan
+      (162,7 jt vs 165,6 jt → koleksi ~98%). CFO 2,38× laba = kualitas laba kuat tahun ini; tapi cek: berapa yang
+      didorong penurunan pembayaran pemasok (lihat DPO stop 4)?</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Kas turun 11,1 jt meski CFO positif 40,9 jt. Ke mana perginya? Susun jembatan CFO → Δkas dalam 3 baris,
+      lalu nilai: apakah ini distress atau reinvestasi?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s8">
+  <div class="stop-head"><span class="n">8</span><h3>Catatan 7 — ECL piutang 20,2%, sepertiga >90 hari</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 7</span> (piutang usaha) + kebijakan <span class="mono">Catatan 2</span> (PSAK 109).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>Piutang bruto <span class="mono">16.895.123</span> · cadangan ECL/penurunan nilai
+      <span class="mono">(3.414.388)</span> (2023: 3.571.191) → neto pihak ketiga <span class="mono">13.480.735</span>.
+      <strong>Aging: &gt;90 hari <span class="mono">5.441.690</span></strong> dari bruto.
+      Manajemen: cadangan cukup; <strong>ECL piutang pihak berelasi = nihil</strong>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>ECL rate <span class="mono">20,2%</span></strong> = 3.414.388 ÷ 16.895.123 ·
+      <strong>bucket &gt;90 hari = <span class="mono">32,2%</span></strong> dari bruto (5.441.690 ÷ 16.895.123).</div>
+    <p class="modmap"><span class="tag">M16</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Tabel ECL asli di filing nyata: bruto → cadangan → neto → aging. ECL 20% + sepertiga piutang >90 hari =
+      kualitas piutang adalah isu #1 di neraca ini, bukan utang. Bandingkan dengan DSO 29 hari versi MD&amp;A —
+      rata-rata menutupi ekor yang buruk.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Cadangan ECL TURUN (3,57 jt → 3,41 jt) sementara piutang bruto NAIK (13,38 jt → 16,90 jt) dan bucket &gt;90 hari
+      membengkak. Apakah ini konsisten? Apa yang akan kamu tanyakan ke manajemen?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s9">
+  <div class="stop-head"><span class="n">9</span><h3>Catatan 11–12 — kapal, docking, dan sewa ke pihak berelasi</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 11</span> (aset tetap) + <span class="mono">Catatan 12</span> (sewa) + <span class="mono">Catatan 13</span>.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Aset hak-guna</strong> neto <span class="mono">2.138.186</span> (2023: 3.961.402) ·
+      <strong>liabilitas sewa <span class="mono">2.056.169</span></strong> — dengan rincian lessor:
+      <strong>PT Sejahtera Bahari Abadi (pihak berelasi, Catatan 17): <span class="mono">1.891.088</span></strong>
+      vs Ocean Properties LLP 165.081. Beban sewa jangka pendek melonjak ke <span class="mono">8.431.092</span> (2023: 2.209.369).</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Jual-dan-sewa-balik:</strong> liabilitas <span class="mono">1.367.534</span> (lancar) +
+      <span class="mono">5.587.283</span> (jangka panjang). <strong>Beban docking ditangguhkan</strong> (aset tak lancar lain):
+      <span class="mono">15.297.504</span> — biaya dry-dock kapal yang dikapitalisasi, khas industri pelayaran.</div>
+    <p class="modmap"><span class="tag">M13</span><span class="src-tag i">🧭 Interpretasi analis</span> PSAK 116 hidup di sini: sewa kantor 3 tahun ke pihak berelasi (diperpanjang 2023),
+      sale-and-leaseback kapal, dan beban sewa jangka pendek yang naik 4× — tiga perlakuan akuntansi berbeda dalam satu catatan.</p>
+    <p class="modmap"><span class="tag">M22</span><span class="src-tag i">🧭 Interpretasi analis</span> Lessor terbesar = afiliasi. Sewa ke pihak berelasi bukan otomatis salah —
+      tapi tarifnya wajib diuji kewajarannya. Ini lensa forensik atas M13.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Beban docking 15,3 jt dikapitalisasi sebagai aset. Apa yang terjadi ke laba jika manajemen memutuskan
+      mengamortisasi lebih cepat / lebih lambat? Di mana "pilihan kebijakan" ini diungkapkan?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s10">
+  <div class="stop-head"><span class="n">10</span><h3>Catatan 17 &amp; 19 — afiliasi, utang sindikasi &amp; covenant</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 17</span> (pihak berelasi) + <span class="mono">Catatan 19</span> (pinjaman jangka panjang).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Afiliasi</strong> (sepengendali/afiliasi): PT Rezeki Putra Energi, PT Lautan Pasifik Sejahtera,
+      PT Sejahtera Bahari Abadi, PT Equator Maritime, PT Vektor Maritim, PT Global Karya Indonesia, PT Adiraja Armada Maritime.
+      Pembelian dari Rezeki Putra Energi <span class="mono">377.554</span>; total transaksi afiliasi
+      <span class="mono">5.871.811</span> (2024). Utang usaha ke berelasi <span class="mono">331.503</span>.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Utang bank</strong> total <span class="mono">164.900.841</span> (2023: 190.911.600):
+      sindikasi TFC — Mandiri <span class="mono">103.977.935</span> + BCA <span class="mono">34.659.312</span> ·
+      Woori Saudara <span class="mono">18.909.028</span> (baru 2024) · jatuh tempo &lt;1 thn <span class="mono">44.631.195</span> ·
+      BNI lunas 21 Jun 2024. <strong>Covenant</strong> (fasilitas IEL): tanpa persetujuan bank dilarang merger/ubah pemegang saham,
+      <strong>dividen &gt;50% dari laba IEL dilarang</strong>, wajib penuhi rasio keuangan — manajemen: terpenuhi.</div>
+    <p class="modmap"><span class="tag">M22</span> (PSAK 224)<span class="src-tag i">🧭 Interpretasi analis</span> + <span class="tag">M23</span>
+      Dua sisi satu koin: peta afiliasi (di mana nilai bisa berpindah diam-diam) dan covenant bank
+      (di mana fleksibilitas manajemen dibatasi). Batas dividen 50% = info langsung untuk valuasi FCFE.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Rasio lancar 0,86× (stop 1) vs "seluruh covenant terpenuhi". Bisakah keduanya benar bersamaan?
+      Apa bedanya covenant bank dengan rasio lancar akuntansi?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s11">
+  <div class="stop-head"><span class="n">11</span><h3>Catatan 24 &amp; 30 — 1 pelanggan = 50,7% pendapatan</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 24</span> (pendapatan neto) + <span class="mono">Catatan 30</span> (segmen operasi).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Konsentrasi:</strong> PT Pertamina International Shipping =
+      <span class="mono">83.970.644</span> dari pendapatan <span class="mono">165.638.994</span> (2023: 101.096.979).</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong><span class="mono">50,7%</span> pendapatan dari SATU pelanggan</strong> — 83.970.644 ÷ 165.638.994.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Segmen</strong> (2 divisi): pelayaran <span class="mono">167.621.271</span> + galangan kapal
+      <span class="mono">25.088.375</span> − eliminasi antar-segmen <span class="mono">(27.070.652)</span> =
+      <span class="mono">165.638.994</span>. Aset segmen 2023: 918.376.193 + 236.501.378 − eliminasi (550.574.006).</div>
+    <p class="modmap"><span class="tag">M8</span><span class="tag">M22</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Segmen = tempat margin diuji per bisnis (apakah galangan menolong atau membebani?).
+      Konsentrasi 50,7% = risiko pelanggan tunggal: kontrak PIS adalah nyawa pendapatan — baca syarat kontraknya di MD&amp;A,
+      bukan cuma angkanya.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Pendapatan dari PIS turun 101,1 jt → 84,0 jt (−17%). Total pendapatan cuma turun 2,5%. Dari mana penutupnya?
+      Apakah penutup itu berulang (recurring) atau sekali jadi?</p></details>
+  </div>
+</div>
+
+<div class="stop" id="s12">
+  <div class="stop-head"><span class="n">12</span><h3>Kebijakan akuntansi — USD fungsional + PSAK 338</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 2</span> (kebijakan akuntansi material).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Mata uang fungsional = Dolar AS</strong> untuk Perusahaan DAN entitas anak —
+      wajar (pendapatan charter dalam US$), tapi artinya analis rupiah wajib konversi sendiri untuk valuasi.
+      <strong>Kombinasi bisnis entitas sepengendali memakai PSAK 338</strong> (<em>pooling of interest</em>, dicatat sebesar nilai buku).</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Konsolidasi:</strong> laba/rugi &amp; OCI diatribusikan ke pemilik vs KNP;
+      seluruh transaksi antar-grup dieliminasi penuh. KNP ekuitas: <span class="mono">568.471</span>.</div>
+    <p class="modmap"><span class="tag">G5</span><span class="src-tag i">🧭 Interpretasi analis</span> (gap FX) — inilah contoh nyatanya: beda mata uang fungsional vs mata uang analis.
+      Rugi selisih kurs <span class="mono">(435.546)</span> di laba rugi = transaksi, bukan translasi (tidak ada OCI translasi karena fungsional = pelaporan).</p>
+    <p class="modmap"><span class="tag">G2</span> (gap konsolidasi)<span class="src-tag i">🧭 Interpretasi analis</span> — PSAK 338 disebut eksplisit: akuisisi sepengendali = pooling,
+      tanpa goodwill baru. Kalau SOCI mengakuisisi afiliasi tahun depan, labanya tidak boleh "dibuat" dari selisih nilai wajar.</p>
+    <details><summary>❓ Pertanyaan analis</summary>
+      <p>Kenapa tidak ada "selisih kurs penjabaran" di penghasilan komprehensif lain SOCI, padahal ini perusahaan Indonesia?
+      Jawab dengan satu kalimat mengacu ke mata uang fungsionalnya.</p></details>
+  </div>
+</div>
+
+</section>
+
+<section class="modul-sec">
+  <h2>Kerangka untuk filing berikutnya</h2>
+  <p class="sub">Walkthrough di atas = 1 contoh. Kerangka kosongnya — pakai untuk emiten pilihanmu di
+  <a href="../bedah-buta/">Bedah Buta</a>:</p>
+  <div class="tblwrap"><table class="stmt">
+    <thead><tr><th>Section laporan tahunan tipikal</th><th>Yang dicatat</th><th>Peta modul</th></tr></thead>
+    <tbody>
+      <tr><td>Ikhtisar data keuangan</td><td>Tren 3–5 thn; rasio hitungan perusahaan (hitung ulang!)</td><td><span class="mono">M4/M5/M6</span></td></tr>
+      <tr><td>Informasi saham</td><td>Harga, vol, market cap; currency mismatch vs LK</td><td><span class="mono">M24</span></td></tr>
+      <tr><td>Laporan direksi/komisaris</td><td>Klaim naratif → uji dengan angka; aksi korporasi &amp; grup</td><td><span class="mono">M28/M22</span></td></tr>
+      <tr><td>MD&amp;A</td><td>Penjelasan manajemen per pos; rasio versi manajemen</td><td><span class="mono">M28</span></td></tr>
+      <tr><td>Laporan auditor</td><td>Opini + KAM = peta risiko versi auditor</td><td><span class="mono">M7</span></td></tr>
+      <tr><td>Laba rugi</td><td>Komposisi pajak (final?); one-off; basis laba (pemilik vs total)</td><td><span class="mono">M32/M9/G2</span></td></tr>
+      <tr><td>Arus kas</td><td>CFO vs NI; metode langsung/tak langsung; capex vs disposal</td><td><span class="mono">M10/M4</span></td></tr>
+      <tr><td>Catatan piutang</td><td>ECL rate; aging; >90 hari</td><td><span class="mono">M16</span></td></tr>
+      <tr><td>Catatan aset tetap &amp; sewa</td><td>Impairment; ROU &amp; lessor berelasi; sale-leaseback</td><td><span class="mono">M12/M13</span></td></tr>
+      <tr><td>Catatan pihak berelasi</td><td>Daftar afiliasi; nilai transaksi; syarat tidak wajar?</td><td><span class="mono">M22</span></td></tr>
+      <tr><td>Catatan utang</td><td>Struktur &amp; jatuh tempo; covenant; kepatuhan</td><td><span class="mono">M23</span></td></tr>
+      <tr><td>Catatan segmen &amp; pendapatan</td><td>Margin per segmen; konsentrasi pelanggan &gt;10%</td><td><span class="mono">M8</span></td></tr>
+      <tr><td>Kebijakan akuntansi</td><td>Mata uang fungsional; PSAK 338/224 bila ada</td><td><span class="mono">G5/G2</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="modul-sec">
+  <h2>Keterbatasan</h2>
+  <p class="sub">Supaya tidak overclaim:</p>
+  <ol style="margin:.4rem 0 .4rem 1.2rem;font-size:.9rem">
+    <li style="margin-bottom:.5rem">Angka dikutip dari teks hasil ekstraksi PDF — bukan dari memegang kertas fisik.
+      Jika menemukan selisih dengan PDF aslinya, PDF yang menang.</li>
+    <li style="margin-bottom:.5rem">KAM "penilaian atas nilai tercatat kapal" dikutip dari formulir pengumuman LK di idx.co.id
+      (kolom Paragraf Hal Audit Utama); teks opini lengkap ada di PDF Annual Report.</li>
+    <li style="margin-bottom:.5rem">Harga saham &amp; market cap = versi AR 2024 (data 2024). Bukan harga live.</li>
+    <li style="margin-bottom:.5rem">Tidak ada akses ke kertas kerja auditor / data internal — semua di atas adalah
+      pembacaan atas dokumen publik.</li>
+    <li style="margin-bottom:.5rem">Bukan rekomendasi investasi. Ini latihan membaca filing, bukan ajakan beli/jual SOCI.</li>
+  </ol>
+  <p style="font-size:.85rem;color:var(--ink-soft)"><a href="../index.html">← Kembali ke FSA Lab</a> ·
+  Lanjut latihan mandiri: <a href="../bedah-buta/">Bedah Buta →</a></p>
+</section>
+
+<script src="../js/tblwrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komparator Multiples · FSA Lab</title>
+<meta name="description" content="Bandingkan P/E, EV/EBITDA, P/B 2–3 perusahaan dengan penyesuaian analis: keluarkan kas berlebih, tambah liabilitas sewa (PSAK 116).">
+<link rel="canonical" href="https://fsa-lab.pages.dev/komparator/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.kmp-wrap{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper);margin-bottom:1.2rem}
+.kmp-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:46rem}
+.kmp-table th{background:var(--ink);color:var(--paper);padding:.55rem .6rem;font-family:var(--font-mono);
+  font-size:.72rem;text-align:right}
+.kmp-table th:first-child{text-align:left}
+.kmp-table td{border-bottom:1px solid var(--line);padding:.4rem .6rem;text-align:right}
+.kmp-table td:first-child{text-align:left}
+.kmp-table td input{width:7.2rem;font-family:var(--font-mono);font-size:.83rem;text-align:right;
+  border:2px solid var(--line);border-radius:8px;padding:.35rem .5rem;background:var(--card);color:var(--ink)}
+.kmp-table td input:focus{outline:3px solid var(--mustard);border-color:var(--ink)}
+.kmp-table td input.nm{width:9rem;text-align:left;font-family:var(--font-body);font-weight:600}
+.kmp-table tr.out td{background:#fbf3dd;font-family:var(--font-mono);font-weight:700}
+.kmp-table tr.out td:first-child{font-family:var(--font-body)}
+.kmp-cheap{background:#e4f2ee !important;color:var(--teal-deep)}
+.kmp-exp{background:#fbe7df !important;color:var(--sunset-deep)}
+.adj{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1rem 1.3rem;margin-bottom:1.2rem;box-shadow:4px 4px 0 var(--ink)}
+.adj h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.5rem}
+.adj label{display:flex;gap:.7rem;align-items:center;font-weight:600;font-size:.9rem;margin-bottom:.6rem;cursor:pointer}
+.adj input[type=checkbox]{width:1.1rem;height:1.1rem;accent-color:var(--sunset-deep)}
+.adj input.num{font-family:var(--font-mono);font-size:.85rem;border:2px solid var(--ink);border-radius:8px;
+  padding:.35rem .6rem;width:9rem;background:var(--paper);color:var(--ink)}
+.adj .adj-hint{font-size:.78rem;color:var(--ink-soft);font-weight:400;display:block;margin-left:1.8rem;margin-top:-.3rem;margin-bottom:.5rem}
+.kmp-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.kmp-note{font-size:.8rem;color:var(--ink-soft);margin-top:.6rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">KM</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Lensa investasi</p>
+  <h1>Komparator <em>Multiples.</em></h1>
+  <p class="lede">Multiples hanya adil bila apel dibandingkan dengan apel. Masukkan 2–3 perusahaan,
+    terapkan <strong>penyesuaian analis</strong> (kas berlebih, sewa PSAK 116), lalu baca
+    <strong>P/E</strong>, <strong>EV/EBITDA</strong>, <strong>P/B</strong> berdampingan.
+    Sel termurah per baris disorot hijau.</p>
+  <p class="kmp-note">Baris default = PT Cemerlang (fiktif), angka kanonis M24, <strong>ilustratif</strong>: P/E 12,4x · EV/EBITDA 7,3x · P/B 3,1x.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:60rem">
+
+  <div class="adj">
+    <h3>Penyesuaian analis → Enterprise Value</h3>
+    <label><input type="checkbox" id="adj-cash"> Keluarkan kas berlebih dari EV
+      <input class="num" id="adj-cash-val" type="number" value="10000" title="Kas berlebih (Rp juta, maks = total kas)"> <span style="font-weight:400;font-size:.8rem">Rp juta</span></label>
+    <p style="font-size:.8rem;color:var(--ink-soft)">Catatan: utang default 201.440 sudah termasuk sewa 60.000, jadi toggle lease diabaikan untuk angka default. Kalau kamu mengubah angka utang, centang "tambah sewa" bila angka barumu BELUM termasuk sewa — lease 60.000 akan dijumlahkan ke EV. Penyesuaian berlaku sama ke semua peer (label cakupan: ilustrasi).</p>
+    <span class="adj-hint">Kas di atas kebutuhan operasi bukan bagian dari enterprise — mengeluarkannya menaikkan EV yang "bersih".</span>
+    <label><input type="checkbox" id="adj-lease"> Tambah liabilitas sewa (PSAK 116) ke EV
+      <input class="num" id="adj-lease-val" type="number" value="60000" title="Liabilitas sewa (Rp juta)"> <span style="font-weight:400;font-size:.8rem">Rp juta</span></label>
+    <span class="adj-hint">Sewa operasi kini on-balance-sheet — analis yang serius memperlakukannya sebagai utang dalam EV.</span>
+  </div>
+
+  <div class="kmp-actions">
+    <button class="btn btn-primary" id="add-row">+ Tambah perusahaan</button>
+    <button class="btn" id="reset-rows">Reset</button>
+  </div>
+
+  <div class="kmp-wrap"><table class="kmp-table" id="kmp"></table></div>
+  <p class="kmp-note">EV = kapitalisasi pasar + utang berbunga − kas ± penyesuaian. P/E = market cap ÷ laba bersih.
+    Semua angka Rp juta kecuali harga saham (Rp) dan jumlah saham (juta lembar). Ilustratif — bukan rekomendasi investasi.</p>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Komparator Multiples · angka ilustratif — bukan nasihat investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="komparator.js"></script>
+</body>
+</html>

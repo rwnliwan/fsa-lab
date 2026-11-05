@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 38 — Mekanik Laporan Interim/Kuartalan · FSA Lab</title>
+<meta name="description" content="Modul 38 FSA Lab: membaca laporan interim — YTD vs kuartal standalone, derivasi H1−Q1 hanya untuk flow, jebakan stock, hitung ulang rasio, annualisasi & seasonality, NIM interim bank, dan kalibrasi interim unaudited.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-38/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M38</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 38 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 10</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 38</span>
+</nav>
+<p class="mod-count">Modul 38 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 10 · Interim Mechanics · Modul 38</p>
+  <h1>H1 Bukan <em>Q2.</em></h1>
+  <p class="lede">Dua analis berdebat soal "pertumbuhan Q2" sebuah bank. Yang satu menunjuk angka
+    <span style="font-family:var(--font-mono)">Rp290.000</span> juta di laporan interim dan berkata "Q2 meledak".
+    Yang satu mengoreksi: "Itu enam bulan, bukan tiga bulan."
+    Keduanya benar-benar membaca <strong>laporan yang sama</strong> — dan keduanya salah paham
+    <strong>hal yang sama</strong>: laporan interim itu <strong>kumulatif</strong>.
+    Di modul ini kamu belajar mekaniknya —
+    <strong>PT Cemerlang Abadi</strong> <span class="tag">(perusahaan FIKTIF — seluruh angka ilustratif)</span>
+    merilis interim Q2 2026: revenue H1 <span style="font-family:var(--font-mono)">Rp290.000</span> juta,
+    Q1 <span style="font-family:var(--font-mono)">Rp135.000</span> juta.
+    Berapa revenue Q2? Gampang: <span style="font-family:var(--font-mono)">155.000</span>.
+    Tapi berapa "kas Q2"? Berapa "margin Q2"? Berapa NIM annualisasi bank?
+    Di sinilah analis junior gugur — dan kamu tidak akan.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Anatomi Interim: Baca Cover Dulu</h2>
+  <p class="sub">Klik baris mana pun. Empat tabel: <strong>cover &amp; periode</strong> (YTD vs standalone,
+    audited vs unaudited), <strong>IS &amp; arus kas</strong> (yang BOLEH dikurangkan),
+    <strong>jebakan stock</strong> (yang TIDAK BOLEH), dan <strong>interim bank</strong>
+    (NIM, NPL, CAR). Semua angka ilustratif (Rp juta).</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="ytd">Cover &amp; Periode</button>
+    <button class="stmt-tab" data-stmt="flow">IS &amp; Arus Kas</button>
+    <button class="stmt-tab" data-stmt="jebak">Jebakan Stock</button>
+    <button class="stmt-tab" data-stmt="bank">Interim Bank</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, jebakan umum, dan sudut tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Flow atau Stock?</h2>
+  <p class="sub">Enam klaim derivasi. Untuk tiap klaim, jawab: <strong>dapat</strong> atau <strong>tidak</strong> diturunkan via H1−Q1?</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 6</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Ukur: Hitung Kuartalmu Sendiri</h2>
+  <p class="sub">Enam perhitungan: derivasi Q2, NIM annualisasi, margin Q2 dari komponen, jebakan stock, annualisasi naif vs wajar. Semua angka ilustratif (Rp juta).</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Cemerlang Abadi Q2 2026: Benarkah Tumbuh?"</h2>
+  <p class="sub"><strong>PT Cemerlang Abadi (FIKTIF)</strong> merilis interim Q2 2026
+    <strong>(tidak diaudit, ilustratif)</strong>: revenue H1
+    <span style="font-family:var(--font-mono)">Rp290.000</span> juta (Q1
+    <span style="font-family:var(--font-mono)">135.000</span> → Q2
+    <span style="font-family:var(--font-mono)">155.000</span>, +14,8% QoQ);
+    laba bersih H1 <span style="font-family:var(--font-mono)">26.000</span>
+    (Q1 <span style="font-family:var(--font-mono)">11.000</span> → Q2
+    <span style="font-family:var(--font-mono)">15.000</span>, +36,4%);
+    net margin Q2 <span style="font-family:var(--font-mono)">9,68%</span> vs Q1
+    <span style="font-family:var(--font-mono)">8,15%</span>;
+    kas naik <span style="font-family:var(--font-mono)">2.560</span> selama H1.
+    Narasi manajemen: "momentum kuat".
+    Tugasmu: turunkan angka Q2 sendiri, hitung ulang rasionya, kalibrasi bobot
+    (unaudited!), lalu tulis verdict — dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> Q2 tumbuh riil di level aktivitas: revenue <span class="num">155.000</span> (+14,8% QoQ dari <span class="num">135.000</span>) dan NI <span class="num">15.000</span> (+36,4% dari <span class="num">11.000</span>) — keduanya saya turunkan sendiri via H1−Q1 dengan basis selaras (angka ilustratif modul). Margin Q2 <span class="num">9,68%</span> saya hitung ulang dari komponen (<span class="num">15.000</span> ÷ <span class="num">155.000</span>), BUKAN dari selisih margin. Tapi: interim ini <strong>unaudited</strong> — angka bisa direvisi di audit tahunan, jadi saya tidak membayar premi valuasi hari ini. Satu hal yang membunuh tesis "momentum kuat": bila kenaikan margin ternyata efek musiman satu kuartal (bukan perbaikan struktural), tesisnya runtuh — saya butuh Q3 untuk konfirmasi. Keputusan: TUNGGU.</p>
+<p><strong>Lensa kredit:</strong> kas naik <span class="num">2.560</span> selama H1 — saya pakai sebagai sinyal likuiditas, TAPI saya tidak mengklaim "kas Q2" (tidak valid: stock). Untuk memo kredit saya hanya memakai angka H1 apa adanya + tren, dan covenant tetap saya patok ke angka audited tahunan, bukan interim. Keputusan: <em>conditional</em> — fasilitas jangka pendek boleh jalan, komitmen jangka panjang menunggu audited.</p>
+<p><strong>Lensa forensik:</strong> tiga verifikasi sebelum percaya: (1) basis selaras — cek catatan: ada restatement Q1? akuisisi tengah tahun? bila ya, derivasi Q2 saya batal; (2) konsistensi internal — NI Q2 <span class="num">15.000</span> vs CFO Q2 (turunkan dari arus kas): bila laba melonjak tanpa kas, itu akrual; (3) satu temuan yang membuat saya menolak mentah-mentah: "pertumbuhan Q2" yang seluruhnya berasal dari satu transaksi non-rutin di Juni (window dressing akhir kuartal) — saya minta rincian pendapatan per bulan. Thesis testing: bukti penguat = kas mengikuti laba; bukti pematah = revisi audit memangkas &gt;<span class="num">10%</span> laba H1.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 38.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-37/" class="pn-prev">← Modul 37</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 38 · seluruh angka &amp; contoh ilustratif (fiktif) untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul38.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 30 — Analisis Bank Deep-Dive · FSA Lab</title>
+<meta name="description" content="Modul 30 FSA Lab: analisis bank ilustratif dengan lensa kredit — CAMELS explorer, playground skenario, lab rasio (LDR, CAR, NPL net, coverage), staging ECL PSAK 109, dan mini credit view.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-30/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M30</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 8</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 30</span>
+</nav>
+<p class="mod-count">Modul 30 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 8 · Analisis Bank · Modul 30</p>
+  <h1>Sehat di Kertas, <em>Sehat Beneran?</em></h1>
+  <p class="lede"><strong>BANK ILUSTRATIF — PT Bank Nusantara Fiktif</strong>
+    <span class="tag">(seluruh angka fiktif untuk pembelajaran)</span>:
+    aset <span style="font-family:var(--font-mono)">Rp85.000</span> miliar, kredit
+    <span style="font-family:var(--font-mono)">Rp60.000</span> miliar, DPK
+    <span style="font-family:var(--font-mono)">Rp68.000</span> miliar, CAR
+    <span style="font-family:var(--font-mono)">22,1%</span>, NPL gross
+    <span style="font-family:var(--font-mono)">2,8%</span> dengan coverage
+    <span style="font-family:var(--font-mono)">145%</span>, dan
+    <span style="font-family:var(--font-mono)">Rp3.200</span> miliar kredit restrukturisasi warisan COVID.
+    Di modul ini kamu membaca bank seperti analis kredit — CAMELS, staging ECL
+    PSAK 109 (71), dan jembatan angka yang harus cocok sampai rupiah terakhir.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · CAMELS Explorer: Bedah Bank per Huruf</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka
+    <strong>ilustratif</strong> (fiktif): yang penting bukan besarnya, melainkan
+    <strong>cara angka-angka itu saling mengunci</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="capital">C · Capital</button>
+    <button class="stmt-tab" data-stmt="asset">A · Asset Quality</button>
+    <button class="stmt-tab" data-stmt="manage">M · Management</button>
+    <button class="stmt-tab" data-stmt="earning">E · Earnings</button>
+    <button class="stmt-tab" data-stmt="liquid">L · Liquidity</button>
+    <button class="stmt-tab" data-stmt="sensitiv">S · Sensitivity</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris CAMELS ↑</h3>
+    <p>Penjelasan, acuan regulasi/PSAK, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Skenario Bank — Naik atau Turun?</h2>
+  <p class="sub">Enam skenario analis bank. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Rasio: Hitung Seperti Analis Bank</h2>
+  <p class="sub">Empat perhitungan analis bank — LDR, CAR, NPL net, coverage. Hitung dari petunjuknya, lalu nilai: angkanya saling mengunci?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Mini Credit View: Bank Nusantara Fiktif"</h2>
+  <p class="sub">Kamu analis kredit. Data <strong>ilustratif</strong> PT Bank Nusantara Fiktif:
+    CAR <span style="font-family:var(--font-mono)">22,1%</span>, NPL gross
+    <span style="font-family:var(--font-mono)">2,8%</span>, NPL net
+    <span style="font-family:var(--font-mono)">0,9%</span>, coverage
+    <span style="font-family:var(--font-mono)">145%</span>, CASA
+    <span style="font-family:var(--font-mono)">58%</span>, LDR
+    <span style="font-family:var(--font-mono)">88,2%</span>, NIM
+    <span style="font-family:var(--font-mono)">5,2%</span>, CIR
+    <span style="font-family:var(--font-mono)">62%</span> —
+    tetapi ada <span style="font-family:var(--font-mono)">Rp3.200</span> miliar restrukturisasi legacy
+    dan <span style="font-family:var(--font-mono)">Rp5.500</span> miliar Stage 2.
+    Tugasmu: tulis <strong>mini credit view</strong> — vonis kredit ringkas —
+    dari tiga lensa. Analis yang baik tidak mengagumi satu rasio; ia menguji apakah
+    <strong>seluruh ceritanya konsisten</strong>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> bank ilustratif ini MENARIK di permukaan: <span class="num">ROE 20,0%</span>, <span class="num">NIM 5,2%</span> (tebal untuk bank), <span class="num">CAR 22,1%</span> (jauh di atas minimum), NPL <em>net</em> <span class="num">0,9%</span> (bersih) &mdash; seluruh angka ilustratif modul. Yang menggangguku: restrukturisasi <em>legacy</em> <span class="num">Rp3.200 miliar</span> dan <em>Stage</em> 2 <span class="num">Rp5.500 miliar</span> (ilustratif) &mdash; &ldquo;bersih&rdquo; hari ini bisa kotor besok. Keputusan: beli HANYA bila harga mencerminkan risiko migrasi <em>Stage</em> 2 &mdash; NPL 0,9% adalah foto, <em>Stage</em> 2 adalah film yang akan datang.</p>
+<p><strong>Lensa kredit:</strong> sebagai calon pembeli obligasi &mdash; kekuatan: CAR 22,1% + <em>coverage</em> CKPN <span class="num">145%</span> (ilustratif) = <em>buffer</em> ganda; risiko yang perlu <em>covenant</em>: <em>Stage</em> 2 Rp5.500 miliar bisa menjadi NPL kapan saja. <em>Covenant</em> yang saya minta: NPL <em>net</em> &le; 2%, CAR &ge; 18%, dan pembatasan dividen bila <em>Stage</em> 2 &gt; 8% total kredit. Kesimpulan: layak dengan harga yang tepat &mdash; obligasi bank sekuat ini jarang <em>default</em>, tapi <em>spread</em> harus membayar risiko migrasi.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">2,8% &rarr; 0,9% &rarr; 145%</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya (<em>net</em> = <em>gross</em> &minus; CKPN); lubang terbesar &mdash; angka agregat tidak menunjukkan <em>vintage</em>: NPL 0,9% bisa berisi kredit yang direstrukturisasi berulang agar tidak naik <em>stage</em>; data tambahan yang saya minta &mdash; migrasi <em>stage</em> 8 kuartal + daftar 20 debitur terbesar. Satu hal yang membunuh tesis &ldquo;bank ini bersih&rdquo;: bila Rp5.500 miliar <em>Stage</em> 2 ternyata terkonsentrasi di 3 grup usaha &mdash; maka &ldquo;diversifikasi&rdquo; adalah ilusi dan NPL 0,9% hanyalah jeda.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 31.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- Latihan lanjut: Bedah Sendiri BBRI (bank real) -->
+<section class="modul-sec" id="latihan-lanjut">
+  <h2>Latihan lanjut · bank sungguhan</h2>
+  <p class="sub">Semua angka di modul ini ilustratif. Kalau rasio bank (NIM/NPL/CAR/LDR/CASA) sudah dikuasai,
+  uji di filing asli: <a href="/bedah-sendiri/bbri/"><strong>Bedah Sendiri: BBRI</strong></a> — LK auditan FY2024
+  Bank Rakyat Indonesia, benchmark terverifikasi, 10 cek mekanis bank, format Lembar Bedah yang sama dengan ujian.
+  Puncaknya: <a href="/ujian/"><strong>Ujian Blind BBCA Interim H1 2026</strong></a> — blind exam dengan rubrik K1–K5 (prasyarat: M38 lulus).</p>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-29/" class="pn-prev">← Modul 29</a>
+  <a href="/modul-31/" class="pn-next">Modul 31 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 30 · seluruh angka bank ilustratif (fiktif) untuk pembelajaran — bukan rekomendasi investasi maupun kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul30.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

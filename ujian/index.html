@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujian Blind: BBCA Interim H1 2026 · FSA Lab</title>
+<meta name="description" content="Ujian kanonis FSA Lab: baca laporan interim unaudited BBCA H1 2026 secara blind, derivasi Q2 standalone, 3 lensa thesis testing, rubrik K1–K5. Bukti kemampuan, bukan nilai.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/ujian/">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.coachbanner{display:none;border:3px solid #8a6d1c;border-radius:var(--radius);background:#fdf3c8;
+  padding:.9rem 1.2rem;margin-bottom:1.4rem;font-size:.92rem;font-weight:600}
+.stepper{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.6rem}
+.step{border:2px solid var(--ink);border-radius:20px;padding:.3rem .9rem;font-size:.82rem;font-weight:600;background:#fffdf7}
+.step.done{background:#eef7e8}
+.step.active{background:var(--mustard)}
+.step.lock{opacity:.55}
+.bstep{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;margin-bottom:1.2rem;overflow:hidden}
+.bstep-head{background:var(--ink);color:#fffdf7;padding:.6rem 1.1rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.bstep-head .n{font-family:var(--font-mono);font-weight:700;background:var(--mustard);color:var(--ink);
+  border-radius:50%;width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.bstep-head h2{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.bstep-body{padding:1rem 1.2rem}
+.bstep-body textarea{width:100%;border:2px solid var(--ink);border-radius:8px;padding:.6rem .8rem;
+  font-family:var(--font-body);font-size:.9rem;min-height:5.5rem;box-sizing:border-box}
+.bstep-body input[type=text]{border:2px solid var(--ink);border-radius:8px;padding:.45rem .6rem;
+  font-family:var(--font-body);font-size:.88rem;box-sizing:border-box}
+.bstep-body select{border:2px solid var(--ink);border-radius:8px;padding:.35rem .4rem;font-size:.82rem;background:#fff}
+.bstep-body input[type=checkbox],.bstep-body input[type=radio]{transform:scale(1.3);accent-color:var(--ink)}
+table.figs{width:100%;border-collapse:collapse;font-size:.82rem}
+table.figs th,table.figs td{border:1px solid var(--ink);padding:.4rem .5rem;vertical-align:top}
+table.figs th{background:var(--ink);color:#fffdf7;font-size:.78rem}
+table.figs tr.ndrow td{background:#f3f0e6;color:var(--ink-soft)}
+table.figs tr.derivrow td{background:#eef4fa}
+table.figs input[type=text]{width:100%;min-width:5rem}
+.okmsg{color:#2e5d33;font-weight:600;font-size:.9rem;margin-top:.6rem}
+.ck-row{display:flex;gap:.8rem;align-items:flex-start;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.7rem .9rem;margin-bottom:.6rem;background:#fffdf7}
+.ck{font-family:var(--font-mono);font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;flex:none;margin-top:.15rem}
+.ck.ok{background:#eef7e8;color:#2e5d33;border:1px solid #2e5d33}
+.ck.bad{background:#fbe9e9;color:#a33;border:1px solid #a33}
+.ck.skip{background:#f0ede4;color:var(--ink-soft);border:1px solid var(--ink-soft)}
+.ck.info{background:#e9ecf5;color:#3a4a7a;border:1px solid #5a6fa8}
+.ck-det{font-size:.88rem}
+.ck-hint{font-size:.82rem;color:var(--ink-soft)}
+.lens{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem;margin-bottom:.9rem}
+.lens h3{font-family:var(--font-display);margin:0 0 .4rem}
+.lens .q{font-size:.88rem;color:var(--ink-soft);margin-bottom:.6rem}
+.cnt{font-size:.78rem;color:var(--ink-soft);margin-top:.3rem}
+.cnt.ok{color:#2e5d33;font-weight:700}
+tr.diverge td{background:#fdf3d7}
+#s4-locknote{display:none;border:2px dashed var(--ink);border-radius:var(--radius);padding:.7rem 1rem;
+  font-size:.88rem;background:#f7f3e8;margin-top:.8rem}
+.btnrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:.9rem}
+.readtask{border:2px dashed var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin:.8rem 0;background:#fff}
+.readtask li{margin-bottom:.4rem;font-size:.9rem}
+.attest{border:2px solid var(--ink);border-radius:var(--radius);padding:.9rem 1.1rem;margin:.8rem 0;background:#fffdf7}
+.attest label{display:block;margin:.5rem 0;font-size:.9rem}
+.rubk{border:2px solid var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:.7rem;background:#fffdf7}
+.rubk h4{margin:0 0 .3rem;font-family:var(--font-display)}
+.verdict{border:3px solid var(--ink);border-radius:var(--radius);padding:1.2rem;margin:1.2rem 0;text-align:center;background:#fffdf7}
+.verdict h2{font-family:var(--font-display);font-size:1.6rem;margin:.3rem 0}
+.verdict.pass{background:#eef7e8}
+.verdict.fail{background:#fbe9e9}
+#timerline{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">UJ</span></span>
+</nav>
+
+<div class="coachbanner" id="coachbanner" role="alert">
+  ⚠️ <strong>MODE COACHED.</strong> Kamu menyatakan sudah pernah membuka filing ini / Real Case 6 (BBCA) FMVA.
+  Ujian ini berjalan sebagai <strong>latihan berlabel</strong>, bukan blind exam. Rubrik tetap dihitung — vonisnya dilabeli COACHED.
+</div>
+
+<header class="modul-hero">
+  <p class="kicker">Ujian kanonis · blind exam</p>
+  <h1>Ujian: <em>BBCA Interim H1 2026.</em></h1>
+  <p class="lede">Satu filing yang belum pernah kamu pelajari di modul manapun — <strong>laporan interim
+  unaudited</strong> PT Bank Central Asia Tbk, 6 bulan berakhir 30 Jun 2026. Kerjakan unaided, buktikan
+  mekanik interim (M38), baca bank (M30 + BBRI), lalu hadapi benchmark. Hasilnya = <strong>bukti
+  kemampuanmu</strong>, bukan nilai.</p>
+  <p id="timerline" style="display:none">⏱ <span id="elapsed">0 menit</span> · durasi saran: 3–4 jam satu sesi</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>Kotak jujur — baca dulu.</strong>
+    Ini <strong>filing asli</strong> (bukan ilustratif): LK Interim (Publikasi) BBCA 6 bulan berakhir
+    30 Jun 2026 — <strong>UNAUDITED</strong> (tidak ada review auditor dalam dokumen 10 halaman ini;
+    surat pengantar IDX 018/ATX/2026). Benchmark di langkah 5 <strong>terverifikasi ke filing</strong> oleh tim
+    FSA Lab (label <strong>[B]</strong> = diungkap bank, <strong>[T]</strong> = terhitung builder).
+    Interim menguji <strong>konsistensi internal</strong>, bukan kebenaran audit.
+    <strong>Rubrik ini cermin, bukan sertifikat</strong> — nilai dirimu sejujur kamu membaca laporannya.<br>
+    ⚠️ <strong>Jebakan satuan by design:</strong> filing dalam <strong>jutaan Rupiah</strong>, input default
+    <strong>miliar</strong> — konversi sendiri, seperti analis sungguhan.
+  </div>
+
+  <!-- ===== Bagian 0: Briefing pra-ujian ===== -->
+  <div class="bstep" id="briefing">
+    <div class="bstep-head"><span class="n">0</span><h2>Briefing pra-ujian</h2></div>
+    <div class="bstep-body">
+      <h3>Aturan main (4 butir)</h3>
+      <ol>
+        <li><strong>Kerjakan unaided.</strong> Tidak ada guided hint — brief ini setara brief analis junior sungguhan.</li>
+        <li><strong>Benchmark hanya terbuka di langkah 5</strong> — dan membukanya mengunci jawaban lensamu permanen.</li>
+        <li><strong>Catat sumber tiap angka</strong> — halaman, periode, satuan, basis. Analis yang tak bisa menunjuk sumbernya = analis yang tak bisa dipercaya.</li>
+        <li><strong>Jujur soal kontaminasi</strong> (lihat atestasi di bawah). Memilih BLIND padahal sudah melihat = memalsukan bukti diri sendiri.</li>
+      </ol>
+      <h3>Prasyarat</h3>
+      <p id="gate-m38">…</p>
+      <p class="sub">Disarankan (tidak di-gate): <a href="/modul-30/">M30</a> bank deep-dive + <a href="/bedah-sendiri/bbri/">Bedah Sendiri BBRI</a> (drill bank).</p>
+      <h3>Atestasi kontaminasi — wajib pilih</h3>
+      <div class="attest">
+        <p>⚠️ Ujian ini hanya valid sebagai <em>blind exam</em> bila kamu belum mempelajari filing ini sebelumnya.</p>
+        <label><input type="radio" name="attest" value="blind"> <strong>Mode BLIND</strong> — Saya belum membuka Real Case 6 (BBCA) di FMVA Sprint dan belum mempelajari laporan interim BBCA H1 2026 ini.</label>
+        <label><input type="radio" name="attest" value="coached"> <strong>Mode COACHED</strong> — Saya sudah terlanjur membukanya. Saya kerjakan sebagai latihan berlabel, bukan blind exam.</label>
+      </div>
+      <div class="btnrow">
+        <button class="btn btn-primary" id="start-exam">Mulai ujian →</button>
+        <span class="okmsg" id="s0-ok"></span>
+      </div>
+      <p class="sub" id="s0-note">Durasi saran: <strong>3–4 jam</strong> satu sesi. Tidak ada countdown paksa — waktumu dicatat pasif sebagai bagian dari bukti.</p>
+    </div>
+  </div>
+
+  <div class="stepper" id="stepper" aria-label="Progres ujian"></div>
+</section>
+
+<section class="modul-sec" id="exam-body" style="display:none">
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">1</span><h2>Baca dulu (blind)</h2></div>
+    <div class="bstep-body">
+      <div class="tblwrap"><table class="stmt">
+        <tbody>
+          <tr><th style="text-align:left">Emiten</th><td>PT Bank Central Asia Tbk (<span class="mono">BBCA</span>)</td></tr>
+          <tr><th style="text-align:left">Dokumen</th><td><em>LK Interim (Publikasi)</em>, 6 bulan berakhir 30 Jun 2026 — <strong>UNAUDITED</strong> (10 hal.) + <em>1H26 Results — Analyst Meeting</em> 28 Jul 2026 (35 hal.)</td></tr>
+          <tr><th style="text-align:left">Sumber</th><td><a href="https://www.bca.co.id/-/media/Feature/Report/File/S8/Laporan-Triwulan/2026/20260728-financial-report-june-2026.pdf">PDF LK interim H1 2026</a> (bca.co.id) · <a href="https://bca.co.id/-/media/Feature/Report/File/Berita-Investor/2026/20260728-1h26-presentasi-perusahaan.pdf">Presentasi 1H26</a> (bca.co.id)</td></tr>
+          <tr><th style="text-align:left">Estimasi</th><td>±3–4 jam total ujian (baca ±45–60 menit)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="readtask">
+        <strong>🎯 Tugas baca eksplisit (khas interim):</strong>
+        <ol>
+          <li>Temukan status <strong>"tidak diaudit / unaudited"</strong> di filing — catat di mana tertulisnya.</li>
+          <li>Konfirmasi periodenya <strong>kumulatif YTD</strong> (6 bulan), bukan kuartal standalone.</li>
+          <li>Catat halaman: <strong>NPL gross</strong>, <strong>CKPN</strong>, <strong>CAR</strong> interim.</li>
+          <li><strong>Navigasi:</strong> temukan filing interim <strong>Q1 2026</strong> (3 bulan berakhir 31 Mar 2026) di situs bca.co.id
+          (Hubungan Investor → Laporan Keuangan → Laporan Triwulan 2026) — tempel URL-nya di bawah. Kamu butuh angka Q1 untuk derivasi Q2.</li>
+        </ol>
+        <p><label>Halaman status "tidak diaudit":<br><input type="text" id="s1-unaud" placeholder="mis. sampul / catatan 1" style="width:100%;max-width:26rem"></label></p>
+        <p><label>Konfirmasi YTD (tulis periode yang tertera):<br><input type="text" id="s1-ytd" placeholder="mis. 3 bulan berakhir 31 Mar 2025" style="width:100%;max-width:26rem"></label></p>
+        <p><label>Halaman <strong>NPL gross / CKPN / CAR</strong> interim:<br><input type="text" id="s1-ncc" placeholder="mis. tabel rasio hlm. 5–6" style="width:100%;max-width:26rem"></label></p>
+        <p><label>URL filing <strong>Q1 2026</strong> yang kamu temukan:<br><input type="text" id="s1-q1url" placeholder="https://…" style="width:100%"></label></p>
+      </div>
+      <p class="sub">Tulis 3 hal ini <em>sebelum</em> menyentuh angka:</p>
+      <p><label><strong>a. Yang menarik</strong></label><br><textarea id="s1-a" placeholder="Satu hal yang menarik perhatianmu dari laporan interim ini…"></textarea></p>
+      <p><label><strong>b. Yang membingungkan</strong></label><br><textarea id="s1-b" placeholder="Satu hal yang belum kamu pahami…"></textarea></p>
+      <p><label><strong>c. Satu pertanyaan</strong></label><br><textarea id="s1-c" placeholder="Satu pertanyaan yang ingin kamu jawab dari angka-angkanya…"></textarea></p>
+      <p><label><input type="checkbox" id="s1-read"> Saya sudah membaca filing-nya (honor system — jujur ke diri sendiri).</label></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s1-save">Simpan langkah 1 →</button><span class="okmsg" id="s1-ok"></span></div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">2</span><h2>Input angka + disiplin sumber &amp; definisi</h2></div>
+    <div class="bstep-body">
+      <p class="sub"><span class="mono">35</span> pos: laba rugi <strong>H1 2026</strong> (flow) / posisi <strong>30 Jun 2026</strong> (stock) /
+      <strong>derivasi Q2 standalone</strong> (= H1 − Q1, hanya untuk flow — JANGAN kurangkan neraca).
+      Tiap baris: nilai + halaman/catatan + periode + satuan + mata uang + basis.
+      <strong>5 baris rasio</strong> wajib definisi (konvensi annualisasi NIM wajib dinyatakan).
+      Baris kosong <strong>wajib</strong> dicentang "tidak diungkapkan".</p>
+      <div class="tblwrap"><table class="stmt figs">
+        <thead><tr><th>Pos</th><th>Nilai</th><th>Hal. / catatan</th><th>Periode</th><th>Satuan</th><th>Mata uang</th><th>Basis</th><th title="Tidak diungkapkan di LK">Tdk diungkap?</th></tr></thead>
+        <tbody id="fig-tbody"></tbody>
+      </table></div>
+      <div class="btnrow"><button class="btn btn-primary" id="s2-save">Simpan 35 baris →</button><span class="okmsg" id="s2-ok"></span></div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">3</span><h2>Cek mekanis (atas angkamu sendiri)</h2></div>
+    <div class="bstep-body">
+      <p class="sub">Situs tidak menilai interpretasimu — hanya aritmetika, konsistensi, dan disiplin definisi.
+      Toleransi: <strong>±1%</strong> (atau ±Rp1 miliar, mana yang lebih besar); rasio ±0,5pp.
+      <strong>GAGAL = informasi, bukan nilai.</strong> Cek I1/I2 menguji mekanik interim (M38) — ini ujian sesungguhnya.</p>
+      <div class="btnrow"><button class="btn btn-primary" id="s3-run">Jalankan 14 cek →</button><span class="okmsg" id="s3-ok"></span></div>
+      <div id="check-results" style="margin-top:1rem"></div>
+      <p id="extra-ratios" style="font-size:.88rem;margin-top:.8rem"></p>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">4</span><h2>Tiga lensa + pertanyaan interim — SEBELUM reveal</h2></div>
+    <div class="bstep-body">
+      <p class="sub">Pola <strong>thesis testing</strong>: tiap jawaban wajib memuat bukti <strong>penguat</strong> +
+      <strong>pematah</strong> + <strong>angka yang dikutip</strong> (min. 50 karakter &amp; ada angka).
+      Membuka langkah 5 akan <strong>mengunci</strong> jawaban ini permanen.</p>
+      <div class="lens">
+        <h3>Lensa investasi</h3>
+        <p class="q">Apakah return BBCA sepadan dengan risiko yang diambil? SATU bukti MENGUATKAN (mis. NIM/CASA/ROE/div yield) dan SATU yang MEMATAHKAN (mis. kompresi NIM/tren provisi), beserta angkanya.</p>
+        <textarea id="lens-inv" placeholder="Contoh pola: ROE …% menguatkan karena …; tetapi NIM …% mematahkan karena …"></textarea>
+        <p class="cnt" id="cnt-inv"></p>
+      </div>
+      <div class="lens">
+        <h3>Lensa kredit</h3>
+        <p class="q">Apakah CKPN cukup menutup NPL gross? Bagaimana tren kualitas aset (NPL, coverage, LAR)? Dan seberapa fortress pendanaannya (CASA, LDR)? Bukti penguat + pematah + angka.</p>
+        <textarea id="lens-cred" placeholder="Contoh pola: coverage …% menutup NPL …%; tetapi …"></textarea>
+        <p class="cnt" id="cnt-cred"></p>
+      </div>
+      <div class="lens">
+        <h3>Lensa forensik</h3>
+        <p class="q">Satu hal yang paling ingin kamu investigasi — sebagai <strong>pertanyaan</strong>, bukan vonis. (Contoh pola: "Provisi turun 51% QoQ padahal NPL nominal naik — kenapa?")</p>
+        <textarea id="lens-foren" placeholder="Contoh pola: saya ingin investigasi … karena angkanya …; pertanyaan saya: …"></textarea>
+        <p class="cnt" id="cnt-foren"></p>
+      </div>
+      <div class="lens">
+        <h3>Pertanyaan wajib interim</h3>
+        <p class="q">Apa yang berubah dari <strong>Q1 ke Q2 2026</strong> — dan apakah itu <strong>musiman atau struktural</strong>? Kutip angka derivasimu.</p>
+        <textarea id="lens-q2" placeholder="Contoh pola: NII Q2 … vs Q1 … (…% QoQ); provisi …; saya menilai ini … karena …"></textarea>
+        <p class="cnt" id="cnt-q2"></p>
+      </div>
+      <p><label><strong>Vonis 1 kalimat</strong> (beli / tahan / jual / hindari / butuh info + 1 kalimat alasan):</label><br>
+        <input type="text" id="vonis" maxlength="280" placeholder="mis. Tahan — …" style="width:100%"></p>
+      <p><label><input type="checkbox" id="thesis-chk"> Setiap jawaban lensa saya memuat sisi <strong>penguat DAN sisi pematah</strong> (thesis testing, bukan cherry-picking).</label></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s4-save">Simpan 4 lensa + vonis →</button><span class="okmsg" id="s4-ok"></span></div>
+      <div id="s4-locknote">🔒 <strong>Terkunci.</strong> Benchmark sudah dibuka — jawaban blind-mu dijaga apa adanya. Inilah upaya unaided-mu.</div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">5</span><h2>Benchmark reveal</h2></div>
+    <div class="bstep-body">
+      <div id="l5-gate">
+        <p class="sub">Benchmark terverifikasi (BBCA H1 2026, label [B]/[T] + bacaan analis 3 lensa) terbuka
+        <strong>hanya setelah langkah 0–4 selesai</strong>. Membukanya mengunci jawaban langkah 4 <strong>dan</strong> attempt blind-mu.</p>
+        <div class="btnrow"><button class="btn btn-primary" id="reveal-btn">Buka benchmark →</button></div>
+      </div>
+      <div id="l5-content" style="display:none">
+        <h3>Tabel divergensi — angkamu vs benchmark</h3>
+        <p class="sub">Δ &gt; 1% disorot. <strong>[B]</strong> = diungkap bank · <strong>[T]</strong> = terhitung builder. Bukan nilai — peta di mana kamu menyimpang.</p>
+        <div class="tblwrap"><table class="stmt figs">
+          <thead><tr><th>Pos</th><th>Angkamu</th><th>Benchmark</th><th>Δ%</th><th>Sumber</th></tr></thead>
+          <tbody id="div-table"></tbody>
+        </table></div>
+        <h3 style="margin-top:1.4rem">Definisi resmi bank vs definisimu</h3>
+        <p class="sub">Rasio bank = kontrak definisi. Bandingkan apa yang bank maksud dengan apa yang kamu pakai.</p>
+        <div class="tblwrap"><table class="stmt figs">
+          <thead><tr><th>Rasio</th><th>Definisi bank</th><th>Definisimu</th></tr></thead>
+          <tbody id="def-table"></tbody>
+        </table></div>
+        <div id="analyst" style="margin-top:1.4rem"></div>
+        <div class="btnrow"><button class="btn btn-primary" id="goto-rubrik">Lanjut ke rubrik &amp; vonis →</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Bagian 6: Rubrik & vonis ===== -->
+  <div class="bstep" id="rubrik-sec">
+    <div class="bstep-head"><span class="n">6</span><h2>Rubrik &amp; vonis</h2></div>
+    <div class="bstep-body">
+      <p class="sub">Situs memverifikasi yang mekanis; kamu menilai yang kualitatif. <strong>LULUS = kelima kriteria terpenuhi.</strong>
+      <em>Rubrik ini cermin, bukan sertifikat.</em></p>
+      <div id="rubrik-list"></div>
+      <div class="verdict" id="verdict-panel" style="display:none">
+        <p class="sub" id="verdict-mode"></p>
+        <h2 id="verdict-text">…</h2>
+        <p id="verdict-remedial" style="font-size:.92rem"></p>
+        <p class="sub" style="font-style:italic">Nilai dirimu sejujur kamu membaca laporannya. Satu ujian lulus = satu bukti kemampuan;
+        bukti menguat lewat transfer (bagian 7).</p>
+      </div>
+      <div class="btnrow"><button class="btn btn-primary" id="rubrik-run">Hitung rubrik →</button><span class="okmsg" id="rubrik-ok"></span></div>
+    </div>
+  </div>
+
+  <!-- ===== Bagian 7: Refleksi & transfer ===== -->
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">7</span><h2>Refleksi &amp; transfer</h2></div>
+    <div class="bstep-body">
+      <p><label><strong>a. Kriteria mana yang paling sulit, dan kenapa?</strong></label><br><textarea id="rf-a" placeholder="…"></textarea></p>
+      <p><label><strong>b. Apa yang akan kamu lakukan berbeda di bank berikutnya?</strong></label><br><textarea id="rf-b" placeholder="…"></textarea></p>
+      <p><label><strong>c. Apakah durasimu wajar untuk analis junior?</strong></label><br><textarea id="rf-c" placeholder="…"></textarea></p>
+      <p><label><input type="checkbox" id="rf-attest"> Saya menulis red flag sebagai <strong>pertanyaan investigasi</strong>, bukan vonis.</label></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s7-save">Simpan refleksi →</button><span class="okmsg" id="s7-ok"></span></div>
+      <div class="honest" style="margin-top:1.2rem">
+        <strong>Langkah 2 — valuasi.</strong> "One issuer, three artifacts": artefak keduamu —
+        <a href="https://fmva-sprint.pages.dev/#/lesson/real-06"><strong>Real Case 6: BBCA di FMVA Sprint</strong></a>
+        (residual income bank, ±5 jam). Valuasi emiten yang SAMA dengan metode yang benar untuk bank.
+      </div>
+      <div class="honest" style="margin-top:1.2rem">
+        <strong>Langkah 3 — transfer.</strong> Bukti menguat lewat transfer — <a href="/ujian-transfer/"><strong>Ujian Transfer: UNVR FY2024</strong></a>:
+        emiten non-bank yang belum pernah kamu pelajari. Prasyarat: lulus ujian ini (rubrik K1–K5).
+      </div>
+      <div class="btnrow"><button class="btn btn-primary" id="copy-lembar">Salin Lembar Ujian →</button><span class="okmsg" id="copy-ok"></span></div>
+      <p style="font-size:.85rem;color:var(--ink-soft)">Lembar Ujian = header + verdict 5 baris + 4 lensa + definisi + divergensi + rubrik + mode blind/coached + durasi. Bukti portofoliomu.</p>
+      <p class="sub"><button class="btn" id="reset-exam" style="font-size:.8rem">↺ Ulangi ujian (attempt berikutnya = mode COACHED berlabel)</button></p>
+    </div>
+  </div>
+
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">Ujian kanonis FSA Lab — BBCA interim H1 2026 (unaudited).
+  Rantai belajar: <a href="/modul-38/">M38 mekanik interim</a> → <a href="/bedah-sendiri/bbri/">Bedah Sendiri BBRI</a> → <strong>ujian ini</strong>.
+  <a href="../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/ujian-bbca.js"></script>
+</body>
+</html>

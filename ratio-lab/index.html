@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratio Lab · FSA Lab</title>
+<meta name="description" content="Hitung 16 rasio dari laporan PT Cemerlang Abadi, bandingkan 2024 vs 2025. Twist: bagaimana tiap rasio dibuat bagus tanpa bisnis membaik?">
+<link rel="canonical" href="https://fsa-lab.pages.dev/ratio-lab/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.rl-cat{font-family:var(--font-display);font-size:1.35rem;margin:2rem 0 .8rem;
+  border-bottom:3px solid var(--ink);padding-bottom:.35rem}
+.rl-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;box-shadow:4px 4px 0 var(--ink);margin-bottom:1.1rem}
+.rl-card h3{font-size:1.1rem;margin-bottom:.2rem}
+.rl-formula{font-family:var(--font-mono);font-size:.82rem;background:var(--paper-deep);
+  border-radius:8px;padding:.45rem .8rem;margin:.5rem 0;display:inline-block}
+.rl-inputs{display:flex;gap:.9rem;flex-wrap:wrap;margin:.7rem 0}
+.rl-in label{display:block;font-size:.75rem;font-weight:600;color:var(--ink-soft);margin-bottom:.25rem}
+.rl-in input{font-family:var(--font-mono);font-size:.95rem;border:2px solid var(--ink);
+  border-radius:8px;padding:.4rem .6rem;width:9.5rem;background:var(--paper);color:var(--ink)}
+.rl-in input:focus{outline:3px solid var(--mustard)}
+.rl-in .unit{font-size:.75rem;color:var(--ink-soft);font-weight:400}
+.rl-out{display:flex;gap:1.2rem;align-items:baseline;flex-wrap:wrap;margin:.6rem 0;
+  padding:.7rem .9rem;background:var(--paper);border:2px dashed var(--ink);border-radius:10px}
+.rl-val{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--sunset-deep)}
+.rl-cmp{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft)}
+.rl-cmp b{color:var(--ink)}
+.rl-interp{font-size:.88rem;margin:.4rem 0}
+.rl-twist{border-top:1px dashed var(--line);margin-top:.7rem;padding-top:.7rem;font-size:.86rem}
+.rl-twist strong{color:var(--sunset-deep)}
+.rl-note{font-size:.8rem;color:var(--ink-soft);margin-top:.6rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">RL</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Lensa investasi × forensik</p>
+  <h1>Ratio <em>Lab.</em></h1>
+  <p class="dataset-tag"><strong>PT Cemerlang Abadi</strong> · Ilustratif · 2025 · Rp juta</p>
+  <p class="lede">16 rasio dari laporan <strong>PT Cemerlang Abadi</strong> (ilustratif, Rp juta).
+    Input sudah terisi angka kanonis 2025 — <strong>ubah sesukamu</strong>, hasil menghitung otomatis.
+    Tiap kartu juga membawa <strong>twist forensik</strong>: bagaimana rasio ini dibuat bagus
+    <em>tanpa</em> bisnis membaik.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:62rem">
+  <div id="rl-root"></div>
+  <p class="rl-note">Perbandingan 2024 vs 2025 dihitung dari angka kanonis (terverifikasi).
+    Rasio memakai definisi standar analis; definisi alternatif (mis. ROIC dengan modal rata-rata) dicatat di modul terkait.
+    Ilustratif — bukan nasihat investasi.</p>
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Ratio Lab · angka ilustratif — alat belajar, bukan nasihat investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="ratio-lab.js"></script>
+</body>
+</html>

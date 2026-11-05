@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statement Explorer · FSA Lab</title>
+<meta name="description" content="Klik pos mana pun di laporan keuangan PT Cemerlang Abadi — muncul penjelasan, acuan PSAK, dan cara umum memanipulasinya.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/explorer/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.exp-hint{font-size:.85rem;color:var(--ink-soft);margin:-.4rem 0 1rem}
+tr.pick{cursor:pointer}
+/* #3: bukti dekat penjelasan — side-by-side di desktop */
+.exp-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem;align-items:start}
+.explain{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1rem 1.2rem;box-shadow:3px 3px 0 var(--ink);position:sticky;top:80px;
+  color:var(--ink)}
+/* F01: paksa kontras — teks panel harus ink di atas putih */
+.explain h3{margin-top:0;font-size:1.05rem;color:var(--ink)}
+.explain p{color:var(--ink)}
+.explain .tag{display:inline-block;background:var(--ink);color:var(--paper);
+  font-size:.78rem;padding:.2rem .6rem;border-radius:6px}
+.explain .forensic p{color:var(--ink)}
+@media (max-width:900px){
+  .exp-grid{grid-template-columns:1fr}
+  .explain{position:static}
+}
+tr.pick:hover td{background:#fdf3df}
+tr.pick.sel td{background:#fbeed3;box-shadow:inset 3px 0 0 var(--sunset)}
+td.pv{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+tr.tot td{font-weight:700;border-top:2px solid var(--ink)}
+tr.sub td{padding-left:1.8rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">SE</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Lensa forensik × investasi</p>
+  <h1>Statement <em>Explorer.</em></h1>
+  <p class="dataset-tag"><strong>PT Cemerlang Abadi</strong> · Ilustratif · 2025 · Rp juta</p>
+  <p class="lede">Laporan keuangan PT Cemerlang Abadi (ilustratif, Rp juta, 2025).
+    <strong>Klik pos mana pun</strong> — muncul penjelasan, acuan PSAK, dan cara umum
+    pos itu <strong>dimanipulasi</strong>. Analis yang baik membaca dua lapis: angka, dan niat di balik angka.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:60rem">
+
+  <div class="stmt-tabs" id="exp-tabs" role="tablist" aria-label="Pilih laporan keuangan">
+    <button class="stmt-tab active" role="tab" id="exp-tab-bs" aria-selected="true" aria-controls="exp-tabpanel" data-t="bs">Neraca</button>
+    <button class="stmt-tab" role="tab" id="exp-tab-is" aria-selected="false" aria-controls="exp-tabpanel" data-t="is" tabindex="-1">Laba Rugi</button>
+    <button class="stmt-tab" role="tab" id="exp-tab-cf" aria-selected="false" aria-controls="exp-tabpanel" data-t="cf" tabindex="-1">Arus Kas</button>
+  </div>
+  <p class="exp-hint">👆 Klik baris untuk membaca bedah forensiknya.</p>
+
+  <div class="exp-grid">
+    <div class="tblwrap" role="tabpanel" id="exp-tabpanel" tabindex="0" aria-labelledby="exp-tab-bs"><table class="stmt" id="exp-table"></table></div>
+
+    <div class="explain" id="exp-panel">
+      <h3>Klik salah satu pos ↑</h3>
+      <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+    </div>
+  </div>
+
+  <p style="font-size:.8rem;color:var(--ink-soft)">Angka ilustratif PT Cemerlang Abadi (dataset kanonis FSA Lab).
+    Nomor PSAK memakai penomoran baru (efektif 1 Jan 2024); nomor lama dalam kurung saat pertama disebut.</p>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Statement Explorer · angka ilustratif — alat belajar, bukan nasihat investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="explorer.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosarium · FSA Lab</title>
+<meta name="description" content="Glosarium dwibahasa FSA Lab: 178 istilah English dengan definisi Indonesia, dari rasio sampai forensik, syariah, ESOP, dan ESG.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/glosarium/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.glo-search input{width:100%;font-family:var(--font-mono);font-size:1.05rem;border:2px solid var(--ink);
+  border-radius:12px;padding:.85rem 1.1rem;background:var(--card);color:var(--ink)}
+.glo-search input:focus{outline:3px solid var(--mustard)}
+.glo-letters{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 1.4rem}
+.glo-letters button{font-family:var(--font-mono);font-size:.78rem;border:2px solid var(--ink);
+  background:var(--card);border-radius:8px;padding:.25rem .6rem;cursor:pointer;color:var(--ink)}
+.glo-letters button.active{background:var(--ink);color:var(--paper)}
+.glo-count{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-soft);margin-bottom:1rem}
+.glo-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));gap:.9rem}
+.glo-term{background:var(--card);border:2px solid var(--ink);border-radius:12px;padding:.9rem 1.1rem;
+  box-shadow:3px 3px 0 var(--ink)}
+.glo-term .en{font-weight:700;font-size:.98rem}
+.glo-term .en .init{font-family:var(--font-display);color:var(--paper);background:var(--sunset);
+  border-radius:6px;display:inline-block;width:1.5rem;height:1.5rem;line-height:1.5rem;text-align:center;
+  font-size:.95rem;margin-right:.5rem}
+.glo-term .idn{font-size:.86rem;color:var(--ink-soft);margin:.35rem 0 .5rem;line-height:1.5}
+.glo-term .ref{font-family:var(--font-mono);font-size:.7rem;color:var(--teal-deep)}
+.glo-empty{grid-column:1/-1;background:var(--paper-deep);border:2px dashed var(--line);
+  border-radius:var(--radius);padding:1.2rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">GL</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Referensi · Semua modul</p>
+  <h1>Glosarium <em>Dwibahasa.</em></h1>
+  <p class="lede"><strong>178 istilah</strong> English dari materi M1–M28 — rasio, forensik, syariah, ESOP,
+    ESG, standar — masing-masing dengan definisi singkat Bahasa Indonesia dan rujukan modul/PSAK.
+    Ketik untuk memfilter, atau lompat per huruf.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="glo-search">
+    <label for="glo-q" class="sr-only">Cari istilah glosarium dwibahasa</label>
+    <input id="glo-q" type="text" placeholder="Cari istilah… mis. goodwill / piutang / vesting" autocomplete="off">
+  </div>
+  <div class="glo-letters" id="glo-letters"></div>
+  <p class="glo-count" id="glo-count"></p>
+  <div class="glo-list" id="glo-list"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Glosarium · istilah English, definisi Indonesia.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="glosarium.js"></script>
+</body>
+</html>

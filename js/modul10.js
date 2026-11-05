@@ -1,0 +1,297 @@
+/* FSA Lab — Modul 10: Arus Kas: Investasi & Pendanaan (PT Cemerlang Abadi, ilustratif Rp juta) */
+(function(){
+"use strict";
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+var STMTS = {
+inv:{ title:"Arus kas investasi 2025 (Rp juta)", cols:["Pos","2025","2024"],
+ rows:[
+  {l:"Capex", v:"(48.000)", v2:"(40.000)", d:"Belanja aset tetap. 155,8% dari CFO — ekspansi agresif.", psak:"—", f:"Capex > CFO bertahun-tahun = bakar kas."},
+  {l:"Arus kas investasi (CFI)", v:"(48.000)", v2:"(40.000)", d:"Di sini hanya capex. Negatif = investasi, bukan kerugian.", psak:"PSAK 207 (dulu 2)", f:"—"},
+  {l:"Reinvestment ratio", v:"160%", v2:"—", d:"48.000 ÷ 30.000 (depresiasi). Di atas 100% = ekspansi, bukan sekadar ganti.", psak:"—", f:"—"},
+  {l:"Aset hak-guna baru", v:"2.000", v2:"—", d:"Non-kas: sewa baru menambah aset & liabilitas tanpa kas keluar.", psak:"PSAK 116 (dulu 73)", f:"Pos non-kas yang sering luput dibaca."},
+ ]},
+fin:{ title:"Arus kas pendanaan 2025 (Rp juta)", cols:["Pos","2025","2024"],
+ rows:[
+  {l:"Utang neto", v:"11.440", v2:"0", d:"Tambah utang baru dikurangi pelunasan.", psak:"—", f:"—"},
+  {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Kas keluar untuk pemegang saham — saat FCFE negatif.", psak:"—", f:"Dividen dari utang = tidak sustainable."},
+  {l:"Arus kas pendanaan (CFF)", v:"5.440", v2:"(5.000)", d:"11.440 − 6.000. Positif = perusahaan net meminjam.", psak:"PSAK 207", f:"CFF positif + dividen = gali lubang tutup lubang."},
+  {l:"Kas dari pelanggan (langsung)", v:"471.000", v2:"—", d:"Ilustrasi metode langsung: 520.000 − 49.000 (Δ piutang). Lebih transparan dari metode tidak langsung.", psak:"PSAK 207", f:"Metode langsung menyulitkan manipulasi klasifikasi."},
+ ]},
+};
+
+function fmtStmt(key){
+  var s = STMTS[key], h = '<table class="stmt"><tr><th>'+s.cols[0]+'</th><th style="text-align:right">'+s.cols[1]+'</th><th style="text-align:right">'+s.cols[2]+'</th></tr>';
+  s.rows.forEach(function(r,i){
+    h += '<tr class="clickable" data-stmt="'+key+'" data-i="'+i+'"><td>'+r.l+'</td><td class="val">'+r.v+'</td><td class="val" style="color:var(--ink-soft)">'+r.v2+'</td></tr>';
+  });
+  return h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
+}
+function renderStmt(key){
+  $("#stmt-wrap").innerHTML = fmtStmt(key);
+  $$("#stmt-wrap tr.clickable").forEach(function(tr){
+    tr.addEventListener("click", function(){
+      var r = STMTS[tr.dataset.stmt].rows[+tr.dataset.i];
+      $("#explain").innerHTML = '<h3>'+r.l+'</h3>'
+        + '<p>'+r.d+'</p>'
+        + (r.psak && r.psak !== "—" ? '<span class="tag">'+r.psak+'</span>' : '')
+        + (r.f && r.f !== "—" ? '<div class="forensic"><strong>Lensa forensik:</strong> '+r.f+'</div>' : '');
+      $("#explain").scrollIntoView({behavior:"smooth", block:"nearest"});
+    });
+  });
+}
+$$(".stmt-tab[data-stmt]").forEach(function(b){
+  b.addEventListener("click", function(){
+    $$(".stmt-tab[data-stmt]").forEach(function(x){x.classList.remove("active");});
+    b.classList.add("active"); renderStmt(b.dataset.stmt);
+  });
+});
+renderStmt("inv");
+
+/* ---------- PLAYGROUND ---------- */
+var CARDS = [
+ {t:"Capex naik 2x lipat", q1:"Arus investasi", q2:"FCFF", a1:"turun", a2:"turun",
+  e:"Kas keluar investasi membesar (CFI makin negatif) → FCFF turun."},
+ {t:"Jual aset non-inti Rp30.000", q1:"Arus investasi", q2:"FCFF", a1:"naik", a2:"naik",
+  e:"Kas masuk investasi → keduanya naik. Tapi one-off — jangan diannualkan."},
+ {t:"Terbitkan obligasi Rp50.000", q1:"CFF", q2:"D/E ratio", a1:"naik", a2:"naik",
+  e:"Kas pendanaan masuk → CFF naik; utang naik → D/E naik."},
+ {t:"Dividen dinaikkan 50%", q1:"CFF", q2:"Kas", a1:"turun", a2:"turun",
+  e:"Kas keluar pendanaan → CFF turun, kas turun."},
+ {t:"Lunasi utang bank Rp30.000", q1:"CFF", q2:"D/E ratio", a1:"turun", a2:"turun",
+  e:"Kas keluar untuk bayar utang → CFF turun; leverage turun."},
+ {t:"Pindah ke metode langsung", q1:"Transparansi", q2:"CFO", a1:"naik", a2:"tetap",
+  e:"Penyajian berubah, angka CFO sama. Transparansi naik — manipulasi klasifikasi lebih sulit."},
+];
+var OPTS3 = ["naik","turun","tetap"];
+var pgScore = 0, pgDone = 0, pgCards = [];
+function renderPg(){
+  var h = "";
+  CARDS.forEach(function(c,i){
+    h += '<div class="quiz-q" id="pg'+i+'"><h3>Kartu '+(i+1)+': '+c.t+'</h3>';
+    [["q1",c.q1],["q2",c.q2]].forEach(function(qq){
+      h += '<p class="sub" style="margin:.4rem 0 .2rem">'+qq[1]+' akan…</p><div class="pg-opts">';
+      OPTS3.forEach(function(o){ h += '<button data-card="'+i+'" data-q="'+qq[0]+'" data-opt="'+o+'">'+o+'</button>'; });
+      h += '</div>';
+    });
+    h += '<button class="btn btn-primary" data-tx="'+i+'" style="margin-top:.6rem">Cek</button><div class="pg-result" id="pgr'+i+'"></div></div>';
+  });
+  $("#pg-wrap").innerHTML = h;
+  $$("#pg-wrap .pg-opts button").forEach(function(b){
+    b.addEventListener("click", function(){
+      var sib = b.parentElement.querySelectorAll("button");
+      sib.forEach(function(x){x.classList.remove("sel");}); b.classList.add("sel");
+    });
+  });
+  $$("#pg-wrap [data-tx]").forEach(function(b){
+    b.addEventListener("click", function(){ checkPg(+b.dataset.tx); });
+  });
+}
+function checkPg(i){
+  var c = CARDS[i], ok = 0;
+  var sels = ["q1","q2"].map(function(qq){
+    return document.querySelector('#pg'+i+' button[data-q="'+qq+'"].sel');
+  });
+  var r = $("#pgr"+i);
+  var n = sels.filter(Boolean).length;
+  if(n < 2){
+    r.className = "pg-result show";
+    r.innerHTML = "Jawab kedua ukuran dulu ("+n+"/2 terisi) — jawaban sebagian tidak dinilai.";
+    return;
+  }
+  ["q1","q2"].forEach(function(qq,k){
+    var sel = sels[k], ans = k===0?c.a1:c.a2;
+    var btns = $$('#pg'+i+' button[data-q="'+qq+'"]');
+    btns.forEach(function(x){
+      x.classList.remove("right","wrong");
+      if(x.dataset.opt === ans) x.classList.add("right");
+      else if(x === sel) x.classList.add("wrong");
+    });
+    if(sel && sel.dataset.opt === ans) ok++;
+  });
+  r.className = "pg-result show";
+  r.innerHTML = "<strong>"+ok+"/2 benar.</strong> "+c.e;
+  if(pgCards.indexOf(i) < 0){
+    pgScore += ok; pgDone += 2; pgCards.push(i);
+    $("#pg"+i).dataset.scored = "1";
+    try{ localStorage.setItem("fsa_pg_m10", JSON.stringify({s:pgScore,d:pgDone,c:pgCards})); }catch(e){}
+  }
+  $("#pg-score").textContent = "Skor: " + pgScore + " / 12 (" + pgCards.length + " kartu dinilai)";
+  r.scrollIntoView({behavior:"smooth", block:"center"});
+}
+renderPg();
+
+/* ---------- RATIO LAB ---------- */
+function parseIDNumber(str, isDecimal){
+  var s = String(str||"").trim().replace(/\s/g,"");
+  if(!s) return NaN;
+  /* F3: validasi token penuh */
+  if(/[^0-9.,\-+]/.test(s)) return NaN;  // karakter ilegal
+  if(/--/.test(s) || /\+\+/.test(s)) return NaN;  // tanda ganda
+  if(/\d-\d/.test(s) || /\d\+\d/.test(s)) return NaN;  // tanda di tengah (1-2)
+  var dots = (s.match(/\./g)||[]).length;
+  var commas = (s.match(/,/g)||[]).length;
+  if(isDecimal){
+    /* R17-F1: format Indonesia penuh — titik ribuan valid (diikuti kelipatan 3 digit + koma desimal) dilucuti dulu */
+    s = s.replace(/\.(?=\d{3}(?:\.\d{3})*,)/g, "");
+    var d2 = (s.match(/\./g)||[]).length, c2 = (s.match(/,/g)||[]).length;
+    if(d2 + c2 > 1) return NaN;  // R1/F3: max 1 pemisah desimal
+    s = s.replace(",",".");
+  } else {
+    if(s.indexOf(",")>=0){
+      /* format Indonesia: 1.234,56 */
+      if(dots > 0 && commas !== 1) return NaN;
+      s = s.replace(/\./g,"").replace(",",".");
+    } else if(/^-?0\./.test(s)){
+      /* 0.xxx selalu desimal */
+      if(dots !== 1) return NaN;
+    } else {
+      var parts = s.split(".");
+      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
+      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+        s = parts.join("");  // ribuan: 1.000 -> 1000
+      } else if(parts.length === 2 && parts[1].length !== 3){
+        /* desimal biasa: 2.26 tetap */
+      } else if(parts.length === 2){
+        return NaN;  // ambiguous
+      }
+    }
+  }
+  /* tanda hanya di depan */
+  if(/-/.test(s.slice(1)) || /\+/.test(s.slice(1))) return NaN;
+  var v = parseFloat(s);
+  return isNaN(v) ? NaN : v;
+}
+
+var RATIOS = [
+ {q:"Kas dari pelanggan (Rp juta)", hint:"Penjualan − Δ piutang: 520.000 − 49.000", ans:471000, dec:false, tol:1000,
+  why:"471.000 — kas yang benar-benar ditagih dari pelanggan."},
+ {q:"CFO terhadap liabilitas (%)", hint:"CFO ÷ total liabilitas: 30.800 ÷ 272.000 × 100", ans:11.3, tol:0.3,
+  why:"11,3% — kas operasi menutup 11% utang per tahun."},
+ {q:"Capex terhadap CFO (%)", hint:"Capex ÷ CFO: 48.000 ÷ 30.800 × 100", ans:155.8, tol:0.3,
+  why:"155,8% — investasi menelan lebih dari seluruh kas operasi."},
+ {q:"Reinvestment ratio (%)", hint:"Capex ÷ depresiasi: 48.000 ÷ 30.000 × 100", ans:160.0, dec:true, tol:1,
+  why:"160% — ekspansi agresif, bukan sekadar perawatan."},
+];
+(function(){
+  var h = "";
+  RATIOS.forEach(function(r,i){
+    h += '<div class="ratio-card"><h3>'+(i+1)+'. '+r.q+'</h3><p class="sub">'+r.hint+'</p>'
+      + '<div class="ratio-in"><input id="rin'+i+'" inputmode="decimal" placeholder="Contoh: 471000">'
+      + '<button data-r="'+i+'">Cek</button></div><div class="pg-result" id="rr'+i+'"></div></div>';
+  });
+  $("#ratio-wrap").innerHTML = h;
+  $$("#ratio-wrap button").forEach(function(b){
+    b.addEventListener("click", function(){
+      var i = +b.dataset.r, r = RATIOS[i];
+      var v = parseIDNumber($("#rin"+i).value, r.dec !== undefined ? !!r.dec : (r.ans % 1 !== 0)); // F3-R14/R15: mode desimal per soal (r.dec opsional)
+      var el = $("#rr"+i);
+      el.className = "pg-result show";
+      if(isNaN(v)){ el.innerHTML = "Masukkan angka dulu (format ribuan: 471000 atau 471.000)."; return; }
+      el.innerHTML = Math.abs(v - r.ans) <= r.tol
+        ? "<strong>Tepat ✓</strong> "+r.why
+        : "<strong>Belum tepat.</strong> Coba lagi — petunjuknya sudah ada di atas.";
+    });
+  });
+})();
+
+/* ---------- JOURNAL ---------- */
+var LENSES = {
+ invest:"Lensa investasi — Ekspansi Rp80M: didanai utang, saham, atau tunda? Tulis 3 baris.",
+ credit:"Lensa kredit — Tambah utang Rp80M: D/E & coverage jadi berapa? Masih layak?",
+ forensic:"Lensa forensik — 3 cek sebelum percaya narasi ekspansi ini."
+};
+var curLens = "invest";
+function setLens(k){
+  curLens = k;
+  $$(".journal-tabs .stmt-tab").forEach(function(x){ x.classList.toggle("active", x.dataset.lens===k); });
+  $("#lens-prompt").textContent = LENSES[k];
+  var v = ""; try{ v = localStorage.getItem("fsa_journal_m10_"+k) || ""; }catch(e){}
+  $("#journal-text").value = v;
+  updCount();
+}
+function updCount(){
+  var n = $("#journal-text").value.length;
+  $("#journal-count").textContent = n + " karakter";
+  $("#journal-status").textContent = n > 0 ? "Tersimpan otomatis ✓" : "Belum ada catatan.";
+}
+$$(".journal-tabs .stmt-tab").forEach(function(b){
+  b.addEventListener("click", function(){ setLens(b.dataset.lens); });
+});
+$("#journal-text").addEventListener("input", function(){
+  try{ localStorage.setItem("fsa_journal_m10_"+curLens, $("#journal-text").value); }catch(e){}
+  updCount();
+});
+setLens("invest");
+
+/* ---------- QUIZ + GATE ---------- */
+var QUIZ = [
+ {q:"Bedanya metode langsung vs tidak langsung?", o:["Mulai dari laba vs mulai dari kas","Direct = kas masuk, indirect = kas keluar","Mulai dari kas vs mulai dari laba","Keduanya mulai dari laba bersih"], a:2},
+ {q:"Kas dari pelanggan 2025?", o:["30.800","520.000","104.000","471.000"], a:3},
+ {q:"Capex 156% dari CFO artinya…", o:["Capex dibiayai penuh dari kas operasi","Investasi melebihi kas operasi","Arus kas operasi sangat kuat","Perusahaan kelebihan kas"], a:1},
+ {q:"CFF +5.440 terutama karena…", o:["Dividen 6.000 > utang neto 11.440","Utang neto 11.440 > dividen 6.000","Penerbitan saham baru 11.440","Penjualan aset tetap 5.440"], a:1},
+ {q:"Dividen 6.000 dibayar dari…", o:["Utang — FCFE 2025 negatif (Rp−5.760 jt)","Kas operasi murni — CFO 2025 masih positif 30.800","FCFE 2025 positif Rp5.760 jt","Penerbitan saham baru 6.000"], a:0},
+];
+(function(){
+  var h = "";
+  QUIZ.forEach(function(q,i){
+    h += '<div class="quiz-q" id="qq'+i+'"><h3>'+(i+1)+'. '+q.q+'</h3>';
+    q.o.forEach(function(o,j){
+      h += '<label><input type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>';
+    });
+    h += '</div>';
+  });
+  $("#quiz-wrap").innerHTML = h;
+})();
+$("#quiz-submit").addEventListener("click", function(){
+  var score = 0, picked = [], skipped = [];
+  QUIZ.forEach(function(q,i){
+    var sel = document.querySelector('input[name="q'+i+'"]:checked');
+    picked.push(sel ? +sel.value : -1);
+    try{ if(window.FSAMistake && sel && +sel.value !== q.a)
+           window.FSAMistake.log(10, i, "quiz"); }catch(e){}
+    if(!sel) skipped.push(i+1);
+    else if(+sel.value === q.a) score++;
+  });
+  var box = $("#gate-box");
+  if(skipped.length){
+    box.style.display = "block";
+    box.innerHTML = "<h3>Belum lengkap</h3><p>Kamu melewatkan soal: <strong>"+skipped.join(", ")+"</strong>. Jawab dulu semuanya, baru submit.</p>";
+    box.scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+  var pct = Math.round(score/QUIZ.length*100), passed = pct >= 80;
+  QUIZ.forEach(function(q,i){
+    $$('#qq'+i+' label').forEach(function(lb, j){
+      lb.classList.remove("right","wrong");
+      if(passed && j === q.a) lb.classList.add("right");
+      else if(picked[i] === j && j !== q.a) lb.classList.add("wrong");
+    });
+  });
+  box.style.display = "block";
+  if(passed){
+    box.innerHTML = "<h3>Gerbang Lolos ✓</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). <a href=\"../modul-11/\">Lanjut ke Modul 11 →</a></p>";
+    try{ localStorage.setItem("fsa_gate_m10","lolos"); }catch(e){}
+  } else if(localStorage.getItem("fsa_gate_m10") === "lolos"){
+    box.innerHTML = "<h3>Belum lolos percobaan ini</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). Tapi status <strong>LULUS</strong>-mu tetap tersimpan — tidak hilang karena satu percobaan gagal.</p>";
+  } else {
+    box.innerHTML = "<h3>Belum Lolos</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%) — butuh ≥80%. Yang merah = salah; kunci tidak dibocorkan.</p>";
+  }
+  box.scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+/* ---------- RESTORE ---------- */
+try{
+  var pg = JSON.parse(localStorage.getItem("fsa_pg_m10") || "null");
+  if(pg && pg.d > 0){
+    pgScore = pg.s; pgDone = pg.d; pgCards = pg.c || [];
+    pgCards.forEach(function(i){ var c = $("#pg"+i); if(c) c.dataset.scored = "1"; });
+    $("#pg-score").textContent = "Skor: " + pgScore + " / 12 (" + pgCards.length + " kartu dinilai)";
+  }
+  if(localStorage.getItem("fsa_gate_m10") === "lolos"){
+    var gb = $("#gate-box"); gb.style.display = "block";
+    gb.innerHTML = "<h3>Lulus ✓</h3><p>Modul 10 sudah kamu lewati sebelumnya. <a href=\"../modul-11/\">Lanjut ke Modul 11 →</a></p>";
+  }
+}catch(e){}
+})();

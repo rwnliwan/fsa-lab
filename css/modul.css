@@ -1,0 +1,142 @@
+/* FSA Lab — Modul 1 styles (extends style.css tokens) */
+.modul-nav{display:flex;align-items:center;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);
+  border-bottom:2px solid var(--ink);background:rgba(244,236,220,.96);position:sticky;top:0;z-index:50}
+.modul-nav a.back{text-decoration:none;color:var(--ink);font-weight:600;font-size:.92rem}
+.modul-hero{padding:clamp(2rem,5vw,3.5rem) clamp(1rem,4vw,3rem);max-width:1200px;margin:0 auto}
+.modul-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);margin:.4rem 0 .8rem}
+.modul-hero h1 em{color:var(--sunset-deep)}
+.modul-sec{padding:2rem clamp(1rem,4vw,3rem);max-width:1200px;margin:0 auto}
+.modul-sec h2{font-family:var(--font-display);font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:.4rem}
+.modul-sec .sub{color:var(--ink-soft);margin-bottom:1.4rem;max-width:52rem}
+.stmt-tabs{display:flex;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.stmt-tab{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:.5rem 1.1rem;
+  font-weight:600;cursor:pointer;box-shadow:2px 2px 0 var(--ink);font-family:var(--font-body)}
+.stmt-tab.active{background:var(--ink);color:var(--paper)}
+table.stmt{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--ink);
+  border-radius:var(--radius);overflow:hidden;box-shadow:4px 4px 0 var(--ink);margin-bottom:1rem}
+table.stmt th,table.stmt td{padding:.6rem .9rem;text-align:left;border-bottom:1px solid var(--line);font-size:.93rem}
+table.stmt th{background:var(--paper-deep);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+table.stmt td.val{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+table.stmt tr.clickable{cursor:pointer}
+table.stmt tr.clickable:hover td{background:#fdf3df}
+table.stmt tr.sub td{padding-left:1.8rem;color:var(--ink-soft)}
+table.stmt tr.total td{font-weight:700;border-top:2px solid var(--ink)}
+.explain{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:1.3rem 1.5rem;
+  border:2px solid var(--ink);box-shadow:4px 4px 0 var(--sunset);margin-bottom:2rem;min-height:8rem}
+.explain h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.4rem;color:var(--mustard)}
+.explain p{font-size:.92rem;color:#d9cdb4;margin-bottom:.5rem}
+.explain .tag{display:inline-block;font-family:var(--font-mono);font-size:.75rem;background:var(--teal);
+  color:#fff;border-radius:6px;padding:.1rem .5rem;margin-right:.4rem}
+.explain .forensic{border-top:1px dashed #6b5f4c;margin-top:.7rem;padding-top:.7rem}
+.explain .forensic strong{color:var(--sunset)}
+/* playground */
+.pg-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.4rem;box-shadow:4px 4px 0 var(--ink);margin-bottom:1.2rem}
+.pg-card h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.8rem}
+.pg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:.9rem 0}
+.pg-dim{background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:.7rem;text-align:center}
+.pg-dim .dname{font-size:.78rem;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:.5rem}
+.pg-opts{display:flex;gap:.35rem;justify-content:center;flex-wrap:wrap}
+.pg-opts button{border:2px solid var(--ink);background:#fff;border-radius:8px;padding:.25rem .55rem;
+  font-size:.8rem;font-weight:600;cursor:pointer}
+.pg-opts button.sel{background:var(--mustard)}
+.pg-opts button.right{background:var(--teal);color:#fff}
+.pg-opts button.wrong{background:var(--sunset);color:#fff}
+.pg-check{margin-top:.8rem}
+.pg-result{font-size:.9rem;margin-top:.7rem;padding:.7rem;border-radius:8px;display:none}
+.pg-result.show{display:block;background:#fdf3df;border:1px dashed var(--ink)}
+.pg-score{font-family:var(--font-mono);font-weight:700}
+/* ratio lab */
+.ratio-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;box-shadow:3px 3px 0 var(--ink);margin-bottom:1rem}
+.ratio-card h3{font-size:1.05rem;margin-bottom:.3rem}
+.ratio-card .formula{font-family:var(--font-mono);font-size:.85rem;background:var(--paper-deep);
+  border-radius:8px;padding:.5rem .8rem;margin:.5rem 0;display:inline-block}
+.ratio-card input{font-family:var(--font-mono);font-size:1rem;border:2px solid var(--ink);border-radius:8px;
+  padding:.35rem .6rem;width:9rem;margin-right:.6rem}
+.ratio-card .fb{font-size:.88rem;margin-top:.5rem;min-height:1.4rem}
+/* journal */
+.journal-tabs{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.journal textarea{width:100%;min-height:9rem;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1rem;font-family:var(--font-body);font-size:.95rem;background:#fffdf6;resize:vertical}
+.journal .meta{display:flex;gap:1rem;align-items:center;margin-top:.6rem;font-size:.85rem;color:var(--ink-soft)}
+/* quiz */
+.quiz-q{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;box-shadow:3px 3px 0 var(--ink);margin-bottom:1rem}
+.quiz-q h3{font-size:1rem;margin-bottom:.7rem}
+.quiz-q label{display:block;padding:.45rem .7rem;border:2px solid var(--line);border-radius:8px;
+  margin-bottom:.45rem;cursor:pointer;font-size:.92rem}
+.quiz-q label:hover{border-color:var(--ink)}
+/* simulator radio options: label dipakai sebagai kartu opsi (bukan wrapper quiz).
+   <label> default inline -> kartu bertumpuk saat wrap. Paksa block flex agar
+   tiap opsi satu baris kartu penuh, teks melipat rapi tanpa overlap. */
+label.quiz-q.sim-opt{display:flex;align-items:flex-start;gap:.6rem;padding:.7rem .9rem;
+  margin-bottom:.6rem;cursor:pointer;font-size:.92rem;line-height:1.6;white-space:normal}
+label.quiz-q.sim-opt:hover{border-color:var(--ink)}
+label.quiz-q.sim-opt input[type="radio"]{flex:0 0 auto;margin:.35rem 0 0}
+label.quiz-q.sim-opt.right{border-color:var(--teal-deep);background:#e6f4f1}
+label.quiz-q.sim-opt.wrong{border-color:var(--sunset-deep);background:#fbe9e2}
+.quiz-q label.right{border-color:var(--teal-deep);background:#e6f4f1}
+.quiz-q label.wrong{border-color:var(--sunset-deep);background:#fbe9e2}
+.gate-box{text-align:center;padding:2rem;background:var(--ink);color:var(--paper);border-radius:var(--radius);
+  border:2px solid var(--ink);box-shadow:4px 4px 0 var(--sunset);margin-top:1.5rem}
+.gate-box h3{font-family:var(--font-display);font-size:1.5rem;color:var(--mustard);margin-bottom:.5rem}
+@media (max-width:760px){.pg-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){
+  .pg-grid{grid-template-columns:1fr}
+  .pg-dim .dname{font-size:.85rem}
+}
+/* MOBILE 390px (round-5) — tabel lebar di-scroll horizontal, bukan terpotong.
+   Dipakai statis di HTML maupun otomatis oleh js/tblwrap.js untuk tabel
+   yang dirender JS belakangan (tab explorer). Di layar lebar tidak berpengaruh. */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin-bottom:1rem;
+  border:2px solid var(--ink);border-radius:var(--radius);background:var(--card);scrollbar-width:thin;
+  position:relative}
+.tblwrap table{margin-bottom:0;border:0;box-shadow:none;border-radius:0;width:100%}
+.tblwrap table th,.tblwrap table td{white-space:normal}
+/* sel angka mono boleh nowrap (di sinilah scroll dibutuhkan); sel teks boleh wrap */
+.tblwrap table td.val,.tblwrap table .nb,.tblwrap table .ob{white-space:nowrap}
+/* AFFORDANCE SCROLL (round-6): bayangan fade di tepi kanan + petunjuk "geser"
+   agar user tahu ada kolom lanjutan. Inset shadow tidak ikut scroll. */
+.tblwrap.scrollable{box-shadow:inset -28px 0 20px -20px rgba(0,0,0,.35)}
+.scrollhint{font-size:.75rem;font-weight:700;color:var(--accent,#e4572e);text-align:right;
+  margin:-.6rem 0 1rem;pointer-events:none}
+
+/* F1 REVEAL-AFTER-WRITE (Phase 9): rubrik self-check + exemplar — statis, tanpa grading */
+.reveal-panel{margin-top:1.1rem;border:2px dashed var(--ink);border-radius:var(--radius);background:#fffdf6}
+.reveal-panel summary{list-style:none;cursor:pointer;display:inline-block;margin:1rem 1.2rem;padding:.7rem 1.4rem;
+  border:2px solid var(--ink);border-radius:10px;background:var(--sunset);color:#fff;font-weight:700;font-size:.95rem;
+  box-shadow:3px 3px 0 var(--ink);font-family:var(--font-body)}
+.reveal-panel summary::-webkit-details-marker{display:none}
+.reveal-panel summary::before{content:"+ ";font-weight:700}
+.reveal-panel[open] summary::before{content:"\2212  "}
+.reveal-panel summary:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.reveal-body{padding:0 1.2rem 1.3rem}
+.reveal-body h3{font-family:var(--font-display);font-size:1.15rem;margin:1rem 0 .5rem}
+.rubric-item{display:flex;gap:.65rem;align-items:flex-start;padding:.55rem .75rem;border:2px solid var(--line);
+  border-radius:8px;margin-bottom:.5rem;cursor:pointer;font-size:.9rem;background:#fff;line-height:1.5}
+.rubric-item input{margin-top:.22rem;accent-color:var(--teal-deep);width:1.1rem;height:1.1rem;flex:none;cursor:pointer}
+.exemplar{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.1rem 1.3rem;margin-top:.6rem;box-shadow:4px 4px 0 var(--ink)}
+.exemplar p{font-size:.9rem;color:#e8dfc8;margin-bottom:.65rem;line-height:1.62}
+.exemplar p:last-child{margin-bottom:0}
+.exemplar .num{font-family:var(--font-mono);color:var(--mustard)}
+.exemplar strong{color:#fff}
+
+/* F08 — breadcrumb + navigasi antar-modul (ditambah 2026-11-03, review Cue).
+   Netral terhadap brand: memakai variabel warna & radius yang sudah ada. */
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;
+  padding:.55rem clamp(1rem,4vw,3rem);font-size:.85rem;color:var(--ink-soft)}
+.crumb a{color:var(--ink);text-decoration:none;font-weight:600;border-bottom:2px solid transparent}
+.crumb a:hover{border-bottom-color:var(--mustard)}
+.crumb .sep{color:var(--ink-soft);opacity:.6}
+.crumb [aria-current="page"]{font-weight:700;color:var(--ink)}
+.mod-count{padding:0 clamp(1rem,4vw,3rem);margin:-.2rem 0 .4rem;font-family:var(--font-mono);
+  font-size:.78rem;color:var(--ink-soft)}
+.mod-pagenav{display:flex;justify-content:space-between;gap:1rem;align-items:center;
+  padding:1.1rem clamp(1rem,4vw,3rem);max-width:72rem;margin:0 auto}
+.mod-pagenav a{display:inline-block;border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--card);color:var(--ink);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:.6rem 1.1rem;box-shadow:3px 3px 0 var(--ink)}
+.mod-pagenav a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.mod-pagenav .pn-next{margin-left:auto}

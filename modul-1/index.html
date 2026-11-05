@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 — Tiga Laporan, Satu Cerita · FSA Lab</title>
+<meta name="description" content="Modul 1 FSA Lab: bedah income statement, balance sheet, dan cash flow statement secara interaktif — dengan tiga lensa.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-1/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M1</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 1</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 1</span>
+</nav>
+<p class="mod-count">Modul 1 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 1 · Fondasi · Modul 1</p>
+  <h1>Tiga Laporan, <em>Satu Cerita.</em></h1>
+  <p class="lede">Perusahaan fiktif <strong>PT Nusantara Makmur</strong> (angka ilustratif, Rp juta).
+    Klik tiap pos untuk bedah maknanya, uji artikulasi tiga laporan, hitung rasio,
+    lalu tulis pandanganmu dari tiga lensa.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer</h2>
+  <p class="sub">Klik baris mana pun. Setiap pos dijelaskan: apa artinya, acuan PSAK-nya, dan bagaimana pos itu biasa dimanipulasi (lensa forensik).</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="is">Income Statement</button>
+    <button class="stmt-tab" data-stmt="bs">Balance Sheet</button>
+    <button class="stmt-tab" data-stmt="cf">Cash Flow</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground Artikulasi</h2>
+  <p class="sub">Satu transaksi menyentuh minimal dua akun. Tebak efeknya ke <strong>laba bersih</strong>,
+    <strong>total aset</strong>, <strong>total liabilitas</strong>, dan <strong>kas</strong> — lalu cek.
+    Ini skill mekanik paling penting di FSA.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 24</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab</h2>
+  <p class="sub">Hitung dari angka laporan di atas. Tulis angkanya (toleransi kecil diperbolehkan), lalu cek.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Kredit Rp50 Miliar?</h2>
+  <p class="sub"><strong>PT Nusantara Makmur</strong> mengajukan kredit Rp50 miliar tenor 5 tahun ke bank tempatmu bekerja
+    sebagai analis. Berdasarkan tiga laporan di atas, tulis pandanganmu dari tiga lensa. Tersimpan otomatis di browser ini.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <p class="sub">Semua angka di bawah berasal dari tiga tabel di atas. Angka berlabel <em>(data lanjutan)</em> hanya tampil di penjelasan baris &mdash; klik baris terkait di tabel untuk membukanya.</p>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> BELI-BERSYARAT &mdash; bukan karena harganya, tapi karena mesinnya terbaca. <span class="num">Gross margin 40,0%</span> <span class="sub">(data lanjutan)</span> menunjukkan <em>pricing power</em>, <span class="num">net margin 9,75%</span> <span class="sub">(data lanjutan)</span> dari penjualan <span class="num">480.000</span> (ilustratif) adalah level sehat untuk bisnis dagang-manufaktur, dan artikulasinya bersih: laba bersih <span class="num">46.800</span> mengalir ke laba ditahan <span class="num">34.200 &rarr; 73.000</span> setelah dividen <span class="num">8.000</span> &mdash; persis seperti rumus. <em>Driver</em> nilai: apakah margin 40% bisa dipertahankan.</p>
+<p><strong>Lensa kredit:</strong> kredit <span class="num">Rp50 miliar / 5 tahun</span> (ilustratif) LAYAK dipertimbangkan: <span class="num">D/E 1,32x</span> <span class="sub">(data lanjutan)</span> moderat, <span class="num">interest coverage 6,0x</span> <span class="sub">(data lanjutan)</span> memberi <em>buffer</em> tiga kali lipat dari zona bahaya 2x, <span class="num">current ratio 2,27x</span> <span class="sub">(data lanjutan)</span>. <em>Downside</em> terbesar: <em>refinancing wall</em> utang bank <span class="num">90.000</span> + sewa <span class="num">54.000</span> &mdash; cek jadwal jatuh tempo di catatan.</p>
+<p><strong>Lensa forensik:</strong> tiga titik pertama saya: piutang <span class="num">72.000</span> (<span class="num">DSO 54,8 hari</span> <span class="sub">(data lanjutan)</span> &mdash; naik atau tidak vs tahun lalu?), persediaan <span class="num">84.000</span> (adakah yang usang tak dihapusbukukan?), dan kas <span class="num">35.000</span> vs total utang (kenapa kas besar tapi utang tidak dilunasi?). Satu hal yang membunuh tesis ini: bila pertumbuhan penjualan tahun depan hanya datang dari piutang (<em>DSO drift</em>) sementara CFO jatuh di bawah laba bersih &mdash; itu pola <em>channel stuffing</em>, bukan pertumbuhan.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 2.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-2/" class="pn-next">Modul 2 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 1 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul1.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

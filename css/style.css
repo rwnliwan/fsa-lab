@@ -1,0 +1,337 @@
+/* FSA Lab — Three-Lens Ledger brand (Instinct, 2026-11-03).
+   Menggantikan Retro 70s. Token dari assets/brand/v1/tokens.css. */
+:root{
+  --paper:#FAF6ED;
+  --paper-deep:#F1EAD8;
+  --ink:#192B2B;
+  --ink-soft:#526260;
+  --apricot:#F3C9A7;
+  --teal:#B9DDD2;
+  --teal-deep:#1f7a6f;
+  --lilac:#D9D1EB;
+  --card:#FFFFFF;
+  --line:#D8DED8;
+  --muted:#526260;
+  --radius:10px;
+  --font-display:"Noto Serif Display",Georgia,serif;
+  --font-body:"Noto Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  /* Lens accents (backgrounds; dark ink text on all) */
+  --lens-investment:#F3C9A7;
+  --lens-credit:#B9DDD2;
+  --lens-forensic:#D9D1EB;
+  /* Legacy aliases (dipetakan ke palet baru agar komponen lama tetap jalan) */
+  --sunset:#192B2B;
+  --sunset-deep:#192B2B;
+  --mustard:#F3C9A7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+/* #4: kontrol form mewarisi font body (bukan Arial default browser) */
+button,input,select,textarea{font-family:inherit;font-size:100%}
+/* #4: label dataset standar di semua tool */
+.dataset-tag{display:inline-flex;align-items:center;gap:.4rem;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em;
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  padding:.3rem .7rem;color:var(--ink-soft);margin-bottom:1rem}
+.dataset-tag strong{color:var(--ink);font-weight:700}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+/* film grain */
+.grain{
+  position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* sunset stripes divider */
+.stripes{
+  height:26px;
+  background:repeating-linear-gradient(-45deg,
+    var(--sunset) 0 26px, var(--mustard) 26px 52px,
+    var(--teal) 52px 78px, var(--paper-deep) 78px 84px);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+}
+.stripes-thin{height:14px}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:.7rem clamp(1rem,4vw,3rem);
+  background:rgba(244,236,220,.96);
+  border-bottom:2px solid var(--ink);
+}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-logo{height:2.2rem;width:auto;display:block}
+/* Legacy badge (digantikan logo SVG; dipertahankan agar tidak merusak bila masih ada) */
+.brand-badge{
+  font-family:var(--font-display);font-size:1.05rem;
+  background:var(--ink);color:#fff;
+  padding:.15rem .55rem;border-radius:8px;border:2px solid var(--ink);
+  box-shadow:2px 2px 0 var(--ink);
+}
+.brand-name{font-weight:700;font-size:1.15rem;letter-spacing:.01em}
+.nav-links{display:flex;gap:1.2rem;margin-left:auto}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--sunset-deep)}
+.nav-toggle{display:none}
+
+/* KEYBOARD FOCUS — outline konsisten untuk navigasi keyboard */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:3px solid var(--sunset);
+  outline-offset:2px;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;text-decoration:none;font-weight:600;
+  border:2px solid var(--ink);border-radius:10px;
+  padding:.55rem 1.15rem;color:var(--ink);background:var(--card);
+  box-shadow:3px 3px 0 var(--ink);
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn-primary{background:var(--sunset);color:#fff}
+.btn-ghost{background:transparent}
+.btn-lg{padding:.8rem 1.6rem;font-size:1.05rem}
+/* Tombol tools (bukan modul): warna beda biar ketara — Septian 4 Nov */
+.btn-tool{background:var(--apricot,#F3C9A7);color:var(--ink)}
+/* Kartu resume "Lanjutkan belajar" — Instinct P1 */
+.resume-card{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;
+  background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.8rem 1.2rem;margin-bottom:1rem;box-shadow:3px 3px 0 var(--ink);max-width:640px}
+.resume-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.resume-link{font-weight:700;color:var(--ink);text-decoration:none;font-size:1.05rem}
+.resume-link:hover{text-decoration:underline}
+.resume-meta{font-size:.82rem;color:var(--ink-soft)}
+.resume-tools{font-size:.85rem;margin-bottom:2rem}
+.resume-tools a{color:var(--ink);font-weight:600}
+.resume-tools .dim{color:var(--ink-soft)}
+/* Navigasi section modul — Instinct P2 */
+.section-nav{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.9rem 1.2rem;margin:1rem 0 1.5rem;box-shadow:3px 3px 0 var(--ink)}
+.section-nav-title{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft);margin:0 0 .5rem}
+.section-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.section-nav a{color:var(--ink);font-size:.88rem;text-decoration:none;border-bottom:1px dashed var(--ink-soft)}
+.section-nav a:hover{border-bottom-style:solid}
+.feat{position:relative;padding-bottom:2.8rem}
+.feat-arrow{position:absolute;bottom:.9rem;right:1.1rem;font-size:1.5rem;
+  font-weight:700;color:var(--ink);text-decoration:none;line-height:1}
+.feat-arrow:hover{transform:translateX(3px)}
+/* Grid tombol modul di kartu phase: sejajar & satu ukuran — Septian 4 Nov */
+.phase .mod-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.phase .mod-grid .btn{min-width:7.2rem;text-align:center;margin:0;padding:.55rem .6rem}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:clamp(3rem,8vw,6rem) clamp(1rem,4vw,3rem) 0;border-bottom:2px solid var(--ink)}
+.hero-sun{display:none} /* diganti hero-lenses — Septian 4 Nov */
+/* Tiga lingkaran lensa brand: apricot/teal/lilac, mengambang halus */
+.hero-lenses{position:absolute;top:-40px;right:-30px;width:min(380px,55vw);
+  aspect-ratio:1;pointer-events:none}
+.hero-lenses span{position:absolute;border-radius:50%;opacity:.75;
+  animation:lensFloat 7s ease-in-out infinite}
+.hero-lenses .lens-i{width:62%;aspect-ratio:1;top:0;right:8%;
+  background:radial-gradient(circle at 40% 35%, #f7ddc2 0%, var(--apricot,#F3C9A7) 55%, transparent 75%)}
+.hero-lenses .lens-c{width:48%;aspect-ratio:1;top:32%;left:0;
+  background:radial-gradient(circle at 40% 35%, #d8efe9 0%, var(--teal,#B9DDD2) 55%, transparent 75%);
+  animation-delay:-2.3s}
+.hero-lenses .lens-f{width:40%;aspect-ratio:1;bottom:0;right:22%;
+  background:radial-gradient(circle at 40% 35%, #e9e3f6 0%, var(--lilac,#D9D1EB) 55%, transparent 75%);
+  animation-delay:-4.6s}
+@keyframes lensFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+@media (prefers-reduced-motion:reduce){.hero-lenses span{animation:none}}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto}
+.kicker{
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-deep);margin-bottom:1rem;
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.08;margin-bottom:1.2rem;
+}
+.hero h1 em{font-style:italic;color:var(--sunset-deep)}
+.lede{font-size:1.12rem;max-width:44rem;color:var(--ink-soft);margin-bottom:1.8rem}
+.lede strong{color:var(--ink)}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;max-width:900px}
+.stat{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.9rem 1rem;box-shadow:3px 3px 0 var(--ink);text-align:center}
+.stat .num{font-family:var(--font-mono);font-weight:700;font-size:1.5rem;display:block;color:var(--sunset-deep)}
+.stat .lbl{font-size:.82rem;color:var(--ink-soft)}
+
+/* SECTIONS */
+.section{padding:clamp(2.5rem,6vw,4.5rem) clamp(1rem,4vw,3rem);max-width:1200px;margin:0 auto}
+.section h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.6rem}
+.section .lede{margin-bottom:2rem}
+
+/* LENS CARDS */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.lens-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.6rem;box-shadow:4px 4px 0 var(--ink)}
+.lens-card .icon{width:46px;height:46px;border-radius:12px;border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.lens-card .icon svg{width:24px;height:24px}
+.lens-invest .icon{background:var(--lens-investment);color:var(--ink)}
+.lens-credit .icon{background:var(--lens-credit);color:var(--ink)}
+.lens-forensic .icon{background:var(--lens-forensic);color:var(--ink)}
+.lens-card h3{font-family:var(--font-display);font-size:1.35rem;margin-bottom:.4rem}
+.lens-q{font-style:italic;color:var(--sunset-deep);margin-bottom:.6rem}
+.lens-card p{font-size:.95rem;color:var(--ink-soft);margin-bottom:.6rem}
+.lens-out{font-size:.9rem!important}
+.lens-out span{font-weight:700;color:var(--ink)}
+
+/* FEATURE CARDS */
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.feat{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.3rem;box-shadow:3px 3px 0 var(--ink)}
+/* Mulai-di-sini: samakan posisi tombol di bawah (Septian 4 Nov) */
+#mulai .feat{display:flex;flex-direction:column}
+#mulai .feat p:last-child{margin-top:auto;padding-top:1rem}
+.feat .icon{width:40px;height:40px;border-radius:10px;border:2px solid var(--ink);background:var(--paper-deep);
+  display:flex;align-items:center;justify-content:center;margin-bottom:.8rem}
+.feat .icon svg{width:22px;height:22px}
+.feat h3{font-size:1.02rem;margin-bottom:.35rem}
+.feat p{font-size:.87rem;color:var(--ink-soft)}
+
+/* PHASES */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.phase{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:1.6rem;
+  border:2px solid var(--ink);box-shadow:4px 4px 0 var(--sunset)}
+.phase-tag{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mustard)}
+.phase h3{font-family:var(--font-display);font-size:1.5rem;margin:.4rem 0 .7rem}
+.phase p{font-size:.92rem;color:#d9cdb4;margin-bottom:.8rem}
+.phase .gate{font-size:.85rem;color:var(--mustard);border-top:1px dashed #6b5f4c;padding-top:.8rem;margin-bottom:0}
+/* Link di kartu phase gelap: biru lebih muda biar kelihatan — Septian 4 Nov */
+.phase a:not(.btn){color:#8ecae6}
+
+/* PSAK */
+.section-psak{background:var(--paper-deep);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);max-width:none}
+.section-psak .section-inner{max-width:1200px;margin:0 auto}
+.section-psak{padding-left:clamp(1rem,4vw,3rem);padding-right:clamp(1rem,4vw,3rem)}
+.psak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin:1.6rem 0}
+.psak-item{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:1.1rem;box-shadow:3px 3px 0 var(--teal-deep)}
+.psak-item .num{font-family:var(--font-mono);font-weight:700;font-size:1.6rem;color:var(--teal-deep);display:block}
+.psak-item p{font-size:.88rem;color:var(--ink-soft)}
+.psak-note{font-size:.88rem;color:var(--ink-soft);font-style:italic;max-width:60rem}
+
+/* CTA FINAL */
+.cta-final{text-align:center}
+.cta-final h2{margin-bottom:.8rem}
+.cta-final p{color:var(--ink-soft);margin-bottom:1.6rem;max-width:38rem;margin-left:auto;margin-right:auto}
+
+/* FOOTER */
+footer{border-top:2px solid var(--ink)}
+.foot-inner{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:1.4rem clamp(1rem,4vw,3rem);max-width:1200px;margin:0 auto}
+.foot-inner p{font-size:.85rem;color:var(--ink-soft)}
+.foot-author{margin-left:auto;display:inline-flex;align-items:center;gap:.35rem}
+.foot-author a{display:inline-flex;align-items:center;gap:.35rem;color:var(--ink);font-weight:600;text-decoration:none}
+.foot-author a:hover{text-decoration:underline}
+
+/* numbers always mono */
+.num{font-family:var(--font-mono)}
+
+/* vertical stepper — "Tips membaca LK emiten IDX" (retro 70s) */
+.stepper{list-style:none;margin:1.4rem 0 .5rem;padding:0;max-width:48rem}
+.stepper li{position:relative;display:flex;gap:1rem;padding:0 0 1.3rem}
+.stepper li::before{content:"";position:absolute;left:1.12rem;top:2.7rem;bottom:.1rem;width:3px;
+  background:var(--line);border-radius:2px}
+.stepper li:last-child{padding-bottom:0}
+.stepper li:last-child::before{display:none}
+.step-n{flex:0 0 2.4rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--sunset);color:#fff;
+  font-family:var(--font-mono);font-weight:700;font-size:1.05rem;display:flex;align-items:center;
+  justify-content:center;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);z-index:1}
+.stepper li:nth-child(3n+2) .step-n{background:var(--mustard);color:var(--ink)}
+.stepper li:nth-child(3n) .step-n{background:var(--teal)}
+.stepper .step-body{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.75rem 1.1rem;box-shadow:3px 3px 0 var(--ink);flex:1;min-width:0}
+.stepper .step-body strong{font-size:.98rem}
+.stepper .step-body p{font-size:.9rem;color:var(--ink-soft);margin:.15rem 0 0}
+
+/* RESPONSIVE */
+@media (max-width:1000px){
+  .cards-4{grid-template-columns:repeat(2,1fr)}
+  .psak-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .cards-3,.phases{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  /* Lingkaran lensa di portrait: kecil di kanan atas, tidak numpuk teks — Septian 4 Nov */
+  .hero-lenses{width:150px;top:-10px;right:-20px;opacity:.6}
+  .nav{gap:.75rem}
+  .nav .btn{margin-left:0}
+  /* hamburger: hanya tampil di mobile, desktop tidak tersentuh */
+  .nav-toggle{
+    display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    margin-left:auto;width:44px;height:44px;padding:0;cursor:pointer;
+    background:var(--card);border:2px solid var(--ink);border-radius:10px;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .nav-toggle span{display:block;width:22px;height:3px;background:var(--ink);border-radius:2px}
+  .nav-toggle[aria-expanded="true"]{background:var(--mustard)}
+  .nav-links{display:none}
+  .nav-links.open{
+    display:flex;position:absolute;top:calc(100% + 2px);left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;margin-left:0;z-index:55;
+    background:var(--paper);border-bottom:2px solid var(--ink);
+    padding:.4rem clamp(1rem,4vw,3rem) .8rem;
+  }
+  .nav-links.open a{padding:.7rem .2rem;border-top:1px solid var(--line);font-size:1rem}
+  .nav-links.open a:first-child{border-top:none}
+}
+@media (orientation:landscape) and (max-height:500px){
+  .section{max-width:none}
+}
+
+/* === Three-Lens Ledger brand components (Instinct, 2026-11-03) === */
+
+/* Ledger divider motif (pengganti sunset stripes) */
+.ledger-divider{
+  height:2px;background:var(--ink);margin:2.5rem 0;position:relative;
+}
+.ledger-divider::after{
+  content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line);
+}
+
+/* Lens panels — tiga lensa dengan warna aksen masing-masing */
+.lens-panels{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.lens-panel{
+  border:2px solid var(--ink);border-radius:var(--radius);padding:1.2rem;
+  background:var(--card);
+}
+.lens-panel.lens-investment{background:var(--lens-investment)}
+.lens-panel.lens-credit{background:var(--lens-credit)}
+.lens-panel.lens-forensic{background:var(--lens-forensic)}
+.lens-panel h3{font-family:var(--font-body);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .4rem;color:var(--ink)}
+.lens-panel .lens-q{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--ink);margin:0}
+@media (max-width:700px){
+  .lens-panels{grid-template-columns:1fr}
+}
+
+/* Tagline & mantra */
+.brand-tagline{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--ink);margin:0 0 .5rem}
+.brand-mantra{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.9rem;color:var(--ink-soft)}
+
+/* Editorial rule callout (area forensik) */
+.editorial-rule{
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--lilac);padding:1rem 1.2rem;margin:1.5rem 0;
+}
+.editorial-rule strong{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.editorial-rule p{margin:0;font-style:italic}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}

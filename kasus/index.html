@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perpustakaan Kasus · FSA Lab</title>
+<meta name="description" content="Indeks matriks case FSA Lab: guided, blind, fraud — per sektor, per level, per peran. Dengan status progres dan prompt kalibrasi kesulitan.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/kasus/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.filters{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;margin:1rem 0 1.4rem}
+.fgroup{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.fgroup .flab{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin-right:.2rem}
+.fchip{border:2px solid var(--ink);border-radius:20px;padding:.2rem .8rem;font-size:.8rem;font-weight:600;
+  background:#fffdf7;cursor:pointer}
+.fchip.on{background:var(--ink);color:#fffdf7}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1rem}
+.ccard{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.ccard h3{font-family:var(--font-display);margin:0;font-size:1.08rem}
+.ccard .meta{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:20px;border:1px solid var(--ink)}
+.tag.tipe-guided{background:#e9ecf5;color:#3a4a7a}
+.tag.tipe-blind{background:#fdf3d7;color:#8a6d1a}
+.tag.tipe-fraud{background:#fbe9e9;color:#a33}
+.tag.peran-ujian{background:var(--ink);color:#fffdf7}
+.tag.peran-latihan{background:#fff;color:var(--ink-soft)}
+.tag.lvl-est{background:#f0ede4;color:var(--ink-soft)}
+.tag.lvl-cal{background:#eef7e8;color:#2e5d33;border-color:#2e5d33}
+.tag.st-belum{background:#fff;color:var(--ink-soft)}
+.tag.st-jalan{background:#fdf3d7;color:#8a6d1a;border-color:#8a6d1a}
+.tag.st-selesai{background:#eef7e8;color:#2e5d33;border-color:#2e5d33}
+.tag.imp{background:#2b2b2b;color:#ffd75e;border-color:#2b2b2b}
+.ccard p.desc{font-size:.86rem;color:var(--ink-soft);margin:0;flex:1}
+.ccard .prow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.ccard.soon{opacity:.65;border-style:dashed}
+.calib{font-size:.8rem;border-top:1px dashed var(--ink-soft);padding-top:.5rem;margin-top:.2rem}
+.calib .cbtn{border:1px solid var(--ink);border-radius:14px;background:#fff;padding:.15rem .7rem;font-size:.78rem;cursor:pointer;margin-right:.3rem}
+.calib .cbtn:hover{background:var(--mustard)}
+table.matrix{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.6rem}
+table.matrix th,table.matrix td{border:1px solid var(--ink);padding:.4rem .5rem;text-align:left;vertical-align:top}
+table.matrix th{background:var(--ink);color:#fffdf7;font-size:.76rem}
+table.matrix td .mitem{display:block;font-size:.78rem;margin:.1rem 0}
+.pathbanner{border:2px solid var(--ink);border-radius:var(--radius);background:var(--mustard);
+  padding:.9rem 1.1rem;margin-bottom:1.4rem;font-size:.9rem}
+.pathbanner strong{font-family:var(--font-display)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">CL</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Case Library · Indeks Matriks</p>
+  <h1>Perpustakaan <em>Kasus.</em></h1>
+  <p class="lede">Semua case FSA Lab dalam satu matriks: <strong>sektor × tipe × level</strong>.
+  Guided untuk masuk, blind untuk latihan, fraud untuk pola skandal — dan ujian untuk bukti kemampuan.
+  Status progres dibaca dari browser-mu sendiri.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>🕵️ Catatan impostor.</strong> Beberapa drill <em>blind</em> mengandung
+    <strong>impostor</strong> — 1–2 anomali data halus yang disuntik tanpa pemberitahuan ke kartu referensi.
+    Kami <strong>tidak menandai drill mana</strong> yang sedang armed; ketidakpastian adalah latihannya.
+    Satu-satunya cara menangkapnya: cek konsistensi (mekanik yang sudah diajarkan) dan cross-check ke filing asli.
+    Debrief + badge <em>Impostor spotted</em> menunggumu di langkah 5.
+  </div>
+
+  <div class="pathbanner">
+    <strong>Jalur yang disarankan:</strong>
+    <a href="/bedah-filing/">Bedah Filing SOCI</a> (guided) →
+    <a href="/bedah-sendiri/klbf/">Bedah Sendiri KLBF</a> (blind) →
+    <a href="/bedah-sendiri/bbri/">Bank Practice BBRI</a> (blind bank) →
+    <a href="/ujian/">Ujian BBCA</a> (prasyarat: M38 lulus).
+    Case fraud bisa disisipkan kapan pun sebagai pola pembanding.
+    Track sektor: <a href="/healthcare/">Healthcare (eksperimen)</a>.
+  </div>
+
+  <h2>Filter</h2>
+  <div class="filters" id="filters"></div>
+
+  <h2>Matriks sektor × tipe</h2>
+  <div class="tblwrap"><table class="matrix" id="matrix"></table></div>
+
+  <h2 style="margin-top:1.6rem">Semua case <span id="case-count" class="mono"></span></h2>
+  <div class="casegrid" id="casegrid"></div>
+
+  <h2 style="margin-top:1.6rem">Segera hadir</h2>
+  <div class="casegrid" id="soongrid"></div>
+  <p style="font-size:.85rem;color:var(--ink-soft)">Slot kosong prioritas — transparan soal roadmap, bukan link mati.
+  Tiap case baru butuh verifikasi benchmark penuh ke filing aslinya sebelum dibuka.</p>
+
+  <h2 style="margin-top:1.6rem">Meja keputusan</h2>
+  <p style="font-size:.92rem">FSA Lab mengajar MEMBACA. Dua web saudara mengajar MEMUTUSKAN:</p>
+  <div class="casegrid">
+    <article class="ccard">
+      <span class="kicker">Lensa kredit</span>
+      <h3>Credit Desk</h3>
+      <p>Putuskan seperti pemberi pinjaman — Credit Decision Simulator, Covenant Designer, Monitoring Drill.</p>
+      <div class="prow"><a href="https://credit-desk-afy.pages.dev/">Kunjungi →</a></div>
+    </article>
+    <article class="ccard">
+      <span class="kicker">Lensa investasi</span>
+      <h3>Investment Desk</h3>
+      <p>Putuskan seperti pemilik bisnis — thesis, valuasi &amp; Investment Committee Simulator.</p>
+      <div class="prow"><a href="https://investment-desk.pages.dev/">Kunjungi →</a></div>
+    </article>
+    <article class="ccard">
+      <span class="kicker">Modelling</span>
+      <h3>FMVA Sprint</h3>
+      <p>Belajar memodelkan &amp; menilai — 30 hari financial modelling, 9 real cases. Real Case 6 (BBCA) = artefak valuasi untuk "one issuer, three artifacts".</p>
+      <div class="prow"><a href="https://fmva-sprint.pages.dev/">Kunjungi →</a></div>
+    </article>
+  </div>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">
+  Level bertanda <span class="tag lvl-est">estimasi</span> = perkiraan builder, belum dikalibrasi.
+  Setelah kamu menyelesaikan satu case, nilai kesulitannya — label
+  <span class="tag lvl-cal">terkalibrasi</span> hanya dari pilot (bukan ditempel).
+  <a href="../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/case-registry.js"></script>
+<script src="../js/kasus-index.js"></script>
+</body>
+</html>

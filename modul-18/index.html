@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 18 — Forecasting &amp; Valuasi · FSA Lab</title>
+<meta name="description" content="Modul 18 FSA Lab: dari forecast menjadi valuasi — merangkai 18 modul menjadi keputusan.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-18/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M18</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 3</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 18</span>
+</nav>
+<p class="mod-count">Modul 18 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 3 · Modul 18</p>
+  <h1>Berapa <em>Nilainya?</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): forecast 2026
+    penjualan <strong>598.000</strong>, EV ilustrasi <strong>277.778</strong>. Di modul terakhir ini
+    kamu merangkai forecast menjadi valuasi — dengan catatan jujur:
+    <strong>ilustrasi mekanik, bukan rekomendasi</strong>.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Dari Forecast ke Nilai</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>asumsi → forecast → valuasi</strong> —
+    dan seberapa sensitif hasilnya.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="fc">Forecast 2026 (ilustratif)</button>
+    <button class="stmt-tab" data-stmt="val">Jembatan ke Valuasi</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Uji Sensitivitasnya</h2>
+  <p class="sub">Enam perubahan asumsi. Tebak arah <strong>dua ukuran</strong> per skenario —
+    naik, turun, atau tetap.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Hitung Valuasinya</h2>
+  <p class="sub">Empat angka valuasi. Hitung — lalu ingat: ini ilustrasi, bukan rekomendasi.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Rekomendasi Akhir — BELI / TAHAN / JUAL Cemerlang?</h2>
+  <p class="sub">Sintesis 18 modul: dari persamaan akuntansi hingga valuasi. Beri rekomendasi
+    akhirmu dengan alasan dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> JUAL (atau minimal: jangan beli). DCF ilustratif: <span class="num">EV 277.778</span> (FCFF <span class="num">25.000</span> didiskon <span class="num">WACC 12%</span>, <span class="num">g 3%</span>) dikurangi utang bersih <span class="num">180.000</span> = nilai ekuitas <span class="num">97.778</span> &mdash; JAUH di bawah nilai buku <span class="num">179.440</span>. Tiga alasan: (1) pasar membayar ekuitas di atas nilai DCF-nya &mdash; tidak ada <em>margin of safety</em>; (2) <em>terminal value</em> mendominasi EV &mdash; ubah g dari 3% ke 2%, EV jatuh ~10% (hitungan saya); (3) <em>forecast</em> mengasumsikan <span class="num">GM 35%</span> &amp; DSO tetap &mdash; padahal M2/M4/M13 menunjukkan kualitasnya retak.</p>
+<p><strong>Lensa kredit:</strong> setelah 18 modul &mdash; TIDAK layak untuk kredit jangka panjang tanpa restrukturisasi syarat. <span class="num">D/E 1,52x</span> oke di atas kertas, tapi <span class="num">FCFE &minus;5.760</span>, dividen dari utang, dan DSO memburuk = arus kas tidak menopang tenor panjang. Syarat saya: tenor &le; 3 tahun, amortisasi (bukan <em>bullet</em>), <em>covenant</em> DSCR &ge; 1,25x, dan larangan dividen bila FCFE negatif.</p>
+<p><strong>Lensa forensik:</strong> tiga hal paling saya curigai &mdash; dan penutupnya: (1) piutang <span class="num">104.000</span> &mdash; berapa yang benar-benar tertagih? (bukti penutup: koleksi Q1 2026); (2) <em>capex</em> <span class="num">48.000</span> &mdash; <em>maintenance</em> atau ekspansi? (bukti: kapasitas terpakai); (3) <em>one-off</em> <span class="num">8.000</span> &mdash; kenapa dijual tahun ini? (bukti: akta jual &amp; valuasi independen). Satu hal yang membunuh SEMUA tesis di atas: bila WACC yang benar 14% (bukan 12%) &mdash; EV jatuh ke ~227.000 dan ekuitas ilustratif tinggal ~47.000. Valuasi adalah opini yang dibungkus aritmetika.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang Terakhir</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan kurikulum.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-17/" class="pn-prev">← Modul 17</a>
+  <a href="/modul-19/" class="pn-next">Modul 19 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 18 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul18.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

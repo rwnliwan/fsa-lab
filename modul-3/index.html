@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3 — Margin, Return &amp; Common-Size · FSA Lab</title>
+<meta name="description" content="Modul 3 FSA Lab: seberapa cuan? Bedah margin, ROA/ROE/ROIC, DuPont, dan common-size analysis.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-3/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M3</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 1</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 3</span>
+</nav>
+<p class="mod-count">Modul 3 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 1 · Fondasi · Modul 3</p>
+  <h1>Seberapa <em>Cuan?</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): laba +53%, tapi
+    <strong>apakah bisnisnya makin menguntungkan?</strong> Di modul ini kamu bedah margin,
+    return atas modal (ROA/ROE/ROIC), dan membaca laporan dalam common-size.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Anatomi Keuntungan</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>dari mana cuan datang</strong> — margin,
+    perputaran aset, dan leverage. Kolom % = common-size (persen dari penjualan / total aset).</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="is">Income Statement</button>
+    <button class="stmt-tab" data-stmt="bs">Balance Sheet &amp; Return</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Tebak Arah Rasio</h2>
+  <p class="sub">Enam keputusan manajemen. Untuk tiap skenario, tebak arah <strong>dua rasio</strong> —
+    naik, turun, atau tetap. Inilah cara analis membaca "ROE naik" dengan curiga.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Mesin Return</h2>
+  <p class="sub">Empat rasio inti profitabilitas. Hitung dari laporan, lalu nilai: cuan beneran atau cuan akuntansi?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Beli Saham Cemerlang?</h2>
+  <p class="sub">ROE 28,3%, ROIC 15,8% (asumsi WACC 12%). Harga saham naik 40% tahun ini.
+    Berdasarkan struktur profitabilitas di atas, tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> BELI parsial. <span class="num">ROE 28,3%</span> terlihat spektakuler, tapi DuPont membedahnya: margin EBIT <span class="num">13,8%</span> &times; <span class="num">ATO 1,25</span> &times; <span class="num">leverage 2,60</span> &times; (<em>tax burden</em> <span class="num">78,0%</span> &times; <em>interest burden</em> <span class="num">80,6%</span>) &mdash; sepertiga <em>return</em> datang dari <em>leverage</em>, bukan operasi. Kabar baiknya: <span class="num">ROIC 15,8% &gt; WACC 12%</span> (angka modul), jadi operasi menciptakan nilai di atas biaya modal. Harga <span class="num">+40%</span> tahun ini berarti sebagian kabar baik sudah <em>priced in</em> &mdash; beli bertahap, bukan <em>all-in</em>.</p>
+<p><strong>Lensa kredit:</strong> struktur modal masih aman untuk kreditur: <span class="num">coverage 5,14x</span>, utang berbunga <span class="num">141.440</span> terhadap <span class="num">EBITDA 102.000</span> (1,39x). Batas bahaya saya: bila OM turun ke level 2024 (<span class="num">12,0%</span>) sementara beban bunga naik &mdash; <em>coverage</em> jatuh ke ~3x dan <em>leverage</em> terasa jauh lebih berat.</p>
+<p><strong>Lensa forensik:</strong> tiga cek sebelum percaya ROE 28,3%: (1) berapa porsi laba dari akrual? <em>Accrual gap</em> <span class="num">14.440</span> vs NI <span class="num">45.240</span> = 32% laba belum jadi kas; (2) apakah <span class="num">GM 35,0%</span> vs <span class="num">34,0%</span> (2024) naik karena efisiensi atau penangguhan beban?; (3) <span class="num">DSO 73 hari</span> &mdash; apakah penjualan akhir tahun dipompa untuk mengangkat margin? Satu hal yang membunuh tesis: margin kembali ke 12% &mdash; ROE jatuh ke ~22% dan harga +40% menjadi kemahalan.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 4.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-2/" class="pn-prev">← Modul 2</a>
+  <a href="/modul-4/" class="pn-next">Modul 4 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 3 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul3.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

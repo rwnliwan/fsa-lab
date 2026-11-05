@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Forensics Theater: Garuda · FSA Lab</title>
+<meta name="description" content="Timeline interaktif kasus Garuda Indonesia 2016–2019: angka kunci dan red flag yang muncul tahun demi tahun, dari filing resmi.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/theater/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.th-disclaimer{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:1rem 1.3rem;
+  font-size:.85rem;line-height:1.6;margin-bottom:1.6rem}
+.th-disclaimer strong{color:var(--mustard)}
+.th-stage{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.6rem;box-shadow:5px 5px 0 var(--ink);margin-bottom:1.4rem}
+.th-year{font-family:var(--font-display);font-size:clamp(3rem,9vw,5rem);line-height:1;color:var(--sunset-deep)}
+.th-yearlbl{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft);margin-bottom:1rem}
+.th-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.8rem;margin:1rem 0 1.4rem}
+.th-num{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:.8rem 1rem}
+.th-num .k{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-soft);display:block;margin-bottom:.2rem}
+.th-num .v{font-family:var(--font-mono);font-weight:700;font-size:1.35rem}
+.th-num .v.pos{color:var(--teal-deep)}
+.th-num .v.neg{color:var(--sunset-deep)}
+.th-num .src{font-size:.72rem;color:var(--ink-soft);display:block;margin-top:.25rem}
+.th-flags h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.6rem}
+.th-flag{border:2px solid var(--ink);border-radius:10px;padding:.7rem .95rem;margin-bottom:.55rem;
+  font-size:.89rem;line-height:1.55;background:#fbf3dd;border-color:#a67c1a}
+.th-flag.new{background:#fbe7df;border-color:var(--sunset-deep);box-shadow:3px 3px 0 var(--sunset-deep)}
+.th-flag .ftag{font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;
+  display:inline-block;margin-bottom:.25rem;padding:.1rem .5rem;border-radius:6px;background:var(--sunset-deep);color:#fff}
+.th-flag.oldf .ftag{background:var(--ink-soft)}
+.th-flag.oldf{opacity:.75;background:var(--paper)}
+.th-ctl{display:flex;align-items:center;gap:1rem;margin:1.2rem 0;flex-wrap:wrap}
+.th-ctl input[type=range]{flex:1;min-width:12rem;accent-color:var(--sunset-deep);height:2rem}
+.th-marks{display:flex;justify-content:space-between;max-width:100%;margin-top:-.4rem}
+.th-marks button{font-family:var(--font-mono);font-size:.8rem;border:2px solid var(--ink);background:var(--card);
+  border-radius:8px;padding:.25rem .7rem;cursor:pointer;color:var(--ink)}
+.th-marks button.active{background:var(--ink);color:var(--paper)}
+.th-nav{display:flex;gap:.6rem}
+.th-nav button{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:.5rem 1.1rem;
+  font-weight:600;cursor:pointer}
+.th-nav button:hover{background:var(--mustard)}
+.th-lesson{display:none;background:var(--ink);color:var(--paper);border-radius:var(--radius);
+  padding:1.4rem 1.6rem;margin-top:1.2rem}
+.th-lesson.show{display:block}
+.th-lesson h3{font-family:var(--font-display);color:var(--mustard);font-size:1.4rem;margin-bottom:.7rem}
+.th-lesson .les{background:#3a332a;border-radius:10px;padding:.75rem 1rem;margin-bottom:.6rem;font-size:.9rem;line-height:1.6}
+.th-lesson .les strong{color:var(--mustard)}
+.th-src{font-size:.78rem;color:var(--ink-soft);margin-top:1rem;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">CT</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Case Forensics Theater</p>
+  <h1>Garuda Indonesia, <em>2016 → 2019.</em></h1>
+  <p class="lede">Geser <strong>scrubber tahun</strong>. Setiap tahun menampilkan angka kunci dan
+    <strong>hanya red flag yang muncul di tahun itu</strong> — seperti analis yang hidup di masanya,
+    tanpa tahu akhir cerita.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="th-disclaimer">
+    <strong>⚖ Fakta, bukan opini.</strong> Seluruh angka dan peristiwa di bawah berasal dari
+    laporan tahunan PT Garuda Indonesia Tbk (GIAA), restatement 2018, dan pengumuman resmi regulator.
+    Angka dalam <strong>US$ juta</strong>. Tidak ada angka yang dikarang.
+  </div>
+
+  <div class="th-ctl">
+    <div class="th-nav">
+      <button id="th-prev" aria-label="Adegan sebelumnya">←</button>
+      <button id="th-next" aria-label="Adegan berikutnya">→</button>
+    </div>
+    <input type="range" id="th-range" min="2016" max="2019" step="1" value="2016" aria-label="Pilih tahun">
+  </div>
+  <div class="th-marks" id="th-marks"></div>
+
+  <div class="th-stage" style="margin-top:1.2rem">
+    <div class="th-year" id="th-year">2016</div>
+    <div class="th-yearlbl" id="th-yearlbl"></div>
+    <div class="th-nums" id="th-nums"></div>
+    <div class="th-flags">
+      <h3 id="th-flagtitle">Red flag yang muncul tahun ini</h3>
+      <div id="th-flags"></div>
+    </div>
+  </div>
+
+  <div class="th-lesson" id="th-lesson">
+    <h3>Pelajaran</h3>
+    <div id="th-lesson-body"></div>
+  </div>
+
+  <p class="th-src"><strong>Sumber per fakta:</strong><br>
+    • Laba 2016 (TOTAL): +US$9,36 jt (pemilik +US$8,07 jt); CFO +US$107,5 jt — Laporan Tahunan GIAA 2016.<br>
+    • Rugi 2017 (TOTAL): US$213,4 jt; CFO −US$61,7 jt — Laporan Tahunan GIAA 2017.<br>
+    • Piutang Mahata ±US$240 jt, penolakan tanda tangan dua komisaris, restatement rugi US$175,0 jt,
+    sanksi OJK &amp; pembekuan izin auditor — Laporan Tahunan GIAA 2018 (restatement) &amp; pengumuman resmi OJK / Kementerian Keuangan 2019.</p>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Case Forensics Theater · fakta dari filing resmi, untuk pembelajaran.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="theater.js"></script>
+</body>
+</html>

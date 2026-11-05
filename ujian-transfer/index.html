@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujian Transfer: UNVR FY2024 · FSA Lab</title>
+<meta name="description" content="Ujian transfer FSA Lab: buktikan skill analisismu pindah ke emiten BARU yang belum pernah dipelajari — PT Unilever Indonesia Tbk FY2024. Prasyarat: lulus ujian BBCA.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/ujian-transfer/">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.coachbanner{display:none;border:3px solid #8a6d1c;border-radius:var(--radius);background:#fdf3c8;
+  padding:.9rem 1.2rem;margin-bottom:1.4rem;font-size:.92rem;font-weight:600}
+.stepper{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.6rem}
+.step{border:2px solid var(--ink);border-radius:20px;padding:.3rem .9rem;font-size:.82rem;font-weight:600;background:#fffdf7}
+.step.done{background:#eef7e8}
+.step.active{background:var(--mustard)}
+.step.lock{opacity:.55}
+.bstep{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;margin-bottom:1.2rem;overflow:hidden}
+.bstep-head{background:var(--ink);color:#fffdf7;padding:.6rem 1.1rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.bstep-head .n{font-family:var(--font-mono);font-weight:700;background:var(--mustard);color:var(--ink);
+  border-radius:50%;width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.bstep-head h2{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.bstep-body{padding:1rem 1.2rem}
+.bstep-body textarea{width:100%;border:2px solid var(--ink);border-radius:8px;padding:.6rem .8rem;
+  font-family:var(--font-body);font-size:.9rem;min-height:5.5rem;box-sizing:border-box}
+.bstep-body input[type=text]{border:2px solid var(--ink);border-radius:8px;padding:.45rem .6rem;
+  font-family:var(--font-body);font-size:.88rem;box-sizing:border-box}
+.bstep-body select{border:2px solid var(--ink);border-radius:8px;padding:.35rem .4rem;font-size:.82rem;background:#fff}
+.bstep-body input[type=checkbox],.bstep-body input[type=radio]{transform:scale(1.3);accent-color:var(--ink)}
+table.figs{width:100%;border-collapse:collapse;font-size:.82rem}
+table.figs th,table.figs td{border:1px solid var(--ink);padding:.4rem .5rem;vertical-align:top}
+table.figs th{background:var(--ink);color:#fffdf7;font-size:.78rem}
+table.figs tr.ndrow td{background:#f3f0e6;color:var(--ink-soft)}
+table.figs input[type=text]{width:100%;min-width:5rem}
+.okmsg{color:#2e5d33;font-weight:600;font-size:.9rem;margin-top:.6rem}
+.ck-row{display:flex;gap:.8rem;align-items:flex-start;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.7rem .9rem;margin-bottom:.6rem;background:#fffdf7}
+.ck{font-family:var(--font-mono);font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;flex:none;margin-top:.15rem}
+.ck.ok{background:#eef7e8;color:#2e5d33;border:1px solid #2e5d33}
+.ck.bad{background:#fbe9e9;color:#a33;border:1px solid #a33}
+.ck.skip{background:#f0ede4;color:var(--ink-soft);border:1px solid var(--ink-soft)}
+.ck-det{font-size:.88rem}
+.ck-hint{font-size:.82rem;color:var(--ink-soft)}
+.lens{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem;margin-bottom:.9rem}
+.lens h3{font-family:var(--font-display);margin:0 0 .4rem}
+.lens .q{font-size:.88rem;color:var(--ink-soft);margin-bottom:.6rem}
+.cnt{font-size:.78rem;color:var(--ink-soft);margin-top:.3rem}
+.cnt.ok{color:#2e5d33;font-weight:700}
+tr.diverge td{background:#fdf3d7}
+#s4-locknote{display:none;border:2px dashed var(--ink);border-radius:var(--radius);padding:.7rem 1rem;
+  font-size:.88rem;background:#f7f3e8;margin-top:.8rem}
+.btnrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:.9rem}
+.readtask{border:2px dashed var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin:.8rem 0;background:#fff}
+.readtask li{margin-bottom:.4rem;font-size:.9rem}
+.attest{border:2px solid var(--ink);border-radius:var(--radius);padding:.9rem 1.1rem;margin:.8rem 0;background:#fffdf7}
+.attest label{display:block;margin:.5rem 0;font-size:.9rem}
+.rubk{border:2px solid var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:.7rem;background:#fffdf7}
+.rubk h4{margin:0 0 .3rem;font-family:var(--font-display)}
+.verdict{border:3px solid var(--ink);border-radius:var(--radius);padding:1.2rem;margin:1.2rem 0;text-align:center;background:#fffdf7}
+.verdict h2{font-family:var(--font-display);font-size:1.6rem;margin:.3rem 0}
+.verdict.pass{background:#eef7e8}
+.verdict.fail{background:#fbe9e9}
+#timerline{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft)}
+.ratio-row{display:flex;flex-wrap:wrap;gap:.8rem;margin:.6rem 0}
+.ratio-row label{font-size:.85rem}
+.ratio-row input{width:7rem}
+.memo-guide{background:#fff;border:2px dashed var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin:.8rem 0;font-size:.88rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">UT</span></span>
+</nav>
+
+<div class="coachbanner" id="coachbanner" role="alert">
+  ⚠️ <strong>MODE COACHED.</strong> Attempt blind-mu sudah terkunci. Ujian ini berjalan sebagai
+  <strong>latihan berlabel</strong>. Rubrik tetap dihitung — vonisnya dilabeli COACHED.
+</div>
+
+<header class="modul-hero">
+  <p class="kicker">Ujian transfer · bukti "dikuasai"</p>
+  <h1>Ujian Transfer: <em>UNVR FY2024.</em></h1>
+  <p class="lede">Lulus ujian BBCA membuktikan kamu bisa membaca <strong>satu</strong> bank.
+  Ujian ini membuktikan skill-mu <strong>pindah</strong> — ke emiten yang belum pernah kamu pelajari:
+  PT Unilever Indonesia Tbk, tahun buku 2024 (barang konsumen, <strong>bukan bank</strong>).
+  Kerjakan unaided. Hasilnya = bukti transfer kemampuanmu.</p>
+  <p id="timerline" style="display:none">⏱ <span id="elapsed">0 menit</span> · durasi saran: 2 jam satu sesi</p>
+</header>
+
+<section class="modul-sec">
+  <div class="bstep" id="briefing">
+    <div class="bstep-head"><span class="n">0</span><h2>Briefing &amp; prasyarat</h2></div>
+    <div class="bstep-body">
+      <div class="honest">
+        <strong>Apa ini.</strong> Ujian kedua FSA Lab. Bedanya dengan ujian BBCA: emitennya
+        <strong>non-bank</strong> dan belum pernah muncul di modul/latihan manapun. Kalau kamu lulus di sini,
+        itu bukti mekanikmu <strong>transfer</strong> — bukan hafal pola satu bank.
+        <br><br>
+        <strong>Aturan main.</strong> (1) Kerjakan unaided — tanpa membuka catatan modul.
+        (2) Benchmark hanya terbuka di langkah 5 dan <strong>mengunci</strong> jawabanmu.
+        (3) Catat sumber tiap angka (halaman/catatan). (4) Satu blind attempt, terkunci permanen —
+        pengulangan = mode coached berlabel.
+      </div>
+      <h3>Prasyarat</h3>
+      <p id="gate-exam">…</p>
+      <div class="attest">
+        <label><input type="checkbox" id="att-blind"> Saya <strong>belum</strong> pernah mengerjakan studi/bedah atas laporan tahunan UNVR 2024 di FSA Lab (atau di tempat lain secara mendalam).</label>
+        <label><input type="checkbox" id="att-honest"> Saya kerjakan unaided dan jujur soal kontaminasi — memilih BLIND padahal sudah melihat = memalsukan bukti diri sendiri.</label>
+      </div>
+      <div class="btnrow">
+        <button class="btn btn-primary" id="start-exam">Mulai ujian transfer →</button>
+        <span class="okmsg" id="s0-ok"></span>
+      </div>
+      <p class="sub" id="s0-note">Durasi saran: <strong>2 jam</strong> satu sesi. Tidak ada countdown paksa — waktumu dicatat pasif sebagai bagian dari bukti.</p>
+    </div>
+  </div>
+
+  <div class="stepper" id="stepper" aria-label="Progres ujian transfer"></div>
+
+  <section class="modul-sec" id="exam-body" style="display:none">
+    <div class="bstep" id="bstep1">
+      <div class="bstep-head"><span class="n">1</span><h2>Baca (blind) — UNVR FY2024</h2></div>
+      <div class="bstep-body">
+        <p>Sumber bacaan: <strong>siaran pers FY2024</strong> (unilever.co.id, 13 Feb 2025) +
+        <strong>LK Interim H1 2025</strong> kolom 31 Des 2024 (auditan) untuk neraca.
+        Cari tahu: status audit &amp; auditor, periode laporan, satuan filing.</p>
+        <ul class="readtask">
+          <li>Temukan <strong>auditor &amp; opini audit</strong> FY2024 (di pengumuman IDX).</li>
+          <li>Catat <strong>periode &amp; satuan</strong> yang dipakai filing.</li>
+          <li>Temukan <strong>satu anomali</strong> yang membuatmu penasaran (mis. angka yang "tidak masuk akal" di pandangan pertama).</li>
+        </ul>
+        <p><label>Auditor &amp; opini:<br><input type="text" id="s1-audit" placeholder="mis. KAP … — WTM" style="width:100%;max-width:26rem"></label></p>
+        <p><label>Satu anomali yang menarik perhatianmu:<br><textarea id="s1-anom" placeholder="Satu angka/fakta yang terasa janggal…"></textarea></label></p>
+        <p><label><input type="checkbox" id="s1-read"> Saya sudah membaca sumbernya (honor system — jujur ke diri sendiri).</label></p>
+        <div class="btnrow"><button class="btn btn-primary" id="s1-save">Simpan langkah 1 →</button><span class="okmsg" id="s1-ok"></span></div>
+      </div>
+    </div>
+
+    <div class="bstep" id="bstep2">
+      <div class="bstep-head"><span class="n">2</span><h2>Input 20 angka + disiplin sumber</h2></div>
+      <div class="bstep-body">
+        <p>Satuan default: <strong>Rp juta</strong> (kecuali EPS Rp dan saham lembar).
+        Tiap baris: nilai + halaman/catatan sumber. Centang <strong>ND</strong> bila tidak diungkapkan di sumbermu.</p>
+        <div class="tblwrap"><table class="figs">
+          <thead><tr><th>Pos</th><th>Nilai</th><th>ND</th><th>Sumber (halaman/catatan)</th></tr></thead>
+          <tbody id="fig-tbody"></tbody>
+        </table></div>
+        <div class="btnrow"><button class="btn btn-primary" id="s2-save">Simpan 20 baris →</button><span class="okmsg" id="s2-ok"></span></div>
+      </div>
+    </div>
+
+    <div class="bstep" id="bstep3">
+      <div class="bstep-head"><span class="n">3</span><h2>Cek mekanis</h2></div>
+      <div class="bstep-body">
+        <p>Mesin tidak menilai — ia memverifikasi. Jalankan, baca yang gagal, perbaiki inputmu bila perlu.</p>
+        <h4>Rasio yang kamu hitung (ketik angkamu):</h4>
+        <div class="ratio-row">
+          <label>Gross margin %<br><input type="text" id="r-gm" placeholder="mis. 35,0"></label>
+          <label>Net profit margin %<br><input type="text" id="r-npm" placeholder="mis. 12,0"></label>
+          <label>Current ratio (x)<br><input type="text" id="r-cr" placeholder="mis. 1,50"></label>
+          <label>D/E (x)<br><input type="text" id="r-de" placeholder="mis. 0,80"></label>
+          <label>Payout ratio %<br><input type="text" id="r-payout" placeholder="mis. 40,0"></label>
+          <label>CFO / laba %<br><input type="text" id="r-cfocov" placeholder="mis. 110,0"></label>
+        </div>
+        <div class="btnrow"><button class="btn btn-primary" id="s3-run">Jalankan cek →</button><span class="okmsg" id="s3-ok"></span></div>
+        <div id="check-results" style="margin-top:1rem"></div>
+      </div>
+    </div>
+
+    <div class="bstep" id="bstep4">
+      <div class="bstep-head"><span class="n">4</span><h2>3 lensa — thesis testing</h2></div>
+      <div class="bstep-body">
+        <p>Tiap lensa: <strong>min. 50 karakter + minimal 1 angka dikutip</strong>. Pola thesis testing:
+        sisi <strong>penguat</strong> DAN sisi <strong>pematah</strong> — bukan cherry-picking.</p>
+        <div class="lens">
+          <h3>🟠 Lensa investasi</h3>
+          <p class="q">UNVR mencetak ROE &gt;100% tapi ekuitasnya hanya Rp2,1 T dari aset Rp16 T. Apakah ini kualitas atau kerapuhan? Bangun argumen dua sisi.</p>
+          <textarea id="lens-inv" placeholder="Contoh pola: ROE …% menguatkan karena …; tetapi ekuitas … mematahkan karena …"></textarea>
+          <p class="cnt" id="cnt-inv"></p>
+        </div>
+        <div class="lens">
+          <h3>🟢 Lensa kredit</h3>
+          <p class="q">Current ratio 0,45x, D/E 6,5x. Sebagai calon kreditur, apakah kamu khawatir? Apa yang menutup — atau memperparah — kekhawatiran itu?</p>
+          <textarea id="lens-cred" placeholder="Contoh pola: CFO Rp…T menutup pinjaman …; tetapi …"></textarea>
+          <p class="cnt" id="cnt-cred"></p>
+        </div>
+        <div class="lens">
+          <h3>🟣 Lensa forensik</h3>
+          <p class="q">Dividen Rp4,5 T &gt; laba bersih Rp3,4 T. Ditambah divestasi es krim Des 2024. Tulis <strong>pertanyaan investigasi</strong>-mu (bukan vonis).</p>
+          <textarea id="lens-foren" placeholder="Contoh pola: saya ingin investigasi … karena angkanya …; pertanyaan saya: …?"></textarea>
+          <p class="cnt" id="cnt-foren"></p>
+        </div>
+        <p><label><strong>Vonis 1 kalimat</strong> (maks 280 char):<br>
+        <input type="text" id="vonis" maxlength="280" placeholder="mis. Layak dipelajari — …" style="width:100%"></label></p>
+        <p><label><input type="checkbox" id="thesis-chk"> Setiap jawaban lensa saya memuat sisi <strong>penguat DAN sisi pematah</strong> (thesis testing, bukan cherry-picking).</label></p>
+        <div class="btnrow"><button class="btn btn-primary" id="s4-save">Simpan 3 lensa + vonis →</button><span class="okmsg" id="s4-ok"></span></div>
+        <div id="s4-locknote">🔒 <strong>Terkunci.</strong> Benchmark sudah dibuka — jawaban blind-mu dijaga apa adanya. Inilah upaya unaided-mu.</div>
+      </div>
+    </div>
+
+    <div class="bstep" id="bstep5">
+      <div class="bstep-head"><span class="n">5</span><h2>Benchmark reveal</h2></div>
+      <div class="bstep-body">
+        <div id="l5-gate">
+          <p>Membuka benchmark akan <strong>mengunci permanen</strong> jawaban langkah 1–4 (mode blind).
+          Pastikan kamu sudah puas dengan inputmu.</p>
+          <div class="btnrow"><button class="btn btn-primary" id="reveal-btn">Buka benchmark →</button></div>
+        </div>
+        <div id="l5-content" style="display:none">
+          <h4>Divergensi (inputmu vs benchmark)</h4>
+          <div class="tblwrap"><table class="figs">
+            <thead><tr><th>Pos</th><th>Inputmu</th><th>Benchmark</th><th>Selisih</th><th>Status</th></tr></thead>
+            <tbody id="div-table"></tbody>
+          </table></div>
+          <h4>Rasio benchmark</h4>
+          <div class="tblwrap"><table class="figs">
+            <thead><tr><th>Rasio</th><th>Benchmark</th><th>Catatan</th></tr></thead>
+            <tbody id="ratio-table"></tbody>
+          </table></div>
+          <div id="analyst" style="margin-top:1.4rem"></div>
+          <div class="btnrow"><button class="btn btn-primary" id="goto-rubrik">Lanjut ke rubrik &amp; vonis →</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bstep" id="rubrik-sec">
+      <div class="bstep-head"><span class="n">6</span><h2>Rubrik T1–T3 &amp; vonis</h2></div>
+      <div class="bstep-body">
+        <p><strong>LULUS = ketiga kriteria terpenuhi</strong> — ini sinyal belajar mandiri, bukan sertifikasi penguasaan. Selain itu = BELUM — dengan remedial spesifik.</p>
+        <div id="rubrik-list"></div>
+        <div class="verdict" id="verdict-panel" style="display:none">
+          <p class="sub" id="verdict-mode"></p>
+          <h2 id="verdict-text">…</h2>
+          <p id="verdict-remedial" style="font-size:.92rem"></p>
+        </div>
+        <div class="btnrow"><button class="btn btn-primary" id="rubrik-run">Hitung rubrik →</button><span class="okmsg" id="rubrik-ok"></span></div>
+      </div>
+    </div>
+
+    <div class="bstep" id="memo-sec">
+      <div class="bstep-head"><span class="n">7</span><h2>Red-flag memo mini (dinilai manual)</h2></div>
+      <div class="bstep-body">
+        <p>Mesin tidak bisa menilai ketajaman pertanyaanmu — <strong>Septian (kamu sendiri)</strong> yang menilai,
+        sejujur kamu membaca laporannya. Tulis memo singkat:</p>
+        <div class="memo-guide">
+          <strong>Struktur memo:</strong> (1) <strong>Temuan</strong> — 1 anomali angka (dengan nilai).
+          (2) <strong>Pertanyaan investigasi</strong> — diakhiri tanda tanya, bukan vonis.
+          (3) <strong>Data pendukung</strong> — angka/sumber yang menguatkan kenapa ini layak diinvestigasi.
+        </div>
+        <textarea id="memo" placeholder="Temuan: …&#10;Pertanyaan: …?&#10;Data pendukung: …"></textarea>
+        <p class="cnt" id="cnt-memo"></p>
+        <div class="attest">
+          <strong>Checklist nilai-sendiri (T3):</strong>
+          <label><input type="checkbox" id="memo-q"> Memo saya memuat <strong>pertanyaan investigasi</strong> (ada "?"), bukan vonis bersalah.</label>
+          <label><input type="checkbox" id="memo-num"> Memo saya mengutip <strong>minimal 2 angka</strong> dengan sumbernya.</label>
+          <label><input type="checkbox" id="memo-honest"> Saya menilai memo ini <strong>sejujur-jujurnya</strong> — bukan asal centang.</label>
+        </div>
+        <div class="btnrow"><button class="btn btn-primary" id="memo-save">Simpan memo →</button><span class="okmsg" id="memo-ok"></span></div>
+      </div>
+    </div>
+
+    <div class="bstep">
+      <div class="bstep-head"><span class="n">8</span><h2>Refleksi &amp; bukti</h2></div>
+      <div class="bstep-body">
+        <p><label><strong>a. Apa yang BERBEDA antara membaca bank (BBCA) vs consumer goods (UNVR)?</strong></label><br><textarea id="rf-a" placeholder="…"></textarea></p>
+        <p><label><strong>b. Mekanik mana yang ternyata transferable, dan mana yang harus dipelajari ulang per sektor?</strong></label><br><textarea id="rf-b" placeholder="…"></textarea></p>
+        <div class="btnrow"><button class="btn btn-primary" id="s8-save">Simpan refleksi →</button><span class="okmsg" id="s8-ok"></span></div>
+        <div class="btnrow"><button class="btn btn-primary" id="copy-lembar">Salin Lembar Transfer →</button><span class="okmsg" id="copy-ok"></span></div>
+        <div class="honest" style="margin-top:1.2rem">
+          <strong>Artefak ketiga.</strong> "One issuer, three artifacts" — tuang analisismu ke
+          <a href="/riset-note/"><strong>Research Note Builder</strong></a>: 7 section, bilingual, 5 hard gate publikasi.
+          Transfer yang terbukti + note yang publishable = portofolio analis ritel independen.
+        </div>
+        <p style="font-size:.85rem;color:var(--ink-soft)">Lembar Transfer = header + T1–T3 + 3 lensa + divergensi + memo + mode blind/coached + durasi. Bukti portofoliomu.</p>
+        <p class="sub"><button class="btn" id="reset-exam" style="font-size:.8rem">↺ Ulangi (attempt berikutnya = mode COACHED berlabel)</button></p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<footer class="modul-foot">
+  <a href="../index.html">← FSA Lab</a> · <a href="../ujian/">Ujian BBCA</a> · <a href="../kasus/">Case Library</a>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/ujian-transfer.js"></script>
+</body>
+</html>

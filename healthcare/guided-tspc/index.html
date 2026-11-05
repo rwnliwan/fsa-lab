@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guided: TSPC — Tiga Bisnis, Satu Laba yang Melonjak · FSA Lab</title>
+<meta name="description" content="Walkthrough terpandu LK auditan 2024 PT Tempo Scan Pacific Tbk: 12 pemberhentian, mini-lab, dan checkpoint. Revenue +4% tapi laba usaha +68% — dari mana?">
+<link rel="canonical" href="https://fsa-lab.pages.dev/healthcare/guided-tspc/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../../css/fonts.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.exp{border:3px dashed var(--ink);border-radius:var(--radius);background:#fdf3d7;
+  padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.92rem}
+.exp strong{font-family:var(--font-display)}
+.stop{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;margin-bottom:1.1rem;overflow:hidden}
+.stop-head{background:var(--ink);color:#fffdf7;padding:.6rem 1.1rem;display:flex;gap:.7rem;align-items:baseline}
+.stop-head .n{font-family:var(--font-mono);font-weight:700;background:var(--mustard);color:var(--ink);
+  border-radius:50%;width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.stop-head h3{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.stop-body{padding:1rem 1.2rem}
+.stop-body .loc{font-size:.8rem;color:var(--ink-soft);margin-bottom:.5rem}
+.stop-body .loc .mono{background:#f0e9d8;padding:.1rem .4rem;border-radius:4px}
+.fact{background:#f7f3e8;border-left:4px solid var(--mustard);padding:.6rem .9rem;margin:.6rem 0;font-size:.88rem}
+.fact .mono{font-weight:700}
+.modmap{font-size:.88rem;margin:.6rem 0}
+.modmap .tag{display:inline-block;background:var(--ink);color:#fffdf7;font-family:var(--font-mono);font-size:.75rem;
+  font-weight:700;padding:.15rem .55rem;border-radius:20px;margin:.12rem .2rem .12rem 0}
+.src-tag{display:inline-block;font-family:var(--font-mono);font-size:.68rem;font-weight:700;
+  letter-spacing:.04em;padding:.14rem .55rem;border-radius:20px;margin:0 .5rem .4rem 0;vertical-align:middle}
+.src-tag.q{background:#e8f0e4;color:#2e5d33;border:1px solid #2e5d33}
+.src-tag.c{background:#fdf3d7;color:#8a6d1a;border:1px solid #b89b2e}
+.src-tag.i{background:#e9ecf5;color:#3a4a7a;border:1px solid #5a6fa8}
+.src-legend{font-size:.85rem;background:#fffdf7;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.8rem 1.1rem;margin:.8rem 0 1.2rem;line-height:1.7}
+.toc{columns:2;font-size:.88rem;margin:.6rem 0 1.2rem 1.2rem}
+.toc li{margin-bottom:.3rem}
+@media (max-width:720px){.toc{columns:1}}
+.minilab{border:2px dashed #2e5d33;border-radius:var(--radius);background:#f2f7f1;padding:.8rem 1rem;margin:.7rem 0;font-size:.88rem}
+.minilab strong{font-family:var(--font-display)}
+.minilab .tugas{margin:.4rem 0}
+.minilab label{display:flex;gap:.5rem;align-items:flex-start;margin-top:.5rem;font-size:.85rem;cursor:pointer}
+.minilab input[type=checkbox]{margin-top:.25rem}
+.checkpoint{border-left:6px solid var(--mustard);background:#fffdf7;padding:.6rem .9rem;margin:.7rem 0;font-size:.88rem}
+.checkpoint strong{font-family:var(--font-display)}
+.stop details{margin-top:.6rem;border-top:1px dashed var(--ink-soft);padding-top:.6rem}
+.stop summary{cursor:pointer;font-weight:600;font-size:.9rem}
+.stop details p{font-size:.88rem;color:var(--ink-soft);margin:.4rem 0}
+.donebar{border:3px solid #2e5d33;border-radius:var(--radius);background:#f2f7f1;padding:1rem 1.2rem;margin:1.4rem 0;font-size:.92rem}
+.donebar button{border:2px solid #2e5d33;background:#2e5d33;color:#fff;border-radius:8px;
+  padding:.5rem 1.2rem;font-weight:700;cursor:pointer;font-size:.9rem}
+.donebar button:disabled{background:#9db8a3;border-color:#9db8a3;cursor:default}
+.prog{font-size:.85rem;color:#2e5d33;margin-top:.5rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../">← Track Healthcare</a>
+  <span class="brand"><span class="brand-badge">HC</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Healthcare · Guided Case (Eksperimen)</p>
+  <h1>TSPC: <em>tiga bisnis, satu laba yang melonjak.</em></h1>
+  <p class="lede">Walkthrough terpandu LK auditan 2024 PT Tempo Scan Pacific Tbk.
+  Revenue naik <strong>4%</strong> — laba usaha naik <strong>68%</strong>.
+  Dua belas pemberhentian untuk menjawab: dari mana selisihnya?</p>
+</header>
+
+<section class="modul-sec">
+  <div class="exp">
+    <strong>🧪 Label eksperimen — baca dulu.</strong>
+    Ini case guided kedua FSA Lab berpola SOCI (walkthrough, bukan blind):
+    <strong>janji guided = semua angka benar</strong>, dikutip dari filing.
+    Tugasmu bukan menebak angka — melainkan <em>menghitung ulang, memetakan ke modul,
+    dan menjawab pertanyaan analis</em> di tiap stop.
+  </div>
+
+  <div class="honest">
+    <strong>Kotak jujur — baca dulu.</strong>
+    Ini <strong>filing asli</strong>: <em>Laporan Keuangan Konsolidasian auditan untuk tahun yang berakhir
+    31 Desember 2024</em> PT Tempo Scan Pacific Tbk (ticker: <span class="mono">TSPC</span>),
+    diaudit oleh <strong>KAP Tanubrata Sutanto Fahmi Bambang &amp; Rekan</strong>
+    (jaringan BDO), ditandatangani <strong>24 Maret 2025</strong>.
+    Semua angka di halaman ini <strong>dikutip dari LK tersebut</strong> (atau dihitung langsung darinya) —
+    bukan angka ilustratif. Satuan: <strong>rupiah penuh</strong> (bukan ribuan — hati-hati membaca!).
+    Yang <strong>tidak</strong> dilakukan: mengaudit ulang angka perusahaan atau memberi rekomendasi investasi.
+    Kalau angka di sini beda dengan filing yang kamu unduh, percayai filing-nya — lalu kabari.
+  </div>
+
+  <h2>Identitas filing</h2>
+  <div class="tblwrap"><table class="stmt">
+    <tbody>
+      <tr><th style="text-align:left">Emiten</th><td>PT Tempo Scan Pacific Tbk — farmasi, produk konsumen &amp; kosmetik, jasa distribusi (Grup Tempo)</td></tr>
+      <tr><th style="text-align:left">Ticker</th><td><span class="mono">TSPC</span></td></tr>
+      <tr><th style="text-align:left">Dokumen</th><td><em>Laporan Keuangan Konsolidasian auditan FY2024</em> (dwibahasa Indonesia–Inggris)</td></tr>
+      <tr><th style="text-align:left">Auditor</th><td>KAP Tanubrata Sutanto Fahmi Bambang &amp; Rekan (BDO) — <span class="mono">24 Mar 2025</span></td></tr>
+      <tr><th style="text-align:left">Mata uang &amp; satuan</th><td><span class="mono">Rupiah penuh</span> — "Disajikan dalam Rupiah, kecuali dinyatakan lain"</td></tr>
+      <tr><th style="text-align:left">Segmen (Catatan 23)</th><td><strong>3 segmen:</strong> Farmasi · Produk Konsumen &amp; Kosmetik · Jasa Distribusi</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Peta jalan</h2>
+  <p class="sub">12 pemberhentian. Setiap stop: <strong>narasi guided → 🧪 mini-lab → ✅ checkpoint</strong>.
+  Mini-lab = hitung sendiri, cocokkan jawabannya. Checkpoint = pertanyaan analis, jawaban tersembunyi.</p>
+  <div class="src-legend"><strong>Legenda label tiap stop:</strong>
+    <span class="src-tag q">📄 Kutipan</span>teks/angka persis dari LK auditan TSPC 2024 ·
+    <span class="src-tag c">🧮 Hitungan FSA Lab</span>perhitungan kami dari angka-angka laporan ·
+    <span class="src-tag i">🧭 Interpretasi analis</span>opini &amp; panduan membaca — bukan isi filing.</div>
+  <ol class="toc">
+    <li><a href="#s1">Laba rugi headline — puzzle +4% vs +68%</a></li>
+    <li><a href="#s2">Tiga bisnis, tiga margin (segmen)</a></li>
+    <li><a href="#s3">Tuas iklan Rp1,54 triliun</a></li>
+    <li><a href="#s4">R&amp;D 0,03% — jebakan yang tidak berbunyi</a></li>
+    <li><a href="#s5">Persediaan: barang jadi +21%</a></li>
+    <li><a href="#s6">Piutang &amp; pihak berelasi — jebakan #3 diperiksa</a></li>
+    <li><a href="#s7">Operasi lain: swing Rp283,8 miliar</a></li>
+    <li><a href="#s8">Tempo Scan Industry: asosiasi → anak</a></li>
+    <li><a href="#s9">Konsentrasi pemasok: Nutricia Rp3,7 T</a></li>
+    <li><a href="#s10">Neraca benteng &amp; arus kas</a></li>
+    <li><a href="#s11">Pajak: ETR 20,0%</a></li>
+    <li><a href="#s12">Sintesis tiga lensa</a></li>
+  </ol>
+</section>
+
+<section class="modul-sec">
+
+<div class="stop" id="s1">
+  <div class="stop-head"><span class="n">1</span><h3>Laba rugi headline — puzzle +4% vs +68%</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Ekshibit B</span>, Laporan Laba Rugi Konsolidasian.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Penjualan neto <span class="mono">13.654.570.829.747</span></strong>
+      (2023: <span class="mono">13.119.784.555.987</span>) · <strong>laba bruto <span class="mono">5.177.515.424.584</span></strong> ·
+      beban penjualan <span class="mono">(2.783.982.283.097)</span> · beban umum &amp; administrasi <span class="mono">(695.488.627.666)</span> ·
+      <strong>laba usaha <span class="mono">1.808.850.676.042</span></strong> (2023: <span class="mono">1.079.831.152.322</span>) ·
+      <strong>laba neto <span class="mono">1.548.405.297.394</span></strong> (2023: <span class="mono">1.250.247.953.060</span>) ·
+      <strong>EPS <span class="mono">321</span></strong> (2023: <span class="mono">261</span>).</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span>Pertumbuhan penjualan <strong><span class="mono">+4,1%</span></strong>
+      vs pertumbuhan laba usaha <strong><span class="mono">+67,5%</span></strong>.
+      Margin operasi 2024 = <span class="mono">13,25%</span> (2023: <span class="mono">8,23%</span>) — ekspansi <strong>5 poin</strong> dalam setahun.</div>
+    <p class="modmap"><span class="tag">M4</span><span class="tag">M5</span><span class="tag">M6</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Inilah "puzzle" case ini: revenue nyaris datar, laba meledak. Analis yang berhenti di headline
+      akan menulis "kinerja cemerlang". Analis yang baik bertanya: <em>komponen apa yang bergerak?</em>
+      Tiga tersangka sudah terlihat di tabel ini — beban penjualan (TURUN), operasi lain (berbalik positif), dan segmen (stop 2).</p>
+    <div class="minilab"><strong>🧪 Mini-lab 1</strong>
+      <p class="tugas">Hitung sendiri: (a) margin operasi 2024 dan 2023; (b) margin neto 2024. Cocokkan dengan angka di atas.</p>
+      <label><input type="checkbox" data-lab="1"> Saya sudah menghitung dan mencocokkan (a) &amp; (b).</label>
+      <details><summary>Jawaban</summary>
+        <p>(a) 1.808.850.676.042 ÷ 13.654.570.829.747 = <strong>13,25%</strong>; 2023: 1.079.831.152.322 ÷ 13.119.784.555.987 = <strong>8,23%</strong>.
+        (b) 1.548.405.297.394 ÷ 13.654.570.829.747 = <strong>11,34%</strong>.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 1</strong>
+      <details><summary>Dari mana kira-kira 60%+ kenaikan laba usaha berasal, kalau revenue cuma +4%? (Tulis hipotesismu dulu, baru buka.)</summary>
+      <p>Tiga kontributor yang akan kita bedah: <strong>penghematan iklan</strong> (stop 3), <strong>ayunan operasi lain</strong> (stop 7),
+      dan <strong>pergeseran bauran segmen</strong> (stop 2). Catat hipotesismu — di stop 7 kita jumlahkan semuanya.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s2">
+  <div class="stop-head"><span class="n">2</span><h3>Tiga bisnis, tiga margin (segmen)</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 23</span>, Informasi Segmen Usaha.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>2024 — penjualan eksternal:</strong>
+      Farmasi <span class="mono">4.746.844.043.675</span> · Produk Konsumen &amp; Kosmetik <span class="mono">4.556.377.350.868</span> ·
+      Jasa Distribusi <span class="mono">4.351.349.435.204</span>. <strong>Laba bruto:</strong> Farmasi <span class="mono">2.341.720.889.236</span> ·
+      Konsumen <span class="mono">2.471.865.795.568</span> · Distribusi <span class="mono">363.928.739.780</span>.</div>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>2023 — penjualan:</strong> Farmasi <span class="mono">4.062.125.916.709</span> ·
+      Konsumen <span class="mono">4.119.835.549.280</span> · Distribusi <span class="mono">4.937.823.089.998</span>.
+      Laba bruto 2023: Farmasi <span class="mono">1.848.654.572.723</span> · Konsumen <span class="mono">2.356.482.994.363</span> ·
+      Distribusi <span class="mono">498.146.942.126</span>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Margin bruto per segmen 2024:</strong>
+      Farmasi <span class="mono">49,3%</span> · Konsumen &amp; Kosmetik <span class="mono">54,2%</span> · Distribusi <span class="mono">8,4%</span>.
+      Pertumbuhan penjualan: Farmasi <span class="mono">+16,9%</span> · Konsumen <span class="mono">+10,6%</span> · Distribusi <span class="mono">−11,9%</span>.
+      Distribusi = <strong>32%</strong> revenue tapi cuma <strong>7%</strong> laba bruto.</div>
+    <p class="modmap"><span class="tag">M8</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Ini "TSPC" yang sebenarnya: <strong>bukan satu perusahaan farmasi, melainkan tiga bisnis berbeda</strong> —
+      dua pabrikan bermargin ~50% dan satu distributor bermargin 8%.
+      Bauran bergeser menguntungkan di 2024: segmen margin-tinggi tumbuh, segmen margin-rendah menyusut.
+      Geografis: domestik <span class="mono">13.195.064.347.913</span> (<strong>96,6%</strong>) — ini bisnis Indonesia.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 2</strong>
+      <p class="tugas">Hitung margin bruto ketiga segmen tahun 2024. Segmen mana kontributor terbesar kenaikan laba bruto konsolidasian
+      (2024: 5.177,5 M vs 2023: 4.703,3 M)?</p>
+      <label><input type="checkbox" data-lab="2"> Saya sudah menghitung ketiga margin + kontributor kenaikan.</label>
+      <details><summary>Jawaban</summary>
+        <p>Farmasi: 2.341.720.889.236 ÷ 4.746.844.043.675 = <strong>49,3%</strong>. Konsumen: 2.471.865.795.568 ÷ 4.556.377.350.868 = <strong>54,2%</strong>.
+        Distribusi: 363.928.739.780 ÷ 4.351.349.435.204 = <strong>8,4%</strong>.
+        Kenaikan laba bruto total = 474,2 M; Farmasi naik 493,1 M — <strong>farmasi sendiri menjelaskan &gt;100% kenaikan</strong>
+        (distribusi turun 134,2 M). Ini pertumbuhan yang "berkualitas" secara bauran.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 2</strong>
+      <details><summary>Untuk valuasi, apakah TSPC layak dinilai dengan satu multiple? Kenapa?</summary>
+      <p>Tidak. <strong>Sum-of-the-parts</strong> lebih jujur: pabrikan farmasi/konsumen (margin ~50%, multiple tinggi)
+      vs distributor (margin 8%, multiple rendah). Satu multiple akan salah menghargai keduanya — pelajaran M8 + M24.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s3">
+  <div class="stop-head"><span class="n">3</span><h3>Tuas iklan Rp1,54 triliun</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 26</span>, Beban Usaha — Beban Penjualan.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Iklan dan promosi 2024: <span class="mono">1.537.733.890.480</span></strong>
+      (2023: <span class="mono">1.755.965.303.025</span>). Total beban penjualan <span class="mono">2.783.982.283.097</span>
+      (2023: <span class="mono">2.835.660.947.104</span>); beban umum &amp; administrasi <span class="mono">695.488.627.666</span>
+      (2023: <span class="mono">614.786.172.123</span>).</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Penghematan iklan = <span class="mono">Rp218,2 miliar</span> (−12,4%)</strong>.
+      Intensitas iklan: <span class="mono">11,3%</span> dari revenue (2023: <span class="mono">13,4%</span>).
+      Kenaikan laba usaha 2024 = <span class="mono">Rp729,0 miliar</span> → penghematan iklan menjelaskan <strong><span class="mono">29,9%</span></strong>-nya.</div>
+    <p class="modmap"><span class="tag">M6</span><span class="tag">M28</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Untuk consumer healthcare, iklan BUKAN beban administratif — ia adalah <strong>biaya akuisisi pelanggan yang berulang</strong>.
+      Iklan = 55% dari seluruh beban penjualan. Memotong iklan 12% sambil revenue tumbuh 4% terlihat seperti efisiensi —
+      tapi analis bertanya: <em>apakah pertumbuhan 2025 dibayar dengan budget 2024?</em>
+      Catatan 9 menyebut "iklan dan promosi dibayar di muka" — sebagian budget 2024 mungkin hanya <em>bergeser</em> waktunya.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 3</strong>
+      <p class="tugas">Hitung: (a) intensitas iklan 2024 &amp; 2023; (b) porsi penghematan iklan terhadap kenaikan laba usaha.</p>
+      <label><input type="checkbox" data-lab="3"> Saya sudah menghitung (a) &amp; (b).</label>
+      <details><summary>Jawaban</summary>
+        <p>(a) 1.537.733.890.480 ÷ 13.654.570.829.747 = <strong>11,26%</strong>; 2023: 1.755.965.303.025 ÷ 13.119.784.555.987 = <strong>13,38%</strong>.
+        (b) 218.231.412.545 ÷ 729.019.523.720 = <strong>29,9%</strong> — hampir sepertiga "keajaiban" laba 2024 adalah iklan yang tidak dibelanjakan.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 3</strong>
+      <details><summary>Manajemen mengklaim "efisiensi". Apa dua uji untuk membedakan efisiensi asli vs pengorbanan masa depan?</summary>
+      <p><strong>Uji 1 — pangsa pasar:</strong> kalau pangsa merek-merek TSPC (Bodrex, Hemaviton, Neo Hormoviton) bertahan/tumbuh dengan iklan lebih kecil = efisiensi asli.
+      <strong>Uji 2 — 2025:</strong> kalau revenue 2025 melambat padahal iklan dinaikkan lagi = 2024 "meminjam" pertumbuhan.
+      Keduanya di luar LK 2024 — analis mencatatnya sebagai <em>pertanyaan terbuka</em>, bukan vonis.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s4">
+  <div class="stop-head"><span class="n">4</span><h3>R&amp;D 0,03% — jebakan yang tidak berbunyi</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 26</span>, baris "Penelitian dan pengembangan" (di beban penjualan).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Penelitian dan pengembangan 2024: <span class="mono">4.644.797.903</span></strong>
+      (2023: <span class="mono">2.407.195.862</span>). Seluruhnya di-expense — <strong>tidak ada aset takberwujud R&amp;D yang dikapitalisasi</strong>
+      untuk pengembangan internal di neraca.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Intensitas R&amp;D = <span class="mono">0,034%</span> dari revenue</strong>
+      (4.644.797.903 ÷ 13.654.570.829.747). Naik 93% YoY — dari basis yang nyaris nol.</div>
+    <p class="modmap"><span class="tag">M12</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      <strong>Jebakan #1 berbunyi? Tidak.</strong> Tidak ada kapitalisasi = tidak ada laba yang "dipermanis" hari ini dan
+      amortisasi yang menghantui esok. Tapi angka 0,03% sendiri adalah informasi: TSPC <strong>bukan</strong> perusahaan
+      penemu obat (drug discovery butuh 5–15% revenue untuk R&amp;D). Modelnya = manufaktur + brand + distribusi.
+      Pelajaran jebakan: <em>kenali kapan sebuah jebakan relevan</em> — R&amp;D capitalization hanya berbahaya untuk emiten
+      yang R&amp;D-nya material. Di sini, memeriksanya dan menemukan nihil = hasil yang valid.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 4</strong>
+      <p class="tugas">Hitung R&amp;D intensity. Jika sebuah emiten farmasi mengkapitalisasi R&amp;D Rp500 M (bukan expense),
+      apa dampaknya ke laba tahun berjalan dan ke aset? (Jawab konseptual.)</p>
+      <label><input type="checkbox" data-lab="4"> Saya sudah menghitung + menjawab dampak kapitalisasi.</label>
+      <details><summary>Jawaban</summary>
+        <p>0,034%. Dampak kapitalisasi Rp500 M: laba tahun berjalan <strong>naik</strong> Rp500 M (beban pindah ke neraca sebagai aset),
+        aset naik Rp500 M — tapi laba tahun-tahun berikut <strong>terbebani amortisasi</strong>. Inilah "meminjam laba dari masa depan".</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 4</strong>
+      <details><summary>Kenapa R&D 0,03% bukan red flag untuk TSPC, padahal ini "perusahaan farmasi"?</summary>
+      <p>Karena segmen farmasi TSPC = <strong>manufaktur obat generik/OTC + distribusi</strong>, bukan riset molekul baru.
+      Produknya (Bodrex, Komix, etc.) adalah brand mapan. R&amp;D yang relevan = formulasi &amp; <em>line extension</em> —
+      murah. Red flag hanya jika emiten <em>mengklaim</em> pipeline inovatif tapi R&amp;D-nya nol.</p></details>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section class="modul-sec">
+
+<div class="stop" id="s5">
+  <div class="stop-head"><span class="n">5</span><h3>Persediaan: barang jadi +21%</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 8</span>, Persediaan.</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Persediaan neto <span class="mono">2.191.258.864.803</span></strong>
+      (2023: <span class="mono">1.865.035.784.855</span>). <strong>Barang jadi <span class="mono">1.560.527.637.582</span></strong>
+      (2023: <span class="mono">1.286.724.747.269</span>) · bahan baku <span class="mono">561.726.893.281</span>.
+      <strong>Penyisihan penurunan nilai <span class="mono">2.472.735.942</span></strong> (2023: <span class="mono">313.174.896</span>) —
+      dengan penambahan penyisihan <span class="mono">2.159.561.046</span> selama 2024.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Inventory days 2024 = <span class="mono">94,4 hari</span></strong>
+      (2023: <span class="mono">80,9 hari</span>) — naik <strong>13,5 hari</strong>. Barang jadi +21,3% vs revenue +4,1%.
+      Penyisihan naik <strong>7,9×</strong>.</div>
+    <p class="modmap"><span class="tag">M14</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Inilah jebakan inventori farmasi yang hidup: obat &amp; consumer goods punya <strong>umur simpan</strong> —
+      barang jadi yang menumpuk 5× lebih cepat dari penjualan adalah kandidat write-down masa depan.
+      Manajemen SUDAH menambah penyisihan (7,9×) — jujur, tapi kecil absolutnya (Rp2,5 M vs persediaan Rp2,19 T = 0,11%).
+      Pertanyaan analis: apakah 0,11% cukup untuk stok 94 hari di bisnis dengan kedaluwarsa?</p>
+    <div class="minilab"><strong>🧪 Mini-lab 5</strong>
+      <p class="tugas">Hitung inventory days 2024 &amp; 2023 (persediaan ÷ HPP × 365). Berapa hari kenaikannya?</p>
+      <label><input type="checkbox" data-lab="5"> Saya sudah menghitung inventory days.</label>
+      <details><summary>Jawaban</summary>
+        <p>2024: 2.191.258.864.803 ÷ 8.477.055.405.163 × 365 = <strong>94,4 hari</strong>.
+        2023: 1.865.035.784.855 ÷ 8.416.500.046.775 × 365 = <strong>80,9 hari</strong>. Kenaikan <strong>13,5 hari</strong> —
+        modal kerja Rp326 M tambahan "terkunci" di gudang.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 5</strong>
+      <details><summary>Tiga penjelasan yang konsisten dengan "barang jadi +21%, revenue +4%". Mana yang paling perlu diuji — dan dengan data apa?</summary>
+      <p>(1) <strong>Stok antisipasi 2025</strong> — uji: guidance/capex 2025. (2) <strong>Permintaan melambat</strong> — uji: penjualan kuartalan 2024 (tren?).
+      (3) <strong>Channel stuffing ke distributor</strong> — uji: <strong>piutang</strong> (stop 6). Yang paling berbahaya = (3),
+      dan pengujinya sudah tersedia di LK ini.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s6">
+  <div class="stop-head"><span class="n">6</span><h3>Piutang &amp; pihak berelasi — jebakan #3 diperiksa</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Ekshibit A</span> (piutang usaha) + <span class="mono">Catatan 7</span> (pihak berelasi).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Piutang usaha pihak ketiga <span class="mono">1.428.455.899.314</span></strong>
+      (2023: <span class="mono">1.393.271.967.430</span>) · <strong>pihak berelasi <span class="mono">74.533.546.932</span></strong>
+      (2023: <span class="mono">94.701.044.846</span>). <strong>Penjualan ke pihak berelasi ≈ <span class="mono">2,18%</span></strong>
+      dari penjualan neto (2023: 2,31%) — terutama ke <strong>PT Tempo Digital Nusantara</strong>
+      <span class="mono">298.002.161.851</span> (e-commerce, entitas asosiasi).</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>DSO 2024 = <span class="mono">38,2 hari</span></strong>
+      (2023: <span class="mono">38,8 hari</span>) — stabil. Piutang berelasi = <strong><span class="mono">5,0%</span></strong> dari total piutang usaha,
+      dan <strong>TURUN</strong> Rp20,2 M YoY.</div>
+    <p class="modmap"><span class="tag">M16</span><span class="tag">M22</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      <strong>Jebakan #3 diperiksa — tidak berbunyi.</strong> Pola channel stuffing klasik = penjualan ke distributor afiliasi
+      naik + piutangnya membengkak. Di sini <em>kebalikannya</em> terjadi: penjualan berelasi flat (2,18%), piutang berelasi turun.
+      Di tengah barang jadi yang menumpuk (stop 5), piutang yang stabil = bukti bahwa penumpukan <strong>bukan</strong> stuffing
+      ke afiliasi. Pelajaran: <em>cek dan tidak menemukan = hasil</em> — dan hasil negatif ini justru memperkuat interpretasi stop 5.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 6</strong>
+      <p class="tugas">Hitung: (a) DSO 2024; (b) porsi piutang berelasi dari total piutang usaha.</p>
+      <label><input type="checkbox" data-lab="6"> Saya sudah menghitung (a) &amp; (b).</label>
+      <details><summary>Jawaban</summary>
+        <p>(a) 1.428.455.899.314 ÷ 13.654.570.829.747 × 365 = <strong>38,2 hari</strong>.
+        (b) 74.533.546.932 ÷ (1.428.455.899.314 + 74.533.546.932) = <strong>4,96%</strong> — kecil dan menurun.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 6</strong>
+      <details><summary>Catatan 7 juga mencatat PT Mumu Nusantara Agung (asosiasi) = "jasa iklan dan promosi". Apa pertanyaan analisnya?</summary>
+      <p>Sebagian dari <strong>iklan Rp1,54 T</strong> (stop 3) mengalir ke <strong>agensi afiliasi</strong>.
+      Pertanyaannya bukan "ada transaksi" (wajar &amp; diungkapkan) melainkan <strong>kewajaran tarif</strong>:
+      apakah fee agensi afiliasi setara harga pasar? Ini lensa forensik M22 — dan jawabannya tidak ada di LK (keterbatasan jujur).</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s7">
+  <div class="stop-head"><span class="n">7</span><h3>Operasi lain: swing Rp283,8 miliar</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Ekshibit B</span>, baris "Penghasilan (beban) operasi lain, neto".</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Penghasilan (beban) operasi lain, neto 2024: <span class="mono">+110.806.162.221</span></strong>
+      (2023: <span class="mono">(173.006.237.663)</span>).</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Ayunan = <span class="mono">Rp283,8 miliar</span></strong>
+      (110.806.162.221 − (−173.006.237.663)) = <strong><span class="mono">38,9%</span></strong> dari kenaikan laba usaha Rp729,0 M.
+      Dekomposisi kenaikan laba usaha: bauran segmen + efisiensi iklan (29,9%) + ayunan operasi lain (38,9%) + sisanya.</div>
+    <p class="modmap"><span class="tag">M9</span><span class="tag">M10</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Baris "operasi lain" = tempat hal-hal <strong>non-rutin</strong> bersembunyi: selisih kurs, laba/rugi penjualan aset,
+      dan pos sekali-jadi lainnya. Ayunan Rp284 M dalam setahun = volatil, <strong>bukan</strong> sesuatu yang bisa diasumsikan
+      berulang untuk proyeksi. Analis memisahkan: laba usaha "inti" (dari operasi) vs "angin" (dari baris ini).</p>
+    <div class="minilab"><strong>🧪 Mini-lab 7</strong>
+      <p class="tugas">Jumlahkan dekomposisi kenaikan laba usaha: (a) penghematan iklan Rp218,2 M + (b) ayunan operasi lain Rp283,8 M.
+      Berapa % dari Rp729,0 M yang dijelaskan keduanya? Sisa berapa yang dijelaskan faktor lain (bauran segmen, dst.)?</p>
+      <label><input type="checkbox" data-lab="7"> Saya sudah menjumlahkan dekomposisinya.</label>
+      <details><summary>Jawaban</summary>
+        <p>(218,2 + 283,8) ÷ 729,0 = <strong>68,8%</strong>. Sisa <strong>31,2%</strong> (≈Rp227 M) dijelaskan bauran segmen yang membaik
+        (farmasi +16,9% dengan margin 49%) dan efisiensi lain. Dua pertiga "keajaiban" = iklan + ayunan non-rutin.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 7</strong>
+      <details><summary>Jika kamu memproyeksikan laba 2025, angka laba usaha mana yang kamu pakai sebagai basis — 1.808,9 M atau yang disesuaikan? Kenapa?</summary>
+      <p><strong>Yang disesuaikan</strong> (dinormalisasi): keluarkan ayunan operasi lain yang non-rutin (±Rp284 M) dan tanyakan
+      keberlanjutan penghematan iklan. Basis "inti" ≈ Rp1,4–1,5 T — proyeksi dari angka headline = jebakan M9
+      (kualitas laba: <em>recurring vs non-recurring</em>).</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s8">
+  <div class="stop-head"><span class="n">8</span><h3>Tempo Scan Industry: asosiasi → anak (jebakan #5)</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 7</span> + <span class="mono">Catatan 11</span> (investasi pada entitas asosiasi).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>PT Tempo Scan Industry</strong> — produsen produk farmasi —
+      <strong>"Sejak Juni 2024 menjadi entitas anak Kelompok Usaha"</strong> (sebelumnya entitas asosiasi 20%).</div>
+    <div class="fact"><span class="src-tag i">🧭 Interpretasi analis</span>
+      <strong>Jebakan #5 menyala — tapi kecil.</strong> Sejak Juni 2024, pendapatan &amp; aset Tempo Scan Industry
+      <strong>dikonsolidasi penuh</strong> (sebelumnya hanya 20% laba via ekuitas). Artinya: sebagian dari pertumbuhan
+      segmen farmasi +16,9% di 2024 adalah <strong>pertumbuhan yang "dibeli" lewat perubahan status konsolidasi</strong>,
+      bukan murni organik. Besarnya tidak diungkapkan sebagai proforma — dan <em>ketiadaan pengungkapan itu sendiri</em>
+      adalah temuan (jebakan #5: "kalau tidak diungkapkan, itu sendiri pertanyaan").</div>
+    <p class="modmap"><span class="tag">M20</span><span class="tag">M22</span><span class="tag">M35</span>
+      Di mana analis melacaknya: Catatan 1d (daftar entitas anak), mutasi investasi di arus kas investasi,
+      dan lonjakan KNP (kepentingan nonpengendali naik ke <span class="mono">461.053.762.162</span>).</p>
+    <div class="minilab"><strong>🧪 Mini-lab 8</strong>
+      <p class="tugas">Segmen farmasi tumbuh 16,9% (Rp684,7 M). Jika setengahnya berasal dari konsolidasi Tempo Scan Industry,
+      berapa pertumbuhan organik farmasi? (Asumsi latihan — angka pastinya tidak diungkapkan.)</p>
+      <label><input type="checkbox" data-lab="8"> Saya sudah menghitung skenario organiknya.</label>
+      <details><summary>Jawaban</summary>
+        <p>(4.746,8 − 342,4) ÷ 4.062,1 − 1 = <strong>+8,4%</strong> — masih tumbuh, tapi separuh dari headline.
+        Pelajarannya: <strong>selalu tanyakan "berapa yang organik"</strong> setiap ada perubahan perimeter konsolidasi.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 8</strong>
+      <details><summary>Kenapa perubahan "asosiasi → anak" menaikkan revenue konsolidasi padahal bisnisnya sama saja?</summary>
+      <p>Metode ekuitas (asosiasi): hanya <strong>20% laba neto</strong> masuk satu baris. Konsolidasi penuh (anak):
+      <strong>100% revenue, beban, dan aset</strong> masuk baris per baris. Bisnis tidak berubah — <strong>cara menghitungnya</strong>
+      yang berubah. Inilah mengapa analis membaca Catatan 1d sebelum merayakan pertumbuhan.</p></details>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section class="modul-sec">
+
+<div class="stop" id="s9">
+  <div class="stop-head"><span class="n">9</span><h3>Konsentrasi pemasok: Nutricia Rp3,7 triliun</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Catatan 25</span>, Beban Pokok Penjualan (paragraf terakhir).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>"Jumlah pembelian selama satu (1) tahun yang melebihi 10% dari penjualan neto konsolidasian
+      adalah dari <strong>PT Nutricia Indonesia Sejahtera</strong>, yaitu masing-masing senilai <strong>Rp3,7 triliun</strong>
+      dan Rp4,0 triliun (2024 dan 2023)." <strong>Tidak terdapat penjualan kepada satu pelanggan yang melebihi 10%</strong>
+      dari penjualan neto konsolidasian.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>Rp3,7 T = <span class="mono">27,1%</span> dari penjualan neto</strong>
+      (3.700.000.000.000 ÷ 13.654.570.829.747). Satu pemasok = lebih dari seperempat "biaya" perusahaan.</div>
+    <p class="modmap"><span class="tag">M8</span><span class="tag">M28</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Cermin dari kasus SOCI (satu pelanggan 50,7%): di sini risikonya di sisi <strong>pemasok</strong>.
+      TSPC mendistribusikan produk Nutricia (SGM dkk.) — bisnis distribusi 8% margin ini <strong>hidup dari kontrak prinsipal</strong>
+      (Catatan 28a: perjanjian distribusi 1–5 tahun, umumnya dapat diperpanjang). Kalau kontrak tidak diperpanjang,
+      segmen distribusi (Rp4,35 T revenue) berlubang. Analis kredit membaca ini sebagai <strong>risiko konsentrasi</strong> —
+      bukan red flag akuntansi, tapi risiko bisnis yang nyata.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 9</strong>
+      <p class="tugas">Hitung porsi pembelian Nutricia terhadap penjualan neto. Bandingkan sifat risikonya dengan "satu pelanggan 50,7%" di SOCI.</p>
+      <label><input type="checkbox" data-lab="9"> Saya sudah menghitung + membandingkan.</label>
+      <details><summary>Jawaban</summary>
+        <p><strong>27,1%</strong>. Beda sifat: SOCI = risiko <em>pendapatan</em> hilang (pelanggan pergi → revenue drop);
+        TSPC = risiko <em>margin &amp; volume distribusi</em> (prinsipal pergi → segmen Rp4,35 T menyusut, tapi pabrikan farmasi/konsumen tetap jalan).
+        Konsentrasi pemasok &lt; konsentrasi pelanggan dalam dampak — tapi tetap wajib dicatat.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 9</strong>
+      <details><summary>Apakah konsentrasi pemasok 27% ini "red flag forensik"? Kenapa bukan?</summary>
+      <p><strong>Bukan.</strong> Ini <strong>diungkapkan transparan</strong> di catatan, transaksinya riil (barang dibeli &amp; dijual kembali),
+      dan tidak melibatkan pihak berelasi. Red flag forensik = pola yang <em>disembunyikan atau tidak wajar</em>.
+      Ini risiko bisnis yang sah — tempatnya di lensa kredit/investasi, bukan forensik.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s10">
+  <div class="stop-head"><span class="n">10</span><h3>Neraca benteng &amp; arus kas</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Ekshibit A</span> (posisi keuangan).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span><strong>Kas dan setara kas <span class="mono">4.456.622.005.587</span></strong> ·
+      total aset <span class="mono">12.489.189.257.954</span> · total liabilitas <span class="mono">3.338.362.695.157</span> ·
+      total ekuitas <span class="mono">9.150.826.562.797</span> · <strong>utang bank <span class="mono">746.880.205.304</span></strong>
+      (2023: <span class="mono">1.009.331.531.830</span>) · aset lancar <span class="mono">8.789.500.465.740</span> ·
+      liabilitas jangka pendek <span class="mono">2.848.818.665.478</span>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>D/E = <span class="mono">0,36×</span></strong> ·
+      <strong>current ratio = <span class="mono">3,09×</span></strong> · ROE (pemilik) = <span class="mono">16,7%</span> ·
+      kas = <strong>6×</strong> utang bank.</div>
+    <p class="modmap"><span class="tag">M5</span><span class="tag">M23</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Neraca "benteng": kas Rp4,46 T menutupi seluruh utang bank 6 kali lipat, D/E 0,36×.
+      Dari lensa kredit (M23/M33): ini debitur yang <strong>tidak butuh</strong> pinjaman — risiko gagal bayar minimal.
+      Justru pertanyaannya berbalik: dengan kas sebesar ini, kenapa masih ada utang bank Rp747 M?
+      Jawaban kandidat: fasilitas modal kerja musiman / <em>relationship banking</em> — dan analis mencatatnya sebagai pertanyaan, bukan jawaban.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 10</strong>
+      <p class="tugas">Hitung: (a) D/E; (b) current ratio. Apa verdict kredit 1 kalimat?</p>
+      <label><input type="checkbox" data-lab="10"> Saya sudah menghitung (a) &amp; (b).</label>
+      <details><summary>Jawaban</summary>
+        <p>(a) 3.338.362.695.157 ÷ 9.150.826.562.797 = <strong>0,36×</strong>.
+        (b) 8.789.500.465.740 ÷ 2.848.818.665.478 = <strong>3,09×</strong>.
+        Verdict: <strong>"Struktur modal konservatif, likuiditas sangat kuat — risiko kredit rendah."</strong></p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 10</strong>
+      <details><summary>Kas Rp4,46 T menganggur = inefisiensi? Apa argumen yang membelanya?</summary>
+      <p>Dua sisi: <strong>inefisiensi</strong> (ROE tertekan oleh kas ber-yield rendah) vs
+      <strong>opsionalitas</strong> (peluru untuk akuisisi — Grup Tempo memang acquisitive — dan buffer kontrak distribusi).
+      Analis tidak memvonis; ia mengukur: berapa ROE <em>tanpa</em> kas berlebih? Itu lensa investasi vs manajemen modal.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s11">
+  <div class="stop-head"><span class="n">11</span><h3>Pajak: ETR 20,0% — normal</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di filing: <span class="mono">Ekshibit B</span> + <span class="mono">Catatan 19</span> (pajak).</p>
+    <div class="fact"><span class="src-tag q">📄 Kutipan</span>Laba sebelum beban pajak <span class="mono">1.935.506.621.742</span> ·
+      <strong>beban pajak penghasilan neto <span class="mono">(387.101.324.348)</span></strong>.</div>
+    <div class="fact"><span class="src-tag c">🧮 Hitungan FSA Lab</span><strong>ETR = <span class="mono">20,0%</span></strong>
+      (387.101.324.348 ÷ 1.935.506.621.742) — sedikit di bawah tarif badan 22%, tanpa anomali pajak final seperti SOCI.</div>
+    <p class="modmap"><span class="tag">M32</span><span class="src-tag i">🧭 Interpretasi analis</span>
+      Stop ini pendek karena memang tidak ada drama: ETR 20% ≈ tarif normal dengan sedikit perbedaan temporer.
+      Pelajarannya: <strong>tidak setiap stop harus menemukan masalah</strong>. Analis yang baik mencatat "pajak: normal"
+      dan lanjut — waktu analis adalah sumber daya; jebakan pajak (seperti ETR 10,4% di SOCI) hanya dikejar kalau angkanya aneh.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 11</strong>
+      <p class="tugas">Hitung ETR. Bandingkan dengan tarif PPh badan 22% — apakah selisihnya material?</p>
+      <label><input type="checkbox" data-lab="11"> Saya sudah menghitung ETR.</label>
+      <details><summary>Jawaban</summary>
+        <p><strong>20,0%</strong> — selisih 2 poin dari 22%, tidak material, tidak ada pajak final jumbo.
+        Kesimpulan: <strong>tidak ada isu pajak</strong>. Lanjut.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 11</strong>
+      <details><summary>Kapan ETR yang "normal" justru patut dicurigai?</summary>
+      <p>Ketika <strong>komposisinya</strong> aneh: misal tarif normal tapi ada beban pajak tangguhan raksasa yang menutupinya,
+      atau perusahaan dengan banyak insentif pajak tapi ETR-nya tetap 22% (insentifnya ke mana?).
+      Selalu baca <strong>rekonsiliasi fiskal</strong> (Catatan 19), bukan cuma ETR headline.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="stop" id="s12">
+  <div class="stop-head"><span class="n">12</span><h3>Sintesis tiga lensa</h3></div>
+  <div class="stop-body">
+    <p class="loc">📍 Di mana-mana di atas — sekarang dirangkai.</p>
+    <div class="fact"><span class="src-tag i">🧭 Interpretasi analis</span><strong>Lensa investasi:</strong>
+      "Margin expansion story" 2024 — tapi 69% kenaikan laba usaha berasal dari <strong>penghematan iklan + ayunan non-rutin</strong>.
+      Pertanyaan investasi #1: <em>apakah laba 2024 bisa diulang tanpa memotong iklan lagi?</em>
+      Yang struktural dan bagus: bauran segmen (farmasi +16,9%, margin 49%) dan neraca benteng.</div>
+    <div class="fact"><span class="src-tag i">🧭 Interpretasi analis</span><strong>Lensa kredit:</strong>
+      D/E 0,36×, current ratio 3,09×, kas 6× utang bank — <strong>risiko gagal bayar minimal</strong>.
+      Satu-satunya catatan: konsentrasi pemasok Nutricia 27% (risiko bisnis, bukan akuntansi).</div>
+    <div class="fact"><span class="src-tag i">🧭 Interpretasi analis</span><strong>Lensa forensik:</strong>
+      <strong>Tidak ada jebakan yang berbunyi.</strong> R&amp;D tidak dikapitalisasi · penjualan berelasi 2,18% dan piutang berelasi turun ·
+      tidak ada pelanggan &gt;10% · auditor BDO opini wajar. <strong>Watchlist:</strong> barang jadi +21% (kedaluwarsa) dan
+      konsolidasi Tempo Scan Industry (pertumbuhan non-organik tak terkuantifikasi).</div>
+    <p class="modmap"><span class="tag">M33</span><span class="tag">M8</span><span class="tag">M22</span>
+      Tiga lensa, tiga vonis berbeda — itulah gunanya triple-lens: <strong>satu set angka, tiga pertanyaan berbeda</strong>.</p>
+    <div class="minilab"><strong>🧪 Mini-lab 12 (final)</strong>
+      <p class="tugas">Tulis 3 kalimat: (1) satu hal yang <em>struktural membaik</em> di TSPC 2024; (2) satu hal yang <em>perlu diverifikasi</em> di 2025;
+      (3) satu jebakan sektor yang <em>tidak relevan</em> di sini dan kenapa.</p>
+      <label><input type="checkbox" data-lab="12"> Saya sudah menulis 3 kalimat sintesis.</label>
+      <details><summary>Contoh jawaban</summary>
+        <p>(1) Bauran segmen: farmasi margin 49% tumbuh 16,9% sementara distribusi margin 8% menyusut — bauran laba membaik struktural.
+        (2) Keberlanjutan: apakah revenue 2025 tumbuh tanpa menaikkan kembali budget iklan yang dipotong Rp218 M?
+        (3) Kapitalisasi R&amp;D: tidak relevan — R&amp;D hanya 0,03% revenue dan seluruhnya di-expense; model bisnisnya bukan drug discovery.</p></details>
+    </div>
+    <div class="checkpoint"><strong>✅ Checkpoint 12</strong>
+      <details><summary>Bandingkan dengan KLBF (Bedah Sendiri): apa SATU perbedaan struktural terbesar kedua emiten farmasi ini?</summary>
+      <p><strong>TSPC = 3 bisnis</strong> (2 pabrikan + 1 distributor raksasa); <strong>KLBF = farmasi murni</strong> yang terintegrasi vertikal.
+      Distribusi pihak ketiga (Nutricia dkk.) tidak ada di KLBF. Akibatnya: metrik "distribusi" (perputaran, margin 8%) hanya relevan untuk TSPC —
+      <em>sektor yang sama, model bisnis berbeda, metrik berbeda</em>. Inilah alasan track sektor ada.
+      Lanjut ke <a href="../sintesis/">Sintesis Sektor Healthcare →</a></p></details>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section class="modul-sec">
+  <div class="donebar" id="donebar">
+    <strong>Selesaikan case ini.</strong>
+    <p style="font-size:.88rem">Centang mini-lab yang sudah dikerjakan, lalu tandai selesai.
+    Progres tersimpan lokal di browser-mu (<span class="mono">fsa_hc_tspc_*</span>).</p>
+    <button id="btn-done" type="button">Tandai selesai ✓</button>
+    <p class="prog" id="prog"></p>
+  </div>
+
+  <h2>Keterbatasan</h2>
+  <ol style="margin:.4rem 0 .4rem 1.2rem;font-size:.9rem">
+    <li style="margin-bottom:.5rem">Angka dikutip dari LK konsolidasian auditan TSPC FY2024 — bukan dari memegang kertas fisik.
+      Jika menemukan selisih dengan filing aslinya, filing yang menang.</li>
+    <li style="margin-bottom:.5rem">Rincian "penghasilan (beban) operasi lain" tidak dibedah per komponen di halaman ini
+      (ayunannya dihitung, komposisinya tidak) — keterbatasan jujur.</li>
+    <li style="margin-bottom:.5rem">Narasi manajemen (MD&amp;A AR) tidak dipakai — halaman ini murni LK auditan.
+      Klaim strategi 2025 tidak diverifikasi.</li>
+    <li style="margin-bottom:.5rem">Bukan rekomendasi investasi. Ini latihan membaca filing, bukan ajakan beli/jual TSPC.</li>
+  </ol>
+  <p style="font-size:.85rem;color:var(--ink-soft)"><a href="../">← Track Healthcare</a> ·
+  <a href="../sintesis/">Sintesis Sektor →</a> ·
+  Bandingkan dengan blind: <a href="../../bedah-sendiri/klbf/">Bedah Sendiri KLBF →</a></p>
+</section>
+
+<script src="../../js/tblwrap.js"></script>
+<script src="../../js/hc-tspc.js"></script>
+</body>
+</html>

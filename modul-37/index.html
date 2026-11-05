@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 37 — Inventory &amp; Long-Lived Asset Methods · FSA Lab</title>
+<meta name="description" content="Modul 37 FSA Lab: FIFO vs LIFO di inflasi dan mengapa PSAK 202 melarang LIFO, LIFO reserve, kapitalisasi vs beban, impairment PSAK 236 (recoverable amount & aturan reversal), dan depresiasi komponen.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-37/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M37</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 38 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 10</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 37</span>
+</nav>
+<p class="mod-count">Modul 37 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 10 · Inventory &amp; Long-Lived Asset Methods · Modul 37</p>
+  <h1>Laba Sama, <em>Metode Beda.</em></h1>
+  <p class="lede"><strong>PT Dagang Prima</strong> <span class="tag">(perusahaan FIKTIF — seluruh angka ilustratif)</span>
+    menjual <span style="font-family:var(--font-mono)">150</span> unit di tengah inflasi.
+    Dengan FIFO laba kotornya <span style="font-family:var(--font-mono)">Rp14.500</span> juta —
+    dengan LIFO hanya <span style="font-family:var(--font-mono)">Rp12.500</span> juta.
+    Operasi IDENTIK, selisih <span style="font-family:var(--font-mono)">Rp2.000</span> juta murni dari metode.
+    <span style="font-family:var(--font-mono)">PSAK 202</span> (dulu PSAK 14) melarang LIFO —
+    tapi emiten AS boleh memakainya, jadi analis Indonesia WAJIB bisa menyetarakan via
+    <strong>LIFO reserve</strong>.
+    Di modul ini kamu juga menguji <strong>kapitalisasi vs beban</strong>,
+    menghitung <strong>impairment</strong> (<span style="font-family:var(--font-mono)">PSAK 236</span>, dulu 48:
+    recoverable amount &amp; aturan reversal),
+    dan memakai <strong>depresiasi komponen</strong>
+    (<span style="font-family:var(--font-mono)">PSAK 216</span>, dulu 16) — lalu menulis verdict dari tiga lensa.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Methods Explorer: FIFO, LIFO, Kapitalisasi, Impairment</h2>
+  <p class="sub">Klik baris mana pun. Empat tabel: <strong>FIFO vs LIFO</strong> di inflasi
+    (awal <span style="font-family:var(--font-mono)">100</span> unit @<span style="font-family:var(--font-mono)">100</span>,
+    beli <span style="font-family:var(--font-mono)">100</span> @<span style="font-family:var(--font-mono)">110</span>,
+    beli <span style="font-family:var(--font-mono)">100</span> @<span style="font-family:var(--font-mono)">120</span>,
+    jual <span style="font-family:var(--font-mono)">150</span> @<span style="font-family:var(--font-mono)">200</span>;
+    <span style="font-family:var(--font-mono)">PSAK 202</span> — dulu PSAK 14 — melarang LIFO),
+    <strong>LIFO reserve</strong> (jembatan LIFO → FIFO),
+    <strong>kapitalisasi vs beban</strong> (overhaul Rp8.000 juta),
+    dan <strong>impairment &amp; komponen</strong>
+    (<span style="font-family:var(--font-mono)">PSAK 236</span> — dulu 48 — dan
+    <span style="font-family:var(--font-mono)">PSAK 216</span> — dulu 16).
+    Semua angka ilustratif (Rp juta).</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="fifo">FIFO vs LIFO</button>
+    <button class="stmt-tab" data-stmt="reserve">LIFO Reserve</button>
+    <button class="stmt-tab" data-stmt="capex">Kapitalisasi vs Beban</button>
+    <button class="stmt-tab" data-stmt="impair">Impairment &amp; Komponen</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris metode ↑</h3>
+    <p>Penjelasan, dasar standar, dan sudut tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Sinyal Naik atau Turun?</h2>
+  <p class="sub">Enam skenario metode &amp; estimasi. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Ukur: Hitung Seperti Analis Aset</h2>
+  <p class="sub">Empat perhitungan cepat: HPP FIFO, LIFO reserve, rugi impairment, dan depresiasi komponen. Semua angka ilustratif (Rp juta).</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Dagang Prima: Metode Mana yang Jujur?"</h2>
+  <p class="sub"><strong>PT Dagang Prima (FIKTIF)</strong> melaporkan laba kotor FIFO
+    <span style="font-family:var(--font-mono)">Rp14.500</span> juta. Data ilustratif: penjualan
+    <span style="font-family:var(--font-mono)">30.000</span>; HPP FIFO
+    <span style="font-family:var(--font-mono)">15.500</span> vs LIFO
+    <span style="font-family:var(--font-mono)">17.500</span>; LIFO reserve
+    <span style="font-family:var(--font-mono)">2.000</span> → hemat pajak
+    <span style="font-family:var(--font-mono)">440</span> (22%), laba bersih +<span style="font-family:var(--font-mono)">1.560</span>
+    basis FIFO; rugi impairment
+    <span style="font-family:var(--font-mono)">5.000</span> (carrying
+    <span style="font-family:var(--font-mono)">25.000</span> → recoverable
+    <span style="font-family:var(--font-mono)">20.000</span> = max(FVLCD
+    <span style="font-family:var(--font-mono)">18.000</span>, VIU
+    <span style="font-family:var(--font-mono)">20.000</span>));
+    gedung <span style="font-family:var(--font-mono)">50.000</span>:
+    depresiasi komponen <span style="font-family:var(--font-mono)">3.400</span>/thn
+    (<span style="font-family:var(--font-mono)">1.200</span>+<span style="font-family:var(--font-mono)">1.200</span>+<span style="font-family:var(--font-mono)">1.000</span>)
+    vs <span style="font-family:var(--font-mono)">2.000</span> single-rate;
+    overhaul <span style="font-family:var(--font-mono)">8.000</span>: kapitalisasi
+    (<span style="font-family:var(--font-mono)">2.000</span>/thn) vs beban langsung
+    = selisih laba <span style="font-family:var(--font-mono)">6.000</span> tahun 1.
+    Tugasmu: setarakan antar-metode sendiri, uji kapitalisasi &amp; impairment-nya,
+    lalu tulis verdict — dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> Angka yang saya pakai untuk perbandingan = basis FIFO: laba kotor <span class="num">14.500</span> (penjualan <span class="num">30.000</span> − HPP <span class="num">15.500</span>, angka ilustratif modul) &mdash; karena <span class="num">PSAK 202</span> melarang LIFO, emiten Indonesia tidak memakai LIFO; untuk persediaan yang dapat dipertukarkan kebijakannya bisa FIFO <em>atau</em> rata-rata tertimbang &mdash; saya pakai basis FIFO di sini, tapi baca kebijakan tiap perusahaan sebelum membandingkan. Bila membandingkan dengan emiten AS ber-LIFO, saya tambah <span class="num">LIFO reserve 2.000</span> ke persediaannya dulu, bukan membandingkan mentah. Rugi impairment <span class="num">5.000</span> saya keluarkan dari laba inti tahun ini TAPI depresiasi tahun depan saya hitung dari carrying baru <span class="num">20.000</span> &mdash; bukan dari <span class="num">25.000</span>. Depresiasi komponen <span class="num">3.400</span> (bukan 2.000 single-rate) yang saya pakai untuk proyeksi. Keputusan: TUNGGU &mdash; margin FIFO terlihat bagus tapi <span class="num">2.000</span> di antaranya adalah efek metode di inflasi; beli hanya bila margin bertahan setelah disetarakan dan tidak ada likuidasi lapisan LIFO.</p>
+<p><strong>Lensa kredit:</strong> Agunan persediaan saya akui <span class="num">15.500</span> (LIFO, nilai yang benar-benar ada bila dilikuidasi cepat) dengan <em>haircut</em> <span class="num">30%</span> &mdash; bukan <span class="num">17.500</span> versi FIFO yang mengasumsikan harga jual normal. Gedung saya akui <span class="num">20.000</span> pasca-impairment, dan overhaul <span class="num">8.000</span> yang dikapitalisasi saya nilai NOL sebagai agunan sampai ada bukti engineering umur manfaat 4 tahun. Satu <em>covenant</em>: belanja &gt; <span class="num">5.000</span> yang dikapitalisasi wajib dilampiri justifikasi teknis + larangan reversal impairment diakui sebagai laba untuk uji <em>covenant</em> &mdash; laba dari pembalikan bukan kas. Keputusan: <em>conditional</em>.</p>
+<p><strong>Lensa forensik:</strong> metode yang diklaim vs dipakai: FIFO &mdash; sumber: kebijakan akuntansi catatan 2 (pelajaran modul: verifikasi ke catatan, bukan ke narasi direksi). Satu uji atas kapitalisasi <span class="num">8.000</span>: apakah overhaul MENAMBAH umur/kapasitas (lolos <span class="num">PSAK 216</span>) atau sekadar perawatan rutin berkedok <em>capex</em> &mdash; saya minta work order &amp; laporan engineering. Satu temuan yang membuat saya menolak mentah-mentah: <em>big bath</em> impairment <span class="num">5.000</span> di tahun pergantian direksi, lalu <em>reversal</em> <span class="num">4.000</span> tahun berikut tepat sebelum penerbitan obligasi &mdash; itu laba yang dipinjam dari masa depan. Satu hal yang membunuh tesis &ldquo;asetnya solid&rdquo;: tanpa depresiasi komponen, beban kurang <span class="num">1.400</span>/tahun &mdash; gedungnya menua lebih cepat dari bukunya.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 37.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-36/" class="pn-prev">← Modul 36</a>
+  <a href="/modul-38/" class="pn-next">Modul 38 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 37 · seluruh angka &amp; contoh ilustratif (fiktif) untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul37.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

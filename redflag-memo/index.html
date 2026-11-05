@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red-Flag Memo Builder · FSA Lab</title>
+<meta name="description" content="Bangun red-flag memo lensa forensik: tiap temuan dirumuskan sebagai pertanyaan investigasi, bukan vonis. Impor dari drill Bedah Sendiri/ujian, bilingual ID/EN, checklist publikasi mengunci tombol salin.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/redflag-memo/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/modul.css">
+<style>
+.rf-step{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.2rem;box-shadow:4px 4px 0 var(--ink)}
+.rf-step h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.15rem}
+.rf-step .step-sub{font-size:.85rem;color:var(--ink-soft);margin-bottom:1rem}
+.rf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;margin-bottom:.5rem}
+.rf-grid label{font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem}
+.rf-grid input,.rf-grid textarea,.rf-grid select{width:100%;font-family:var(--font-body);font-size:.92rem;
+  border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper);color:var(--ink)}
+.rf-grid input:focus,.rf-grid textarea:focus,.rf-grid select:focus{outline:3px solid var(--mustard)}
+.rf-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem}
+.rf-guide{background:#fbf3dd;border:2px dashed var(--ink);border-radius:10px;padding:.8rem 1rem;
+  font-size:.82rem;margin-bottom:1rem;line-height:1.6}
+.rf-guide b{font-weight:700}
+.rf-guide .ex{font-style:italic;color:var(--ink-soft);display:block;margin-top:.35rem}
+.rf-check{font-size:.8rem;margin-top:.6rem;line-height:1.7}
+.rf-check li{list-style:none;margin-bottom:.15rem}
+.rf-check li::before{content:"☐ ";font-weight:700}
+.flag-pt{border:2px solid var(--line);border-radius:10px;padding:.9rem 1rem;margin-bottom:.9rem;background:var(--paper)}
+.flag-pt h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.5rem}
+.flag-pt h4 .urg{font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:20px;margin-left:.5rem;vertical-align:middle}
+.urg-watch{background:#f0e6c8;color:#7a6420}
+.urg-investigate{background:#f6c453;color:#5c430a}
+.urg-escalate{background:#d9534f;color:#fff}
+.editorial{border-left:6px solid var(--teal-deep);background:#e4f2ee;padding:.8rem 1rem;border-radius:0 10px 10px 0;
+  font-size:.85rem;margin:.8rem 0;line-height:1.6;font-style:italic}
+.imp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem;margin-bottom:1rem}
+.imp-card{border:2px solid var(--ink);border-radius:10px;padding:.9rem 1rem;background:var(--paper)}
+.imp-card h4{font-size:.95rem;margin-bottom:.3rem}
+.imp-card p{font-size:.8rem;color:var(--ink-soft);margin-bottom:.6rem}
+.coached-tag{display:inline-block;background:var(--sunset-deep);color:#fff;font-size:.72rem;font-weight:700;
+  padding:.1rem .5rem;border-radius:6px;margin-left:.4rem}
+.lang-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.lang-row .lbl{font-weight:700;font-size:.9rem}
+.lang-btn{border:2px solid var(--ink);border-radius:10px;padding:.5rem 1.1rem;font-weight:700;cursor:pointer;
+  background:var(--paper);font-size:.9rem}
+.lang-btn.on{background:var(--ink);color:var(--paper)}
+.en-field{display:none}
+body.lang-en .en-field{display:block}
+body.lang-en .id-field{display:none}
+.en-ph::placeholder{color:#8a7a5a;font-style:italic}
+.gate-list{list-style:none;padding:0;margin:.6rem 0}
+.gate-list li{padding:.45rem .7rem;border:2px solid var(--line);border-radius:8px;margin-bottom:.4rem;
+  font-size:.85rem;display:flex;gap:.6rem;align-items:flex-start}
+.gate-list li.ok{border-color:var(--teal-deep);background:#e4f2ee}
+.gate-list li .st{font-weight:700;min-width:3.2rem}
+.gate-list li.ok .st{color:var(--teal-deep)}
+.gate-list li:not(.ok) .st{color:var(--sunset-deep)}
+.gate-soft{border-style:dashed}
+#rf-preview{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:.82rem;line-height:1.65;
+  white-space:pre-wrap;max-height:30rem;overflow-y:auto;margin-top:1rem}
+.copy-row{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+#copy-msg{font-size:.85rem;color:var(--teal-deep);font-weight:600;visibility:hidden}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.framing{font-size:.82rem;color:var(--ink-soft);font-style:italic;margin-top:.8rem}
+.q-ok{color:var(--teal-deep);font-weight:700;font-size:.8rem}
+.q-bad{color:var(--sunset-deep);font-weight:700;font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">RF</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Output profesional</p>
+  <h1>Red-Flag Memo <em>Builder.</em></h1>
+  <p class="lede">Lensa forensik punya outputnya sendiri. Builder ini membantumu menyusun
+    <strong>red-flag memo</strong> yang disiplin: tiap temuan = observasi + angka dikutip +
+    <strong>pertanyaan investigasi</strong> — lengkap dengan urgensi, bukti sumber, batasan, dan tindak lanjut.</p>
+  <div class="editorial">"A red flag is a question. Not a conviction." — aturan editorial FSA Lab.
+    Memo ini investigasi, bukan dakwaan.</div>
+  <p class="rf-note">Contoh di tiap section memakai PT Cemerlang Abadi (FIKTIF, kanonis) — <strong>ilustratif</strong>, bukan angka real.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:58rem">
+
+  <!-- BAHASA -->
+  <div class="lang-row">
+    <span class="lbl">Bahasa memo:</span>
+    <button class="lang-btn on" id="lang-id" type="button">🇮🇩 Indonesia</button>
+    <button class="lang-btn" id="lang-en" type="button">🇬🇧 English</button>
+  </div>
+  <p class="rf-note" style="margin-bottom:1.2rem">Indonesia untuk berpikir, Inggris untuk portofolio. Tulis versi Indonesia dulu —
+    kolom Inggris hanya cermin terjemahan.</p>
+
+  <!-- IMPOR -->
+  <div class="rf-step">
+    <h3>Impor dari drill</h3>
+    <p class="step-sub">Impor menghemat pengetikan, <strong>tidak menggantikan penalaran</strong>.
+      Yang diimpor = teks lensa forensik + emiten dari drill-mu. Pertanyaan investigasi, urgensi, bukti, dan tindak lanjut <strong>wajib kamu tulis sendiri</strong>.</p>
+    <div class="imp-cards" id="imp-cards"></div>
+    <p class="rf-note" id="imp-note">Tidak ada drill yang selesai → mode manual. Selesaikan
+      <a href="/bedah-sendiri/">Bedah Sendiri</a> atau <a href="/ujian/">ujian</a> dulu untuk mengimpor.</p>
+  </div>
+
+  <!-- S1 -->
+  <div class="rf-step">
+    <h3>S1 · Header</h3>
+    <p class="step-sub">Form, bukan narasi. Memo forensik tanpa as-of date = gosip.</p>
+    <div class="rf-guide"><b>Cara buat:</b> isi sekali di awal; semua angka di section lain WAJIB memakai satuan S1.
+      <b>Hal penting:</b> sumber filing + periode menentukan apa yang boleh disimpulkan.
+      <b>Batasan:</b> header bukan tempat opini.
+      <span class="ex">Contoh: PT Cemerlang Abadi (FIKTIF) · FY2024 auditan · as-of 4 Nov 2026 · Rp juta · konsolidasian · sumber: LK auditan hal. 1–150.</span></div>
+    <div class="rf-grid">
+      <div><label for="rf-emiten">Emiten</label><input id="rf-emiten" placeholder="PT …"></div>
+      <div><label for="rf-ticker">Kode ticker</label><input id="rf-ticker" placeholder="…"></div>
+      <div><label for="rf-periode">Periode laporan</label><input id="rf-periode" placeholder="FY2024 auditan / H1 2026 interim unaudited"></div>
+      <div><label for="rf-asof">As-of date (tgl analisis)</label><input id="rf-asof" type="date"></div>
+      <div><label for="rf-ccy">Currency / unit</label>
+        <select id="rf-ccy"><option value="">— pilih —</option><option>Rp juta</option><option>Rp miliar</option><option>Rp</option><option>USD ribu</option></select></div>
+      <div><label for="rf-basis">Basis</label>
+        <select id="rf-basis"><option value="">— pilih —</option><option>konsolidasian</option><option>induk saja</option></select></div>
+      <div style="grid-column:1/-1"><label for="rf-src">Sumber filing</label><input id="rf-src" placeholder="nama file / URL laporan + halaman kunci"></div>
+    </div>
+    <p class="rf-note" id="rf-coached-note" style="display:none">⚠️ Memo ini dari attempt <strong>coached</strong> — dilabeli jujur, bukan blind.<span class="coached-tag">COACHED</span></p>
+    <ul class="rf-check">
+      <li>as-of date terisi</li><li>periode + status audit dinyatakan</li><li>satuan konsisten</li><li>sumber filing terisi</li>
+    </ul>
+  </div>
+
+  <!-- S2 -->
+  <div class="rf-step">
+    <h3>S2 · Daftar red flags</h3>
+    <p class="step-sub">Tiap flag = observasi + angka dikutip + <strong>PERTANYAAN investigasi (wajib ada tanda tanya)</strong> + urgensi.
+      Red flag tanpa pertanyaan = vonis. Site menolak flag tanpa tanda tanya.</p>
+    <div class="rf-guide"><b>Cara buat:</b> mulai dari angka yang janggal, bukan dari kecurigaan.
+      Rumus: "Saya melihat X (angka, sumber). Pertanyaannya: ...?"
+      <b>Hal penting:</b> urgensi = seberapa cepat perlu DISELIDIKI, bukan seberapa yakin itu fraud.
+      <b>Batasan:</b> jangan pernah menulis vonis ("terbukti fraud", "manipulasi", "curang") — site memberi peringatan.
+      <span class="ex">Contoh: Observasi — "Restitusi pajak naik 3,2x menjadi Rp406 M di tahun laba naik 53% (Cat. 32, hal. 87)."
+        Pertanyaan — "Apakah restitusi ini one-off administratif atau ada sengketa pajak yang belum diungkap?"
+        Urgensi — investigate.</span></div>
+    <div id="flag-list"></div>
+    <button class="btn" id="flag-add" type="button" style="margin-top:.4rem">+ Tambah red flag</button>
+    <ul class="rf-check"><li>tiap flag ada observasi + angka dikutip</li><li>tiap flag ada PERTANYAAN (tanda tanya)</li><li>tiap flag ada sumber</li><li>tiap flag ada urgensi</li></ul>
+  </div>
+
+  <!-- S3 -->
+  <div class="rf-step">
+    <h3>S3 · Bukti pendukung per flag</h3>
+    <p class="step-sub">Satu baris bukti per flag: <strong>halaman/catatan sumber</strong> + apa yang ditemukan di sana.
+      Memo tanpa jejak sumber = opini kosong.</p>
+    <div class="rf-guide"><b>Cara buat:</b> untuk tiap flag di S2, catat di mana pembaca bisa memverifikasi sendiri.
+      <b>Hal penting:</b> "hal. 87" lebih meyakinkan daripada "lihat LK".
+      <span class="ex">Contoh: Flag #1 → Catatan 32 hal. 87: tabel restitusi Rp406 M; bandingkan dengan Catatan pajak tahun lalu hal. 81.</span></div>
+    <div id="evid-list"></div>
+    <ul class="rf-check"><li>tiap flag punya ≥1 bukti bersumber halaman</li></ul>
+  </div>
+
+  <!-- S4 -->
+  <div class="rf-step">
+    <h3>S4 · Yang sudah dicek &amp; hasilnya</h3>
+    <p class="step-sub">Tunjukkan kerjamu. Investigasi yang baik mencatat juga jalan buntu — itu bukti ketelitian, bukan kegagalan.</p>
+    <div class="rf-guide"><b>Cara buat:</b> tiap baris = apa yang dicek → hasilnya (termasuk "tidak ditemukan / tidak diungkapkan").
+      <b>Hal penting:</b> "sudah dicek dan bersih" sama berharganya dengan temuan.
+      <span class="ex">Contoh: "Rekonsiliasi kas akhir BS vs arus kas → cocok persis Rp21.440 (hal. 1 &amp; 6). | Cek transaksi pihak berelasi Cat. 37 → nihil di 2024."</span></div>
+    <div id="checked-list"></div>
+    <button class="btn" id="checked-add" type="button" style="margin-top:.4rem">+ Tambah baris</button>
+    <ul class="rf-check"><li>≥1 baris pengecekan tercatat</li><li>hasil jalan buntu pun dicatat</li></ul>
+  </div>
+
+  <!-- S5 -->
+  <div class="rf-step">
+    <h3>S5 · Batasan memo</h3>
+    <p class="step-sub">Apa yang TIDAK bisa disimpulkan dari memo ini. Kejujuran tentang batasan = kredibilitas.</p>
+    <div class="rf-guide"><b>Cara buat:</b> nyatakan minimal 1 batasan eksplisit: keterbatasan data, periode, akses, atau keahlian.
+      <b>Hal penting:</b> memo tanpa batasan dibaca sebagai kepastian — padahal ini investigasi awal.
+      <span class="ex">Contoh: "Memo ini hanya membaca LK auditan publik; tidak mencakup verifikasi lapangan, wawancara manajemen, atau data internal. Tidak dapat menyimpulkan niat (intent) dari pola angka."</span></div>
+    <div class="id-field"><label for="rf-s5" style="font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem">Batasan (ID)</label>
+      <textarea id="rf-s5" rows="4" style="width:100%;font-family:var(--font-body);font-size:.92rem;border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper)"></textarea></div>
+    <div class="en-field"><label for="rf-s5-en" style="font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem">Limitations (EN)</label>
+      <textarea id="rf-s5-en" class="en-ph" rows="4" placeholder="Translate your Indonesian version — do not write English first." style="width:100%;font-family:var(--font-body);font-size:.92rem;border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper)"></textarea></div>
+    <ul class="rf-check"><li>≥1 batasan dinyatakan eksplisit</li></ul>
+  </div>
+
+  <!-- S6 -->
+  <div class="rf-step">
+    <h3>S6 · Tindak lanjut yang disarankan</h3>
+    <p class="step-sub">Tiap tindak lanjut menjawab pertanyaan flag yang mana. Investigasi tanpa next step = arsip mati.</p>
+    <div class="rf-guide"><b>Cara buat:</b> konkret dan terukur: apa yang dilakukan, ke flag nomor berapa, dan kapan dianggap selesai.
+      <b>Hal penting:</b> "pantau" tanpa trigger = bukan tindak lanjut.
+      <span class="ex">Contoh: "Minta klarifikasi IR soal restitusi pajak (Flag #1); selesai bila ada penjelasan tertulis. Pantau Catatan pajak di Q1 2026: bila restitusi terulang, naikkan urgensi ke escalate."</span></div>
+    <div id="next-list"></div>
+    <button class="btn" id="next-add" type="button" style="margin-top:.4rem">+ Tambah tindak lanjut</button>
+    <ul class="rf-check"><li>≥1 tindak lanjut</li><li>tiap tindak lanjut merujuk nomor flag</li></ul>
+  </div>
+
+  <!-- CHECKLIST PUBLIKASI -->
+  <div class="rf-step">
+    <h3>Checklist publikasi</h3>
+    <p class="step-sub">Tombol salin TERKUNCI sampai 5 hard-gate lolos. Soft checklist = peringatan, tidak mengunci.</p>
+    <ul class="gate-list" id="gate-hard"></ul>
+    <ul class="gate-list" id="gate-soft"></ul>
+    <p class="framing">"Checklist ini cermin, bukan sertifikat."</p>
+  </div>
+
+  <div class="copy-row">
+    <button class="btn btn-primary btn-lg" id="copy-id" disabled>Salin memo (ID)</button>
+    <button class="btn btn-lg" id="copy-en" disabled>Copy memo (EN)</button>
+    <span id="copy-msg">Memo tersalin ✓ — tempel ke dokumenmu.</span>
+  </div>
+  <div id="rf-preview"></div>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="/assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Red-Flag Memo Builder · analis ritel independen — investigasi, BUKAN dakwaan. Red flag is a question, not a conviction.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="/js/tblwrap.js"></script>
+<script src="/js/redflag-memo.js"></script>
+</body>
+</html>

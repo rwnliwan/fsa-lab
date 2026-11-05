@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 7 — Membaca Catatan &amp; Opini Audit · FSA Lab</title>
+<meta name="description" content="Modul 7 FSA Lab: membaca catatan atas laporan keuangan, estimasi kritis, dan opini audit.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-7/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M7</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 2</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 7</span>
+</nav>
+<p class="mod-count">Modul 7 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 2 · Judgment · Modul 7</p>
+  <h1>Catatan Kaki yang <em>Bicara</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): angka di laporan hanya separuh cerita. Di modul ini kamu belajar membaca <strong>catatan atas laporan keuangan</strong> — tempat asumsi, estimasi, dan risiko disembunyikan — plus cara menafsir <strong>opini audit</strong>.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Di Balik Angka</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>apa yang tidak terlihat di angka utama</strong> — estimasi, kebijakan akuntansi, dan bahasa opini audit.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="notes">Catatan Penting</button>
+    <button class="stmt-tab" data-stmt="ben">Imbalan Kerja (PSAK 219)</button>
+    <button class="stmt-tab" data-stmt="audit">Opini Audit</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Baca Sinyalnya</h2>
+  <p class="sub">Enam sinyal dari catatan & audit. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Angka dari Catatan</h2>
+  <p class="sub">Empat angka yang hanya bisa dihitung kalau kamu baca catatan. Hitung — lalu nilai.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: IPO Cemerlang Abadi?</h2>
+  <p class="sub">Cemerlang Abadi akan IPO. Kamu membaca prospektus — terutama catatan atas laporan keuangan. Tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> IPO &mdash; TUNDA sampai catatan menjawab tiga hal. Keterbukaan yang saya cari: (1) ECL &mdash; <em>allowance</em> <span class="num">4.100</span> atas piutang bruto <span class="num">108.100</span> (<em>rate</em> <span class="num">3,8%</span>) dengan <em>stage</em> S1 <span class="num">80.000</span> / S2 <span class="num">18.000</span> / S3 <span class="num">10.100</span>: apakah migrasi <em>stage</em> dijelaskan, atau <em>stage</em> 3 disembunyikan di &ldquo;lancar&rdquo;?; (2) segmen &mdash; kontribusi Ritel vs Distribusi (angka ilustratif modul) harus transparan agar saya tahu mesin laba yang mana; (3) pihak berelasi &mdash; M22 mengajarkan 23,1% penjualan bisa ke afiliasi. Tanpa itu, saya tidak bisa memberi harga pada risiko.</p>
+<p><strong>Lensa kredit:</strong> untuk kreditur, catatan utang &amp; <em>covenant</em> belum cukup bila hanya menyebut nominal <span class="num">141.440</span> &mdash; saya butuh jadwal jatuh tempo, definisi <em>covenant</em> (apakah berbasis PSAK atau GAAP?), dan agunan per fasilitas. Yang masih kurang: sensitivitas estimasi (apa jadinya bila ECL <em>rate</em> naik ke 5%?).</p>
+<p><strong>Lensa forensik:</strong> tiga cek atas apa yang mungkin disembunyikan: (1) estimasi &mdash; ilustrasi <em>impairment</em> <span class="num">8.000</span> (ilustratif) menunjukkan betapa mudahnya nilai terpulihkan digeser via <em>discount rate</em>; (2) pihak berelasi &mdash; cek <em>pricing</em> vs pasar; (3) KAM auditor &mdash; bila KAM hanya menyebut &ldquo;pendapatan&rdquo; secara generik tanpa angka, itu <em>red flag</em> keterbukaan. Satu hal yang membunuh tesis &ldquo;laporan ini transparan&rdquo;: auditor berganti 2x dalam 3 tahun (pola M28) &mdash; maka seluruh catatan harus dibaca sebagai pembelaan, bukan informasi.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 8.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-6/" class="pn-prev">← Modul 6</a>
+  <a href="/modul-8/" class="pn-next">Modul 8 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 7 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul7.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle PSAK/IFRS vs US GAAP · FSA Lab</title>
+<meta name="description" content="Rasakan bedanya: transaksi yang sama, angka berbeda di PSAK/IFRS vs US GAAP.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/toggle/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.tgl-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.tgl-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.2rem}
+.tgl-col{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:1.4rem;box-shadow:4px 4px 0 var(--ink)}
+.tgl-col.ifrs{box-shadow:4px 4px 0 var(--teal-deep)}
+.tgl-col.gaap{box-shadow:4px 4px 0 var(--sunset)}
+.tgl-col h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.6rem}
+.tgl-col .k{font-size:.88rem;color:var(--ink-soft);margin-bottom:.3rem}
+.tgl-col .v{font-family:var(--font-mono);font-weight:700;font-size:1.05rem}
+.tgl-col .hl{color:var(--sunset-deep)}
+.scenario{background:var(--paper-deep);border:2px dashed var(--ink);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:1.4rem}
+.scenario p{font-size:.95rem}
+.adjust{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:1.3rem 1.5rem;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--mustard);margin-bottom:2rem}
+.adjust h3{font-family:var(--font-display);color:var(--mustard);margin-bottom:.4rem}
+.adjust p{font-size:.92rem;color:#d9cdb4}
+@media (max-width:760px){.tgl-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">TGL</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Spotlight beda standar</p>
+  <h1>Transaksi Sama, <em>Angka Beda.</em></h1>
+  <p class="lede">Pilih topik. Lihat bagaimana PSAK/IFRS dan US GAAP menghasilkan angka berbeda
+    untuk bisnis yang <strong>identik</strong> — plus penyesuaian yang harus dilakukan analis.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="tgl-tabs" id="tgl-tabs"></div>
+  <div class="scenario" id="tgl-scenario"></div>
+  <div class="tgl-cols">
+    <div class="tgl-col ifrs" id="tgl-ifrs"></div>
+    <div class="tgl-col gaap" id="tgl-gaap"></div>
+  </div>
+  <div class="adjust" id="tgl-adjust"></div>
+</section>
+
+<section class="modul-sec" id="quiz">
+  <h2>Uji Kilat</h2>
+  <p class="sub">3 soal · formatif (tanpa gerbang).</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Toggle PSAK/IFRS vs US GAAP · angka ilustratif.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/toggle.js"></script>
+</body>
+</html>

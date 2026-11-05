@@ -1,0 +1,398 @@
+[
+ {
+  "m": 10,
+  "q": "Bedanya metode langsung vs tidak langsung?",
+  "o": [
+   "Mulai dari kas vs mulai dari laba",
+   "Mulai dari laba vs mulai dari kas",
+   "Direct = kas masuk, indirect = kas keluar",
+   "Keduanya mulai dari laba bersih"
+  ],
+  "a": 0
+ },
+ {
+  "m": 10,
+  "q": "Capex 156% dari CFO artinya…",
+  "o": [
+   "Capex dibiayai penuh dari kas operasi",
+   "Investasi melebihi kas operasi",
+   "Arus kas operasi sangat kuat",
+   "Perusahaan kelebihan kas"
+  ],
+  "a": 1
+ },
+ {
+  "m": 10,
+  "q": "CFF +5.440 terutama karena…",
+  "o": [
+   "Dividen 6.000 > utang neto 11.440",
+   "Penerbitan saham baru 11.440",
+   "Penjualan aset tetap 5.440",
+   "Utang neto 11.440 > dividen 6.000"
+  ],
+  "a": 3
+ },
+ {
+  "m": 10,
+  "q": "Dividen 6.000 dibayar dari…",
+  "o": [
+   "Kas operasi murni — CFO 2025 masih positif 30.800",
+   "FCFE 2025 positif Rp5.760 jt",
+   "Penerbitan saham baru 6.000",
+   "Utang — FCFE 2025 negatif (Rp−5.760 jt)"
+  ],
+  "a": 3
+ },
+ {
+  "m": 11,
+  "q": "ECL 3,8% artinya…",
+  "o": [
+   "Piutang neto ÷ penjualan",
+   "Cadangan ÷ piutang bruto",
+   "Cadangan ÷ piutang neto",
+   "Kerugian aktual ÷ piutang bruto"
+  ],
+  "a": 1
+ },
+ {
+  "m": 11,
+  "q": "Harga naik + metode FIFO → laba…",
+  "o": [
+   "Lebih rendah",
+   "Lebih tinggi",
+   "Sama saja",
+   "Tetap seperti LIFO"
+  ],
+  "a": 1
+ },
+ {
+  "m": 11,
+  "q": "Stage 3 dalam PSAK 109 = …",
+  "o": [
+   "Menunggak ringan",
+   "Lancar",
+   "Baru dicairkan",
+   "Gagal bayar"
+  ],
+  "a": 3
+ },
+ {
+  "m": 11,
+  "q": "Allowance naik tajam tiba-tiba bisa berarti…",
+  "o": [
+   "Big bath / antisipasi kerugian",
+   "Kualitas kredit membaik",
+   "Manajemen menaikkan laba tahun ini",
+   "Kolektibilitas debitur membaik"
+  ],
+  "a": 0
+ },
+ {
+  "m": 11,
+  "q": "PSAK 109 memakai pendekatan…",
+  "o": [
+   "Incurred loss",
+   "Expected loss",
+   "Nilai wajar",
+   "Tanpa cadangan"
+  ],
+  "a": 1
+ },
+ {
+  "m": 12,
+  "q": "Impairment diakui ketika…",
+  "o": [
+   "Carrying amount < recoverable amount",
+   "Harga pasar naik di atas nilai buku",
+   "Recoverable < carrying amount",
+   "Laba tahun berjalan naik"
+  ],
+  "a": 2
+ },
+ {
+  "m": 12,
+  "q": "Revaluasi tanah ke nilai wajar → …",
+  "o": [
+   "Laba naik via OCI",
+   "Laba bersih naik",
+   "Ekuitas naik via OCI",
+   "Aset naik, ekuitas tetap"
+  ],
+  "a": 2
+ },
+ {
+  "m": 12,
+  "q": "Aset hak-guna (ROU) muncul karena…",
+  "o": [
+   "PSAK 115",
+   "PSAK 116",
+   "IFRS 18",
+   "PSAK 109"
+  ],
+  "a": 1
+ },
+ {
+  "m": 12,
+  "q": "Aset tetap 51% dari total aset → …",
+  "o": [
+   "Padat karya",
+   "Jasa murni",
+   "Padat modal",
+   "Risiko rendah"
+  ],
+  "a": 2
+ },
+ {
+  "m": 13,
+  "q": "Tiga sisi fraud triangle…",
+  "o": [
+   "Uang, waktu, dan orang",
+   "Tekanan, kesempatan, rasionalisasi",
+   "Motif, sarana, peluang",
+   "Tekanan, kesempatan, dan lemahnya pengawasan"
+  ],
+  "a": 1
+ },
+ {
+  "m": 13,
+  "q": "DSRI 1,45 artinya…",
+  "o": [
+   "Penjualan tumbuh > piutang",
+   "Kas naik lebih cepat",
+   "Perusahaan menagih lebih cepat",
+   "Piutang tumbuh > penjualan"
+  ],
+  "a": 3
+ },
+ {
+  "m": 13,
+  "q": "Skema manipulasi paling umum…",
+  "o": [
+   "Penggelapan kas",
+   "Suap dan korupsi",
+   "Mark-up beban fiktif",
+   "Pendapatan prematur"
+  ],
+  "a": 3
+ },
+ {
+  "m": 13,
+  "q": "Skeptisisme profesional = …",
+  "o": [
+   "Verifikasi bukti",
+   "Curiga buta",
+   "Percaya manajemen",
+   "Abaikan red flag"
+  ],
+  "a": 0
+ },
+ {
+  "m": 14,
+  "q": "Bunga dibayar di US GAAP diklasifikasikan…",
+  "o": [
+   "Investasi",
+   "Pendanaan",
+   "Operasi",
+   "Ekuitas"
+  ],
+  "a": 2
+ },
+ {
+  "m": 14,
+  "q": "Development cost di US GAAP dicatat…",
+  "o": [
+   "Beban",
+   "Aset",
+   "Ekuitas",
+   "Tidak dicatat"
+  ],
+  "a": 0
+ },
+ {
+  "m": 14,
+  "q": "Analis peduli beda PSAK vs GAAP karena…",
+  "o": [
+   "Kepatuhan regulasi",
+   "Kemudahan audit",
+   "Perhitungan pajak",
+   "Komparabilitas"
+  ],
+  "a": 3
+ },
+ {
+  "m": 15,
+  "q": "Z′-Score Cemerlang 2,26 berarti…",
+  "o": [
+   "Distress",
+   "Bangkrut",
+   "Grey zone",
+   "Zona aman"
+  ],
+  "a": 2
+ },
+ {
+  "m": 15,
+  "q": "Komponen dengan bobot terbesar dalam Z′-Score…",
+  "o": [
+   "X1 (0,717×)",
+   "X3 (3,107×)",
+   "X4 (0,420×)",
+   "X5 (0,998×)"
+  ],
+  "a": 1
+ },
+ {
+  "m": 15,
+  "q": "Kelemahan utama Altman Z-Score…",
+  "o": [
+   "Bisa dimanipulasi via akuntansi",
+   "Hanya berlaku untuk bank",
+   "Modelnya terlalu baru",
+   "Bergantung pada asumsi distribusi normal"
+  ],
+  "a": 0
+ },
+ {
+  "m": 15,
+  "q": "Covenant kredit yang tipikal…",
+  "o": [
+   "Dividen wajib naik tiap tahun",
+   "Tidak ada covenant sama sekali",
+   "Laporan keuangan diaudit tiap kuartal",
+   "D/E maksimum & coverage minimum"
+  ],
+  "a": 3
+ },
+ {
+  "m": 16,
+  "q": "FVTPL artinya instrumen diukur pada…",
+  "o": [
+   "Biaya perolehan diamortisasi",
+   "Nilai wajar via OCI",
+   "Nilai wajar via laba rugi",
+   "Harga perolehan historis"
+  ],
+  "a": 2
+ },
+ {
+  "m": 16,
+  "q": "Stage 3 dalam ECL berarti piutang…",
+  "o": [
+   "Lancar (tanpa bukti impairment)",
+   "Gagal bayar (bukti objektif impairment)",
+   "Menunggak ringan (SICR terdeteksi)",
+   "Baru diterbitkan (belum ada riwayat bayar)"
+  ],
+  "a": 1
+ },
+ {
+  "m": 16,
+  "q": "Bedanya ECL dengan model incurred lama…",
+  "o": [
+   "ECL ekspektasian ke depan",
+   "ECL menunggu rugi terjadi",
+   "Keduanya berbasis kerugian historis",
+   "Incurred lebih antisipatif"
+  ],
+  "a": 0
+ },
+ {
+  "m": 16,
+  "q": "Reklasifikasi kategori instrumen keuangan…",
+  "o": [
+   "Jarang, hanya saat model bisnis berubah",
+   "Dilarang total tanpa kecuali",
+   "Bebas kapan saja sesuai keinginan",
+   "Boleh kapan saja selama harga pasar berubah"
+  ],
+  "a": 0
+ },
+ {
+  "m": 16,
+  "q": "Efek FVTPL terhadap laba rugi…",
+  "o": [
+   "Laba selalu stabil",
+   "Volatil mengikuti pasar",
+   "Tidak masuk laba rugi",
+   "Naik terus mengikuti pasar"
+  ],
+  "a": 1
+ },
+ {
+  "m": 17,
+  "q": "Sloan ratio Cemerlang 3,2% berarti…",
+  "o": [
+   "Akrual moderat",
+   "Nol akrual",
+   "Zona bahaya",
+   "Akrual sangat besar"
+  ],
+  "a": 0
+ },
+ {
+  "m": 17,
+  "q": "Akrual tinggi yang persisten berarti…",
+  "o": [
+   "Kualitas laba tinggi",
+   "Sudah pasti fraud",
+   "Kualitas laba rendah",
+   "Manajemen sedang efisien"
+  ],
+  "a": 2
+ },
+ {
+  "m": 17,
+  "q": "Skandal Enron berpusat pada…",
+  "o": [
+   "Utang off-balance-sheet",
+   "Kas yang dicuri",
+   "Penggelapan pajak",
+   "Penggelapan oleh direksi"
+  ],
+  "a": 0
+ },
+ {
+  "m": 17,
+  "q": "Skeptisisme profesional berarti…",
+  "o": [
+   "Curiga buta pada semua",
+   "Percaya pada manajemen",
+   "Mengabaikan semua red flag yang ada",
+   "Verifikasi bukti sebelum percaya"
+  ],
+  "a": 3
+ },
+ {
+  "m": 18,
+  "q": "Enterprise value dari FCFF perpetuity…",
+  "o": [
+   "FCFF ÷ (WACC − g)",
+   "FCFF ÷ (WACC + g)",
+   "Aset − utang",
+   "FCFF × (WACC − g)"
+  ],
+  "a": 0
+ },
+ {
+  "m": 18,
+  "q": "Margin of safety berarti…",
+  "o": [
+   "Batas maksimum utang bank",
+   "Laba ditahan perusahaan",
+   "Selisih harga pasar di atas nilai wajar",
+   "Diskon dari nilai wajar sebelum beli"
+  ],
+  "a": 3
+ },
+ {
+  "m": 18,
+  "q": "Forecast pada dasarnya adalah…",
+  "o": [
+   "Ramalan yang pasti",
+   "Skenario berdasar asumsi",
+   "Audit masa depan",
+   "Proyeksi tanpa perlu asumsi"
+  ],
+  "a": 1
+ }
+]

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedah Sendiri · FSA Lab</title>
+<meta name="description" content="Latihan analisis filing asli dengan benchmark terverifikasi: baca blind, input angka + disiplin sumber, cek mekanis, 3 lensa, lalu bandingkan. Emiten kurasi: KLBF (farmasi), MIKA (rumah sakit), BBRI (bank).">
+<link rel="canonical" href="https://fsa-lab.pages.dev/bedah-sendiri/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.emiten{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:720px){.emiten{grid-template-columns:1fr}}
+.ecard{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1.1rem 1.2rem}
+.ecard h3{font-family:var(--font-display);margin:0 0 .3rem;font-size:1.2rem}
+.ecard .tick{font-family:var(--font-mono);font-weight:700;background:var(--ink);color:#fffdf7;
+  font-size:.75rem;padding:.15rem .6rem;border-radius:20px;margin-left:.5rem;vertical-align:middle}
+.ecard .st{font-size:.85rem;font-weight:700;margin:.5rem 0}
+.ecard .st.todo{color:var(--ink-soft)}
+.ecard .st.prog{color:#8a6d1a}
+.ecard .st.done{color:#2e5d33}
+.ecard p{font-size:.88rem;color:var(--ink-soft)}
+.ecard.soon{opacity:.6}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">BS</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Latihan · Bedah Sendiri · Kurasi ber-benchmark</p>
+  <h1>Bedah <em>Sendiri.</em></h1>
+  <p class="lede">Filing asli, kamu yang membaca. Input angka + disiplin sumber, 8 cek mekanis atas angkamu sendiri,
+  3 lensa dijawab <em>blind</em> — baru setelah itu benchmark terverifikasi dibuka untuk dibandingkan.
+  Beda dengan <a href="../bedah-buta/">Bedah Buta</a> (emiten bebas, tanpa kunci) dan
+  <a href="../bedah-filing/">Bedah Filing SOCI</a> (terpandu).</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>Aturan mainnya jujur:</strong> benchmark tiap emiten <strong>terverifikasi ke filing aslinya</strong>
+    oleh tim FSA Lab (angka + halaman sumber). Tapi benchmark baru muncul di <strong>langkah 5</strong> —
+    langkah 1–4 dikerjakan blind, dan jawaban lensamu <strong>dikunci permanen</strong> saat benchmark dibuka.
+    Yang melatih skill = upaya unaided, bukan membandingkan. (Secara teknis ini honor-system, bukan keamanan —
+    dan memang dirancang begitu: yang dilatih adalah kejujuran analis.)
+  </div>
+
+  <div class="honest" style="border-left-color:var(--ink)">
+    <strong>🕵️ Catatan impostor.</strong> Drill blind di halaman ini <strong>bisa mengandung impostor</strong> —
+    1–2 anomali data halus yang disuntik tanpa pemberitahuan ke kartu referensi angka.
+    Kami tidak menandai drill mana yang sedang armed. Satu-satunya cara menangkapnya:
+    cek konsistensi + cross-check ke filing asli. Debrief + badge <em>Impostor spotted</em> ada di langkah 5.
+    Indeks semua case: <a href="/kasus/"><strong>Perpustakaan Kasus</strong></a>.
+  </div>
+
+  <h2>Emiten kurasi</h2>
+  <div class="emiten">
+    <div class="ecard">
+      <h3>PT Kalbe Farma Tbk<span class="tick">KLBF</span></h3>
+      <p>Farmasi &amp; consumer healthcare · AR 2024 (auditan) · Level: mudah–menengah.<br>
+      Cerita 2024 yang pas untuk latihan: penjualan +7,2%, laba +17,1% — ekspansi margin, bukan sekadar volume.</p>
+      <p class="st" id="klbf-status">…</p>
+      <p><a class="btn btn-primary" href="/bedah-sendiri/klbf/" id="klbf-link">Mulai / lanjutkan →</a></p>
+    </div>
+    <div class="ecard">
+      <h3>PT Bank Rakyat Indonesia Tbk<span class="tick">BBRI</span></h3>
+      <p>Bank BUMN · raja kredit mikro · LK auditan FY2024 (filing IDX) · Level: menengah.<br>
+      Cerita 2024 yang pas untuk latihan bank: PPoP +9,6% tapi laba bersih +0,1% — dimakan CKPN. Di bank ini, kualitas aset = penentu laba.</p>
+      <p class="st" id="bbri-status">…</p>
+      <p><a class="btn btn-primary" href="/bedah-sendiri/bbri/" id="bbri-link">Mulai / lanjutkan →</a></p>
+    </div>
+    <div class="ecard">
+      <h3>PT Mitra Keluarga Karyasehat Tbk<span class="tick">MIKA</span></h3>
+      <p>Jaringan rumah sakit · LK konsolidasian auditan 2024 · Level: mudah–menengah (belum dikalibrasi).<br>
+      Cerita 2024 yang pas untuk latihan RS: margin operasi 31%, D/E 0,13x — return murni dari operasi, bukan leverage. Plus misteri: seluruh saham treasuri Rp760 M ditarik via pengurangan modal.</p>
+      <p class="st" id="mika-status">…</p>
+      <p><a class="btn btn-primary" href="/bedah-sendiri/mika/" id="mika-link">Mulai / lanjutkan →</a></p>
+    </div>
+    <div class="ecard soon">
+      <h3>Emiten berikutnya<span class="tick">…</span></h3>
+      <p>Dalam kurasi. Tiap emiten butuh verifikasi benchmark penuh ke filing aslinya sebelum dibuka —
+      tanpa itu, ini cuma template kosong. Bersabar: kualitas &gt; kuantitas.</p>
+      <p class="st todo">🔒 Belum dibuka</p>
+    </div>
+  </div>
+</section>
+
+<section class="modul-sec">
+  <h2>Cara kerja — 5 langkah</h2>
+  <ol class="bb-steps" style="list-style:none;margin:0;padding:0">
+    <li style="margin-bottom:.6rem"><strong>1 · Baca dulu (blind).</strong> Unduh LK dari tautan resmi, tulis 3 hal (menarik / membingungkan / 1 pertanyaan), centang sudah baca.</li>
+    <li style="margin-bottom:.6rem"><strong>2 · Input angka + disiplin sumber.</strong> ±28 pos kunci — tiap baris bawa halaman/catatan, periode, satuan, mata uang, basis. Kosong ≠ nol.</li>
+    <li style="margin-bottom:.6rem"><strong>3 · Cek mekanis.</strong> 8 cek atas angkamu sendiri (neraca balance, kas tie-out, laba ditahan walk, margin &amp; ROE hitung-sendiri, jebakan satuan, campur basis, kelengkapan sumber). GAGAL = informasi, bukan nilai.</li>
+    <li style="margin-bottom:.6rem"><strong>4 · Tiga lensa (blind).</strong> Thesis testing: bukti penguat + pematah + angka dikutip. Min. 50 karakter + ada angka per lensa.</li>
+    <li style="margin-bottom:.6rem"><strong>5 · Benchmark reveal.</strong> Tabel divergensi + bacaan analis (satu interpretasi, bukan jawaban benar) + red flags sebagai pertanyaan + refleksi + Salin Lembar Bedah.</li>
+  </ol>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">Output = <strong>Lembar Bedah</strong>: format yang sama dipakai di ujian
+  (header + verdict 5 baris + 3 lensa + divergensi). Siap diuji? → <a href="/ujian/"><strong>Ujian Blind: BBCA Interim H1 2026</strong></a>
+  (prasyarat: M38 lulus). <a href="../index.html">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../js/bedah-sendiri-hub.js"></script>
+</body>
+</html>

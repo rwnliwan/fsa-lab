@@ -1,0 +1,497 @@
+[
+ {
+  "m": 29,
+  "q": "Hedge accounting di Indonesia diatur oleh…",
+  "o": [
+   "PSAK 107 (dulu 60) — hanya disclosure instrumen keuangan",
+   "PSAK 109 (dulu 71), setara IFRS 9",
+   "PSAK 237 (dulu 57) — provisi & kontinjensi",
+   "PSAK 116 (dulu 73) — sewa"
+  ],
+  "a": 1
+ },
+ {
+  "m": 29,
+  "q": "Swap gain 5.000, utang USD loss 4.600 (ILUSTRATIF, Rp juta). Net yang masuk P&L — setelah rugi FX utang + reklasifikasi cadangan hedge — adalah…",
+  "o": [
+   "4.600",
+   "0 — semuanya ke OCI",
+   "400",
+   "9.600"
+  ],
+  "a": 2
+ },
+ {
+  "m": 29,
+  "q": "Pada cash flow hedge yang memenuhi syarat, bagian yang efektif dicatat di…",
+  "o": [
+   "OCI (penghasilan komprehensif lain)",
+   "P&L periode berjalan",
+   "Langsung mengurangi laba ditahan",
+   "Tidak dicatat — cukup diungkap di catatan"
+  ],
+  "a": 0
+ },
+ {
+  "m": 29,
+  "q": "Berikut ini BUKAN syarat kualifikasi hedge accounting PSAK 109 (dulu 71)…",
+  "o": [
+   "Dokumentasi formal di awal hubungan lindung nilai",
+   "Desainasi instrumen & item yang dilindungi",
+   "Uji efektivitas yang berkelanjutan",
+   "Nilai nosional minimum Rp10 miliar"
+  ],
+  "a": 3
+ },
+ {
+  "m": 29,
+  "q": "Setelah hubungan lindung nilai dihentikan, saldo akumulasi OCI (cash flow hedge reserve)…",
+  "o": [
+   "Langsung direklasifikasi seluruhnya ke P&L begitu hubungan dihentikan",
+   "Tetap di OCI sampai transaksi yang dilindungi memengaruhi P&L",
+   "Dipindahkan ke laba ditahan tanpa pernah lewat P&L",
+   "Diamortisasi ke P&L selama sisa umur instrumen lindung nilai"
+  ],
+  "a": 1
+ },
+ {
+  "m": 30,
+  "q": "LDR 88,2% (= Rp60.000 ÷ Rp68.000 miliar) dibaca analis sebagai…",
+  "o": [
+   "Bank kelebihan likuiditas — sebagian DPK menganggur sehingga pendapatan bunga tidak optimal",
+   "Setiap Rp100 DPK disalurkan Rp88,2 sebagai kredit; bank masih punya ruang tumbuh",
+   "Bank melanggar batas LDR OJK sehingga wajib menahan ekspansi kredit tahun ini",
+   "LDR adalah rasio permodalan: modal inti dibagi aset tertimbang menurut risiko"
+  ],
+  "a": 1
+ },
+ {
+  "m": 30,
+  "q": "NPL gross 2,8%, NPL net 0,9%, coverage 145% — pernyataan yang TEPAT…",
+  "o": [
+   "NPL net 0,9% membuktikan CKPN sudah melebihi seluruh NPL — risiko kredit bank praktis sudah nol dan tak perlu analisis lebih lanjut",
+   "Bank tidak perlu membentuk CKPN lagi tahun ini — coverage 145% berarti pencadangan sudah melebihi total kredit bermasalah sehingga biaya CKPN dapat dihemat untuk menaikkan laba",
+   "Coverage memakai total CKPN — termasuk ECL Stage 1 & 2 (PSAK 109) — sedangkan NPL net hanya mengurangkan CKPN atas kredit bermasalah; keduanya konsisten",
+   "NPL gross 2,8% berarti 2,8% dari total DPK bank macet dan harus dihapusbukukan seluruhnya pada tahun berjalan"
+  ],
+  "a": 2
+ },
+ {
+  "m": 30,
+  "q": "Migrasi Rp1.000 miliar dari Stage 2 ke Stage 3 (PSAK 109) berarti…",
+  "o": [
+   "Beban CKPN naik — Stage 3 = credit-impaired dengan ECL lifetime penuh, dan ini sinyal kolektibilitas memburuk",
+   "Tidak ada dampak ke laba rugi karena CKPN Stage 3 dibentuk dari laba ditahan, bukan dibebankan pada tahun berjalan",
+   "CAR justru membaik karena kredit bermasalah dipindahkan keluar dari perhitungan ATMR",
+   "Migrasi antar stage hanya reklasifikasi disclosure di catatan — angka CKPN tidak berubah"
+  ],
+  "a": 0
+ },
+ {
+  "m": 30,
+  "q": "CASA turun 58% → 45% dan digantikan deposito berjangka. Dampak ke NIM…",
+  "o": [
+   "NIM naik karena total DPK bertambah sehingga dana yang bisa disalurkan lebih besar",
+   "Tidak ada dampak ke NIM — komposisi DPK tidak memengaruhi margin bunga",
+   "NIM naik karena dana murah yang hilang digantikan deposito dengan bunga lebih tinggi",
+   "NIM turun — biaya dana naik menggerus pendapatan bunga bersih"
+  ],
+  "a": 3
+ },
+ {
+  "m": 30,
+  "q": "Kredit restrukturisasi (COVID legacy) Rp3.200 miliar yang masih lancar…",
+  "o": [
+   "Otomatis masuk NPL gross — semua kredit yang pernah direstrukturisasi wajib digolongkan bermasalah tanpa kecuali",
+   "Tidak perlu dipantau lagi karena restrukturisasi yang disetujui OJK menghapus seluruh risiko gagal bayar di masa depan",
+   "Tetap dipantau terpisah — restrukturisasi lancar BUKAN NPL, tetapi gagal bayar berikutnya langsung menaikkan NPL",
+   "Dikeluarkan dari total kredit dan dicatat sebagai aset lain-lain di neraca"
+  ],
+  "a": 2
+ },
+ {
+  "m": 31,
+  "q": "Bunga 2026 diasumsikan 14.000 karena utang bank tetap 141.440. Kapan perhitungan bunga menjadi SIRKULAR (circular reference)?",
+  "o": [
+   "Tidak pernah terjadi — bunga forecast selalu boleh diasumsikan tetap karena circular reference hanya masalah teori, bukan praktik pemodelan keuangan",
+   "Ketika utang berubah di tengah tahun: bunga butuh rata-rata utang, rata-rata utang butuh kas akhir, kas butuh laba, laba butuh bunga",
+   "Hanya ketika tarif pajak berubah — pajak memengaruhi beban bunga efektif tahun berjalan",
+   "Hanya ketika perusahaan membayar dividen — dividen mengurangi kas sehingga utang bertambah"
+  ],
+  "a": 1
+ },
+ {
+  "m": 31,
+  "q": "DSO 2025 = 73,0 hari. Dengan asumsi DSO tetap dan penjualan 2026 = 582.400, piutang usaha 2026 = …",
+  "o": [
+   "116.480 (= 73/365 × 582.400)",
+   "104.000 (= piutang 2025, tanpa penyesuaian penjualan)",
+   "96.000 (= 60/365 × 582.400 — salah ambil DSO)",
+   "120.960 (= 73/365 × 604.800 — salah ambil penjualan)"
+  ],
+  "a": 0
+ },
+ {
+  "m": 31,
+  "q": "Skenario WC days +10 hari: NI tetap 53.695, tetapi CFO turun dari 70.735 ke 54.779. Pelajaran yang TEPAT…",
+  "o": [
+   "Model rusak — NI yang tetap membuktikan ada kesalahan rumus di arus kas",
+   "Angka tidak konsisten — CFO seharusnya tidak bisa turun bila NI tetap",
+   "Laba bukan kas: tambahan 10 hari menahan ±15.956 kas di modal kerja",
+   "Modal kerja tidak memengaruhi kas — kas hanya dipengaruhi laba dan capex"
+  ],
+  "a": 2
+ },
+ {
+  "m": 31,
+  "q": "Capex 50.000 > depresiasi 32.000. Dampak ke neraca 2026?",
+  "o": [
+   "Aset tetap neto naik 18.000 → 248.000",
+   "Aset tetap neto turun 18.000 → 212.000",
+   "Tidak ada dampak ke neraca — capex hanya memindahkan kas",
+   "Ekuitas naik 18.000 karena aset bertambah"
+  ],
+  "a": 0
+ },
+ {
+  "m": 31,
+  "q": "D/E 2026 = 1,24x vs 2025 = 1,52x. Penjelasan yang TEPAT…",
+  "o": [
+   "Perusahaan membayar sebagian utang bank sehingga pembilang D/E menyusut sementara ekuitas relatif stabil",
+   "Utang tetap, ekuitas naik (laba ditahan 79.440 → 127.135) sehingga leverage membaik",
+   "Total aset menyusut sehingga rasio utang terhadap ekuitas ikut turun",
+   "Beban bunga turun sehingga laba ditahan — dan ekuitas — naik lebih cepat"
+  ],
+  "a": 1
+ },
+ {
+  "m": 32,
+  "q": "Rekonsiliasi fiskal Cemerlang Abadi 2025: PBT Rp58.000 juta, beda tetap +Rp4.000 juta (non-deductible), beda tetap −Rp4.000 juta (penghasilan final), beda waktu −Rp6.000 juta. PKP-nya…",
+  "o": [
+   "Rp48.000 juta",
+   "Rp52.000 juta",
+   "Rp58.000 juta",
+   "Rp60.000 juta"
+  ],
+  "a": 1
+ },
+ {
+  "m": 32,
+  "q": "PPh terutang 2025 = Rp11.440 juta, beban pajak akuntansi = Rp12.760 juta. Selisih Rp1.320 juta adalah…",
+  "o": [
+   "PPh Pasal 29 — kurang bayar yang harus dilunasi sebelum SPT disampaikan",
+   "Kredit PPh Pasal 25 yang hangus karena tidak diklaim dalam tahun berjalan",
+   "Denda administrasi atas keterlambatan penyampaian SPT tahunan",
+   "Beban pajak tangguhan (pembalikan DTA atas beda waktu)"
+  ],
+  "a": 3
+ },
+ {
+  "m": 32,
+  "q": "Pendapatan sewa gedung PT Cemerlang Abadi dikenai…",
+  "o": [
+   "PPh final 10% (PPh Pasal 4 ayat 2)",
+   "PPh Pasal 23 sebesar 2% atas jasa sewa",
+   "PPh badan tarif 22% non-final seperti penghasilan usaha",
+   "Bukan objek pajak karena sewa gedung milik sendiri"
+  ],
+  "a": 0
+ },
+ {
+  "m": 32,
+  "q": "Urutan penyelesaian sengketa pajak yang benar adalah…",
+  "o": [
+   "Banding → keberatan → peninjauan kembali",
+   "Peninjauan kembali → banding → keberatan",
+   "Keberatan → banding → peninjauan kembali",
+   "Keberatan → mediasi → arbitrase"
+  ],
+  "a": 2
+ },
+ {
+  "m": 32,
+  "q": "Warung makan keluarga: penjualan Rp1,5 miliar/tahun, tanpa akuntabilitas publik. Rezim akuntansi yang paling tepat…",
+  "o": [
+   "PSAK penuh",
+   "SAK EP",
+   "IFRS",
+   "SAK EMKM"
+  ],
+  "a": 3
+ },
+ {
+  "m": 33,
+  "q": "PEFINDO memberi peringkat idAAA pada sebuah obligasi. Artinya…",
+  "o": [
+   "Setara dengan AAA pada skala global — peringkat idAAA dapat dibandingkan langsung dengan AAA internasional dan obligasinya aman di seluruh dunia",
+   "Peringkat tertinggi skala NASIONAL: kemampuan superior memenuhi kewajiban jangka panjang relatif terhadap obligor Indonesia lainnya",
+   "Dijamin pemerintah Indonesia sehingga investor pasti menerima pembayaran penuh",
+   "Bebas dari risiko gagal bayar selamanya — peringkat tertinggi berarti obligasi tidak mungkin default kapan pun"
+  ],
+  "a": 1
+ },
+ {
+  "m": 33,
+  "q": "Dalam kerangka Merton, 'strike price' dari opsi ekuitas adalah…",
+  "o": [
+   "Harga saham perusahaan saat pertama kali IPO",
+   "Nilai buku ekuitas pada tanggal valuasi",
+   "Nilai kini dividen tahunan yang diharapkan",
+   "Nilai nominal utang yang jatuh tempo"
+  ],
+  "a": 3
+ },
+ {
+  "m": 33,
+  "q": "PKPU sementara berdasarkan UU 37/2004 berlaku paling lama…",
+  "o": [
+   "45 hari",
+   "90 hari",
+   "180 hari",
+   "270 hari"
+  ],
+  "a": 0
+ },
+ {
+  "m": 33,
+  "q": "DSCR proyek 1,35x artinya…",
+  "o": [
+   "Total utang proyek 1,35x lipat dari ekuitas yang disetor sponsor ke dalam SPV",
+   "Proyek menghasilkan keuntungan 35% di atas total investasinya",
+   "Kas tersedia untuk utang 1,35x lipat dari kewajiban cicilan periode itu",
+   "Suku bunga pinjaman proyek ditetapkan sebesar 35% per tahun"
+  ],
+  "a": 2
+ },
+ {
+  "m": 33,
+  "q": "Waterfall ilustratif: EV 260.000; klaim senior 200.000; subordinasi 150.000. Recovery kreditur subordinasi = …",
+  "o": [
+   "100%",
+   "40%",
+   "60%",
+   "0%"
+  ],
+  "a": 1
+ },
+ {
+  "m": 34,
+  "q": "Kontrak Surya Nusa: kas 120.000 diterima di muka, tiga kewajiban belum dipenuhi. Di neraca 1 Jan, 120.000 ini dicatat sebagai…",
+  "o": [
+   "Piutang usaha — hak menagih yang belum ditagih",
+   "Liabilitas kontrak (contract liability)",
+   "Aset kontrak (contract asset) — imbalan yang belum menjadi hak tanpa syarat",
+   "Beban dibayar di muka — kas untuk jasa yang belum diterima"
+  ],
+  "a": 1
+ },
+ {
+  "m": 34,
+  "q": "Alokasi ke garansi extended: harga transaksi 120.000; SSP alat 100.000, instalasi 15.000, garansi 20.000. Alokasi garansi = … (Rp juta, ilustratif)",
+  "o": [
+   "20.000",
+   "15.000",
+   "40.000",
+   "17.778"
+  ],
+  "a": 3
+ },
+ {
+  "m": 34,
+  "q": "Distributor menjual tiket Rp1.000.000/lembar; ia TIDAK mengendalikan tiket sebelum terjual — promotor menetapkan harga dan menanggung kursi kosong. Pendapatan distributor per tiket = …",
+  "o": [
+   "Hanya komisinya (neto) — ia agen",
+   "1.000.000 (bruto) — ia mengendalikan tiket",
+   "0 — bukan penjual, tak ada pendapatan",
+   "500.000 — setengah harga tiket"
+  ],
+  "a": 0
+ },
+ {
+  "m": 34,
+  "q": "Garansi 17.778 diakui straight-line 24 bulan mulai Maret 2026. Pendapatan garansi selama 2026 = … (Rp juta, ilustratif)",
+  "o": [
+   "8.889",
+   "17.778",
+   "7.407",
+   "5.926"
+  ],
+  "a": 2
+ },
+ {
+  "m": 34,
+  "q": "Revenue +30% YoY, piutang +80%, contract asset +150%, CFO flat. Bacaan tiga-lensa yang paling tepat…",
+  "o": [
+   "Kinerja operasional sangat baik — pendapatan tumbuh 30% dan kas biasanya menyusul satu-dua kuartal kemudian",
+   "Red flag: pendapatan diakui lebih cepat dari kas — uji Step 5 dan kolektibilitas Step 1",
+   "Efisiensi modal kerja membaik karena piutang dan aset kontrak tumbuh lebih cepat",
+   "Perusahaan siap ekspansi agresif — pertumbuhan pendapatan 30% butuh tambahan modal"
+  ],
+  "a": 1
+ },
+ {
+  "m": 35,
+  "q": "PT Induk Nusantara mengendalikan 80% PT Anak Berkah (ilustratif). Perlakuan yang TEPAT di laporan konsolidasian…",
+  "o": [
+   "Hanya 80% aset dan liabilitas anak yang digabung sesuai porsi kepemilikan",
+   "Investasi dicatat satu baris dengan metode ekuitas — sama seperti perlakuan atas entitas asosiasi karena kepemilikan di bawah 100%",
+   "100% aset & liabilitas anak digabung; 20% sisanya disajikan sebagai kepentingan nonpengendali (NCI)",
+   "Laporan anak diabaikan — cukup akui dividen tunai yang diterima induk"
+  ],
+  "a": 2
+ },
+ {
+  "m": 35,
+  "q": "Laba bersih anak Rp12.000 juta (ilustratif), kepemilikan induk 80%. Kepentingan nonpengendali atas laba = …",
+  "o": [
+   "Rp2.400 juta",
+   "Rp9.600 juta",
+   "Rp12.000 juta",
+   "Rp0 — NCI hanya ada di neraca"
+  ],
+  "a": 0
+ },
+ {
+  "m": 35,
+  "q": "Induk memiliki 30% entitas asosiasi (metode ekuitas, PSAK 228). Asosiasi membayar dividen; bagian induk Rp450 juta (ilustratif). Pencatatan yang TEPAT di laporan induk…",
+  "o": [
+   "Mengakui pendapatan dividen di laba rugi sebesar Rp450 juta",
+   "Menambah pos 'bagian laba asosiasi' satu baris di laba rugi",
+   "Mencatat kas bertambah tanpa jurnal lawan karena dividen sudah menjadi hak",
+   "Mengurangi nilai tercatat investasi — bukan pendapatan"
+  ],
+  "a": 3
+ },
+ {
+  "m": 35,
+  "q": "Laba belum direalisasi downstream Rp10.000 juta belum dieliminasi (ilustratif). Setelah koreksi, laba yang dapat diatribusikan kepada pemilik induk menjadi… (dasar: laba total 42.000, NCI 2.400)",
+  "o": [
+   "Rp32.000 juta",
+   "Rp29.600 juta",
+   "Rp39.600 juta",
+   "Rp31.600 juta"
+  ],
+  "a": 1
+ },
+ {
+  "m": 35,
+  "q": "Piutang induk ke anak Rp15.000 juta dieliminasi saat konsolidasi (ilustratif). Dampak ke TOTAL ASET konsolidasian…",
+  "o": [
+   "Naik Rp15.000 juta — eliminasi menambah pos penyeimbang di aset",
+   "Tetap — eliminasi hanya reklasifikasi antar pos dalam aset",
+   "Turun Rp15.000 juta — piutang & utang internal saling hapus",
+   "Naik berlipat karena piutang dan utang dieliminasi dua-duanya"
+  ],
+  "a": 2
+ },
+ {
+  "m": 36,
+  "q": "PT Teknologi Maju memberi opsi karyawan senilai Rp9.000 juta dengan vesting 3 tahun (ilustratif). Menurut PSAK 102 (dulu PSAK 53), beban SBC diakui…",
+  "o": [
+   "Penuh Rp9.000 juta saat opsi diberikan (grant date) — jasa dianggap diterima di muka",
+   "Saat karyawan mengeksekusi opsi — beban diakui mengikuti kas yang diterima",
+   "Selama periode vesting, mengikuti jasa yang diberikan — 3.000 per tahun",
+   "Hanya bila harga saham naik di atas exercise price — opsi out-of-the-money tidak diakui"
+  ],
+  "a": 2
+ },
+ {
+  "m": 36,
+  "q": "Jurnal tahunan beban SBC Rp3.000 juta (ilustratif) yang TEPAT…",
+  "o": [
+   "Tidak ada jurnal sampai opsi dieksekusi — cukup diungkap di catatan",
+   "Dr kas 3.000 / Cr beban kompensasi 3.000 — beban dibayar tunai",
+   "Dr modal saham 3.000 / Cr kas 3.000 — dianggap pembelian kembali saham",
+   "Dr beban kompensasi 3.000 / Cr modal disetor — agio saham 3.000"
+  ],
+  "a": 3
+ },
+ {
+  "m": 36,
+  "q": "24 juta opsi @Rp200, harga pasar rata-rata Rp400 (ilustratif). Tambahan saham dilutif dengan treasury stock method = …",
+  "o": [
+   "24 juta",
+   "12 juta",
+   "36 juta",
+   "6 juta"
+  ],
+  "a": 1
+ },
+ {
+  "m": 36,
+  "q": "Harga saham Rp6.000, basic EPS Rp300, diluted EPS Rp283 (ilustratif). P/E yang dipakai analis konservatif…",
+  "o": [
+   "21,2x — memakai diluted EPS",
+   "20,0x — memakai basic EPS yang lebih lazim dipakai",
+   "0,1x — dari 6.000 ÷ 60.000 (salah rumus)",
+   "Keduanya sama saja"
+  ],
+  "a": 0
+ },
+ {
+  "m": 36,
+  "q": "Opsi dengan exercise Rp500 saat harga pasar Rp400 (ilustratif). Perlakuan di diluted EPS…",
+  "o": [
+   "Tetap dimasukkan — semua opsi dihitung",
+   "Dihitung dengan metode if-converted",
+   "Dikeluarkan — bersifat anti-dilutif",
+   "Menambah laba bersih pembilang"
+  ],
+  "a": 2
+ },
+ {
+  "m": 37,
+  "q": "PT Dagang Prima memakai FIFO (ilustratif). Menurut PSAK 202 (dulu PSAK 14), metode persediaan yang DILARANG adalah…",
+  "o": [
+   "FIFO — metode ini dilarang karena menaikkan laba saat harga naik",
+   "LIFO — hanya FIFO atau rata-rata tertimbang yang diizinkan",
+   "Rata-rata tertimbang — hanya identifikasi khusus yang diizinkan",
+   "Identifikasi khusus — tidak boleh dipakai untuk barang sejenis"
+  ],
+  "a": 1
+ },
+ {
+  "m": 37,
+  "q": "LIFO reserve Rp2.000 juta (ilustratif). Penyesuaian analis untuk menyetarakan persediaan LIFO ke basis FIFO…",
+  "o": [
+   "Tambah 2.000 ke persediaan LIFO",
+   "Kurang 2.000 dari persediaan LIFO",
+   "Tidak ada — langsung comparable",
+   "Bagi dua: tambah 1.000"
+  ],
+  "a": 0
+ },
+ {
+  "m": 37,
+  "q": "Carrying Rp25.000 juta, FVLCD Rp18.000 juta, VIU Rp20.000 juta (ilustratif). Recoverable amount menurut PSAK 236 (dulu PSAK 48)…",
+  "o": [
+   "Rp18.000 juta — ambil yang terendah agar konservatif",
+   "Rp43.000 juta — jumlahkan keduanya",
+   "Rp20.000 juta — ambil yang tertinggi",
+   "Rp25.000 juta — tidak ada impairment"
+  ],
+  "a": 2
+ },
+ {
+  "m": 37,
+  "q": "Tahun lalu perusahaan mencatat rugi impairment goodwill. Tahun ini kondisi pulih (ilustratif). Perlakuan yang TEPAT…",
+  "o": [
+   "Boleh dibalik bila kondisi pasar sudah pulih seperti aset lainnya",
+   "Boleh dibalik tetapi hanya melalui OCI, bukan laba rugi",
+   "Boleh dibalik maksimal 50% dari rugi yang pernah dicatat",
+   "Dilarang — rugi impairment goodwill tidak boleh dibalik"
+  ],
+  "a": 3
+ },
+ {
+  "m": 37,
+  "q": "Overhaul Rp8.000 juta, umur manfaat 4 tahun (ilustratif). Bila dikapitalisasi (bukan dibebankan langsung), laba tahun 1…",
+  "o": [
+   "Lebih rendah 8.000",
+   "Sama saja — kas keluarnya sama",
+   "Lebih tinggi 6.000",
+   "Lebih tinggi 8.000"
+  ],
+  "a": 2
+ }
+]

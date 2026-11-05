@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 24 — Multiples · FSA Lab</title>
+<meta name="description" content="Modul 24 FSA Lab: P/E, EV/EBITDA, P/B, PEG — cara hitung, kapan pakai, dan jebakannya.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-24/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M24</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 6</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 24</span>
+</nav>
+<p class="mod-count">Modul 24 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 6 · Penutup &amp; Praktik · Modul 24</p>
+  <h1>Berapa Kali <em>Lipat Harganya?</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta; harga saham ilustratif
+    Rp5.600): P/E <strong>12,4x</strong>, EV/EBITDA <strong>7,3x</strong>. Di modul penutup ini kamu
+    menghitung <strong>multiples</strong> — P/E, EV/EBITDA, P/B, PEG — dan belajar kapan tiap
+    multiple valid, plus jebakan yang bikin multiple murah ternyata <strong>value trap</strong>.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Harga ÷ Fundamental</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>multiples</strong> —
+    berapa lipat harga pasar dibanding fundamentalnya, dan jebakan di balik angka "murah".</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="mult">Multiples 2025</button>
+    <button class="stmt-tab" data-stmt="trap">Jebakan Multiples</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Gerakkan Multiplenya</h2>
+  <p class="sub">Enam kejadian pasar. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Ukur Multiplenya</h2>
+  <p class="sub">Empat multiple. Hitung — lalu nilai: diskon beneran atau value trap?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: P/E 12,4x — Diskon atau Value Trap?</h2>
+  <p class="sub">Cemerlang diperdagangkan 12,4x laba — di bawah peer 14,0x. Tapi E-nya mengandung
+    one-off Rp8.000, akrual 14.440, dan versi US GAAP-nya 15,6x. Tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> <span class="num">P/E 12,4x</span> di bawah <em>peer</em> <span class="num">14,0x</span> + <span class="num">PEG 0,68x</span> (angka ilustratif modul) terlihat seperti diskon &mdash; tapi <em>multiple</em> murah atas E yang buruk = <em>value trap</em>. Kualitas E: <em>continuing</em> EPS hanya <span class="num">390,0</span> (bukan 452,4 <em>headline</em>) &rarr; P/E &ldquo;bersih&rdquo; = <span class="num">14,4x</span>, tiba-tiba tidak murah. Pertumbuhan: laba +53% tapi CFO &minus;30% &mdash; pertumbuhan yang tidak jadi kas tidak layak dapat <em>multiple</em> pertumbuhan. Keputusan: bukan diskon &mdash; lewatkan sampai E berkualitas.</p>
+<p><strong>Lensa kredit:</strong> <span class="num">EV/EBITDA 7,3x</span> dengan utang bersih <span class="num">180.000</span> &rarr; <em>debt capacity</em> tersisa tipis. <em>Leverage</em> pasar: utang bersih/EV = 24% &mdash; masih moderat. Tapi <em>coverage</em> berbasis kas (bukan EBITDA akuntansi) yang menentukan: CFO <span class="num">30.800</span> vs beban bunga <span class="num">14.000</span> = <span class="num">2,2x</span> &mdash; jauh lebih ketat dari <em>coverage</em> akuntansi <span class="num">5,14x</span>. Kesimpulan: jangan tambah utang berbasis EBITDA; pasar ekuitas boleh optimis, kreditur harus pesimis.</p>
+<p><strong>Lensa forensik:</strong> tiga cek sebelum percaya P/E 12,4x: (1) E digelembungkan? &mdash; <em>one-off</em> <span class="num">8.000</span> sudah dikeluarkan?; (2) <em>buyback</em> &mdash; apakah jumlah saham <span class="num">100 juta</span> menyusut diam-diam?; (3) revaluasi &mdash; apakah ekuitas <span class="num">179.440</span> mengandung surplus revaluasi yang mengecilkan <span class="num">P/B 3,1x</span> secara artifisial? Satu hal yang membunuh tesis &ldquo;ini murah&rdquo;: bila E yang benar adalah <em>continuing</em> EPS 390 &mdash; maka P/E sebenarnya 14,4x, SEJAJAR <em>peer</em>, dan tidak ada diskon sama sekali. Murah yang dihitung dari angka yang salah = mahal yang tersamar.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan kurikulum.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-23/" class="pn-prev">← Modul 23</a>
+  <a href="/modul-25/" class="pn-next">Modul 25 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 24 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul24.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

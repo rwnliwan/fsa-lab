@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konverter Nomor PSAK · FSA Lab</title>
+<meta name="description" content="Konverter nomor PSAK lama → baru (efektif 1 Jan 2024) → IFRS/IAS → ASC. Cari dengan nomor apa pun atau nama topik.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/konverter/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.conv-search{max-width:52rem}
+.conv-search input{width:100%;font-family:var(--font-mono);font-size:1.05rem;border:2px solid var(--ink);
+  border-radius:12px;padding:.85rem 1.1rem;background:var(--card);color:var(--ink)}
+.conv-search input:focus{outline:3px solid var(--mustard)}
+.conv-hint{font-size:.85rem;color:var(--ink-soft);margin-top:.5rem}
+#conv-results{display:grid;gap:1rem;margin:1.5rem 0}
+.conv-card{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.1rem 1.3rem;box-shadow:4px 4px 0 var(--ink)}
+.conv-card .nums{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.35rem}
+.conv-card .new{font-family:var(--font-display);font-size:1.7rem;color:var(--sunset-deep)}
+.conv-card .old{font-family:var(--font-mono);font-size:.85rem;background:var(--paper-deep);
+  border:1px solid var(--line);border-radius:6px;padding:.15rem .55rem}
+.conv-card .tipe{font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--paper);
+  background:var(--teal-deep);border-radius:6px;padding:.2rem .55rem;letter-spacing:.05em}
+.conv-card .topik{font-weight:600;margin-bottom:.5rem}
+.conv-card .map{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;font-size:.85rem}
+.conv-card .map div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.45rem .7rem}
+.conv-card .map .k{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-soft);display:block;margin-bottom:.15rem}
+.conv-card .flag{font-size:.78rem;color:var(--sunset-deep);font-weight:600;margin-top:.4rem}
+.conv-empty{background:var(--paper-deep);border:2px dashed var(--line);border-radius:var(--radius);
+  padding:1.2rem;color:var(--ink-soft)}
+.conv-table{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:1rem}
+.conv-table th{background:var(--ink);color:var(--paper);text-align:left;padding:.6rem .7rem;
+  font-family:var(--font-mono);font-size:.75rem;position:sticky;top:0}
+.conv-table td{border-bottom:1px solid var(--line);padding:.55rem .7rem;vertical-align:top}
+.conv-table tr:nth-child(even) td{background:var(--card)}
+.conv-table .nb{font-family:var(--font-mono);font-weight:700;color:var(--sunset-deep);white-space:nowrap}
+.conv-table .ob{font-family:var(--font-mono);color:var(--ink-soft);white-space:nowrap}
+.conv-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper)}
+.conv-count{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-soft);margin:.6rem 0}
+@media(max-width:640px){.conv-card .map{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">KV</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Sudut PSAK</p>
+  <h1>Konverter Nomor <em>PSAK.</em></h1>
+  <p class="lede">Sejak <strong>1 Januari 2024</strong>, DSAK-IAI menomori ulang seluruh standar:
+    PSAK lama 2 digit menjadi 3 digit (PSAK 1 → <strong>PSAK 201</strong>), PSAK syariah dan ISAK
+    masuk seri 400. Ketik <strong>nomor apa pun</strong> — lama, baru, IFRS/IAS, ASC — atau nama topik,
+    dan dapatkan pasangannya.</p>
+</header>
+
+<section class="modul-sec">
+  <h2>Cari Standar</h2>
+  <p class="sub">Contoh: <span class="num">201</span>, <span class="num">PSAK 16</span>,
+    <span class="num">IAS 38</span>, <span class="num">ASC 842</span>, <span class="num">murabahah</span>,
+    <span class="num">sewa</span>.</p>
+  <div class="conv-search">
+    <label for="conv-q" class="sr-only">Cari standar: ketik nomor PSAK lama/baru, IFRS/IAS, ASC, atau kata kunci topik</label>
+    <input id="conv-q" type="text" placeholder="Ketik nomor atau topik… mis. 216 / PSAK 16 / IAS 16 / aset tetap" autocomplete="off">
+    <p class="conv-hint">Pencarian menerima nomor lama, nomor baru, padanan IFRS/IAS, padanan ASC, maupun kata kunci topik (Indonesia/Inggris).</p>
+  </div>
+  <div id="conv-results"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<section class="modul-sec">
+  <h2>Tabel Lengkap</h2>
+  <p class="sub">Seluruh mapping yang tercakup. Klik header? Tidak perlu — gunakan pencarian di atas untuk memfilter.</p>
+  <p class="conv-count" id="conv-count"></p>
+  <div class="conv-scroll">
+    <table class="conv-table">
+      <thead><tr><th>Baru</th><th>Lama</th><th>Nama Standar</th><th>IFRS / IAS</th><th>US GAAP (ASC)</th></tr></thead>
+      <tbody id="conv-body"></tbody>
+    </table>
+  </div>
+  <p class="sub" style="margin-top:1rem;font-size:.82rem">Catatan jujur: tabel mengikuti pola penomoran ulang DSAK-IAI
+    efektif 1 Jan 2024. Standar bertanda <em>dicabut/digantikan</em> tidak berlaku efektif — nomor barunya
+    hanya untuk rujukan arsip. Untuk kepastian regulasi, konfirmasi ke publikasi resmi IAI.</p>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Konverter PSAK · alat bantu belajar, bukan nasihat profesional.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="konverter.js"></script>
+</body>
+</html>

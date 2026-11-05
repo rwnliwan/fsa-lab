@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Memo Builder · FSA Lab</title>
+<meta name="description" content="Template terpandu 5 langkah untuk menulis credit memo: profil debitur, spread 3 tahun, rasio leverage/coverage, stress test, rekomendasi. Salin jadi teks siap kirim.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/memo-kredit/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.memo-step{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.2rem;box-shadow:4px 4px 0 var(--ink)}
+.memo-step h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.15rem}
+.memo-step .step-sub{font-size:.85rem;color:var(--ink-soft);margin-bottom:1rem}
+.memo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;margin-bottom:.5rem}
+.memo-grid label{font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem}
+.memo-grid input,.memo-grid textarea,.memo-grid select{width:100%;font-family:var(--font-body);font-size:.92rem;
+  border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper);color:var(--ink)}
+.memo-grid input:focus,.memo-grid textarea:focus,.memo-grid select:focus{outline:3px solid var(--mustard)}
+.memo-grid input.num{font-family:var(--font-mono)}
+.memo-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem}
+.spread-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.spread-table th{background:var(--ink);color:var(--paper);padding:.55rem .6rem;font-family:var(--font-mono);
+  font-size:.72rem;text-align:right}
+.spread-table th:first-child{text-align:left}
+.spread-table td{border-bottom:1px solid var(--line);padding:.4rem .6rem;text-align:right}
+.spread-table td:first-child{text-align:left;font-weight:600}
+.spread-table td input{width:7.5rem;font-family:var(--font-mono);font-size:.85rem;text-align:right;
+  border:2px solid var(--line);border-radius:8px;padding:.35rem .5rem;background:var(--paper);color:var(--ink)}
+.spread-table td input:focus{outline:3px solid var(--mustard);border-color:var(--ink)}
+.spread-table tr.ratio td{background:#fbf3dd;font-family:var(--font-mono);font-weight:700}
+.spread-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper)}
+.stress-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:.8rem 0}
+.stress-row input[type=range]{flex:1;min-width:12rem;accent-color:var(--sunset-deep)}
+#stress-val{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;min-width:5rem}
+.stress-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.9rem;margin-top:.8rem}
+.stress-card{border:2px solid var(--ink);border-radius:10px;padding:.7rem .9rem;background:var(--paper)}
+.stress-card .k{font-size:.72rem;color:var(--ink-soft);font-weight:600}
+.stress-card .v{font-family:var(--font-mono);font-size:1.25rem;font-weight:700}
+#stress-status{font-family:var(--font-mono);font-weight:700;padding:.15rem .7rem;border-radius:8px;
+  border:2px solid var(--ink);display:inline-block}
+#stress-status.jebol{background:#fbe7df;color:var(--sunset-deep)}
+#stress-status.aman{background:#e4f2ee;color:var(--teal-deep)}
+.reco{display:flex;gap:.8rem;flex-wrap:wrap;margin:.6rem 0}
+.reco label{border:2px solid var(--ink);border-radius:10px;padding:.6rem 1rem;font-weight:600;font-size:.9rem;
+  cursor:pointer;background:var(--paper)}
+.reco input{margin-right:.4rem;accent-color:var(--sunset-deep)}
+.reco label:has(input:checked){background:#fbf3dd;box-shadow:3px 3px 0 var(--ink)}
+#memo-preview{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:.82rem;line-height:1.65;
+  white-space:pre-wrap;max-height:26rem;overflow-y:auto;margin-top:1rem}
+.copy-row{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+#copy-msg{font-size:.85rem;color:var(--teal-deep);font-weight:600;visibility:hidden}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.gate-list{list-style:none;padding:0;margin:.6rem 0}
+.gate-list li{padding:.45rem .7rem;border:2px solid var(--line);border-radius:8px;margin-bottom:.4rem;
+  font-size:.85rem;display:flex;gap:.6rem;align-items:flex-start}
+.gate-list li.ok{border-color:var(--teal-deep);background:#e4f2ee}
+.gate-list li .st{font-weight:700;min-width:1.6rem}
+.gate-list li.ok .st{color:var(--teal-deep)}
+.gate-list li:not(.ok) .st{color:var(--sunset-deep)}
+.cm-guide{background:#fbf3dd;border:2px dashed var(--ink);border-radius:10px;padding:.8rem 1rem;
+  font-size:.82rem;margin-bottom:1rem;line-height:1.6}
+.cm-guide b{font-weight:700}
+.cm-guide .ex{font-style:italic;color:var(--ink-soft);display:block;margin-top:.35rem}
+.cm-example{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:.8rem;line-height:1.7;
+  white-space:pre-wrap;overflow-x:auto}
+.cm-principle{border-left:6px solid var(--teal-deep);background:#e4f2ee;padding:.7rem 1rem;
+  border-radius:0 10px 10px 0;margin:.7rem 0;font-size:.88rem;line-height:1.6}
+.cm-principle b{font-weight:700}
+.cm-limit{border-left:6px solid var(--sunset-deep);background:#fbe7df;padding:.7rem 1rem;
+  border-radius:0 10px 10px 0;margin:.7rem 0;font-size:.88rem;line-height:1.6}
+.cm-limit b{font-weight:700}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">CM</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Lensa kredit</p>
+  <h1>Credit Memo <em>Builder.</em></h1>
+  <p class="lede">Kreditur tidak membeli cerita — mereka membeli kepastian dibayar. Susun credit memo
+    dalam <strong>5 langkah terpandu</strong>: profil &amp; tujuan, spread 3 tahun, rasio
+    leverage/coverage, stress test, lalu rekomendasi. Hasilnya: teks memo siap disalin.</p>
+  <p class="memo-note">Angka default = PT Cemerlang (fiktif), angka kanonis M18/M24, <strong>ilustratif</strong>. Ganti dengan angka debitur aslimu.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:56rem">
+
+  <!-- HAL PENTING -->
+  <div class="memo-step">
+    <h3>Hal penting · 6 prinsip memo kredit yang bagus</h3>
+    <p class="step-sub">Yang membedakan memo yang meyakinkan komite kredit dari yang ditolak. Baca sebelum menulis.</p>
+    <div class="cm-principle"><b>1. Vonis di kalimat pertama.</b> Komite kredit membaca keputusan dulu, alasan kemudian.
+      Memo yang menyimpan vonis di paragraf terakhir = memo yang tidak dibaca sampai habis.</div>
+    <div class="cm-principle"><b>2. Tiap angka ditempeli bukti.</b> "Debt/EBITDA 1,97x (utang berbunga 201.440 ÷ EBITDA 102.000,
+      LK hal. 2–3)". Angka tanpa sumber = opini. Angka dengan sumber = argumen.</div>
+    <div class="cm-principle"><b>3. Bedakan fakta dari interpretasi.</b> "DSCR 1,35x" = fakta. "Cukup" = interpretasi —
+      dan interpretasi wajib ditemani pembanding: covenant 1,20x, tren 3 tahun, atau rata-rata industri.</div>
+    <div class="cm-principle"><b>4. Covenant adalah early warning, bukan garis finis.</b> Yang penting bukan "lolos/tidak",
+      melainkan <em>headroom</em>: DSCR 1,35x vs batas 1,20x = ruang 0,15x. Headroom tipis = waktu bertindak pendek.</div>
+    <div class="cm-principle"><b>5. Stress test menjawab "seberapa dalam boleh jatuh".</b> Bukan "apakah akan jatuh" —
+      tidak ada yang tahu. "Shock −11% menyentuh covenant" = fakta yang bisa didiskusikan; prediksi resesi = spekulasi.</div>
+    <div class="cm-principle"><b>6. Tulis seolah pembaca akan menyalahkanmu bila kredit macet.</b> <em>Defensive writing</em>:
+      nyatakan asumsi, nyatakan yang belum diverifikasi, syaratkan pencairan bertahap. Memo yang jujur soal
+      kelemahannya lebih dipercaya daripada memo yang terlihat sempurna.</div>
+  </div>
+
+  <!-- LANGKAH 1 -->
+  <div class="memo-step">
+    <h3>Langkah 1 · Profil &amp; Tujuan</h3>
+    <p class="step-sub">Siapa debiturnya, untuk apa fasilitasnya. Satu paragraf yang tajam lebih baik dari tiga halaman kabur.</p>
+    <div class="memo-grid">
+      <div><label for="m-nama">Nama debitur</label><input id="m-nama" value="PT Cemerlang (fiktif)"></div>
+      <div><label for="m-industri">Industri</label><input id="m-industri" value="Manufaktur"></div>
+      <div><label for="m-tujuan">Tujuan kredit</label><input id="m-tujuan" value="Modal kerja"></div>
+      <div><label for="m-tenor">Tenor</label><input id="m-tenor" value="12 bulan"></div>
+      <div><label for="m-limit">Limit diajukan (Rp juta)</label><input id="m-limit" class="num" type="number" value="50000"></div>
+      <div><label for="m-jaminan">Jaminan</label><input id="m-jaminan" value="Piutang &amp; persediaan (fidusia)"></div>
+      <div><label for="m-asof">As-of date</label><input id="m-asof" type="date"></div>
+      <div><label for="m-horizon">Horizon</label><input id="m-horizon" placeholder="12 bulan"></div>
+    </div>
+    <p class="memo-note">Draft tersimpan otomatis di browser ini (localStorage). Lanjut ke
+      <a href="/riset-note/">Research Note Builder</a> untuk versi equity-nya.</p>
+  </div>
+
+  <!-- LANGKAH 2 -->
+  <div class="memo-step">
+    <h3>Langkah 2 · Spread 3 Tahun</h3>
+    <p class="step-sub">Bangun time series sendiri — jangan percaya angka "5 tahun" di slide manajemen tanpa verifikasi. 2026 = forecast (F).</p>
+    <div class="spread-scroll"><table class="spread-table" id="spread"></table></div>
+    <div style="margin-top:.7rem"><button class="btn" id="cm-import" type="button">Impor spread dari drill</button>
+      <span class="memo-note" style="display:inline;margin-left:.6rem">Best-effort: hanya pos yang cocok (penjualan, EBITDA, laba bersih, utang, ekuitas, beban bunga) → kolom tahun berjalan.</span></div>
+    <p class="memo-note">2025 diselaraskan ke angka kanonis Cemerlang (EBITDA 102.000, beban bunga 14.000, utang berbunga 201.440). 2024 &amp; 2026F ilustratif. Baris utang memakai basis <strong>utang berbunga</strong> — bukan total liabilitas 272.000 (D/E kanonis 1,52x di M2 memakai total liabilitas; lihat modulnya). Semua angka Rp juta.</p>
+  </div>
+
+  <!-- LANGKAH 3 -->
+  <div class="memo-step">
+    <h3>Langkah 3 · Rasio Leverage &amp; Coverage</h3>
+    <p class="step-sub">Dihitung otomatis dari spread di atas. Kreditur membaca <em>downside</em>: seberapa tebal bantalnya sebelum jebol.</p>
+    <div class="spread-scroll"><table class="spread-table" id="ratios"></table></div>
+    <p class="memo-note">Debt/EBITDA &lt; 3x umumnya nyaman untuk korporasi non-keuangan (rule of thumb, bukan hukum). Interest coverage = EBITDA ÷ beban bunga.</p>
+  </div>
+
+  <!-- LANGKAH 4 -->
+  <div class="memo-step">
+    <h3>Langkah 4 · Stress Test Sederhana</h3>
+    <p class="step-sub">Satu pertanyaan kreditur: "Seberapa dalam EBITDA boleh jatuh sebelum covenant jebol?" Geser shock-nya.</p>
+    <div class="memo-grid">
+      <div><label for="s-dscr">DSCR saat ini</label><input id="s-dscr" class="num" type="number" step="0.01" value="1.35"></div>
+      <div><label for="s-min">Covenant minimum</label><input id="s-min" class="num" type="number" step="0.01" value="1.20"></div>
+      <div><p class="memo-note" style="margin:.4rem 0">Interest coverage tahun berjalan dibaca dari sel <strong>Beban bunga 2026F</strong> di spread (Langkah 2) — ubah angkanya di sana, tabel rasio + kartu stress + memo ikut berubah.</p></div>
+    </div>
+    <div class="stress-row">
+      <label for="s-shock" style="font-weight:600;font-size:.9rem">Shock EBITDA</label>
+      <input id="s-shock" type="range" min="-60" max="20" step="1" value="-20">
+      <span id="stress-val">−20%</span>
+    </div>
+    <div class="stress-out">
+      <div class="stress-card"><div class="k">DSCR setelah shock</div><div class="v" id="s-dscrbaru">—</div></div>
+      <div class="stress-card"><div class="k">Status</div><div style="margin-top:.25rem"><span id="stress-status">—</span></div></div>
+      <div class="stress-card"><div class="k">Interest coverage thn berjalan</div><div class="v" id="s-ic">—</div></div>
+    </div>
+  </div>
+
+  <!-- LANGKAH 5 -->
+  <div class="memo-step">
+    <h3>Langkah 5 · Rekomendasi</h3>
+    <p class="step-sub">Satu kata: approve, conditional, atau decline — lalu pertahankan dengan 3 alasan dari angka di atas.</p>
+    <div class="reco" id="reco">
+      <label><input type="radio" name="reco" value="APPROVE">Approve</label>
+      <label><input type="radio" name="reco" value="CONDITIONAL" checked>Conditional</label>
+      <label><input type="radio" name="reco" value="DECLINE">Decline</label>
+    </div>
+    <div class="memo-grid">
+      <div style="grid-column:1/-1"><label for="m-alasan">Alasan (satu baris per alasan)</label>
+        <textarea id="m-alasan" rows="3">Leverage moderat, Debt/EBITDA di bawah 3x pada skenario dasar.
+Bantalan covenant tipis: shock EBITDA −11% sudah menyentuh batas minimum.
+Kualitas laba perlu diverifikasi: pastikan laba menjadi kas sebelum pencairan penuh.</textarea></div>
+    </div>
+  </div>
+
+  <!-- CONTOH -->
+  <div class="memo-step">
+    <h3>Contoh · Memo jadi PT Cemerlang Abadi</h3>
+    <p class="step-sub">Output jadi dari tool ini — bukan template kosong. Angka kanonis FY2025 Cemerlang Abadi
+      (FIKTIF, <strong>ilustratif</strong>); DSCR/covenant memakai default tool. Perhatikan: vonis di kalimat pertama,
+      tiap angka ada hitungannya, syaratnya konkret.</p>
+    <div class="cm-example">CREDIT MEMO — PT Cemerlang Abadi (FIKTIF)
+Fasilitas : Modal kerja Rp50.000 juta · Tenor 12 bulan
+As-of    : 4 Nov 2026 · Satuan Rp juta · Basis konsolidasian
+Sumber   : LK auditan FY2025 (ilustratif)
+
+VONIS: CONDITIONAL APPROVE — leverage moderat, bantalan covenant tipis.
+
+1. PROFIL
+   Manufaktur; penjualan Rp520.000 (+30% YoY dari 400.000).
+   Fasilitas untuk modal kerja seiring ekspansi.
+   Jaminan: piutang &amp; persediaan (fidusia).
+
+2. SPREAD &amp; RASIO KUNCI (FY2025)
+   EBITDA 102.000 | Beban bunga 14.000
+   Debt/EBITDA : 1,97x  (utang berbunga 201.440 ÷ 102.000)
+   Interest coverage (EBIT): 5,14x  (72.000 ÷ 14.000)
+   D/E: 1,52x | Current ratio: 2,17x
+
+3. STRESS TEST
+   DSCR aktual 1,35x vs covenant minimum 1,20x → headroom 0,15x.
+   Shock EBITDA −11% = covenant tersentuh. Bantalan tipis.
+
+4. CATATAN KUALITAS
+   CFO 30.800 turun dari 44.000 (2024); FCFE negatif (5.760)
+   karena capex 48.000. Laba naik, kas tidak ikut —
+   verifikasi konversi kas sebelum pencairan penuh.
+
+5. SYARAT (CONDITIONAL)
+   a. Pencairan bertahap; tranche 2 setelah CFO kuartal
+      berikutnya ≥ 0,9x laba bersih.
+   b. Covenant DSCR ≥ 1,25x (lebih ketat dari 1,20x)
+      + pelaporan keuangan bulanan.
+   c. Fidusia didaftarkan sebelum pencairan pertama.</div>
+    <div class="cm-guide"><b>Cara baca contoh ini:</b> bandingkan dengan memo yang kamu tulis di tool di atas.
+      <b>Hal penting:</b> contoh yang bagus selalu bisa ditelusur balik ke angka mentah — tidak ada angka "tiba-tiba".
+      <span class="ex">Latihan: ganti emiten contoh ini dengan debitur aslimu, lalu cek — apakah tiap angkamu masih bisa ditelusur ke sumbernya?</span></div>
+  </div>
+
+  <div class="memo-step">
+    <h3>Checklist publikasi (lite)</h3>
+    <p class="step-sub">Tombol salin terkunci sampai 4 item lolos.</p>
+    <ul class="gate-list" id="cm-gates"></ul>
+    <div style="margin:.6rem 0;padding:.6rem .9rem;border:2px dashed var(--ink);border-radius:10px;font-size:.85rem">
+      <label><input type="checkbox" id="cm-disclaimer"> Saya memahami ini <strong>bukan nasihat kredit</strong> —
+        memo ini untuk edukasi/portofolio analis.</label>
+    </div>
+  </div>
+
+  <!-- BATASAN -->
+  <div class="memo-step">
+    <h3>Batasan · Kapan memo ini TIDAK cukup</h3>
+    <p class="step-sub">Kejujuran tentang batasan = kredibilitas. Memo kredit adalah satu artefak, bukan seluruh analisis kredit.</p>
+    <div class="cm-limit"><b>1. Butuh model 3-statement penuh.</b> Spread 3 baris di tool ini = snapshot.
+      Proyeksi arus kas multi-tahun, <em>debt schedule</em>, dan <em>covenant forecast</em> butuh model —
+      memo ini bukan penggantinya. Lanjut ke FMVA Sprint untuk itu.</div>
+    <div class="cm-limit"><b>2. Butuh verifikasi lapangan.</b> Jaminan fidusia di atas kertas ≠ jaminan yang bisa dieksekusi.
+      Piutang &amp; persediaan wajib dicek fisik dan <em>aging</em>-nya sebelum pencairan besar.</div>
+    <div class="cm-limit"><b>3. Restrukturisasi / workout.</b> Memo ini untuk keputusan pemberian kredit <em>baru</em>.
+      Kredit bermasalah butuh analisis <em>recovery</em> (LGD, skenario restrukturisasi) — disiplin berbeda.</div>
+    <div class="cm-limit"><b>4. Debitur bank / lembaga keuangan.</b> Metriknya beda: CAR, NPL, NIM, LDR
+      (lihat M30 &amp; Bank Practice BBRI) — bukan Debt/EBITDA. Jangan paksakan template korporat ke bank.</div>
+    <div class="cm-limit"><b>5. Fasilitas terstruktur / sindikasi.</b> Butuh dokumentasi hukum, <em>waterfall</em> pembayaran,
+      dan analisis interkreditor — di luar jangkauan memo 5 langkah.</div>
+    <div class="cm-limit"><b>6. Di atas limit kewenanganmu.</b> Memo = rekomendasi analis, bukan persetujuan.
+      Keputusan akhir tetap di komite kredit — tulis untuk meyakinkan, bukan untuk memutus.</div>
+  </div>
+
+  <div class="copy-row">
+    <button class="btn btn-primary btn-lg" id="copy-btn">Salin memo</button>
+    <span id="copy-msg">Memo tersalin ✓ — tempel ke dokumenmu.</span>
+  </div>
+  <div id="memo-preview"></div>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Credit Memo Builder · angka ilustratif — bukan nasihat kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="memo-kredit.js"></script>
+</body>
+</html>

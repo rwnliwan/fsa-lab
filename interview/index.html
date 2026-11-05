@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Jawaban Interview · FSA Lab</title>
+<meta name="description" content="Bank jawaban interview FSA Lab: 18 pertanyaan klasik analis — dijawab matang 3-5 kalimat, bukan hafalan definisi.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/interview/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.qa{border:2px solid var(--ink);border-radius:var(--radius);margin-bottom:.9rem;background:var(--card);box-shadow:4px 4px 0 var(--ink)}
+.qa summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;font-size:1.02rem;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"▸ ";color:var(--sunset-deep)}
+.qa[open] summary::before{content:"▾ "}
+.qa .ans{padding:0 1.2rem 1.2rem;font-size:.95rem}
+.qa .ans p+p{margin-top:.6rem}
+.qa .tagline{display:inline-block;font-size:.75rem;font-weight:700;background:var(--mustard);border:1.5px solid var(--ink);border-radius:99px;padding:.1rem .6rem;margin-bottom:.6rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">INT</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Persiapan interview</p>
+  <h1>Bank Jawaban <em>Interview</em></h1>
+  <p class="lede">18 pertanyaan klasik interview analis — dari DCF sampai Beneish M-score.
+    Tiap jawaban ditulis <strong>matang 3–5 kalimat</strong>: cara berpikir analis, bukan hafalan
+    definisi. Klik untuk membuka. Latih dengan suara keras, bukan di kepala.</p>
+</header>
+
+<section class="modul-sec">
+
+<details class="qa" open>
+<summary>1. Walk me through a DCF.</summary>
+<div class="ans">
+<span class="tagline">Valuasi</span>
+<p>Saya proyeksikan <strong>FCFF</strong> 5–10 tahun dari driver — pertumbuhan penjualan, margin, modal kerja, capex — bukan sekadar ekstrapolasi persen. Lalu saya diskontokan dengan <strong>WACC</strong> dan tambah <strong>terminal value</strong>, biasanya via Gordon growth dengan g di bawah pertumbuhan ekonomi jangka panjang. Hasilnya <strong>enterprise value</strong>, jadi saya kurangkan <strong>net debt</strong> untuk dapat nilai ekuitas, lalu bagi saham beredar.</p>
+<p>Yang paling penting bukan presisinya — DCF itu mesin asumsi — melainkan <strong>uji sensitivitas</strong>: asumsi mana yang paling menggerakkan nilai, dan apakah asumsi itu masuk akal dibanding sejarah perusahaan.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>2. Jelaskan bedanya FCFF dan FCFE.</summary>
+<div class="ans">
+<span class="tagline">Arus kas</span>
+<p><strong>FCFF</strong> adalah kas bebas untuk <em>semua</em> penyandang dana — dihitung sebelum bunga: CFO + bunga(1−pajak) − capex. <strong>FCFE</strong> adalah kas bebas untuk <em>pemegang saham</em> — setelah bunga dan pergerakan utang: FCFF − bunga(1−pajak) + utang neto.</p>
+<p>Karena itu valuasi perusahaan (enterprise value) memakai FCFF yang didiskonto dengan WACC, sedangkan valuasi ekuitas langsung memakai FCFE dengan cost of equity. Kesalahan klasik: memakai FCFE tapi mendiskonto dengan WACC — mencampuradukkan klaim.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>3. Kapan pakai P/E dan kapan EV/EBITDA?</summary>
+<div class="ans">
+<span class="tagline">Multiples</span>
+<p><strong>P/E</strong> cocok untuk perusahaan profitable dengan struktur modal mirip peer — sederhana dan intuitif, tapi rapuh: E bisa negatif, mengandung one-off, dan terdistorsi beda leverage serta beda framework akuntansi. <strong>EV/EBITDA</strong> saya pakai saat leverage antar peer berbeda jauh atau kebijakan depresiasinya beda — karena EV menangkap total klaim dan EBITDA netral terhadap struktur modal.</p>
+<p>Aturannya: P/E untuk perbandingan cepat yang "bersih", EV/EBITDA untuk perbandingan yang adil. Keduanya wajib dihitung dari <strong>continuing earnings</strong>, bukan headline.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>4. Apa itu Beneish M-score?</summary>
+<div class="ans">
+<span class="tagline">Forensik</span>
+<p>M-score adalah model probabilitas <strong>manipulasi laba</strong> dari 8 rasio — DSRI, GMI, AQI, SGI, DEPI, SGAI, LVGI, TATA — dengan batas klasifikasi sekitar <strong>−1,78</strong>; di atas itu perusahaan di-flag. Intuisinya: manipulator meninggalkan pola — piutang tumbuh lebih cepat dari penjualan, margin memburuk, akrual membengkak.</p>
+<p>Saya memakainya sebagai <strong>screening</strong>, bukan vonis: M-score yang buruk berarti "baca catatan lebih dalam", terutama umur piutang, kebijakan kapitalisasi, dan transaksi pihak berelasi.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>5. Bagaimana kamu menilai kualitas laba?</summary>
+<div class="ans">
+<span class="tagline">Kualitas laba</span>
+<p>Saya mulai dari <strong>gap laba vs CFO</strong>: laba yang tidak menjadi kas bertahun-tahun adalah alarm pertama. Lalu saya ukur <strong>akrual</strong> (NI − CFO dibagi aset) dan trennya, plus <strong>DSO</strong> — piutang yang tumbuh jauh lebih cepat dari penjualan hampir selalu berarti pengakuan prematur atau penjualan fiktif.</p>
+<p>Langkah ketiga: pisahkan <strong>one-off</strong> dari continuing earnings, karena multiple dan tren yang dihitung dari headline akan menipu. Kualitas laba = seberapa besar laba yang berulang, menjadi kas, dan tidak bergantung pada judgment agresif.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>6. Jelaskan artikulasi tiga laporan keuangan.</summary>
+<div class="ans">
+<span class="tagline">Mekanik</span>
+<p><strong>Laba bersih</strong> mengalir ke <strong>laba ditahan</strong> di ekuitas (dikurangi dividen); perubahan akun-akun neraca menjelaskan <strong>arus kas</strong>; dan saldo kas akhir harus sama dengan kas di neraca. Tiga laporan ini satu sistem tertutup — tiap transaksi menyentuh minimal dua titik.</p>
+<p>Ini skill mekanik paling berguna analis: kalau bisa memprediksi efek satu transaksi ke tiga laporan, kamu bisa mengaudit model apa pun dan menemukan di mana artikulasi <em>patah</em> — dan patahan artikulasi seringkali adalah tempat fraud bersembunyi.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>7. Apa itu ECL 3-stage di PSAK 109?</summary>
+<div class="ans">
+<span class="tagline">PSAK</span>
+<p>PSAK 109 memakai <strong>expected credit loss</strong> bertahap: <strong>Stage 1</strong> (risiko kredit belum naik signifikan) cukup cadangan ECL 12 bulan; <strong>Stage 2</strong> (naik signifikan) wajib lifetime ECL; <strong>Stage 3</strong> (gagal bayar) lifetime ECL plus bunga diakui atas nilai neto.</p>
+<p>Dua implikasi analis: pertama, allowance bank Indonesia vs bank US (CECL yang langsung lifetime) <strong>tidak comparable</strong>; kedua, keputusan staging adalah judgment manajemen — migrasi antar stage menggerakkan laba, jadi saya selalu baca pergerakan stage-nya, bukan cuma angka cadangannya.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>8. Bedanya PSAK 116 dengan US GAAP untuk sewa?</summary>
+<div class="ans">
+<span class="tagline">PSAK vs GAAP</span>
+<p>PSAK 116/IFRS 16 punya <strong>satu model</strong> lessee: semua sewa on-balance-sheet dengan beban <strong>front-loaded</strong> (depresiasi garis lurus + bunga menurun). US GAAP mempertahankan split <strong>operating vs finance lease</strong>: operating lease membebankan satu angka garis lurus di beban operasi.</p>
+<p>Akibatnya laba operasi tahun-tahun awal lebih tinggi di PSAK/IFRS, sementara total kas dan total beban selama masa sewa identik. Analis yang membandingkan margin operasi lintas framework tanpa normalisasi sedang membandingkan apel dengan jeruk.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>9. Mengapa CFO bisa jauh berbeda dari laba bersih?</summary>
+<div class="ans">
+<span class="tagline">Arus kas</span>
+<p>Karena laba itu <strong>akrual</strong>: penjualan kredit diakui sebelum kas masuk, beban non-kas seperti depresiasi mengurangi laba tanpa menyentuh kas, dan perubahan modal kerja (piutang, persediaan, utang) menggeser timing kas. CFO = laba bersih + non-kas ± perubahan modal kerja.</p>
+<p>Gap yang melebar persisten hampir selalu berarti pertumbuhan dibiayai piutang — kualitas laba memburuk. Pengecualian yang sehat: perusahaan bertumbuh cepat memang menyedot modal kerja, jadi saya cek apakah gap-nya proporsional dengan pertumbuhan.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>10. Jelaskan WACC.</summary>
+<div class="ans">
+<span class="tagline">Valuasi</span>
+<p><strong>WACC</strong> adalah biaya modal rata-rata tertimbang: (E/V × cost of equity) + (D/V × cost of debt × (1−pajak)). Cost of equity biasanya dari <strong>CAPM</strong> — risk-free + beta × equity risk premium — dan bobotnya memakai nilai <em>pasar</em>, bukan nilai buku.</p>
+<p>Dua jebakan: memakai beta historis mentah tanpa mempertimbangkan perubahan leverage, dan memakai struktur modal buku yang jauh dari target. WACC yang salah 2% bisa menggeser nilai DCF 20–30%, jadi saya selalu tunjukkan sensitivitasnya.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>11. Apa itu terminal value dan apa jebakannya?</summary>
+<div class="ans">
+<span class="tagline">Valuasi</span>
+<p><strong>Terminal value</strong> menangkap nilai seluruh arus kas setelah periode proyeksi eksplisit — biasanya 60–80% dari nilai DCF. Metode standar: <strong>Gordon growth</strong> FCFF×(1+g)/(WACC−g), atau <strong>exit multiple</strong>.</p>
+<p>Jebakannya: g yang melebihi pertumbuhan ekonomi jangka panjang berarti perusahaan tumbuh mengalahkan PDB selamanya — tidak masuk akal. Saya selalu cek berapa persen nilai datang dari terminal value; kalau 85%, maka "DCF" saya sebenarnya cuma tebakan g.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>12. Bagaimana kamu memodelkan working capital?</summary>
+<div class="ans">
+<span class="tagline">Pemodelan</span>
+<p>Saya tidak memproyeksikan nominalnya — saya proyeksikan <strong>hari</strong>: DSO, DIO, DPO dari tren historis dan benchmark industri, lalu turunkan piutang, persediaan, dan utang usaha dari penjualan/HPP forecast. Perubahan modal kerja = selisih tahun berjalan minus tahun lalu, dan masuk ke jembatan laba → CFO.</p>
+<p>Asumsi hari yang membaik tanpa alasan operasional adalah cara halus menggelembungkan valuasi, jadi tiap perbaikan hari harus punya narasi: sistem penagihan baru, renegosiasi supplier, atau memang tidak saya izinkan membaik.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>13. Red flag fraud apa yang kamu cari pertama kali?</summary>
+<div class="ans">
+<span class="tagline">Forensik</span>
+<p><strong>Piutang vs penjualan</strong>: DSO yang melar tajam tanpa perubahan model bisnis adalah red flag nomor satu — penjualan fiktif selalu meninggalkan piutang yang tidak tertagih. Kedua, <strong>CFO vs laba</strong> yang divergen persisten. Ketiga, <strong>pihak berelasi</strong> di catatan: transaksi non-arm's-length adalah saluran klasik pengalihan nilai.</p>
+<p>Lalu saya cek <strong>audit trail</strong>-nya: pergantian auditor, opini modifikasian, dan KAM (key audit matters) — KAM memberi tahu area mana yang paling signifikan dalam audit menurut auditornya sendiri.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>14. Jelaskan Altman Z-score.</summary>
+<div class="ans">
+<span class="tagline">Kredit</span>
+<p>Z-score memprediksi <strong>risiko kebangkrutan</strong> dari 5 rasio: modal kerja/aset, laba ditahan/aset, EBIT/aset, nilai pasar ekuitas/liabilitas, dan penjualan/aset — dengan zona aman di atas <strong>2,99</strong>, distress di bawah <strong>1,81</strong>, dan grey zone di antaranya.</p>
+<p>Keterbatasannya: dikalibrasi untuk manufaktur US era 1960-an, jadi saya tidak memakainya mentah untuk bank atau startup. Nilainya sebagai <strong>tripwire</strong>: perusahaan yang masuk grey zone wajib saya bedah likuiditas dan jadwal jatuh utangnya.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>15. Kapan P/B relevan dipakai?</summary>
+<div class="ans">
+<span class="tagline">Multiples</span>
+<p><strong>P/B</strong> paling relevan untuk bisnis padat aset tercatat wajar — bank, asuransi, properti — di mana nilai buku mendekati nilai likuidasi atau modal yang benar-benar ditanam. Ia tidak berguna untuk perusahaan jasa/tekno yang aset terbesarnya (SDM, brand) tidak tercatat di neraca.</p>
+<p>Dua penyesuaian wajib: keluarkan <strong>aset takberwujud & goodwill</strong> bila ingin tangible book, dan waspadai <strong>revaluasi</strong> (PSAK 216) yang menaikkan nilai buku tanpa perubahan bisnis — P/B yang "murah" bisa murni artefak akuntansi.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>16. Bagaimana kamu membaca opini audit?</summary>
+<div class="ans">
+<span class="tagline">Audit</span>
+<p>Pertama jenis opininya: <strong>wajar tanpa pengecualian</strong> vs modifikasian (pengecualian, tidak wajar, menolak memberi opini) — dan paragraf <strong>going concern</strong> bila ada, itu sinyal kredit langsung. Kedua, saya baca <strong>KAM</strong>: area yang menurut auditor paling butuh judgment adalah peta risiko saya.</p>
+<p>Ketiga, <strong>pergantian auditor</strong> dan keterlambatan publikasi — keduanya prediktor masalah klasik. Opini bersih bukan jaminan tidak ada fraud, tapi opini kotor hampir selalu berarti ada yang disembunyikan.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>17. Apa itu MPM di PSAK 118 / IFRS 18?</summary>
+<div class="ans">
+<span class="tagline">PSAK</span>
+<p><strong>Management-defined performance measures</strong> adalah angka "versi manajemen" seperti EBITDA disesuaikan — efektif 1 Januari 2027, PSAK 118/IFRS 18 mendisiplinkan MPM: wajib <strong>rekonsiliasi</strong> ke subtotal baku, wajib jelaskan tiap penyesuaian termasuk efek pajaknya, dan tidak boleh disajikan lebih menonjol dari ukuran standar.</p>
+<p>Buat analis ini kabar baik: "laba disesuaikan" emiten akan lebih transparan. Tapi prinsipnya tetap — mulai dari angka baku, curigai penyesuaian yang <em>recurring</em>, karena restrukturisasi tiap tahun pada dasarnya beban biasa.</p>
+</div>
+</details>
+
+<details class="qa">
+<summary>18. Bagaimana kamu memvalidasi sebuah valuasi? (sanity checks)</summary>
+<div class="ans">
+<span class="tagline">Valuasi</span>
+<p>Saya lakukan <strong>triangulasi</strong>: DCF vs multiples peer vs (bila relevan) precedent transactions — tiga metode yang memberi jawaban mirip jauh lebih meyakinkan daripada satu model presisi. Lalu <strong>reverse-engineer</strong>: pertumbuhan dan margin implisit apa yang harus dipercaya pasar agar harga hari ini wajar? Kalau implisitnya menuntut keajaiban, valuasinya salah.</p>
+<p>Terakhir, <strong>margin of safety</strong>: saya hanya peduli valuasi bila ada jarak cukup antara nilai dan harga untuk menampung kesalahan asumsi saya — karena asumsi saya pasti salah di suatu titik.</p>
+</div>
+</details>
+
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Bank Jawaban Interview · dilatih dengan suara keras, bukan di kepala.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+</body>
+</html>

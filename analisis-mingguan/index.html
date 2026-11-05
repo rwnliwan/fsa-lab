@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Mingguan · FSA Lab</title>
+<meta name="description" content="Weekly Analyst Note dwibahasa: struktur panduan Indonesia + Inggris, contoh lengkap, editor dan arsip mingguanmu.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/analisis-mingguan/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.note-guide{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.note-guide .pg-card{margin:0}
+@media (max-width:720px){.note-guide{grid-template-columns:1fr}}
+.note-guide ol{margin:.4rem 0 .4rem 1.2rem;font-size:.88rem}
+.note-guide ol li{margin-bottom:.45rem}
+.note-guide .term{font-weight:700;color:var(--ink)}
+.note-full{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-top:1rem;box-shadow:4px 4px 0 var(--ink)}
+.note-full h4{font-family:var(--font-display);color:var(--mustard);margin:.8rem 0 .3rem}
+.note-full h4:first-child{margin-top:0}
+.note-full p{font-size:.88rem;color:#d9cfb8;margin-bottom:.5rem}
+.note-full .en{border-top:1px dashed #5a5142;margin-top:1rem;padding-top:1rem}
+.note-editor textarea{width:100%;min-height:11rem;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.8rem 1rem;font-family:var(--font-body);font-size:.92rem;line-height:1.55;background:#fffdf7}
+.note-item{display:flex;justify-content:space-between;align-items:center;gap:.8rem;border:2px solid var(--ink);
+  border-radius:var(--radius);padding:.7rem 1rem;margin-bottom:.6rem;background:#fffdf7}
+.note-item .d{font-family:var(--font-mono);font-weight:700}
+.note-item .acts button{margin-left:.4rem}
+.btn-sm{border:2px solid var(--ink);background:#fff;border-radius:8px;padding:.25rem .7rem;
+  font-weight:600;cursor:pointer;font-size:.8rem}
+.btn-sm.danger{border-color:#a33;color:#a33}
+#note-read{white-space:pre-wrap;font-size:.9rem;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">WN</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Praktik · Weekly Analyst Note</p>
+  <h1>Catatan Analis <em>Mingguan.</em></h1>
+  <p class="lede">Setiap minggu, pilih <strong>satu emiten</strong> dan tulis note dwibahasa:
+    Indonesia untuk berpikir, Inggris untuk portofolio. Analis dibayar dari vonisnya — latihan vonis dimulai di sini.</p>
+</header>
+
+<section class="modul-sec">
+  <h2>Panduan struktur</h2>
+  <p class="sub">Lima blok, dua bahasa. Istilah teknis tetap Inggris.</p>
+  <div class="note-guide">
+    <div class="pg-card">
+      <h3>🇮🇩 Struktur (Indonesia)</h3>
+      <ol>
+        <li><span class="term">Tesis</span> — satu kalimat: beli / tahan / jual / hindari, dan kenapa.</li>
+        <li><span class="term">Angka kunci</span> — 3–5 rasio yang menopang tesis (net margin, ROA, CFO/NI, DSO, D/E). Tulis angkanya, bukan "bagus".</li>
+        <li><span class="term">Kualitas laba</span> — accrual gap (NI − CFO): laba jadi kas atau tidak? DSO drift: penjualan dipompa?</li>
+        <li><span class="term">Risiko</span> — minimal 2 hal yang bisa membatalkan tesismu. Analis jujur menulis risikonya sendiri.</li>
+        <li><span class="term">Pemicu (catalyst)</span> — peristiwa apa yang membuktikan tesismu benar/salah dalam 3–6 bulan.</li>
+      </ol>
+    </div>
+    <div class="pg-card">
+      <h3>🇬🇧 Structure (English)</h3>
+      <ol>
+        <li><span class="term">Thesis</span> — one sentence: buy / hold / sell / avoid, and why.</li>
+        <li><span class="term">Key numbers</span> — 3–5 ratios backing the thesis (net margin, ROA, CFO/NI, DSO, D/E). Write the numbers, not "good".</li>
+        <li><span class="term">Earnings quality</span> — accrual gap (NI − CFO): does profit turn into cash? DSO drift: stuffed sales?</li>
+        <li><span class="term">Risks</span> — at least 2 things that could kill your thesis. Honest analysts write their own risks.</li>
+        <li><span class="term">Catalyst</span> — what event proves your thesis right/wrong in 3–6 months.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note-full">
+    <h4>Contoh note lengkap — PT Cemerlang Abadi (ilustratif)</h4>
+    <p><strong>Tesis:</strong> HINDARI untuk ekuitas — laba +53% tidak jadi kas (FCFE −5.760, dividen dibayar dari utang).</p>
+    <p><strong>Angka kunci:</strong> net margin 8,7%; ROA 10,9%; CFO/NI 0,68x; DSO 73,0 hari (naik); D/E 1,52x.</p>
+    <p><strong>Kualitas laba:</strong> accrual gap +14.440 (NI − CFO) — laba semu ekspansi; capex 156% dari CFO.</p>
+    <p><strong>Risiko:</strong> (1) ekspansi ternyata menghasilkan kas tahun depan — tesis gugur; (2) aku salah baca siklus modal kerja musiman.</p>
+    <p><strong>Catalyst:</strong> laporan Q1 2026 — CFO/NI harus &gt; 0,9x atau tesis bertahan.</p>
+    <div class="en">
+      <p><strong>Thesis:</strong> AVOID on equity — +53% profit doesn't convert to cash (FCFE −5,760; dividend funded by debt).</p>
+      <p><strong>Key numbers:</strong> net margin 8.7%; ROA 10.9%; CFO/NI 0.68x; DSO 73.0 days (rising); D/E 1.52x.</p>
+      <p><strong>Earnings quality:</strong> accrual gap +14,440 (NI − CFO) — expansion-driven paper profit; capex 156% of CFO.</p>
+      <p><strong>Risks:</strong> (1) expansion actually generates cash next year — thesis dead; (2) I misread seasonal working-capital cycle.</p>
+      <p><strong>Catalyst:</strong> Q1 2026 report — CFO/NI must exceed 0.9x or the thesis stands.</p>
+    </div>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<section class="modul-sec note-editor">
+  <h2>Tulis notemu minggu ini</h2>
+  <p class="sub">Tersimpan otomatis per tanggal di browser-mu (<span class="num">fsa_note_YYYYMMDD</span>).</p>
+  <h3 style="font-family:var(--font-display);margin:.8rem 0 .4rem">🇮🇩 Bahasa Indonesia</h3>
+  <textarea id="note-id" placeholder="Tesis — Angka kunci — Kualitas laba — Risiko — Catalyst…"></textarea>
+  <h3 style="font-family:var(--font-display);margin:1rem 0 .4rem">🇬🇧 English</h3>
+  <textarea id="note-en" placeholder="Thesis — Key numbers — Earnings quality — Risks — Catalyst…"></textarea>
+  <div class="meta" style="margin-top:.6rem"><span id="note-status">Belum ada catatan hari ini.</span></div>
+  <p style="margin-top:.8rem"><button class="btn btn-primary" id="note-save">Simpan note hari ini</button></p>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh note model (kedua)</h3>
+    <div class="exemplar">
+<p><strong>Tesis:</strong> TAHAN &mdash; jangan tambah posisi sampai kas membuktikan laba. Laba +53% tidak ditemani kas: ini waktunya menunggu, bukan bertaruh.</p>
+<p><strong>Angka kunci:</strong> <span class="num">net margin 8,7%</span>; <span class="num">ROE 28,3%</span> (setengahnya dari <em>leverage</em> <span class="num">2,60x</span>); <span class="num">CFO/NI 0,68x</span> &mdash; sepertiga laba belum jadi kas; <span class="num">DSO 73,0 hari</span> dan naik; <span class="num">D/E 1,52x</span> masih terkendali; kas <span class="num">21.440</span> turun dari <span class="num">33.200</span>.</p>
+<p><strong>Kualitas laba:</strong> <em>accrual gap</em> <span class="num">14.440</span> (NI <span class="num">45.240</span> &minus; CFO <span class="num">30.800</span>) &mdash; ekspansi yang memakan kas, bukan menghasilkan; <em>capex</em> <span class="num">48.000</span> = <span class="num">156%</span> dari CFO, seluruh kas operasi ditelan investasi; dividen <span class="num">6.000</span> dibayar saat <span class="num">FCFE &minus;5.760</span> &mdash; dividen didanai utang neto <span class="num">11.440</span>, bukan laba.</p>
+<p><strong>Risiko:</strong> (1) <em>capex</em> 2025 ternyata tidak menambah kapasitas &mdash; maka tidak ada CFO 2026 yang datang dan tesis &ldquo;tunggu&rdquo; gugur menjadi &ldquo;jual&rdquo;; (2) DSO naik 10 hari lagi &mdash; piutang <span class="num">104.000</span> butuh hapus buku dan cadangan ECL <span class="num">4.100</span> tidak cukup.</p>
+<p><strong>Catalyst:</strong> laporan Q1 2026 &mdash; CFO/NI harus &gt; 0,9x DAN DSO &lt; 70 hari. Bila keduanya gagal, tesis TAHAN gugur menjadi JUAL.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> note yang lolos rubrik: vonis + angka + risiko + lima blok. Nilai sendiri: berapa dari 4 checklist yang tercentang di notemu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<section class="modul-sec">
+  <h2>Arsip notemu</h2>
+  <div id="note-list"></div>
+  <div class="pg-result" id="note-read" style="display:none"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Weekly Analyst Note · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/inline-analisis.js"></script>
+</body>
+</html>

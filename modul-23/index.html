@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 23 — Covenant &amp; Perjanjian Kredit · FSA Lab</title>
+<meta name="description" content="Modul 23 FSA Lab: menguji covenant seperti bankir — DSCR, leverage, dan apa yang terjadi saat janji dilanggar.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-23/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M23</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 5</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 23</span>
+</nav>
+<p class="mod-count">Modul 23 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 5 · Forensik Lanjutan II · Modul 23</p>
+  <h1>Jangan <em>Langgar</em> Perjanjiannya</h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): leverage <strong>1,97×</strong>
+    terlihat aman, tapi DSCR <strong>0,91×</strong> menabrak batas 1,25×. Di modul ini kamu menguji
+    <strong>covenant</strong> seperti bankir — dan melihat apa yang terjadi saat janji dilanggar.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Uji Covenant</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>angka vs janji</strong> —
+    lolos atau breach, dan berapa harganya.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="test">Uji Covenant 2025</button>
+    <button class="stmt-tab" data-stmt="anat">Anatomi Perjanjian</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Gerakkan Rasio Covenant-nya</h2>
+  <p class="sub">Enam perubahan kondisi. Tebak arah <strong>dua ukuran</strong> per skenario — naik, turun, atau tetap.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Hitung Batasnya</h2>
+  <p class="sub">Empat angka covenant. Hitung — lalu tentukan: aman, mepet, atau breach?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Waiver atau Akselerasi?</h2>
+  <p class="sub">DSCR <strong>0,91× &lt; 1,25×</strong> = technical default. Bank menawarkan <strong>waiver</strong>:
+    fee 0,5% dari fasilitas + bunga naik <strong>150bps</strong> (+Rp2.122/th). Kamu bankirnya — tulis pandanganmu dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> <span class="num">leverage 1,97x</span> terlihat aman, tapi <span class="num">DSCR 0,91x</span> = <em>technical default</em> menurut <strong>definisi kontrak</strong> (CFO 30.800 setelah bunga dibagi total debt service 34.000). Bedakan: secara kas aktual, sisa 30.800 vs pokok 20.000 = <span class="num">1,54x</span> — cukup; atau CFADS 44.800/34.000 = <span class="num">1,32x</span>. <em>Breach</em> kontraktual ≠ tidak bisa bayar — tapi <em>breach</em> memberi bank hak <em>acceleration</em>.</p><p class="sub" style="font-size:.85rem">Catatan konvensi: modul memakai CFO <em>setelah</em> bunga (30.800 sudah dikurangi bunga 14.000). Definisi DSCR kontrak di sini konservatif — pahami definisi tiap kontrak sebelum menilai.</p><p><em>Waiver</em> berharga <em>repricing</em> +150bps = <span class="num">+2.122</span>/tahun (angka modul, ilustratif) yang langsung memakan laba. Apakah ekuitas masih menarik? Hanya bila ini likuiditas sesaat, bukan solvabilitas: cek apakah DSCR &lt; 1 karena &Delta;WC sementara (piutang) atau karena EBIT struktural turun. Bila struktural &mdash; hindari; biaya kerapuhan akan berulang.</p>
+<p><strong>Lensa kredit:</strong> sebagai bankir &mdash; beri WAIVER dengan <em>repricing</em>, bukan <em>acceleration</em>. Alasannya: <em>acceleration</em> memaksa <em>default</em> yang merugikan saya juga (<em>recovery</em> &lt; <em>par</em>). Tapi <em>waiver</em> saya mahal dan ketat: (1) <em>repricing</em> +150bps + <em>fee waiver</em> di muka; (2) <em>cash sweep</em> &mdash; 75% kelebihan kas untuk percepatan cicilan; (3) <em>covenant</em> diuji kuartalan + larangan dividen sampai DSCR &gt; 1,2x dua kuartal. Ruang dividen kini hanya <span class="num">16.620</span> (hitungan modul: 0,5&times;45.240&minus;6.000) &mdash; kecil, dan itu bagus untuk kreditur.</p>
+<p><strong>Lensa forensik:</strong> di ambang <em>breach</em>, <em>fraud triangle</em> menyala (<em>pressure</em>). Tiga akun paling mungkin dimanipulasi: (1) pendapatan &mdash; percepat pengakuan untuk mengangkat EBITDA <em>covenant</em>; (2) provisi &mdash; turunkan ECL <span class="num">4.100</span> agar laba naik; (3) klasifikasi utang &mdash; utang jangka pendek &ldquo;disulap&rdquo; jangka panjang agar <em>current ratio</em> lolos. Cara cek: bandingkan DSO &amp; tren provisi vs kuartal sebelumnya + baca definisi <em>covenant</em> kata per kata. Satu hal yang membunuh tesis &ldquo;<em>waiver</em> menyelesaikan masalah&rdquo;: bila Q1 2026 DSCR masih &lt; 1 &mdash; maka masalahnya solvabilitas, dan <em>waiver</em> hanya menunda <em>acceleration</em> yang lebih mahal.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Phase 5.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-22/" class="pn-prev">← Modul 22</a>
+  <a href="/modul-24/" class="pn-next">Modul 24 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 23 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul23.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

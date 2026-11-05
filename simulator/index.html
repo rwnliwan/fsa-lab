@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooked Books Simulator · FSA Lab</title>
+<meta name="description" content="Laporan 'dimasak'. Tugasmu: temukan manipulasinya dengan screening forensik.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/simulator/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.sim-screens{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:1rem 0}
+.screen{background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:.8rem;text-align:center}
+.screen .sn{font-size:.75rem;font-weight:600;color:var(--ink-soft);display:block}
+.screen .sv{font-family:var(--font-mono);font-weight:700;font-size:1.15rem}
+.screen .sv.bad{color:var(--sunset-deep)}
+@media (max-width:760px){.sim-screens{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">SIM</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Forensik</p>
+  <h1>Cooked Books <em>Simulator.</em></h1>
+  <p class="dataset-tag"><strong>PT Nusantara Makmur</strong> · Ilustratif · Dataset kanonis</p>
+  <p class="lede">PT Nusantara Makmur versi <strong>"dimasak"</strong>. Lihat laporannya, baca screen forensiknya,
+    lalu jawab: <strong>manipulasi apa</strong> yang dilakukan, dan <strong>screen apa</strong> yang menangkapnya duluan?</p>
+</header>
+
+<section class="modul-sec">
+  <noscript><p class="lede"><strong>Aktifkan JavaScript untuk memainkan simulator.</strong> Simulator ini sepenuhnya interaktif: tanpa JavaScript, skenario forensik tidak dapat ditampilkan.</p></noscript>
+  <div class="stmt-tabs" id="sim-tabs"></div>
+  <div id="sim-body"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Cooked Books Simulator · angka ilustratif untuk latihan forensik.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/simulator.js"></script>
+</body>
+</html>

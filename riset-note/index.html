@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Note Builder · FSA Lab</title>
+<meta name="description" content="Bangun equity research note 7 section yang publishable: header metadata, ringkasan investasi, thesis, valuasi, risiko, red flags, lampiran angka. Impor dari drill Bedah Sendiri/ujian, bilingual ID/EN.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/riset-note/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/modul.css">
+<style>
+.rn-step{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.2rem;box-shadow:4px 4px 0 var(--ink)}
+.rn-step h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.15rem}
+.rn-step .step-sub{font-size:.85rem;color:var(--ink-soft);margin-bottom:1rem}
+.rn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;margin-bottom:.5rem}
+.rn-grid label{font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem}
+.rn-grid input,.rn-grid textarea,.rn-grid select{width:100%;font-family:var(--font-body);font-size:.92rem;
+  border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper);color:var(--ink)}
+.rn-grid input:focus,.rn-grid textarea:focus,.rn-grid select:focus{outline:3px solid var(--mustard)}
+.rn-grid input.num{font-family:var(--font-mono)}
+.rn-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem}
+.rn-guide{background:#fbf3dd;border:2px dashed var(--ink);border-radius:10px;padding:.8rem 1rem;
+  font-size:.82rem;margin-bottom:1rem;line-height:1.6}
+.rn-guide b{font-weight:700}
+.rn-guide .ex{font-style:italic;color:var(--ink-soft);display:block;margin-top:.35rem}
+.rn-check{font-size:.8rem;margin-top:.6rem;line-height:1.7}
+.rn-check li{list-style:none;margin-bottom:.15rem}
+.rn-check li::before{content:"☐ ";font-weight:700}
+.thesis-pt{border:2px solid var(--line);border-radius:10px;padding:.9rem 1rem;margin-bottom:.9rem;background:var(--paper)}
+.thesis-pt h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.5rem}
+.callout{border-left:6px solid var(--sunset-deep);background:#fbe7df;padding:.8rem 1rem;border-radius:0 10px 10px 0;
+  font-size:.85rem;margin:.8rem 0;line-height:1.6}
+.imp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem;margin-bottom:1rem}
+.imp-card{border:2px solid var(--ink);border-radius:10px;padding:.9rem 1rem;background:var(--paper)}
+.imp-card h4{font-size:.95rem;margin-bottom:.3rem}
+.imp-card p{font-size:.8rem;color:var(--ink-soft);margin-bottom:.6rem}
+.coached-tag{display:inline-block;background:var(--sunset-deep);color:#fff;font-size:.72rem;font-weight:700;
+  padding:.1rem .5rem;border-radius:6px;margin-left:.4rem}
+.lang-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.lang-row .lbl{font-weight:700;font-size:.9rem}
+.lang-btn{border:2px solid var(--ink);border-radius:10px;padding:.5rem 1.1rem;font-weight:700;cursor:pointer;
+  background:var(--paper);font-size:.9rem}
+.lang-btn.on{background:var(--ink);color:var(--paper)}
+.en-field{display:none}
+body.lang-en .en-field{display:block}
+body.lang-en .id-field{display:none}
+.en-ph::placeholder{color:#8a7a5a;font-style:italic}
+.att-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.att-table th{background:var(--ink);color:var(--paper);padding:.5rem .6rem;font-family:var(--font-mono);
+  font-size:.7rem;text-align:left}
+.att-table td{border-bottom:1px solid var(--line);padding:.4rem .6rem;vertical-align:top}
+.att-table td input,.att-table td select{width:100%;font-family:var(--font-mono);font-size:.8rem;
+  border:2px solid var(--line);border-radius:8px;padding:.3rem .5rem;background:var(--paper);color:var(--ink)}
+.att-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper)}
+.gate-list{list-style:none;padding:0;margin:.6rem 0}
+.gate-list li{padding:.45rem .7rem;border:2px solid var(--line);border-radius:8px;margin-bottom:.4rem;
+  font-size:.85rem;display:flex;gap:.6rem;align-items:flex-start}
+.gate-list li.ok{border-color:var(--teal-deep);background:#e4f2ee}
+.gate-list li .st{font-weight:700;min-width:3.2rem}
+.gate-list li.ok .st{color:var(--teal-deep)}
+.gate-list li:not(.ok) .st{color:var(--sunset-deep)}
+.gate-soft{border-style:dashed}
+#rn-preview{background:#1e1a14;color:#f4ecdc;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:.82rem;line-height:1.65;
+  white-space:pre-wrap;max-height:30rem;overflow-y:auto;margin-top:1rem}
+.copy-row{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+#copy-msg{font-size:.85rem;color:var(--teal-deep);font-weight:600;visibility:hidden}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.framing{font-size:.82rem;color:var(--ink-soft);font-style:italic;margin-top:.8rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">RN</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Output profesional</p>
+  <h1>Research Note <em>Builder.</em></h1>
+  <p class="lede">Bedah Sendiri dan ujian memberimu <strong>bahan baku</strong> (angka + draft).
+    Builder ini pabriknya: susun <strong>equity research note 7 section</strong> yang publishable —
+    dengan thesis testing, valuasi ber-scenario, dan checklist publikasi yang mengunci tombol salin.</p>
+  <p class="rn-note">Contoh di tiap section memakai PT Cemerlang Abadi (FIKTIF, kanonis) — <strong>ilustratif</strong>, bukan angka real.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:58rem">
+
+  <!-- BAHASA -->
+  <div class="lang-row">
+    <span class="lbl">Bahasa note:</span>
+    <button class="lang-btn on" id="lang-id" type="button">🇮🇩 Indonesia</button>
+    <button class="lang-btn" id="lang-en" type="button">🇬🇧 English</button>
+  </div>
+  <p class="rn-note" style="margin-bottom:1.2rem">Indonesia untuk berpikir, Inggris untuk portofolio. Tulis versi Indonesia dulu —
+    kolom Inggris hanya cermin terjemahan.</p>
+
+  <!-- IMPOR -->
+  <div class="rn-step">
+    <h3>Impor dari drill</h3>
+    <p class="step-sub">Impor menghemat pengetikan, <strong>tidak menggantikan penalaran</strong>.
+      Yang diimpor = angka + draft. Yang wajib manual = vonis, bukti pematah thesis, risiko, red flags.</p>
+    <div class="imp-cards" id="imp-cards"></div>
+    <p class="rn-note" id="imp-note">Tidak ada drill yang selesai → mode manual. Selesaikan
+      <a href="/bedah-sendiri/">Bedah Sendiri</a> atau <a href="/ujian/">ujian</a> dulu untuk mengimpor.</p>
+  </div>
+
+  <!-- S1 -->
+  <div class="rn-step">
+    <h3>S1 · Header metadata</h3>
+    <p class="step-sub">Form, bukan narasi. As-of date + horizon membedakan opini analis dari omongan.</p>
+    <div class="rn-guide"><b>Cara buat:</b> isi sekali di awal; semua angka di section lain WAJIB memakai satuan S1.
+      <b>Hal penting:</b> tanpa as-of date dan horizon, note tidak publishable.
+      <b>Batasan:</b> header bukan tempat opini.
+      <span class="ex">Contoh: PT Cemerlang Abadi (CMRA) · Manufaktur · FY2024 auditan · as-of 4 Nov 2026 · horizon 12 bulan · Rp juta · konsolidasian · 100 jt saham.</span></div>
+    <div class="rn-grid">
+      <div><label for="rn-emiten">Emiten</label><input id="rn-emiten" placeholder="PT …"></div>
+      <div><label for="rn-ticker">Kode ticker</label><input id="rn-ticker" placeholder="…"></div>
+      <div><label for="rn-sektor">Sektor</label><input id="rn-sektor" placeholder="…"></div>
+      <div><label for="rn-periode">Periode laporan</label><input id="rn-periode" placeholder="FY2024 auditan / H1 2026 interim unaudited"></div>
+      <div><label for="rn-asof">As-of date (tgl analisis)</label><input id="rn-asof" type="date"></div>
+      <div><label for="rn-horizon">Horizon forecast</label><input id="rn-horizon" placeholder="12 bulan"></div>
+      <div><label for="rn-ccy">Currency / unit</label>
+        <select id="rn-ccy"><option value="">— pilih —</option><option>Rp juta</option><option>Rp miliar</option><option>Rp</option><option>USD ribu</option></select></div>
+      <div><label for="rn-basis">Basis</label>
+        <select id="rn-basis"><option value="">— pilih —</option><option>konsolidasian</option><option>induk saja</option></select></div>
+      <div><label for="rn-shares">Saham beredar (juta lbr)</label><input id="rn-shares" class="num" placeholder="mis. 100"></div>
+      <div style="grid-column:1/-1"><label for="rn-src">Sumber filing</label><input id="rn-src" placeholder="nama file / URL laporan"></div>
+    </div>
+    <p class="rn-note" id="rn-coached-note" style="display:none">⚠️ Note ini dari attempt <strong>coached</strong> — dilabeli jujur, bukan blind.<span class="coached-tag">COACHED</span></p>
+    <ul class="rn-check">
+      <li>as-of date terisi</li><li>horizon eksplisit</li><li>satuan konsisten</li><li>basis dinyatakan</li><li>saham beredar terisi</li>
+    </ul>
+  </div>
+
+  <!-- S2 -->
+  <div class="rn-step">
+    <h3>S2 · Ringkasan investasi</h3>
+    <p class="step-sub">Satu paragraf, 3–5 kalimat. <strong>Tulis TERAKHIR</strong> (setelah S3–S6 selesai).</p>
+    <div class="rn-guide"><b>Cara buat:</b> vonis dulu di kalimat pertama (BELI / TAHAN / JUAL / HINDARI untuk ekuitas),
+      lalu 2 alasan bernomor angka, lalu kondisi pembatal.
+      <b>Hal penting:</b> analis dibayar dari vonisnya.
+      <b>Batasan:</b> ini opini analis ritel independen, BUKAN rekomendasi beli/jual formal.
+      <span class="ex">Contoh: "TAHAN — jangan tambah posisi sampai kas membuktikan laba. Laba +53% tidak ditemani kas (FCFE −5.760, dividen didanai utang neto 11.440). Tunggu Q1 2026: CFO/NI harus &gt; 0,9x atau tesis gugur menjadi JUAL."</span></div>
+    <div class="id-field"><label for="rn-s2" style="font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem">Ringkasan (ID)</label>
+      <textarea id="rn-s2" rows="5" style="width:100%;font-family:var(--font-body);font-size:.92rem;border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper)"></textarea></div>
+    <div class="en-field"><label for="rn-s2-en" style="font-weight:600;font-size:.82rem;display:block;margin-bottom:.35rem">Summary (EN)</label>
+      <textarea id="rn-s2-en" class="en-ph" rows="5" placeholder="Translate your Indonesian version — do not write English first." style="width:100%;font-family:var(--font-body);font-size:.92rem;border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper)"></textarea></div>
+    <ul class="rn-check"><li>vonis di kalimat pertama</li><li>≥2 angka dikutip</li><li>kondisi pembatal/invalidasi disebut</li></ul>
+  </div>
+
+  <!-- S3 -->
+  <div class="rn-step">
+    <h3>S3 · Thesis — 3 poin + thesis testing</h3>
+    <p class="step-sub">Bukan daftar keunggulan. Tiap poin = klaim + bukti penguat + <strong>bukti pematah (wajib manual)</strong> + angka dikutip.</p>
+    <div class="rn-guide"><b>Cara buat:</b> 3 poin cukup; 5 poin = tidak fokus.
+      <b>Hal penting:</b> thesis tanpa pematah = marketing.
+      <span class="ex">Contoh poin: "Margin ekspansi berkelanjutan — penguat: gross margin 35,0% stabil 2 tahun (Cat. 28, hal. 4); pematah: HPP naik 12% YoY vs penjualan +8% di H2 (tren menekan)."</span></div>
+    <div id="thesis-list"></div>
+    <ul class="rn-check"><li>tepat 3 poin</li><li>tiap poin ada penguat + pematah</li><li>≥3 angka dikutip dengan satuan + sumber halaman</li></ul>
+  </div>
+
+  <!-- S4 -->
+  <div class="rn-step">
+    <h3>S4 · Valuasi</h3>
+    <p class="step-sub">Konteks, bukan model. Model lengkap dikerjakan di FMVA Sprint — di sini hanya ringkasannya + link.</p>
+    <div class="callout"><strong>Metode mengikuti jenis emiten.</strong> Non-bank = DCF. Bank = DDM / residual income / P-BV —
+      <strong>BUKAN DCF industri untuk bank.</strong> Target price TANPA scenario range = angka hiasan.</div>
+    <div class="rn-grid">
+      <div><label for="rn-method">Metode valuasi</label>
+        <select id="rn-method"><option value="">— pilih —</option><option>DCF</option><option>DDM</option><option>Residual Income</option><option>P-BV</option></select></div>
+      <div><label for="rn-tp-bear">Target price — bear</label><input id="rn-tp-bear" class="num" placeholder="mis. 2.100"></div>
+      <div><label for="rn-tp-base">Target price — base</label><input id="rn-tp-base" class="num" placeholder="mis. 2.630"></div>
+      <div><label for="rn-tp-bull">Target price — bull</label><input id="rn-tp-bull" class="num" placeholder="mis. 3.000"></div>
+      <div style="grid-column:1/-1"><label for="rn-assump">3–5 asumsi kunci (satu baris per asumsi)</label>
+        <textarea id="rn-assump" rows="3" style="width:100%;font-family:var(--font-body);font-size:.92rem;border:2px solid var(--ink);border-radius:10px;padding:.55rem .8rem;background:var(--paper)" placeholder="mis. WACC 13,1%; g 2,5%; NPL +100bps di skenario bear"></textarea></div>
+      <div style="grid-column:1/-1"><label for="rn-fmva">Link model FMVA</label><input id="rn-fmva" placeholder="mis. FMVA Real Case 6 / URL model"></div>
+    </div>
+    <ul class="rn-check"><li>metode sesuai jenis emiten</li><li>per-share basis (saham beredar dari S1)</li><li>scenario range bear/base/bull</li><li>asumsi kunci eksplisit</li></ul>
+  </div>
+
+  <!-- S5 -->
+  <div class="rn-step">
+    <h3>S5 · Risiko — 3 + kondisi invalidasi</h3>
+    <p class="step-sub">Risiko tanpa kondisi invalidasi = keluhan, bukan analisis.</p>
+    <div class="rn-guide"><b>Cara buat:</b> tiap risiko = deskripsi + dampak ke thesis + <strong>apa yang mematahkannya</strong> (terukur).
+      <b>Hal penting:</b> ≥1 risiko harus risiko yang <strong>kamu akui sendiri</strong>, bukan risiko generik "kondisi makro".
+      <span class="ex">Contoh: "Capex 48.000 tidak menambah kapasitas → thesis TAHAN gugur menjadi JUAL. Pantau: realisasi capex vs guidance di Q1 2026."</span></div>
+    <div id="risk-list"></div>
+    <ul class="rn-check"><li>3 risiko</li><li>tiap risiko ada kondisi invalidasi</li><li>≥1 risiko diakui sendiri</li></ul>
+  </div>
+
+  <!-- S6 -->
+  <div class="rn-step">
+    <h3>S6 · Red flags sebagai pertanyaan</h3>
+    <p class="step-sub">Editorial rule FSA Lab: <strong>"A red flag is a question. Not a conviction."</strong> Maksimal 5.</p>
+    <div class="rn-guide"><b>Cara buat:</b> pertanyaan + angka pemicu + apa yang perlu diverifikasi.
+      Red flag sebagai vonis ("manajemen curang") = fitnah, bukan analisis.
+      <span class="ex">Contoh: "Mengapa restitusi pajak naik 3,2x menjadi Rp406 M di tahun laba naik? Verifikasi: Catatan pajak hal. 87 — apakah ini one-off?"</span></div>
+    <div id="flag-list"></div>
+    <button class="btn" id="flag-add" type="button" style="margin-top:.4rem">+ Tambah red flag</button>
+    <ul class="rn-check"><li>semua berbentuk pertanyaan</li><li>tiap flag ada angka pemicu</li><li>tiap flag ada langkah verifikasi</li></ul>
+  </div>
+
+  <!-- S7 -->
+  <div class="rn-step">
+    <h3>S7 · Lampiran angka kunci</h3>
+    <p class="step-sub">Yang membuat note <strong>dapat diaudit</strong> — pembaca bisa mengecek tiap angka. Bukan tempat analisis; angka saja.</p>
+    <div class="att-scroll"><table class="att-table" id="att-table"></table></div>
+    <button class="btn" id="att-add" type="button" style="margin-top:.6rem">+ Tambah baris</button>
+    <ul class="rn-check"><li>≥8 pos kunci</li><li>semua ada sumber halaman</li><li>status terverifikasi/ilustratif dilabeli</li></ul>
+  </div>
+
+  <!-- CHECKLIST PUBLIKASI -->
+  <div class="rn-step">
+    <h3>Checklist publikasi</h3>
+    <p class="step-sub">Tombol salin TERKUNCI sampai 5 hard-gate lolos. Soft checklist = peringatan, tidak mengunci.</p>
+    <ul class="gate-list" id="gate-hard"></ul>
+    <ul class="gate-list" id="gate-soft"></ul>
+    <p class="framing">"Checklist ini cermin, bukan sertifikat."</p>
+  </div>
+
+  <div class="copy-row">
+    <button class="btn btn-primary btn-lg" id="copy-id" disabled>Salin note (ID)</button>
+    <button class="btn btn-lg" id="copy-en" disabled>Copy note (EN)</button>
+    <span id="copy-msg">Note tersalin ✓ — tempel ke dokumenmu.</span>
+  </div>
+  <div id="rn-preview"></div>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="/assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Research Note Builder · analis ritel independen — edukasi/portofolio, BUKAN rekomendasi beli/jual.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="/js/tblwrap.js"></script>
+<script src="/js/riset-note.js"></script>
+</body>
+</html>

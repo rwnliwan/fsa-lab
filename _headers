@@ -1,0 +1,19 @@
+# FSA Lab — security headers (Cloudflare Pages).
+# Diterapkan ke SEMUA path. Catatan keputusan CSP (Phase 10):
+# - script-src 'self' TANPA 'unsafe-inline': seluruh blok <script> inline sudah
+#   dipindah ke file eksternal (js/inline-workbench.js, js/inline-review.js,
+#   js/inline-analisis.js). Tidak ada event handler inline / javascript: URL.
+# - style-src 'self' 'unsafe-inline': 'unsafe-inline' DIPERLUKAN karena atribut
+#   style="..." dipakai luas di 54 halaman + blok <style> di <head>. Menghapusnya
+#   butuh refactor besar; trade-off ini didokumentasikan di sini.
+# - font-src 'self': font self-hosted (fonts/*.woff2, css/fonts.css) — tidak ada
+#   lagi request ke fonts.googleapis.com / fonts.gstatic.com.
+# - Tidak ada iframe/embed eksternal, tidak ada fetch ke API luar, tidak ada
+#   gambar eksternal -> img/connect/object dikunci ke 'self'.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

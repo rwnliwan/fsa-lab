@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta Risiko Indonesia · FSA Lab</title>
+<meta name="description" content="Heatmap risiko 10 sektor × 7 driver: penilaian analis statis dan transparan — ilustratif, bukan data live.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/risk-map/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.risk-banner{background:#fbe7df;border:3px solid var(--sunset-deep);border-radius:var(--radius);
+  padding:1rem 1.4rem;margin-bottom:1.4rem;box-shadow:4px 4px 0 var(--sunset-deep)}
+.risk-banner p{font-weight:700;font-size:1.05rem;color:var(--sunset-deep);margin:0;text-transform:uppercase;
+  letter-spacing:.03em}
+.risk-banner small{display:block;font-weight:400;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:.3rem;font-size:.85rem}
+.heat-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper)}
+.heat{width:100%;border-collapse:collapse;font-size:.82rem;min-width:44rem}
+.heat th{background:var(--ink);color:var(--paper);padding:.55rem .6rem;font-size:.72rem;font-family:var(--font-mono);
+  position:sticky;top:0;white-space:nowrap}
+.heat th:first-child{text-align:left;min-width:9rem}
+.heat td{border:1px solid var(--line);padding:.5rem .4rem;text-align:center;font-family:var(--font-mono);
+  font-weight:700;font-size:.95rem}
+.heat td.sector{text-align:left;font-family:var(--font-body);font-weight:600;background:var(--card);
+  position:sticky;left:0;white-space:nowrap}
+.r1{background:#e4f2ee;color:#1d6b5a}.r2{background:#eef5e4;color:#4a7c2f}.r3{background:#fbf3dd;color:#a67c1a}
+.r4{background:#fbe7df;color:#b4541f}.r5{background:#f5d5c8;color:#8f2d12}
+.heat tr:hover td{outline:2px solid var(--mustard);outline-offset:-2px}
+.legend{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0;align-items:center;font-size:.8rem}
+.legend span{display:inline-flex;align-items:center;gap:.35rem;border:2px solid var(--ink);border-radius:8px;
+  padding:.25rem .6rem;font-family:var(--font-mono);font-weight:700}
+.meto{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-top:1.4rem;box-shadow:4px 4px 0 var(--ink)}
+.meto h3{font-family:var(--font-display);font-size:1.15rem;margin-bottom:.5rem}
+.meto table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:.6rem}
+.meto th{background:var(--ink);color:var(--paper);text-align:left;padding:.5rem .7rem;font-family:var(--font-mono);font-size:.72rem}
+.meto td{border-bottom:1px solid var(--line);padding:.5rem .7rem;vertical-align:top}
+.meto .nb{font-family:var(--font-mono);font-weight:700;color:var(--sunset-deep)}
+.sector-avg{font-size:.72rem;font-weight:400;color:var(--ink-soft);display:block;font-family:var(--font-body)}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">RM</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Tools · Lintas lensa (kredit × investasi × forensik)</p>
+  <h1>Peta Risiko <em>Indonesia.</em></h1>
+  <p class="lede">Sebelum membuka laporan satu emiten, analis yang baik tahu <strong>medan</strong>nya:
+    risiko struktural apa yang menekan tiap sektor. Heatmap 10 sektor × 7 driver ini adalah
+    <strong>penilaian analis</strong> — titik awal berpikir, bukan vonis.</p>
+</header>
+
+<main>
+<section class="modul-sec" style="max-width:64rem">
+
+  <div class="risk-banner" role="note">
+    <p>⚠ Penilaian analis — ilustratif, bukan data live, update berkala</p>
+    <small>Skor 1–5 ditetapkan dengan judgment analis (lihat metodologi di bawah), bukan dari dataset live.
+      Jangan dipakai untuk keputusan investasi/kredit nyata.</small>
+  </div>
+
+  <div class="legend" id="legend"></div>
+  <div class="heat-scroll"><table class="heat" id="heat"></table></div>
+  <p style="font-size:.8rem;color:var(--ink-soft);margin-top:.6rem">Klik sel untuk membaca alasan skornya. Rata-rata sektor = kompas kasar, bukan peringkat resmi.</p>
+
+  <div class="meto">
+    <h3>Metodologi — transparan, bisa diperdebatkan</h3>
+    <p style="font-size:.88rem">Setiap sel dinilai <strong>1–5</strong> dengan judgment analis atas pertanyaan:
+      <em>"Seberapa besar driver ini mengancam kemampuan sektor membayar utang &amp; menghasilkan laba 3 tahun ke depan?"</em></p>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Skor</th><th>Arti</th><th>Contoh cara baca</th></tr>
+      <tr><td class="nb">1</td><td>Risiko minimal</td><td>Driver hampir tidak relevan bagi sektor ini.</td></tr>
+      <tr><td class="nb">2</td><td>Rendah</td><td>Berpengaruh tapi terkelola / terdiversifikasi.</td></tr>
+      <tr><td class="nb">3</td><td>Sedang</td><td>Perlu dipantau; bisa memburuk bila kondisi berubah.</td></tr>
+      <tr><td class="nb">4</td><td>Tinggi</td><td>Tekanan struktural yang nyata; uji skenario wajib.</td></tr>
+      <tr><td class="nb">5</td><td>Kritis</td><td>Ancaman dominan sektor; salah baca = salah vonis.</td></tr>
+    </table>
+    </div>
+    <div class="tblwrap">
+    <table style="margin-top:.8rem">
+      <tr><th>Driver</th><th>Yang dinilai</th></tr>
+      <tr><td><strong>Utang USD</strong></td><td>Eksposur utang berdenominasi dolar vs pendapatan rupiah — depresiasi rupiah = beban melonjak.</td></tr>
+      <tr><td><strong>Harga komoditas</strong></td><td>Ketergantungan margin pada harga komoditas global yang siklikal.</td></tr>
+      <tr><td><strong>Regulasi</strong></td><td>Risiko perubahan aturan (tarif, DMO, larangan ekspor, ketentuan OJK) yang memukul model bisnis.</td></tr>
+      <tr><td><strong>Pihak berelasi</strong></td><td>Seberapa umum grup keluarga/konglomerasi &amp; transaksi afiliasi — medan tunneling (PSAK 224).</td></tr>
+      <tr><td><strong>Likuiditas</strong></td><td>Risiko pendanaan: jatuh tempo utang menumpuk, akses pasar modal menyempit.</td></tr>
+      <tr><td><strong>Suku bunga</strong></td><td>Sensitivitas laba &amp; valuasi terhadap kenaikan suku bunga (BI rate / cost of debt).</td></tr>
+      <tr><td><strong>Tata kelola</strong></td><td>Kualitas governance: transparansi, independensi komisaris, rekam jejak restrukturisasi.</td></tr>
+    </table>
+    </div>
+    <p style="font-size:.82rem;color:var(--ink-soft);margin-top:.8rem">Sumber judgment: pola umum struktur industri Indonesia + kasus historis (restrukturisasi konstruksi BUMN, DMO batubara/CPO, hilirisasi nikel).
+      Ini <strong>bukan</strong> riset primer dan <strong>bukan</strong> data live. Diperbarui berkala; versi ini v1.</p>
+  </div>
+
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Peta Risiko Indonesia v1 · penilaian analis ilustratif.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="risk-map.js"></script>
+</body>
+</html>

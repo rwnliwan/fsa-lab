@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 9 — Kualitas Pendapatan &amp; EPS · FSA Lab</title>
+<meta name="description" content="Modul 9 FSA Lab: dari mana pendapatan datang, seberapa berkualitas, dan apa arti EPS yang dilaporkan.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-9/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="../index.html">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M9</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 37 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 2</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 9</span>
+</nav>
+<p class="mod-count">Modul 9 dari 38</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 2 · Judgment · Modul 9</p>
+  <h1>Laba per Saham, <em>di Baliknya Apa?</em></h1>
+  <p class="lede"><strong>PT Cemerlang Abadi</strong> (angka ilustratif, Rp juta): EPS <strong>452,4</strong> — tapi Rp62,4-nya dari <strong>one-off jual aset</strong>. Di modul ini kamu bedah kualitas pendapatan dan arti EPS: dasar vs dilusian vs continuing.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Statement Explorer: Dari Pendapatan ke EPS</h2>
+  <p class="sub">Klik baris mana pun. Fokus modul ini: <strong>kualitas</strong> — pendapatan & laba yang berulang vs yang sekali lewat.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="rev">Pendapatan</button>
+    <button class="stmt-tab" data-stmt="eps">EPS & One-off</button>
+    <button class="stmt-tab" data-stmt="adj">Non-GAAP / Adjusted</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris laporan ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan sudut forensik akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Gerakkan EPS-nya</h2>
+  <p class="sub">Enam aksi korporasi & keputusan. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: RATIO LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Ratio Lab: Bedah EPS</h2>
+  <p class="sub">Empat angka per-saham. Hitung — lalu nilai: EPS headline vs EPS yang bisa dipegang.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: Bonus Manajemen Berbasis EPS?</h2>
+  <p class="sub">Dewan mengusulkan bonus direksi berbasis pertumbuhan EPS. Dengan one-off 13,8% & piutang +89%, tulis pandanganmu.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> bonus berbasis EPS itu MENGUNDANG <em>gaming</em> &mdash; bukan menyelaraskan. Buktinya ada di angka: <span class="num">EPS 452,4</span> dilaporkan tapi <em>continuing</em> EPS hanya <span class="num">390,0</span> &mdash; selisih <span class="num">13,8%</span> adalah laba jual aset <em>one-off</em> <span class="num">8.000</span> yang tidak akan terulang. Bonus yang dihitung dari 452,4 membayar manajemen atas keberuntungan sekali jalan. Bonus yang benar: berbasis <em>continuing</em> EPS atau EPS yang disesuaikan.</p>
+<p><strong>Lensa kredit:</strong> insentif EPS = risiko kreditur. Manajemen yang dibayar dari EPS akan: menunda beban (kapitalisasi), mempercepat pendapatan (<em>channel stuffing</em> &mdash; DSO 73 hari sudah bergerak), dan menghindari <em>capex</em> pemeliharaan yang menekan laba jangka pendek tapi melindungi arus kas jangka panjang. Kreditur harus menulis <em>covenant</em> berbasis kas (DSCR, bukan EPS).</p>
+<p><strong>Lensa forensik:</strong> tiga cara memainkan EPS tahun ini: (1) <em>one-off gain</em> &mdash; jual aset <span class="num">8.000</span> tepat sebelum tutup tahun (sudah terjadi); (2) <em>classification shifting</em> &mdash; geser beban operasi ke &ldquo;pos luar biasa&rdquo;; (3) <em>buyback</em> &mdash; dengan <span class="num">100 juta</span> saham beredar, <em>buyback</em> 5% mendongkrak EPS ~5% tanpa satu rupiah laba tambahan. Satu hal yang membunuh tesis &ldquo;EPS 452,4 mencerminkan kinerja&rdquo;: bila dewan tetap memakai angka <em>headline</em> untuk bonus &mdash; maka tahun depan insentifnya adalah mengulang trik, bukan memperbaiki bisnis.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 10.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-8/" class="pn-prev">← Modul 8</a>
+  <a href="/modul-10/" class="pn-next">Modul 10 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 9 · angka ilustratif untuk pembelajaran, bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul9.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>
