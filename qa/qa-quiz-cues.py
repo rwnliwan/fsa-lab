@@ -19,7 +19,7 @@ G1: longest-option-is-key rate vs target (<=35%, Septian's stated target).
     round 13) has not landed yet. It turns green when the rewrite lands.
 G2: qualifier-cue rate == 0. Round-13 bug class: hedge phrases present in
     wrong options but absent from the key => exploitable by pattern.
-G3: review-bank <-> module quizzes must hold the same 215 questions with
+G3: review-bank <-> module quizzes must hold the same 252 questions with
     identical key text ("stale second copy" class). Found 2026-11-04: modul23
     DSCR question key text differs (bank still carries the pre-R2 wording
     "tak cukup menutup kewajiban" while the module teaches breach-vs-cash
@@ -58,16 +58,25 @@ HEDGE = ["dalam kondisi normal", "dalam keadaan normal", "pada umumnya",
 TARGET_PCT = 35.0
 
 
+def _dec(raw):
+    """Decode a JS double-quoted string body (\\uXXXX, \\n, \\\\ ...) so
+    module text matches the bank (gen_review_bank decodes the same way)."""
+    try:
+        return json.loads('"' + raw + '"')
+    except Exception:
+        return raw
+
+
 def parse_modules():
     """Return list of (file, question, options, answer_idx)."""
     out = []
     for f in sorted(glob.glob("js/modul*.js")):
         src = read(f)
         for m in QP.finditer(src):
-            opts = re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2))
+            opts = [_dec(o) for o in re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2))]
             a = int(m.group(3))
             if opts and a < len(opts):
-                out.append((f, m.group(1), opts, a))
+                out.append((f, _dec(m.group(1)), opts, a))
     return out
 
 
@@ -80,8 +89,8 @@ mods = parse_modules()
 bank = parse_bank()
 
 # ---------- coverage ----------
-check("module MCQ count == 215", len(mods) == 215, "got %d" % len(mods))
-check("review-bank MCQ count == 215", len(bank) == 215, "got %d" % len(bank))
+check("module MCQ count == 252", len(mods) == 252, "got %d" % len(mods))
+check("review-bank MCQ count == 252", len(bank) == 252, "got %d" % len(bank))
 
 
 def rates(items):

@@ -233,8 +233,13 @@ function parseIDNumber(str, isDecimal){
       if(dots !== 1) return NaN;
     } else {
       var parts = s.split(".");
-      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
-      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+      if(parts.length > 2){
+        if(parts.slice(1).every(function(p){ return p.length === 3; }) && parts[0] !== "0" && parts[0] !== "-0"){
+          s = parts.join("");  // ribuan bertingkat: 1.000.000 -> 1000000
+        } else {
+          return NaN;  // F3: 1.2.3 ditolak
+        }
+      } else if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
         s = parts.join("");  // ribuan: 1.000 -> 1000
       } else if(parts.length === 2 && parts[1].length !== 3){
         /* desimal biasa: 2.26 tetap */
@@ -315,7 +320,10 @@ var QUIZ = [ {q:"PT Induk Nusantara mengendalikan 80% PT Anak Berkah (ilustratif
  {q:"Laba bersih anak Rp12.000 juta (ilustratif), kepemilikan induk 80%. Kepentingan nonpengendali atas laba = …", o:["Rp2.400 juta", "Rp9.600 juta", "Rp12.000 juta", "Rp0 — NCI hanya ada di neraca"], a:0},
  {q:"Induk memiliki 30% entitas asosiasi (metode ekuitas, PSAK 228). Asosiasi membayar dividen; bagian induk Rp450 juta (ilustratif). Pencatatan yang TEPAT di laporan induk…", o:["Mengakui pendapatan dividen di laba rugi sebesar Rp450 juta", "Menambah pos 'bagian laba asosiasi' satu baris di laba rugi", "Mencatat kas bertambah tanpa jurnal lawan karena dividen sudah menjadi hak", "Mengurangi nilai tercatat investasi — bukan pendapatan"], a:3},
  {q:"Laba belum direalisasi downstream Rp10.000 juta belum dieliminasi (ilustratif). Setelah koreksi, laba yang dapat diatribusikan kepada pemilik induk menjadi… (dasar: laba total 42.000, NCI 2.400)", o:["Rp32.000 juta", "Rp29.600 juta", "Rp39.600 juta", "Rp31.600 juta"], a:1},
- {q:"Piutang induk ke anak Rp15.000 juta dieliminasi saat konsolidasi (ilustratif). Dampak ke TOTAL ASET konsolidasian…", o:["Naik Rp15.000 juta — eliminasi menambah pos penyeimbang di aset", "Tetap — eliminasi hanya reklasifikasi antar pos dalam aset", "Turun Rp15.000 juta — piutang & utang internal saling hapus", "Naik berlipat karena piutang dan utang dieliminasi dua-duanya"], a:2}];
+ {q:"Piutang induk ke anak Rp15.000 juta dieliminasi saat konsolidasi (ilustratif). Dampak ke TOTAL ASET konsolidasian…", o:["Naik Rp15.000 juta — eliminasi menambah pos penyeimbang di aset", "Tetap — eliminasi hanya reklasifikasi antar pos dalam aset", "Turun Rp15.000 juta — piutang & utang internal saling hapus", "Naik berlipat karena piutang dan utang dieliminasi dua-duanya"], a:2},
+ {q:"Dua perusahaan membentuk joint operation 50:50 atas aset 1.000 dan liabilitas 400 (ilustratif, Rp juta). Tiap operator mencatat…", o:["Satu baris investasi 300 dengan metode ekuitas (PSAK 228)","Aset 500 dan liabilitas 200 langsung di neraca sendiri","Tidak mencatat apa-apa sampai ventura membagikan dividen","Aset 1.000 dan liabilitas 400 penuh — konsolidasi 100%"], a:1},
+ {q:"Pengaturan yang sama diperlakukan sebagai joint venture. Tiap venturer mencatat…", o:["Aset 500 dan liabilitas 200 langsung di neraca","Konsolidasi penuh — 100% aset dan liabilitas ventura digabung","Satu baris investasi 300 dan bagian laba 60 (metode ekuitas)","Tidak ada pencatatan sampai ventura dilikuidasi"], a:2},
+ {q:"Pembeda utama ventura bersama dengan entitas asosiasi adalah…", o:["Keputusan penting butuh persetujuan bulat — pengendalian bersama","Persen kepemilikan: ventura bersama 50%, asosiasi 20–50%","Ventura bersama dikonsolidasi penuh seperti entitas anak","Ventura bersama memakai metode biaya, asosiasi memakai metode ekuitas"], a:0}];
 (function(){
   var h = "";
   QUIZ.forEach(function(q,i){

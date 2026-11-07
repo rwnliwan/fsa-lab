@@ -2,13 +2,13 @@
 """QA Round 14 — guard permanen untuk fix temuan audit Cue (3 Nov 2026).
 
 G1: robots.txt ada + plain text (bukan HTML homepage)
-G2: sitemap.xml valid XML + memuat landing + 37 modul + 19 tools
+G2: sitemap.xml valid XML + memuat landing + 48 modul + 26 tools
 G3: glossary count konsisten — JS == HTML == landing (programmatic, bukan hardcode)
 G4: mobile nav — hamburger ada (aria-expanded/aria-controls), :focus-visible ada
 G5: simulator link TIDAK disembunyikan (false positive audit) + noscript ada
 G6: M35 framing "PRESUMSI AWAL" ada; tidak ada ambang sebagai aturan
 G7: M7 KAM wording benar (reasonable assurance, bukan "paling berisiko")
-G8: review-bank diregen (175 soal, kunci ikut teks)
+G8: review-bank diregen (252 soal, kunci ikut teks)
 """
 import os, re, sys, xml.dom.minidom
 
@@ -40,9 +40,9 @@ try:
     check("G2 sitemap XML valid", True)
     check("G2 sitemap ada landing", "https://fsa-lab.pages.dev/" in urls)
     mods = [u for u in urls if "/modul-" in u]
-    check("G2 sitemap 37 modul", len(mods) == 37, f"dapat {len(mods)}")
+    check("G2 sitemap 48 modul", len(mods) == 48, f"dapat {len(mods)}")
     tools = [u for u in urls if "/modul-" not in u and u != "https://fsa-lab.pages.dev/"]
-    check("G2 sitemap 19 tools", len(tools) == 19, f"dapat {len(tools)}")
+    check("G2 sitemap 26 tools", len(tools) == 26, f"dapat {len(tools)}")
 except Exception as e:
     check("G2 sitemap valid + lengkap", False, str(e)[:80])
 
@@ -85,7 +85,7 @@ check("G7 M7 bukan 'paling berisiko' mentah", "paling berisiko" not in m7.lower(
 # ---- G8: review bank ----
 rb = read("js/review-bank.js")
 n_q = rb.count('"q":')
-check("G8 review bank 185 soal", n_q == 185, f"dapat {n_q}")
+check("G8 review bank 252 soal", n_q == 252, f"dapat {n_q}")
 
 print()
 if fails:

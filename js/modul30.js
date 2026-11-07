@@ -203,8 +203,13 @@ function parseIDNumber(str, isDecimal){
       if(dots !== 1) return NaN;
     } else {
       var parts = s.split(".");
-      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
-      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+      if(parts.length > 2){
+        if(parts.slice(1).every(function(p){ return p.length === 3; }) && parts[0] !== "0" && parts[0] !== "-0"){
+          s = parts.join("");  // ribuan bertingkat: 1.000.000 -> 1000000
+        } else {
+          return NaN;  // F3: 1.2.3 ditolak
+        }
+      } else if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
         s = parts.join("");  // ribuan: 1.000 -> 1000
       } else if(parts.length === 2 && parts[1].length !== 3){
         /* desimal biasa: 2.26 tetap */
@@ -283,11 +288,14 @@ $("#journal-text").addEventListener("input", function(){
 setLens("invest");
 
 /* ---------- QUIZ + GATE ---------- */
-var QUIZ = [ {q:"LDR 88,2% (= Rp60.000 ÷ Rp68.000 miliar) dibaca analis sebagai…", o:["Bank kelebihan likuiditas — sebagian DPK menganggur sehingga pendapatan bunga tidak optimal", "Setiap Rp100 DPK disalurkan Rp88,2 sebagai kredit; bank masih punya ruang tumbuh", "Bank melanggar batas LDR OJK sehingga wajib menahan ekspansi kredit tahun ini juga", "LDR adalah rasio permodalan: modal inti dibagi aset tertimbang menurut risiko"], a:1},
+var QUIZ = [ {q:"LDR 88,2% (= Rp60.000 ÷ Rp68.000 miliar) dibaca analis sebagai…", o:["Bank kelebihan likuiditas — sebagian DPK menganggur sehingga pendapatan bunga tidak optimal", "Setiap Rp100 DPK disalurkan Rp88,2 sebagai kredit; bank masih punya ruang tumbuh", "Bank melanggar batas LDR OJK sehingga wajib menahan ekspansi kredit tahun ini juga", "LDR adalah rasio permodalan: modal inti dibagi aset tertimbang menurut risiko (ATMR)"], a:1},
  {q:"NPL gross 2,8%, NPL net 0,9%, coverage 145% — pernyataan yang TEPAT…", o:["NPL net 0,9% membuktikan CKPN sudah melebihi seluruh NPL — risiko kredit bank praktis sudah nol dan tak perlu analisis lebih lanjut", "Bank tidak perlu membentuk CKPN lagi tahun ini — coverage 145% berarti pencadangan sudah melebihi total kredit bermasalah sehingga biaya CKPN dapat dihemat untuk menaikkan laba", "Coverage memakai total CKPN — termasuk ECL Stage 1 & 2 (PSAK 109) — sedangkan NPL net hanya mengurangkan CKPN atas kredit bermasalah; keduanya konsisten", "NPL gross 2,8% berarti 2,8% dari total DPK bank macet dan harus dihapusbukukan seluruhnya pada tahun berjalan"], a:2},
  {q:"Migrasi Rp1.000 miliar dari Stage 2 ke Stage 3 (PSAK 109) berarti…", o:["Beban CKPN naik — Stage 3 = credit-impaired dengan ECL lifetime penuh, dan ini sinyal kolektibilitas memburuk", "Tidak ada dampak ke laba rugi karena CKPN Stage 3 dibentuk dari laba ditahan, bukan dibebankan pada tahun berjalan", "CAR justru membaik karena kredit bermasalah dipindahkan keluar dari perhitungan ATMR", "Migrasi antar stage hanya reklasifikasi disclosure di catatan — angka CKPN tidak berubah"], a:0},
  {q:"CASA turun 58% → 45% dan digantikan deposito berjangka. Dampak ke NIM…", o:["NIM naik karena total DPK bertambah sehingga dana yang bisa disalurkan lebih besar", "Tidak ada dampak ke NIM — komposisi DPK tidak memengaruhi margin bunga", "NIM naik karena dana murah yang hilang digantikan deposito dengan bunga lebih tinggi", "NIM turun — biaya dana naik menggerus pendapatan bunga bersih"], a:3},
- {q:"Kredit restrukturisasi (COVID legacy) Rp3.200 miliar yang masih lancar…", o:["Otomatis masuk NPL gross — semua kredit yang pernah direstrukturisasi wajib digolongkan bermasalah tanpa kecuali", "Tidak perlu dipantau lagi karena restrukturisasi yang disetujui OJK menghapus seluruh risiko gagal bayar di masa depan", "Tetap dipantau terpisah — restrukturisasi lancar BUKAN NPL, tetapi gagal bayar berikutnya langsung menaikkan NPL", "Dikeluarkan dari total kredit dan dicatat sebagai aset lain-lain di neraca"], a:2}];
+ {q:"Kredit restrukturisasi (COVID legacy) Rp3.200 miliar yang masih lancar…", o:["Otomatis masuk NPL gross — semua kredit yang pernah direstrukturisasi wajib digolongkan bermasalah tanpa kecuali", "Tidak perlu dipantau lagi karena restrukturisasi yang disetujui OJK menghapus seluruh risiko gagal bayar di masa depan", "Tetap dipantau terpisah — restrukturisasi lancar BUKAN NPL, tetapi gagal bayar berikutnya langsung menaikkan NPL", "Dikeluarkan dari total kredit dan dicatat sebagai aset lain-lain di neraca"], a:2},
+ {q:"ATMR Bank Nusantara Rp42.986 miliar (ilustratif) diturunkan dari…", o:["Modal Rp9.500 miliar ÷ CAR 22,1%","Aset Rp85.000 miliar − ekuitas Rp9.500 miliar","Kredit Rp60.000 miliar × NPL 2,8%","DPK Rp68.000 miliar × LDR 88,2%"], a:0},
+ {q:"NIM Bank Nusantara 5,2% (ilustratif) = …", o:["Laba bersih 1.900 ÷ total aset 85.000","Pendapatan bunga bersih 3.900 ÷ total DPK 68.000 (dana pihak ketiga)","Pendapatan bunga bersih 3.900 ÷ rata-rata aset produktif 75.000","Pendapatan bunga bersih 3.900 ÷ total kredit 60.000 yang disalurkan"], a:2},
+ {q:"Laporan bank menyebut BOPO 62% dan CIR 62% (ilustratif). Pembacaan yang TEPAT…", o:["BOPO mengukur beban ÷ aset produktif, CIR mengukur beban ÷ DPK — dua rasio berbeda","BOPO dan CIR dijumlahkan: beban total bank adalah 124% dari pendapatan operasional","BOPO hanya berlaku untuk bank syariah, CIR hanya untuk bank konvensional","Satu ukuran, dua nama — beban operasional ÷ pendapatan operasional = 62%"], a:3}];
 (function(){
   var h = "";
   QUIZ.forEach(function(q,i){

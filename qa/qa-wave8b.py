@@ -42,7 +42,7 @@ check("impairment 8.000 = 50.000-42.000", 50000-42000==8000)
 check("capex 48.000 > depresiasi 30.000", 48000>30000)
 check("M12 ratio ans di source", all(x in src[12] for x in ["ans:51.0","ans:25.2","ans:8000","ans:30000"]))
 check("M12 quiz kunci [0,0,0,0,0]",
-      [int(x) for x in re.findall(r'a:(\d)', src[12].split("var QUIZ")[1].split("];")[0])] == [0,0,1,2,3])
+      [int(x) for x in re.findall(r'a:(\d)', src[12].split("var QUIZ")[1].split("];")[0])] == [0,0,1,2,3,1,0,2])
 check("M12 pg kartu1 revaluasi logis", 'q1:"Ekuitas", q2:"Depresiasi", a1:"naik", a2:"tetap"' in src[12])
 
 print("== M13 recompute ==")

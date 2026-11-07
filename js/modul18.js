@@ -177,8 +177,13 @@ function parseIDNumber(str, isDecimal){
       if(dots !== 1) return NaN;
     } else {
       var parts = s.split(".");
-      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
-      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+      if(parts.length > 2){
+        if(parts.slice(1).every(function(p){ return p.length === 3; }) && parts[0] !== "0" && parts[0] !== "-0"){
+          s = parts.join("");  // ribuan bertingkat: 1.000.000 -> 1000000
+        } else {
+          return NaN;  // F3: 1.2.3 ditolak
+        }
+      } else if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
         s = parts.join("");  // ribuan: 1.000 -> 1000
       } else if(parts.length === 2 && parts[1].length !== 3){
         /* desimal biasa: 2.26 tetap */
@@ -261,8 +266,11 @@ var QUIZ = [
  {q:"Forecast keuangan dimulai dari asumsi…", o:["Dividen", "Laba bersih", "Kas", "Penjualan"], a:3},
  {q:"Enterprise value dari FCFF perpetuity…", o:["FCFF periode depan ÷ (WACC − g)","FCFF ÷ (WACC + g)","Aset − utang","FCFF × (WACC − g)"], a:0},
  {q:"WACC naik → nilai wajar…", o:["Naik","Nol","Turun","Sama"], a:2},
- {q:"Margin of safety berarti…", o:["Batas maksimum utang bank","Laba ditahan perusahaan","Selisih harga pasar di atas nilai wajar","Diskon dari nilai wajar sebelum beli"], a:3},
- {q:"Forecast pada dasarnya adalah…", o:["Ramalan yang pasti","Audit masa depan","Skenario berdasar asumsi","Proyeksi tanpa perlu asumsi"], a:2}
+ {q:"Margin of safety berarti…", o:["Batas maksimum utang bank","Laba ditahan perusahaan yang belum dibagikan","Selisih harga pasar di atas nilai wajar","Diskon dari nilai wajar sebelum beli"], a:3},
+ {q:"Forecast pada dasarnya adalah…", o:["Ramalan yang pasti","Audit masa depan","Skenario berdasar asumsi","Proyeksi tanpa perlu asumsi"], a:2},
+ {q:"Bank Nusantara (ilustratif): dividen tahun-1 Rp950 miliar, cost of equity 12%, pertumbuhan 10%. Nilai ekuitas via DDM (Gordon) = …", o:["Rp47.500 miliar — 950 ÷ (12% − 10%)","Rp9.500 miliar — sama dengan nilai buku ekuitas","Rp95.000 miliar — 950 ÷ (12% − 11%)","Rp7.917 miliar — 950 ÷ 12%"], a:0},
+ {q:"Residual income tahun-1 Bank Nusantara (ilustratif) = …", o:["Rp1.900 miliar — seluruh laba tahun-1","Rp1.140 miliar — beban modal 12% × nilai buku awal 9.500","Rp760 miliar — 1.900 − (12% × 9.500)","Rp950 miliar — dividen tahun-1 yang dibagikan ke pemegang saham"], a:2},
+ {q:"Kenapa valuasi bank memakai DDM / residual income / P-BV, bukan DCF (FCFF)?", o:["Karena bank tidak membayar dividen sehingga model DCF kehabisan arus kas untuk didiskonto","Karena utang bank = bahan baku: menghimpun dan menyalurkan dana adalah operasi","Karena WACC bank bernilai nol sehingga penyebut DCF tidak terdefinisi dan tidak bisa dihitung","Karena DCF dilarang regulator untuk semua emiten sektor keuangan"], a:1}
 ];
 (function(){
   var h = "";

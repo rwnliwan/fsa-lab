@@ -521,7 +521,7 @@ FAMILIES = [
         kunci="780000-(260000-200000)", traps=["780.000", "840.000", "260.000"],
         cara="Kas dari pelanggan = 780.000 − (260.000 − 200.000) = 720.000"),
   ]),
- dict(fam="dilusi", m=27, src="M27#3", gi=132, formula="dilusi", judul="Dilusi maksimum",
+ dict(fam="dilusi", m=27, src="M27#3", gi=138, formula="dilusi", judul="Dilusi maksimum",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF): laba bersih Rp60.000 juta; 100 juta saham beredar + 25 juta opsi saham karyawan. Dilusi MAKSIMUM per saham (Rp, tanpa treasury stock method)?",
         inputs={"ni": 60000, "out": 100, "opt": 25},
@@ -536,7 +536,7 @@ FAMILIES = [
         kunci="75000/(150+50)", traps=["500,0", "428,6", "300,0"],
         cara="Dilusi maks = 75.000 ÷ (150 + 50) = 375,0"),
   ]),
- dict(fam="swap", m=29, src="M29#2", gi=141, formula="swap", judul="Net swap ke P&L",
+ dict(fam="swap", m=29, src="M29#2", gi=147, formula="swap", judul="Net swap ke P&L",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF, Rp juta): swap gain 7.200, utang USD loss 6.850. Net yang langsung ke P&L (setelah rugi FX utang + reklasifikasi cadangan hedge)?",
         inputs={"gain": 7200, "loss": 6850},
@@ -551,7 +551,7 @@ FAMILIES = [
         kunci="9600-3100", traps=["3.100", "12.700", "0 — semuanya ke OCI"],
         cara="Net ke P&L = 9.600 − 3.100 = 6.500. Jembatan jurnal (cash flow hedge, PSAK 109): rugi FX utang 3.100 → P&L; gain swap 9.600: efektif 3.100 → OCI (aturan lower-of), 6.500 ineffektif → P&L; reklasifikasi 3.100 dari OCI → P&L mengimbangi rugi FX. Net = −3.100 + 3.100 + 6.500 = 6.500. CATATAN: yang ditanya adalah NET P&L, bukan hedge ineffectiveness — keduanya kebetulan sama (6.500) hanya karena ini OVER-hedge."),
   ]),
- dict(fam="dso", m=31, src="M31#2", gi=151, formula="dso", judul="Piutang forecast (DSO)",
+ dict(fam="dso", m=31, src="M31#2", gi=160, formula="dso", judul="Piutang forecast (DSO)",
       variants=[
    dict(q="Varian latihan: DSO 2026 = 60 hari; penjualan 2026 = Rp730.000 juta; piutang 2025 = Rp100.000 juta. Piutang usaha 2026 = …",
         inputs={"dso": 60, "sales": 730000, "ar2025": 100000},
@@ -566,7 +566,7 @@ FAMILIES = [
         kunci="45/365*876000", traps=["95.000 (sama seperti 2025)", "109.500", "120.000"],
         cara="Piutang = 45/365 × 876.000 = 108.000"),
   ]),
- dict(fam="capex", m=31, src="M31#4", gi=153, formula="capex", judul="Capex vs depresiasi",
+ dict(fam="capex", m=31, src="M31#4", gi=162, formula="capex", judul="Capex vs depresiasi",
       variants=[
    dict(q="Varian latihan: capex Rp60.000 juta > depresiasi Rp28.000 juta. Dampak ke neraca? (aset tetap neto awal Rp230.000 juta)",
         inputs={"capex": 60000, "depr": 28000},
@@ -584,7 +584,7 @@ FAMILIES = [
         traps=["Aset tetap neto turun 42.000", "Tidak ada dampak ke neraca", "Ekuitas naik 42.000"],
         cara="Δ = 72.000 − 30.000 = 42.000 → aset tetap neto 230.000 + 42.000 = 272.000"),
   ]),
- dict(fam="pkp", m=32, src="M32#1", gi=155, formula="pkp", judul="PKP rekonsiliasi fiskal",
+ dict(fam="pkp", m=32, src="M32#1", gi=164, formula="pkp", judul="PKP rekonsiliasi fiskal",
       variants=[
    dict(q="Varian latihan: PBT Rp70.000 juta, beda tetap +Rp5.000 juta (non-deductible), beda tetap −Rp7.000 juta (penghasilan final), beda waktu −Rp3.000 juta. PKP-nya…",
         inputs={"pbt": 70000, "tp": 5000, "tm": 7000, "w": -3000},
@@ -599,7 +599,7 @@ FAMILIES = [
         kunci="88000+3000-9000+4000", traps=["Rp78.000 juta", "Rp92.000 juta", "Rp96.000 juta"],
         cara="PKP = 88.000 + 3.000 − 9.000 + 4.000 = 86.000"),
   ]),
- dict(fam="waterfall", m=33, src="M33#5", gi=164, formula="waterfall", judul="Recovery waterfall",
+ dict(fam="waterfall", m=33, src="M33#5", gi=173, formula="waterfall", judul="Recovery waterfall",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF): EV 300.000; klaim senior 180.000; subordinasi 200.000. Recovery kreditur subordinasi = …",
         inputs={"ev": 300000, "senior": 180000, "sub": 200000},
@@ -614,7 +614,7 @@ FAMILIES = [
         kunci="max(0,(180000-200000)/150000)", traps=["100%", "120%", "−13%"],
         cara="Recovery = (180.000 − 200.000) ÷ 150.000 < 0 → 0% (senior saja tak lunas penuh)"),
   ]),
- dict(fam="ssp", m=34, src="M34#2", gi=166, formula="ssp", judul="Alokasi SSP (PSAK 115)",
+ dict(fam="ssp", m=34, src="M34#2", gi=175, formula="ssp", judul="Alokasi SSP (PSAK 115)",
       variants=[
    dict(q="Varian latihan (ilustratif): harga transaksi Rp180.000 juta; SSP alat Rp140.000 juta, instalasi Rp20.000 juta, garansi Rp40.000 juta. Alokasi ke garansi = … (Rp juta)",
         inputs={"tp": 180000, "ssp": [140000, 20000, 40000], "t": 40000},
@@ -629,7 +629,7 @@ FAMILIES = [
         kunci="140000*25000/150000", traps=["25.000", "28.000", "116.667"],
         cara="Alokasi garansi = 140.000 × 25.000 ÷ 150.000 = 23.333"),
   ]),
- dict(fam="sl", m=34, src="M34#4", gi=168, formula="sl", judul="Straight-line revenue",
+ dict(fam="sl", m=34, src="M34#4", gi=177, formula="sl", judul="Straight-line revenue",
       variants=[
    dict(q="Varian latihan (ilustratif): alokasi garansi Rp36.000 juta diakui straight-line 24 bulan mulai April 2026. Pendapatan garansi selama 2026 = … (Rp juta)",
         inputs={"total": 36000, "months": 24, "start": 4},
@@ -644,7 +644,7 @@ FAMILIES = [
         kunci="30000*10/30", traps=["30.000", "12.000", "1.000"],
         cara="2026 = 30.000 × 10/30 = 10.000 (Mar–Des = 10 bulan)"),
   ]),
- dict(fam="nci", m=35, src="M35#2", gi=171, formula="nci", judul="NCI atas laba",
+ dict(fam="nci", m=35, src="M35#2", gi=180, formula="nci", judul="NCI atas laba",
       variants=[
    dict(q="Varian latihan (ilustratif): laba bersih anak Rp20.000 juta, kepemilikan induk 75%. Kepentingan nonpengendali atas laba = …",
         inputs={"ni": 20000, "own": 75},
@@ -659,7 +659,7 @@ FAMILIES = [
         kunci="15000*10%", traps=["Rp13.500 juta", "Rp15.000 juta", "Rp0 — NCI hanya ada di neraca"],
         cara="NCI = 15.000 × 10% = 1.500"),
   ]),
- dict(fam="elim", m=35, src="M35#4", gi=173, formula="elim", judul="Eliminasi downstream",
+ dict(fam="elim", m=35, src="M35#4", gi=182, formula="elim", judul="Eliminasi downstream",
       variants=[
    dict(q="Varian latihan (ilustratif): laba belum direalisasi downstream Rp12.000 juta belum dieliminasi. Setelah koreksi, laba yang dapat diatribusikan kepada pemilik induk menjadi… (dasar: laba total 60.000, NCI 3.000; induk 80%)",
         inputs={"total": 60000, "nci": 3000, "unreal": 12000, "own": 80},
@@ -735,7 +735,7 @@ FAMILIES = [
         kunci="12.5%*1.8", traps=["14,3%", "6,9%", "1,8%"],
         cara="ROE = 12,5% × 1,8 = 22,5%"),
   ]),
- dict(fam="dsri", m=13, src="M13#3", gi=62, formula="dsri", judul="DSRI (Beneish)",
+ dict(fam="dsri", m=13, src="M13#3", gi=65, formula="dsri", judul="DSRI (Beneish)",
       variants=[
    dict(q="Varian latihan (Rp juta): piutang 120 → 180, penjualan 1.000 → 1.050. DSRI = …",
         inputs={"ar0": 120, "s0": 1000, "ar1": 180, "s1": 1050},
@@ -750,7 +750,7 @@ FAMILIES = [
         kunci="(130/1300)/(100/1200)", traps=["1,30", "0,83", "1,08"],
         cara="DSRI = (130÷1.300) ÷ (100÷1.200) = 1,20"),
   ]),
- dict(fam="sloan", m=17, src="M17#1", gi=80, formula="sloan", judul="Sloan ratio",
+ dict(fam="sloan", m=17, src="M17#1", gi=83, formula="sloan", judul="Sloan ratio",
       variants=[
    dict(q="Varian latihan (Rp juta): laba bersih 45.240, CFO 30.800, total aset 450.000. Sloan ratio = …",
         inputs={"ni": 45240, "cfo": 30800, "assets": 450000},
@@ -765,7 +765,7 @@ FAMILIES = [
         kunci="(60000-35000)/500000", traps=["−5,0%", "50,0%", "12,0%"],
         cara="Sloan = (60.000 − 35.000) ÷ 500.000 = 5,0% (akrual tinggi — waspadai kualitas laba)"),
   ]),
- dict(fam="evperp", m=18, src="M18#2", gi=86, formula="evperp", judul="EV perpetuity",
+ dict(fam="evperp", m=18, src="M18#2", gi=89, formula="evperp", judul="EV perpetuity",
       variants=[
    dict(q="Varian latihan (Rp juta): FCFF 10.000, WACC 12%, pertumbuhan 4%. Enterprise value (perpetuity) = …",
         inputs={"fcff": 10000, "wacc": 12, "g": 4},
@@ -780,7 +780,7 @@ FAMILIES = [
         kunci="15000/(14%-6%)", traps=["75.000", "107.143", "−187.500"],
         cara="EV = 15.000 ÷ (14% − 6%) = 187.500"),
   ]),
- dict(fam="peg", m=24, src="M24#4", gi=118, formula="peg", judul="PEG ratio",
+ dict(fam="peg", m=24, src="M24#4", gi=124, formula="peg", judul="PEG ratio",
       variants=[
    dict(q="Varian latihan: P/E 12x, pertumbuhan laba forecast 17,6%/tahun. PEG = …",
         inputs={"pe": 12, "growth": 17.6},
@@ -795,7 +795,7 @@ FAMILIES = [
         kunci="15/10.0", traps=["0,67x", "150,00x", "1,50%"],
         cara="PEG = 15 ÷ 10,0 = 1,50x (di atas 1 — mahal relatif terhadap pertumbuhan)"),
   ]),
- dict(fam="dscr", m=23, src="M23#2", gi=111, formula="dscr", judul="DSCR",
+ dict(fam="dscr", m=23, src="M23#2", gi=117, formula="dscr", judul="DSCR",
       variants=[
    dict(q="Varian latihan (Rp juta): CFO setelah bunga 30.800; kewajiban bunga+pokok 34.000. DSCR = …",
         inputs={"cfo": 30800, "ds": 34000},
@@ -810,7 +810,7 @@ FAMILIES = [
         kunci="22000/25000", traps=["1,1x", "0,1x", "8,8x"],
         cara="DSCR = 22.000 ÷ 25.000 = 0,9x"),
   ]),
- dict(fam="ldr", m=30, src="M30#1", gi=145, formula="ldr", judul="LDR bank",
+ dict(fam="ldr", m=30, src="M30#1", gi=151, formula="ldr", judul="LDR bank",
       variants=[
    dict(q="Varian latihan (Rp miliar): total kredit 60.000, DPK 68.000. LDR = …",
         inputs={"kredit": 60000, "dpk": 68000},
@@ -825,7 +825,7 @@ FAMILIES = [
         kunci="72000/90000", traps=["125,0%", "20,0%", "80,0x"],
         cara="LDR = 72.000 ÷ 90.000 = 80,0%"),
   ]),
- dict(fam="coverage", m=30, src="M30#2", gi=146, formula="coverage", judul="NPL coverage",
+ dict(fam="coverage", m=30, src="M30#2", gi=152, formula="coverage", judul="NPL coverage",
       variants=[
    dict(q="Varian latihan (Rp miliar): total CKPN 2.900, NPL gross 2.000. NPL coverage = …",
         inputs={"ckpn": 2900, "npl": 2000},
@@ -840,7 +840,7 @@ FAMILIES = [
         kunci="5000/4000", traps=["80%", "25%", "125x"],
         cara="Coverage = 5.000 ÷ 4.000 = 125%"),
   ]),
- dict(fam="murabahah", m=26, src="M26#2", gi=126, formula="murabahah", judul="Margin murabahah per tahun",
+ dict(fam="murabahah", m=26, src="M26#2", gi=132, formula="murabahah", judul="Margin murabahah per tahun",
       variants=[
    dict(q="Varian latihan: Bank Barakah menjual barang Rp20 jt + margin Rp4 jt, tenor 2 tahun (ilustratif). Margin yang diakui per tahun…",
         inputs={"margin": 4, "tenor": 2},
@@ -946,7 +946,7 @@ FAMILIES = [
         kunci="75000-60000", traps=["Rp60.000 juta", "Rp75.000 juta", "Rp135.000 juta"],
         cara="Rugi = 75.000 − 60.000 = 15.000"),
   ]),
- dict(fam="lifo", m=14, src="M14#1", gi=65, formula="lifo", judul="Penyesuaian LIFO→FIFO",
+ dict(fam="lifo", m=14, src="M14#1", gi=68, formula="lifo", judul="Penyesuaian LIFO→FIFO",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): laba bersih PSAK 45.240; LIFO reserve 12.000; tarif pajak 22%. Laba bersih versi US GAAP/LIFO (PSAK 202 melarang LIFO) = …",
         inputs={"ni": 45240, "reserve": 12000, "tax": 22},
@@ -961,7 +961,7 @@ FAMILIES = [
         kunci="60000-20000*(1-20%)", traps=["Rp40.000 juta", "Rp60.000 juta", "Rp76.000 juta"],
         cara="NI GAAP = 60.000 − 20.000×(1−20%) = 60.000 − 16.000 = 44.000"),
   ]),
- dict(fam="altmanz", m=15, src="M15#1", gi=70, formula="altmanz", judul="Altman Z'-Score",
+ dict(fam="altmanz", m=15, src="M15#1", gi=73, formula="altmanz", judul="Altman Z'-Score",
       variants=[
    dict(q="Varian latihan (ilustratif): X1=0,26; X2=0,18; X3=0,16; X4=0,66; X5=1,15. Z′-Score = 0,717·X1+0,847·X2+3,107·X3+0,420·X4+0,998·X5 = …",
         inputs={"x1": 0.26, "x2": 0.18, "x3": 0.16, "x4": 0.66, "x5": 1.15},
@@ -976,7 +976,7 @@ FAMILIES = [
         kunci="0.717*0.10+0.847*0.05+3.107*0.02+0.420*0.30+0.998*0.80", traps=["1,27", "1,23", "2,90"],
         cara="Z′ = 0,072+0,042+0,062+0,126+0,798 = 1,10 → ZONA DISTRESS (<1,23; distraktor 1,27 = jumlah tanpa bobot)"),
   ]),
- dict(fam="fvtpl", m=16, src="M16#5", gi=79, formula="fvtpl", judul="Dampak FVTPL ke P&L",
+ dict(fam="fvtpl", m=16, src="M16#5", gi=82, formula="fvtpl", judul="Dampak FVTPL ke P&L",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): obligasi diklasifikasikan FVTPL (PSAK 109); nilai wajar naik dari 100.000 menjadi 108.000. Dampak ke laba rugi = …",
         inputs={"fv0": 100000, "fv1": 108000},
@@ -991,7 +991,7 @@ FAMILIES = [
         kunci="50000-50000", traps=["Rp50.000 juta", "Rp100.000 juta", "−Rp50.000 juta"],
         cara="ΔFV = 0 → dampak ke P&L = 0 (bukan sebesar nilai wajarnya)"),
   ]),
- dict(fam="deadline", m=19, src="M19#1", gi=90, formula="deadline", judul="Keterlambatan filing",
+ dict(fam="deadline", m=19, src="M19#1", gi=96, formula="deadline", judul="Keterlambatan filing",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF): tutup buku 31 Des; batas lapor 120 hari kalender; laporan disampaikan pada hari ke-135. Keterlambatan = …",
         inputs={"batas": 120, "aktual": 135},
@@ -1006,7 +1006,7 @@ FAMILIES = [
         kunci="162-120", traps=["−42 hari", "120 hari", "162 hari"],
         cara="Terlambat = 162 − 120 = 42 hari kalender (ilustratif; distraktor −42 = urutan kurang terbalik)"),
   ]),
- dict(fam="goodwill", m=20, src="M20#1", gi=95, formula="goodwill", judul="Goodwill akuisisi",
+ dict(fam="goodwill", m=20, src="M20#1", gi=101, formula="goodwill", judul="Goodwill akuisisi",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): harga akuisisi 60.000; nilai wajar aset neto teridentifikasi 40.000. Goodwill = …",
         inputs={"price": 60000, "fv": 40000},
@@ -1021,7 +1021,7 @@ FAMILIES = [
         kunci="90000-55000", traps=["Rp145.000 juta", "Rp55.000 juta", "−Rp35.000 juta"],
         cara="Goodwill = 90.000 − 55.000 = 35.000"),
   ]),
- dict(fam="warranty", m=21, src="M21#2", gi=101, formula="warranty", judul="Provisi garansi",
+ dict(fam="warranty", m=21, src="M21#2", gi=107, formula="warranty", judul="Provisi garansi",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): penjualan 450.000; estimasi klaim garansi 2% dari penjualan (PSAK 237). Provisi garansi = …",
         inputs={"sales": 450000, "pct": 2},
@@ -1036,7 +1036,7 @@ FAMILIES = [
         kunci="3%x520000", traps=["Rp504.400 juta", "Rp3 juta", "Rp520.000 juta"],
         cara="Provisi = 3% × 520.000 = 15.600"),
   ]),
- dict(fam="rpsales", m=22, src="M22#1", gi=105, formula="rpsales", judul="Konsentrasi pihak berelasi",
+ dict(fam="rpsales", m=22, src="M22#1", gi=111, formula="rpsales", judul="Konsentrasi pihak berelasi",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): penjualan ke pihak berelasi 120.000 dari total 520.000 (PSAK 224). Konsentrasi pihak berelasi = …",
         inputs={"rp": 120000, "total": 520000},
@@ -1051,7 +1051,7 @@ FAMILIES = [
         kunci="200000/400000", traps=["0,50", "200,0%", "50,0"],
         cara="200.000 ÷ 400.000 = 50,0% — separuh penjualan ke pihak berelasi = red flag tajam (tunneling via transfer pricing)"),
   ]),
- dict(fam="piotroski", m=25, src="M25#1", gi=120, formula="piotroski", judul="F-score Piotroski",
+ dict(fam="piotroski", m=25, src="M25#1", gi=126, formula="piotroski", judul="F-score Piotroski",
       variants=[
    dict(q="Varian latihan (ilustratif): dari 9 kriteria Piotroski (2000), 8 terpenuhi (gagal 1: akrual). F-score = …",
         inputs={"crit": [1, 1, 1, 1, 1, 1, 1, 1, 0]},
@@ -1066,7 +1066,7 @@ FAMILIES = [
         kunci="2 dari 9", traps=["3/9", "1/9", "2/7"],
         cara="F = 2/9 → zona LEMAH (0–3): fundamental rapuh menurut Piotroski (2000)"),
   ]),
- dict(fam="benford", m=28, src="M28#2", gi=136, formula="benford", judul="Ekspektasi Benford digit-1",
+ dict(fam="benford", m=28, src="M28#2", gi=142, formula="benford", judul="Ekspektasi Benford digit-1",
       variants=[
    dict(q="Varian latihan (ilustratif): 1.000 angka faktur diuji Benford. Jumlah berdigit awal 1 yang DIHARAPKAN (30,1%) = …",
         inputs={"n": 1000},
@@ -1081,7 +1081,7 @@ FAMILIES = [
         kunci="30.1%x500", traps=["56", "23", "500"],
         cara="Ekspektasi = 30,1% × 500 = 151 (150,5 dibulatkan half-up)"),
   ]),
- dict(fam="llcr", m=33, src="M33#4", gi=163, formula="llcr", judul="LLCR proyek",
+ dict(fam="llcr", m=33, src="M33#4", gi=172, formula="llcr", judul="LLCR proyek",
       variants=[
    dict(q="Varian latihan (Rp juta, ILUSTRATIF): NPV arus kas proyek 150.000; utang proyek 120.000. LLCR = …",
         inputs={"pv": 150000, "debt": 120000},
@@ -1096,7 +1096,7 @@ FAMILIES = [
         kunci="220000/110000", traps=["0,50x", "110.000", "1,00x"],
         cara="LLCR = 220.000 ÷ 110.000 = 2,00x"),
   ]),
- dict(fam="eqval", m=18, src="M18#2", gi=86, formula="eqval", judul="Nilai ekuitas dari EV",
+ dict(fam="eqval", m=18, src="M18#2", gi=89, formula="eqval", judul="Nilai ekuitas dari EV",
       variants=[
    dict(q="Varian latihan (Rp juta, ilustratif): enterprise value 740.000; utang bersih 160.000. Nilai ekuitas = …",
         inputs={"ev": 740000, "netdebt": 160000},
@@ -1111,7 +1111,7 @@ FAMILIES = [
         kunci="500000-500000", traps=["Rp1.000.000 juta", "Rp500.000 juta", "−Rp500.000 juta"],
         cara="Ekuitas = 500.000 − 500.000 = 0 (seluruh nilai perusahaan milik kreditur)"),
   ]),
- dict(fam="pbv", m=24, src="M24#4", gi=118, formula="pbv", judul="P/B ratio",
+ dict(fam="pbv", m=24, src="M24#4", gi=124, formula="pbv", judul="P/B ratio",
       variants=[
    dict(q="Varian latihan (ilustratif): harga saham Rp5.600; nilai buku per saham Rp1.800. P/B = …",
         inputs={"price": 5600, "bvps": 1800},
@@ -1126,7 +1126,7 @@ FAMILIES = [
         kunci="10000/4000", traps=["0,40x", "6.000", "14.000"],
         cara="P/B = 10.000 ÷ 4.000 = 2,50x"),
   ]),
- dict(fam="tsm", m=36, src="M36#3", gi=177, formula="tsm", judul="Diluted EPS (treasury stock method)",
+ dict(fam="tsm", m=36, src="M36#3", gi=189, formula="tsm", judul="Diluted EPS (treasury stock method)",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF): laba bersih Rp48.000 juta; 160 juta saham beredar; 20 juta opsi @Rp150; harga pasar rata-rata Rp500. Diluted EPS (Rp, treasury stock method)?",
         inputs={"ni": 48000, "waso": 160, "opt": 20, "strike": 150, "mkt": 500},
@@ -1141,7 +1141,7 @@ FAMILIES = [
         kunci="96000/(300+40-40*250/1000)", traps=["320,0", "282,4", "309,7"],
         cara="TSM: 40 − (40×250÷1.000 = 10) = 30 → 96.000 ÷ 330 = 290,9"),
   ]),
- dict(fam="capdep", m=37, src="M37#5", gi=184, formula="capdep", judul="Depresiasi komponen",
+ dict(fam="capdep", m=37, src="M37#5", gi=196, formula="capdep", judul="Depresiasi komponen",
       variants=[
    dict(q="Varian latihan (ILUSTRATIF, Rp juta): gedung 39.000 — struktur 24.000/20 thn, atap 9.000/9 thn, lift 6.000/6 thn. Depresiasi komponen per tahun?",
         inputs={"c1": 24000, "l1": 20, "c2": 9000, "l2": 9, "c3": 6000, "l3": 6},

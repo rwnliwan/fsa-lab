@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 48 — Lab Power BI: Studi Kasus FSA · FSA Lab</title>
+<meta name="description" content="Modul 48 FSA Lab: lab Power BI dengan data nyata KLBF, MIKA, dan BBRI (LK auditan FY2024) — unduh CSV, bangun model data, tulis ukuran DAX untuk rasio kunci, bangun dashboard, dan interpretasi triple-lens. Tanpa file .pbix.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-48/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+<style>
+.dax{font-family:var(--font-mono);font-size:.82rem;line-height:1.55;background:#f7f3ea;border:1px solid #e3dcc8;border-radius:8px;padding:.8rem 1rem;overflow-x:auto;white-space:pre;margin:.5rem 0 1rem}
+.dl-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:.8rem 0}
+.dl-links a{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:.45rem 1rem;text-decoration:none;font-weight:600}
+.dl-links a:hover{background:var(--ink);color:#fff}
+.step-tag{display:inline-block;background:var(--mustard);color:#1a1a1a;font-weight:700;font-size:.78rem;border-radius:4px;padding:.1rem .45rem;margin-right:.35rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M48</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 48 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 48</span>
+</nav>
+<p class="mod-count">Modul 48 dari 48</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 48</p>
+  <h1>Spreadsheet Bisa Dihitung. <em>Dashboard Harus Bisa Dipercaya.</em></h1>
+  <p class="lede"><strong>Lab Power BI — studi kasus FSA dengan data nyata.</strong>
+    Kamu mengunduh tiga dataset CSV dari laporan keuangan auditan tahun buku 2024 —
+    <strong>KLBF</strong> (farmasi), <strong>MIKA</strong> (rumah sakit), dan <strong>BBRI</strong>
+    (bank mikro) — lalu membangun dashboard sendiri di
+    <strong>Power BI Desktop</strong> (gratis): model data, ukuran <strong>DAX</strong>
+    untuk rasio kunci, visual KPI dan tren, sampai interpretasi
+    <strong>triple-lens</strong>. Tidak ada file <strong>.pbix</strong> di modul ini —
+    kamu yang membangunnya, langkah demi langkah, dan itulah latihannya.
+    Semua angka bersumber dari <strong>LK konsolidasian auditan FY2024</strong>
+    (komparatif 2023); angka yang <strong>terhitung</strong> dari LK diberi label
+    <span class="tag">[T]</span>, angka yang <strong>diungkap bank</strong> diberi label
+    <span class="tag">[B]</span>. Rasio yang tidak bisa dihitung dari kolom CSV yang ada
+    <strong>tidak dibuatkan DAX</strong> — dicatat sebagai batasan di Langkah 3.</p>
+  <div class="dl-links">
+    <a href="../downloads/data/klbf-fsa.csv" download>⬇ klbf-fsa.csv — KLBF (Rp penuh)</a>
+    <a href="../downloads/data/mika-fsa.csv" download>⬇ mika-fsa.csv — MIKA (Rp penuh)</a>
+    <a href="../downloads/data/bbri-fsa.csv" download>⬇ bbri-fsa.csv — BBRI (jutaan Rp)</a>
+  </div>
+  <p class="sub">Catatan satuan: KLBF dan MIKA dalam <strong>Rupiah penuh</strong>;
+    BBRI dalam <strong>jutaan Rupiah</strong> (persis seperti filing IDX-nya).
+    Jangan campur satuan saat membandingkan antar perusahaan — bandingkan
+    <strong>rasio</strong>, bukan angka absolut. Baris 2023 BBRI sebagian besar kosong:
+    filing 34 halaman hanya memberi angka 2023 untuk pinjaman gross, total aset, dan
+    ekuitas atribusional — sisanya memang tidak tersedia, bukan hilang.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Dataset Explorer: Tiga Perusahaan, Tiga Cerita</h2>
+  <p class="sub">Klik tab perusahaan. Tabel memakai angka <strong>persis dari CSV</strong>
+    (ditampilkan dalam Rp miliar / Rp triliun agar terbaca; nilai penuh ada di file CSV).
+    <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Klik baris mana pun untuk penjelasan.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="klbf">KLBF — Farmasi</button>
+    <button class="stmt-tab" data-stmt="mika">MIKA — Rumah Sakit</button>
+    <button class="stmt-tab" data-stmt="bbri">BBRI — Bank</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, sumber benchmark, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Kalau Input Berubah, Rasio ke Mana?</h2>
+  <p class="sub">Enam kartu. Tebak arah <strong>dua ukuran</strong> per kartu — ini intuisi yang sama
+    yang kamu butuhkan saat membaca dashboard: angka bergerak, rasio ikut bergerak, dan
+    arahnya harus bisa kamu prediksi sebelum melihat hasilnya.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Power BI: Lima Langkah dari CSV ke Dashboard</h2>
+  <p class="sub"><span class="step-tag">Langkah 1</span> Unduh CSV, buka
+    <strong>Power BI Desktop</strong> (gratis, unduh dari situs resmi Microsoft),
+    <strong>Get Data → Text/CSV</strong>, pilih satu file. Di jendela pratinjau, cek
+    <strong>tipe data tiap kolom</strong> sebelum menekan Load: kolom
+    <span style="font-family:var(--font-mono)">Tahun</span> ubah menjadi
+    <strong>Text</strong> (supaya 2023/2024 diperlakukan sebagai label kategori, bukan
+    angka yang dijumlahkan), semua kolom nilai menjadi
+    <strong>Decimal Number</strong>. Kolom kosong (mis. Laba_Usaha KLBF 2023, sebagian
+    besar baris BBRI 2023) biarkan kosong — Power BI membacanya sebagai
+    <em>null</em>, dan fungsi agregasi DAX mengabaikan <em>null</em>. Ulangi untuk
+    ketiga file. <strong>Jangan</strong> menggabungkan ketiga file menjadi satu tabel
+    di tahap ini — tiap perusahaan punya struktur laporan yang berbeda.</p>
+
+  <p class="sub"><span class="step-tag">Langkah 2</span> <strong>Model data.</strong>
+    Tiap file menjadi <strong>satu tabel fakta</strong>:
+    <span style="font-family:var(--font-mono)">klbf-fsa</span>,
+    <span style="font-family:var(--font-mono)">mika-fsa</span>,
+    <span style="font-family:var(--font-mono)">bbri-fsa</span>.
+    <strong>Tidak ada relasi antar tabel</strong> — ketiganya tabel fakta yang berdiri
+    sendiri (perusahaan berbeda, struktur kolom berbeda). <strong>Tidak perlu tabel
+    kalender</strong>: dataset hanya punya dua tahun, dan kolom
+    <span style="font-family:var(--font-mono)">Tahun</span> sudah berfungsi sebagai
+    dimensi waktu. Bila kamu ingin satu halaman dashboard perbandingan, buat
+    <strong>tabel dimensi Perusahaan</strong> sederhana (kolom: Perusahaan, Sektor) dan
+    gabungkan ketiga fakta ke satu tabel panjang dengan kolom tambahan
+    <span style="font-family:var(--font-mono)">Perusahaan</span> — tetapi ukuran DAX
+    per perusahaan di bawah ini ditulis per tabel fakta, supaya tiap rumus bisa
+    dilacak ke satu file CSV.</p>
+
+  <p class="sub"><span class="step-tag">Langkah 3</span> <strong>Ukuran DAX.</strong>
+    Tulis tiap ukuran di bawah ini di panel <em>New measure</em> (klik kanan tabel →
+    New measure). Penjelasan tiap fungsi menyertai rumusnya. Semua rumus mengacu ke
+    <strong>nama kolom CSV yang kamu unduh</strong> — bila nama kolom di file-mu
+    berbeda, sesuaikan nama kolomnya, bukan angkanya. Format hasil ukuran rasio
+    sebagai <strong>Percentage</strong> (2 desimal) atau <strong>Decimal number</strong>
+    (2 desimal) untuk Current Ratio dan D/E.</p>
+
+  <h3>Ukuran DAX — KLBF &amp; MIKA (kolom KLBF; padanan MIKA di catatan)</h3>
+  <p class="sub">Untuk MIKA, ganti
+    <span style="font-family:var(--font-mono)">Penjualan_Neto</span> →
+    <span style="font-family:var(--font-mono)">Pendapatan_Bersih</span>,
+    <span style="font-family:var(--font-mono)">Beban_Pokok_Penjualan</span> →
+    <span style="font-family:var(--font-mono)">Beban_Pokok_Pendapatan</span>,
+    <span style="font-family:var(--font-mono)">Piutang_Usaha_Neto</span> →
+    <span style="font-family:var(--font-mono)">Piutang_Usaha</span>,
+    <span style="font-family:var(--font-mono)">Persediaan_Neto</span> →
+    <span style="font-family:var(--font-mono)">Persediaan</span>.
+    MIKA tidak punya kolom Beban_Penjualan / Beban_Umum_Administrasi / Beban_Riset_Pengembangan
+    terpisah — ketiganya sudah menyatu di
+    <span style="font-family:var(--font-mono)">Beban_Usaha</span>.</p>
+
+  <pre class="dax">Gross Margin =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Laba_Bruto] ),
+    SUM ( 'klbf-fsa'[Penjualan_Neto] )
+)
+-- DIVIDE(a, b) = a / b, tetapi mengembalikan BLANK bila b = 0 (bukan error).
+-- SUM menjumlahkan kolom dalam konteks filter aktif (mis. Tahun = 2024).
+-- KLBF 2024: 39,71% | MIKA 2024: 53,68%</pre>
+
+  <pre class="dax">Current Ratio =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Total_Aset_Lancar] ),
+    SUM ( 'klbf-fsa'[Total_Liabilitas_Jangka_Pendek] )
+)
+-- Aset lancar dibagi liabilitas jangka pendek: kemampuan bayar utang jangka pendek.
+-- KLBF 2024: 4,11x | MIKA 2024: 4,74x. Di atas 1,0x = aset lancar menutup utang lancar.</pre>
+
+  <pre class="dax">Net Margin (Atribusi) =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Laba_Bersih_Atribusi_Pemilik_Induk] ),
+    SUM ( 'klbf-fsa'[Penjualan_Neto] )
+)
+-- Laba yang menjadi hak pemegang saham induk, bukan laba total (ada kepentingan
+-- nonpengendali kecil di KLBF/MIKA). KLBF 2024: 9,93% | MIKA 2024: 23,52%</pre>
+
+  <pre class="dax">ROE (Ekuitas Akhir) =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Laba_Bersih_Atribusi_Pemilik_Induk] ),
+    SUM ( 'klbf-fsa'[Total_Ekuitas] )
+)
+-- ROE versi sederhana: penyebut ekuitas akhir tahun yang sama.
+-- KLBF 2024: 13,18% | MIKA 2024: 15,64%. Cocok dengan benchmark [hitungan].</pre>
+
+  <pre class="dax">ROE (Rata-Rata Ekuitas Total) =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Laba_Bersih_Atribusi_Pemilik_Induk] ),
+    AVERAGEX (
+        VALUES ( 'klbf-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'klbf-fsa'[Total_Ekuitas] ) )
+    )
+)
+-- AVERAGEX(VALUES(Tahun), ...) = rata-rata ekuitas per tahun dalam filter aktif.
+-- CALCULATE mengubah konteks baris menjadi konteks filter per tahun.
+-- KLBF 2024: 13,58% | MIKA 2024: 16,46%.
+-- PERHATIAN: ini memakai TOTAL ekuitas. ROE headline analis (KLBF 14,66%,
+-- MIKA 18,61%) memakai rata-rata EKUITAS PEMILIK INDUK — angka itu tidak ada
+-- di CSV, jadi headline tersebut TIDAK bisa direplikasi dari dataset ini.</pre>
+
+  <pre class="dax">NPM DuPont =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Laba_Bersih_Atribusi_Pemilik_Induk] ),
+    SUM ( 'klbf-fsa'[Penjualan_Neto] )
+)
+
+Asset Turnover DuPont =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Penjualan_Neto] ),
+    AVERAGEX (
+        VALUES ( 'klbf-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'klbf-fsa'[Total_Aset] ) )
+    )
+)
+
+Equity Multiplier DuPont =
+DIVIDE (
+    AVERAGEX (
+        VALUES ( 'klbf-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'klbf-fsa'[Total_Aset] ) )
+    ),
+    AVERAGEX (
+        VALUES ( 'klbf-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'klbf-fsa'[Total_Ekuitas] ) )
+    )
+)
+
+ROE DuPont = [NPM DuPont] * [Asset Turnover DuPont] * [Equity Multiplier DuPont]
+-- Tiga faktor DuPont sebagai tiga ukuran terpisah, lalu dikalikan.
+-- Tanda [Nama Ukuran] memanggil ukuran lain — DAX menghitungnya dalam konteks
+-- filter yang sama. KLBF 2024: 9,93% x 1,16 x 1,18 = 13,58% (cocok dengan
+-- ROE rata-rata ekuitas total di atas — bukti internal bahwa modelmu konsisten).
+-- MIKA 2024: 23,52% x 0,63 x 1,12 = 16,46%.</pre>
+
+  <pre class="dax">Debt to Equity =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Total_Liabilitas] ),
+    SUM ( 'klbf-fsa'[Total_Ekuitas] )
+)
+-- KLBF 2024: 0,20x | MIKA 2024: 0,13x. Rendah di keduanya: imbal hasil datang
+-- dari operasi, bukan leverage.
+
+Kualitas Laba (CFO / Laba) =
+DIVIDE (
+    SUM ( 'klbf-fsa'[Kas_Neto_Operasi] ),
+    SUM ( 'klbf-fsa'[Laba_Bersih_Total] )
+)
+-- Di atas 1,0 = kas operasi mendahului laba akrual (kualitas laba sehat).
+-- KLBF 2024: 1,47x | MIKA 2024: 1,41x.</pre>
+
+  <h3>Ukuran DAX — BBRI (bank; kolom bbri-fsa, satuan jutaan Rp)</h3>
+  <p class="sub">Bank tidak dianalisis dengan gross margin atau current ratio — bahan bakunya
+    adalah bunga dan dana pihak ketiga. Empat ukuran di bawah ini semuanya bisa
+    dihitung dari kolom CSV; tiga rasio bank lain yang <strong>tidak bisa</strong>
+    dihitung ada di tabel batasan setelah blok DAX.</p>
+
+  <pre class="dax">CASA Ratio =
+DIVIDE (
+    SUM ( 'bbri-fsa'[Giro] ) + SUM ( 'bbri-fsa'[Tabungan] ),
+    SUM ( 'bbri-fsa'[Simpanan_Nasabah_DPK] )
+)
+-- Dana murah (giro + tabungan) dibagi total simpanan nasabah (DPK).
+-- BBRI 2024: 67,3% [T] — fondasi pendanaan murah bank mikro.
+
+LDR (Hitung Sendiri) =
+DIVIDE (
+    SUM ( 'bbri-fsa'[Pinjaman_Diberikan_Gross] ),
+    SUM ( 'bbri-fsa'[Simpanan_Nasabah_DPK] )
+)
+-- Kredit dibagi DPK, definisi hitung-sendiri dari kolom CSV.
+-- BBRI 2024: 95,1% [T]. BUKAN 88,85% [B] yang diungkap bank — lihat batasan.</pre>
+
+  <pre class="dax">Cost of Credit (CoC) =
+DIVIDE (
+    SUM ( 'bbri-fsa'[Beban_CKPN_Aset_Produktif] ),
+    AVERAGEX (
+        VALUES ( 'bbri-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'bbri-fsa'[Pinjaman_Diberikan_Gross] ) )
+    )
+)
+-- Beban pencadangan dibagi rata-rata pinjaman gross.
+-- BBRI 2024: 3,35% [T] (bank ungkap 3,2% — selisih definisi denominator).
+
+ROA Bank =
+DIVIDE (
+    SUM ( 'bbri-fsa'[Laba_Bersih] ),
+    AVERAGEX (
+        VALUES ( 'bbri-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'bbri-fsa'[Total_Aset] ) )
+    )
+)
+-- BBRI 2024: 3,06% [B=T] — cocok persis dengan angka yang diungkap bank.
+
+ROE Bank (Atribusi, Rata-Rata) =
+DIVIDE (
+    SUM ( 'bbri-fsa'[Laba_Bersih_Atribusi_Pemilik_Induk] ),
+    AVERAGEX (
+        VALUES ( 'bbri-fsa'[Tahun] ),
+        CALCULATE ( SUM ( 'bbri-fsa'[Ekuitas_Atribusi_Pemilik_Induk] ) )
+    )
+)
+-- BBRI 2024: 19,14% [T] (bank ungkap 19,01% — selisih 0,13pp, definisi
+-- denominator yang sedikit berbeda; keduanya dihitung dari angka yang sama).</pre>
+
+  <h3>Batasan: rasio yang TIDAK dibuatkan ukuran DAX — dan alasannya</h3>
+  <div class="tblwrap"><table>
+    <tr><th>Rasio</th><th>Nilai benchmark</th><th>Alasan tidak ada DAX-nya</th></tr>
+    <tr><td>NIM BBRI</td><td class="val">7,74% [B]</td><td>Penyebutnya rata-rata <strong>aset produktif</strong> — angka itu tidak diungkap di filing 34 halaman yang menjadi sumber CSV. Jangan memakai rata-rata total aset sebagai pengganti diam-diam: itu rasio lain.</td></tr>
+    <tr><td>NPL gross BBRI</td><td class="val">2,78% [B]</td><td>Pembilangnya kredit bermasalah (kolektibilitas 3–5) — tidak ada di filing. CKPN pinjaman yang ada di CSV bukan kredit bermasalah.</td></tr>
+    <tr><td>NPL coverage BBRI</td><td class="val">215,01% [B]</td><td>Turunan NPL: CKPN ÷ NPL gross. Tanpa NPL, coverage tidak bisa dihitung.</td></tr>
+    <tr><td>CAR BBRI</td><td class="val">26,63% [B]</td><td>Pembilang modal dan penyebut ATMR tidak dirinci di filing 34 halaman.</td></tr>
+    <tr><td>LDR bank 88,85% [B]</td><td class="val">88,85% vs 95,1% [T]</td><td>Bukan tidak bisa dihitung — melainkan <strong>definisinya berbeda</strong>: pembilang bank mencakup pembiayaan (kredit Rp1.354,64T), sedangkan CSV memakai pinjaman gross Rp1.298,32T. Dua angka, dua definisi — tampilkan keduanya dengan label.</td></tr>
+    <tr><td>ROE headline KLBF / MIKA</td><td class="val">14,66% / 18,61%</td><td>Penyebutnya rata-rata <strong>ekuitas pemilik induk</strong> — CSV hanya punya total ekuitas. DAX di modul ini memakai total ekuitas (13,58% / 16,46%) dan diberi label jujur.</td></tr>
+  </table></div>
+
+  <p class="sub"><span class="step-tag">Langkah 4</span> <strong>Visual.</strong>
+    Susun satu halaman per perusahaan, lalu satu halaman perbandingan:
+    <strong>kartu KPI</strong> (Gross Margin, Current Ratio, ROE, plus satu ukuran
+    bank per halaman BBRI), <strong>line chart</strong> tren 2023→2024 untuk tiap
+    rasio (dua titik saja — jujur soal keterbatasan: tren dua titik bukan tren,
+    ia hanya arah), <strong>bar chart</strong> perbandingan KLBF vs MIKA untuk
+    rasio yang sama definisinya (gross margin, net margin, current ratio, D/E —
+    jangan bandingkan rasio bank dengan rasio industri), dan
+    <strong>conditional formatting</strong> untuk red flag: contoh aturan —
+    Current Ratio &lt; 1,5x berwarna merah (tidak ada yang kena di dataset ini),
+    CoC BBRI &gt; 3% berwarna kuning (kena: 3,35%), Kualitas Laba &lt; 1,0x berwarna
+    merah (tidak ada yang kena). Tambahkan <strong>slicer Tahun</strong> di tiap
+    halaman. Aturan kartu KPI: satu kartu = satu ukuran + label definisi singkat —
+    kartu tanpa definisi adalah angka tanpa arti.</p>
+
+  <p class="sub"><span class="step-tag">Langkah 5</span> <strong>Interpretasi &amp; batasan.</strong>
+    Baca dashboard-mu dari tiga lensa (contoh pembacaan ada di Case D di bawah).
+    Dan ingat batasan yang paling penting: <strong>Power BI memvisualkan, bukan
+    memverifikasi</strong> — bila CSV salah ketik satu digit, dashboard tetap tampil
+    rapi dan salah. Selalu cocokkan satu kartu KPI dengan LK auditan sebelum
+    mempercayai dashboard. Dataset ini hanya dua tahun: cukup untuk arah, tidak
+    cukup untuk menyimpulkan tren. Dan tiga perusahaan ini tidak bisa diringkas
+    menjadi satu peringkat — farmasi, rumah sakit, dan bank menjual risiko yang
+    berbeda.</p>
+
+  <p class="sub">Buktikan hitunganmu — enam rasio di bawah ini harus cocok dengan kartu KPI
+    di dashboard-mu. Ketik jawabanmu (persen tanpa tanda %, Current Ratio sebagai
+    desimal — koma desimal boleh ditulis dengan koma atau titik).</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Dashboard Selesai — Sekarang, Apa Vonismu?"</h2>
+  <p class="sub">Kamu analis. Dashboard Power BI-mu sudah jadi: KLBF — gross margin
+    <span style="font-family:var(--font-mono)">39,71%</span>, current ratio
+    <span style="font-family:var(--font-mono)">4,11x</span>, ROE (ekuitas akhir)
+    <span style="font-family:var(--font-mono)">13,18%</span>, kualitas laba
+    <span style="font-family:var(--font-mono)">1,47x</span>; MIKA — gross margin
+    <span style="font-family:var(--font-mono)">53,68%</span>, current ratio
+    <span style="font-family:var(--font-mono)">4,74x</span>, ROE
+    <span style="font-family:var(--font-mono)">15,64%</span>; BBRI — CASA
+    <span style="font-family:var(--font-mono)">67,3%</span>, LDR hitung-sendiri
+    <span style="font-family:var(--font-mono)">95,1%</span> (bank: 88,85%),
+    CoC <span style="font-family:var(--font-mono)">3,35%</span>, ROA
+    <span style="font-family:var(--font-mono)">3,06%</span>, ROE
+    <span style="font-family:var(--font-mono)">19,14%</span>.
+    NIM <span style="font-family:var(--font-mono)">7,74%</span> dan NPL
+    <span style="font-family:var(--font-mono)">2,78%</span> tampil di kartu KPI
+    sebagai angka <strong>[DIUNGKAP BANK]</strong> — tanpa ukuran DAX, karena
+    penyebutnya tidak ada di CSV. Seorang rekan berkata: "Dashboard sudah lengkap —
+    semua rasio ada, tinggal putuskan beli atau tidak."
+    Tugasmu: tulis <strong>verdict</strong> — apa yang bisa dashboard ini putuskan,
+    apa yang tidak bisa, dan verifikasi apa yang masih kurang — dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> dashboard ini cukup untuk menyaring, tidak cukup untuk membeli. MIKA paling menarik di layar: gross margin <span class="num">53,68%</span> dan net margin <span class="num">23,52%</span> (2024) jauh di atas KLBF (<span class="num">39,71%</span> dan <span class="num">9,93%</span>) — tetapi keduanya menjual produk berbeda (jasa RS vs barang farmasi), jadi selisih margin adalah perbedaan bisnis, bukan keunggulan. BBRI ROE <span class="num">19,14%</span> tertinggi, tetapi dengan dividen <span class="num">92,7%</span> dari laba — hampir seluruh laba dibagikan, pertumbuhan ekuitas organik tipis. Satu hal yang membunuh tesis "MIKA layak dibeli dari dashboard ini": dashboard dua tahun tidak menunjukkan apakah margin RS datang dari tarif naik, hunian membaik, atau tempat tidur baru — LK tidak memecahnya, dan tanpa itu saya tidak tahu apakah margin bisa bertahan. Keputusan: TUNGGU — dashboard dipakai untuk shortlist, valuasi butuh data di luar dashboard.</p>
+<p><strong>Lensa kredit:</strong> ketiga neraca nyaman dibaca dashboard: current ratio KLBF <span class="num">4,11x</span> dan MIKA <span class="num">4,74x</span>, D/E <span class="num">0,20x</span> dan <span class="num">0,13x</span> — risiko gagal bayar jangka pendek praktis tidak terlihat. BBRI beda ukuran: CAR <span class="num">26,63%</span> [DIUNGKAP BANK] memberi buffer besar, tetapi CoC <span class="num">3,35%</span> naik dari <span class="num">2,4%</span> tahun sebelumnya sementara NPL turun ke <span class="num">2,78%</span> — bank memprovisioning ke depan, dan dashboard ini tidak bisa menjawab apakah itu kehati-hatian atau ada yang belum terlihat di angka NPL. Keputusan: APPROVE bersyarat untuk KLBF/MIKA; untuk BBRI, minta rincian write-off dan komposisi kredit bermasalah sebelum memakai NPL <span class="num">2,78%</span> sebagai bukti kualitas kredit.</p>
+<p><strong>Lensa forensik:</strong> tiga verifikasi sebelum percaya dashboard: (1) cocokkan satu kartu KPI ke LK auditan — mis. CASA <span class="num">67,3%</span> = (giro Rp374.554.340 juta + tabungan Rp544.426.947 juta) ÷ DPK Rp1.365.450.104 juta — bila satu kartu cocok, model DAX-mu benar; bila tidak, cari salah ketik di CSV dulu, bukan di DAX; (2) tanyakan definisi di balik dua LDR — <span class="num">95,1%</span> hitung-sendiri vs <span class="num">88,85%</span> bank — sebelum memakai salah satunya untuk vonis likuiditas; (3) satu temuan yang membuat saya menolak dashboard mentah-mentah: kartu KPI NIM <span class="num">7,74%</span> tanpa ukuran DAX dan tanpa penyebut yang bisa diverifikasi — angka yang tidak bisa dihitung ulang dari data adalah klaim, bukan bukti. Thesis testing: bukti penguat = tiap kartu KPI bisa dihitung ulang dari CSV; bukti pematah = satu kartu yang angkanya tidak terlacak ke LK.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 48.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-47/" class="pn-prev">← Modul 47</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 48 · angka KLBF/MIKA/BBRI dari bedah-sendiri/data/*-benchmark.js (LK konsolidasian auditan FY2024, komparatif 2023); BBRI dalam jutaan Rp, KLBF/MIKA dalam Rp penuh; rasio [T] terhitung, [B] diungkap bank — bukan rekomendasi investasi. Modul ini tidak menghasilkan file .pbix.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul48.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

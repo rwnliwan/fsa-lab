@@ -30,7 +30,8 @@ for n in (29, 30, 31, 32, 33, 34, 35):
     s = read(f"js/modul{n}.js")
     m = re.search(r"var QUIZ = \[(.*?)\];", s, re.S)
     entries = re.findall(r'\{q:"(?:[^"\\]|\\.)*", o:\[.*?\], a:\d+\}', m.group(1))
-    check(f"M{n} 5 quiz satu baris", len(entries) == 5)
+    _exp = 8 if n in (30, 35) else 5
+    check(f"M{n} {_exp} quiz satu baris", len(entries) == _exp)
 
 # ---------- G2: kunci quiz diacak ----------
 print("== G2 kunci quiz diacak ==")

@@ -5,7 +5,7 @@ G1: _headers ada + memuat semua header wajib (CSP/HSTS/X-Frame/Permissions/Refer
 G2: CSP tidak memblokir JS — smoke test: tak ada <script> inline, tak ada event
     handler inline, tak ada javascript: URL, semua <script src> & <link> resolve,
     script-src TANPA 'unsafe-inline', tak ada sumber eksternal http(s)
-G3: canonical absolut + trailing slash konsisten di 57 halaman, path cocok direktori
+G3: canonical absolut + trailing slash konsisten di 81 halaman, path cocok direktori
 G4: font self-hosted — tak ada referensi Google Fonts di HTML, css/fonts.css ada,
     semua woff2 yang dirujuk ada di disk, font-display: swap
 G5: export/import progres — tombol + input + penjelasan batasan ada di review/;
@@ -40,7 +40,7 @@ def pages():
     return sorted(out)
 
 PAGES = pages()
-check("halaman terdeteksi 57", len(PAGES) == 57, f"dapat {len(PAGES)}")
+check("halaman terdeteksi 81", len(PAGES) == 81, f"dapat {len(PAGES)}")
 
 # ---- G1: _headers ----
 try:
@@ -105,7 +105,7 @@ for rel in PAGES:
     m = re.search(r'<link rel="canonical" href="([^"]+)">', html)
     if not m or m.group(1) != exp:
         bad_canon.append(rel + " -> " + (m.group(1) if m else "TAK ADA"))
-check("G3 canonical absolut + path benar di 57 halaman", not bad_canon, str(bad_canon[:3]))
+check("G3 canonical absolut + path benar di 81 halaman", not bad_canon, str(bad_canon[:3]))
 dup = [r for r in PAGES if read(r).count('rel="canonical"') != 1]
 check("G3 tepat 1 canonical per halaman", not dup, str(dup[:3]))
 

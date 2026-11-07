@@ -65,7 +65,8 @@ print("== G6 distribusi kunci quiz ==")
 for n in range(1, 19):
     src = open(f"{WEB}js/modul{n}.js", encoding="utf-8").read()
     keys = [int(x) for x in re.findall(r'a:(\d)', src.split("var QUIZ")[1].split("];")[0])]
-    check(f"M{n}: 5 soal", len(keys) == 5)
+    _exp = 8 if n in (12, 18) else 5
+    check(f"M{n}: {_exp} soal", len(keys) == _exp)
     check(f"M{n}: tidak all-satu-posisi", len(set(keys)) > 1)
 
 print("== should-fix ronde 4 ==")

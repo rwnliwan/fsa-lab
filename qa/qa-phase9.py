@@ -79,8 +79,8 @@ check("kerangka filing berikutnya", "Kerangka untuk filing berikutnya" in BF)
 check("bukan rekomendasi investasi", "Bukan rekomendasi investasi" in BF)
 
 print("== Landing ==")
-check("kartu Bedah Buta ber-link", 'href="bedah-buta/"' in LAND)
-check("kartu Bedah Filing ber-link", 'href="bedah-filing/"' in LAND)
+check("kartu Bedah Buta ber-link", 'href="/bedah-buta/"' in LAND)
+check("kartu Bedah Filing ber-link", 'href="/bedah-filing/"' in LAND)
 check("gate Phase 2 -> bedah-buta", "bedah-buta/" in LAND and "Phase 2" in LAND)
 check("gate Phase 4 -> bedah-filing", "bedah-filing/" in LAND)
 

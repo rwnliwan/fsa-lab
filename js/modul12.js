@@ -159,8 +159,13 @@ function parseIDNumber(str, isDecimal){
       if(dots !== 1) return NaN;
     } else {
       var parts = s.split(".");
-      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
-      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+      if(parts.length > 2){
+        if(parts.slice(1).every(function(p){ return p.length === 3; }) && parts[0] !== "0" && parts[0] !== "-0"){
+          s = parts.join("");  // ribuan bertingkat: 1.000.000 -> 1000000
+        } else {
+          return NaN;  // F3: 1.2.3 ditolak
+        }
+      } else if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
         s = parts.join("");  // ribuan: 1.000 -> 1000
       } else if(parts.length === 2 && parts[1].length !== 3){
         /* desimal biasa: 2.26 tetap */
@@ -238,11 +243,14 @@ setLens("invest");
 
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
- {q:"Impairment diakui ketika…", o:["Recoverable < carrying amount","Carrying amount < recoverable amount","Harga pasar naik di atas nilai buku","Laba tahun berjalan naik"], a:0},
+ {q:"Impairment diakui ketika…", o:["Recoverable < carrying amount","Carrying amount < recoverable amount","Harga pasar naik di atas nilai buku","Laba tahun berjalan naik signifikan"], a:0},
  {q:"Revaluasi tanah ke nilai wajar → …", o:["Ekuitas naik via OCI","Laba naik via OCI","Laba bersih naik","Aset naik, ekuitas tetap"], a:0},
  {q:"Aset hak-guna (ROU) muncul karena…", o:["PSAK 115","PSAK 116","IFRS 18","PSAK 109"], a:1},
  {q:"Capex > depresiasi bertahun-tahun = …", o:["Kontraksi", "Efisiensi", "Ekspansi", "Rugi"], a:2},
- {q:"Aset tetap 51% dari total aset → …", o:["Padat karya","Jasa murni","Risiko rendah","Padat modal"], a:3}
+ {q:"Aset tetap 51% dari total aset → …", o:["Padat karya","Jasa murni","Risiko rendah","Padat modal"], a:3},
+ {q:"Lessor menyewakan mesin lewat finance lease (PSAK 116). Perlakuan yang TEPAT di neraca lessor…", o:["Aset tetap dipertahankan di neraca; pembayaran sewa diakui sebagai lease income garis lurus","Aset dihapus; diakui piutang sewa pembiayaan (net investment in lease) sebesar nilai kini pembayaran","Seluruh pembayaran sewa 5 tahun diakui sebagai pendapatan di tahun pertama kontrak","Tidak ada pencatatan di neraca — sewa dicatat di luar neraca sampai lessee gagal bayar dan aset ditarik kembali"], a:1},
+ {q:"Contoh modul (ilustratif): finance lease aset 1.000, pembayaran 250/tahun selama 5 tahun, suku bunga implisit ≈ 7,93%. Finance income tahun 1 = …", o:["79,3 — 7,93% × piutang awal 1.000","250 — seluruh kas yang diterima tahun 1","200 — aset 1.000 dibagi masa sewa 5 tahun","50 — selisih pembayaran 250 dengan depresiasi 200"], a:0},
+ {q:"Kontrak yang sama diklasifikasikan operating lease. Laba lessor tiap tahun = …", o:["79,3 di tahun 1 lalu menurun tiap tahun","250 — seluruh pembayaran sewa diakui sebagai laba","50 — lease income 250 dikurangi depresiasi 200","0 — laba baru diakui saat aset dijual di akhir sewa"], a:2}
 ];
 (function(){
   var h = "";

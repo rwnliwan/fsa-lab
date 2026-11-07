@@ -212,8 +212,13 @@ function parseIDNumber(str, isDecimal){
       if(dots !== 1) return NaN;
     } else {
       var parts = s.split(".");
-      if(parts.length > 2) return NaN;  // F3: 1.2.3 ditolak
-      if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
+      if(parts.length > 2){
+        if(parts.slice(1).every(function(p){ return p.length === 3; }) && parts[0] !== "0" && parts[0] !== "-0"){
+          s = parts.join("");  // ribuan bertingkat: 1.000.000 -> 1000000
+        } else {
+          return NaN;  // F3: 1.2.3 ditolak
+        }
+      } else if(parts.length === 2 && parts[1].length === 3 && parts[0] !== "0" && parts[0] !== "-0"){
         s = parts.join("");  // ribuan: 1.000 -> 1000
       } else if(parts.length === 2 && parts[1].length !== 3){
         /* desimal biasa: 2.26 tetap */

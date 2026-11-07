@@ -8,7 +8,7 @@ F04: workbench/index.html tepat 1x script inline-workbench.js; JS punya guard id
 F05: tak ada "9 phase" di HTML manapun; "11 phase" di index.html
 F06: tak ada wording absolut "statutori memakai Bahasa Indonesia dan rupiah"
 F07: <label for> di konverter/glosarium/ratio-lab; aria-label tombol theater; role tab explorer
-F08: breadcrumb + "Modul N dari 43" + prev/next di 43 modul
+F08: breadcrumb + "Modul N dari 48" + prev/next di 48 modul
 F09: bedah-filing label Kutipan/Hitungan/Interpretasi; glosarium Beneish caveat false positive
 F10: 404.html ada, proper (tanpa redirect), link root-absolute
 """
@@ -143,7 +143,7 @@ except FileNotFoundError:
 # ---------- F08: breadcrumb modul ----------
 moduls = sorted([d for d in os.listdir(ROOT) if re.match(r"modul-\d+$", d)],
                 key=lambda x: int(x.split("-")[1]))
-check("F08 43 direktori modul", len(moduls) == 43, f"dapat {len(moduls)}")
+check("F08 48 direktori modul", len(moduls) == 48, f"dapat {len(moduls)}")
 missing_bc, missing_count, missing_pn = [], [], []
 for m in moduls:
     n = int(m.split("-")[1])
@@ -155,18 +155,18 @@ for m in moduls:
         continue
     if "breadcrumb" not in h.lower():
         missing_bc.append(p)
-    if f"Modul {n} dari 43" not in h:
+    if f"Modul {n} dari 48" not in h:
         missing_count.append(p)
     has_prev = f'href="/modul-{n-1}/"' in h
     has_next = f'href="/modul-{n+1}/"' in h
     if n == 1 and has_prev:
         missing_pn.append(p + " (prev tak seharusnya ada)")
-    elif n == 43 and has_next:
+    elif n == 48 and has_next:
         missing_pn.append(p + " (next tak seharusnya ada)")
-    elif n not in (1, 43) and not (has_prev and has_next):
+    elif n not in (1, 48) and not (has_prev and has_next):
         missing_pn.append(p)
-check("F08 breadcrumb 43/43", not missing_bc, "; ".join(missing_bc[:3]))
-check("F08 'Modul N dari 43' 43/43", not missing_count, "; ".join(missing_count[:3]))
+check("F08 breadcrumb 48/48", not missing_bc, "; ".join(missing_bc[:3]))
+check("F08 'Modul N dari 48' 48/48", not missing_count, "; ".join(missing_count[:3]))
 check("F08 prev/next benar", not missing_pn, "; ".join(missing_pn[:3]))
 
 # ---------- F11b: anti-kontaminasi M38 (filing ujian BBCA) ----------

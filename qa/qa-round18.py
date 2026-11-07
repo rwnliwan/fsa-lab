@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """QA Round 18 — guard permanen untuk fix Instinct Recheck Round 14 (9,0/10).
 
-R14-F1: quiz length cue — kunci unik-terpanjang <= 10/215 per bank; tak ada modul
+R14-F1: quiz length cue — kunci unik-terpanjang <= 10/252 per bank; tak ada modul
         dengan >=4 kunci unik-terpanjang; nol qualifier template di distractor.
 R14-F2: Credit Memo satu sumber bunga (tak ada #s-int); spread 2025 = kanonis
         (EBITDA 102.000, bunga 14.000, utang berbunga 201.440).
@@ -56,7 +56,9 @@ function extractArr(src, varName) {
   return eval(src.slice(start, i + 1));
 }
 const out = {modules: {}, bank: null};
-for (let n = 1; n <= 43; n++) {
+const _nums = fs.readdirSync('js').filter(f => f.startsWith('modul') && f.endsWith('.js'))
+  .map(f => parseInt(f.slice(5, -3), 10)).sort((a, b) => a - b);
+for (const n of _nums) {
   const p = 'js/modul' + n + '.js';
   try {
     const q = extractArr(fs.readFileSync(p, 'utf8'), 'QUIZ');
@@ -133,8 +135,8 @@ bank_qs = data["bank"] if isinstance(data["bank"], list) else []
 
 t1, u1, qh1, pm1, rd1 = analyze(mod_qs, "modul")
 t2, u2, qh2, pm2, rd2 = analyze(bank_qs, "bank")
-check("F1: 215 soal modul", t1 == 215, f"got {t1}")
-check("F1: 215 soal review bank", t2 == 215, f"got {t2}")
+check("F1: 252 soal modul", t1 == 252, f"got {t1}")
+check("F1: 252 soal review bank", t2 == 252, f"got {t2}")
 check("F1: kunci unik-terpanjang modul <= 10", u1 <= 10, f"{u1}/{t1}")
 check("F1: kunci unik-terpanjang bank <= 10", u2 <= 10, f"{u2}/{t2}")
 bad_mods = [m for m, c in pm1.items() if c >= 4]
@@ -247,10 +249,11 @@ check("F5: kartu tak tulis '1–2 di bawah issuer'", "di-notch 1–2 di bawah is
 # ---------- R18-F7 (polish Nov 2026): tie-luck / luck-pass <= 25% ----------
 # Model Instinct R18 §3: fixed single-rank strategy (pilih opsi terpanjang ke-r,
 # r=1..4, acak seragam di dalam tie block); tie block lebar k yang menutupi
-# posisi r bisa dieksploitasi dengan probabilitas 1/k; peluang lolos gate 4/5
-# via Poisson-binomial (aritmetika eksak, Fraction). Implementasi kanonis +
-# dokumentasi metode: qa/qa-luckpass.py (skrip ini menghitung ulang dari data
-# QUIZ yang sudah diekstrak di atas agar round18 tetap self-contained).
+# posisi r bisa dieksploitasi dengan probabilitas 1/k; peluang lolos gate modul
+# (ceil 80% x jumlah soal: 4/5, 7/8) via Poisson-binomial (aritmetika eksak,
+# Fraction). Implementasi kanonis + dokumentasi metode: qa/qa-luckpass.py
+# (skrip ini menghitung ulang dari data QUIZ yang sudah diekstrak di atas agar
+# round18 tetap self-contained).
 from fractions import Fraction as _Fr
 
 
@@ -290,7 +293,8 @@ def _p_pass(ps, gate=4):
 _luck_bad = []
 for _n in sorted({q["m"] for q in mod_qs}):
     _qs = [q for q in mod_qs if q["m"] == _n]
-    _best = max((_p_pass([_strat_p(q["o"], q["a"], r) for q in _qs])
+    _gate = -(-len(_qs) * 4 // 5)  # gate modul = ceil(80% x soal): 4/5, 7/8
+    _best = max((_p_pass([_strat_p(q["o"], q["a"], r) for q in _qs], _gate)
                  for r in range(1, 5)), default=_Fr(0))
     if _best > _Fr(1, 4):
         _luck_bad.append(f"M{_n} {float(_best) * 100:.1f}%")

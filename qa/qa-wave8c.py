@@ -72,7 +72,7 @@ check("ekuitas < nilai buku", 97778 < 179440)
 check("M18 tanpa upside salah", "54,8" not in m18 and "54.8" not in m18)
 check("M18 ratio ans di source", all(x in m18 for x in ["ans:598000","ans:53449","ans:277778","ans:97778"]))
 check("M18 quiz kunci [0,0,0,0,0]",
-      [int(x) for x in re.findall(r'a:(\d)', m18.split("var QUIZ")[1].split("];")[0])] == [3,0,2,3,2])
+      [int(x) for x in re.findall(r'a:(\d)', m18.split("var QUIZ")[1].split("];")[0])] == [3,0,2,3,2,0,2,1])
 
 print("== guard regresi M15-M18 ==")
 for name, src, fn in [("M15",m15,"modul15"),("M16",m16,"modul16"),("M17",m17,"modul17"),("M18",m18,"modul18")]:
@@ -90,7 +90,8 @@ for name, src, fn in [("M15",m15,"modul15"),("M16",m16,"modul16"),("M17",m17,"mo
     check(f"{name} kunci tidak dibocorkan", "kunci tidak dibocorkan" in src)
     bare = re.findall(r'\{l:"([^"]+)",[^}]*d:"—",', src)
     check(f"{name} tanpa d:'—'", not bare)
-    check(f"{name} 5 soal quiz", src.split("var QUIZ")[1].split("];")[0].count('{q:"') == 5)
+    _exp_q = 8 if name == "M18" else 5
+    check(f"{name} {_exp_q} soal quiz", src.split("var QUIZ")[1].split("];")[0].count('{q:"') == _exp_q)
     r = subprocess.run(["node","--check",WEB+"/js/"+fn+".js"], capture_output=True, text=True)
     check(f"node --check {fn}.js", r.returncode == 0)
 

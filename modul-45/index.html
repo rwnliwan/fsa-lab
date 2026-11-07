@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 45 — Membaca Annual Report End-to-End: Workflow MD&A · FSA Lab</title>
+<meta name="description" content="Modul 45 FSA Lab: workflow terpandu membaca annual report end-to-end — navigasi annual report dan MD&A, membaca notes, bedah segmen, risk factors dan going concern, serta checklist penutup 10 cek analis, dengan contoh MD&A ilustratif PT Cemerlang Abadi.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-45/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M45</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 48 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 45</span>
+</nav>
+<p class="mod-count">Modul 45 dari 48</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 45</p>
+  <h1>Baca Narasinya, <em>Uji Angkanya.</em></h1>
+  <p class="lede"><strong>Annual report dibaca end-to-end, bukan dibolak-balik</strong>
+    <span class="tag">(fondasi: M7 catatan &amp; opini audit, M8 bedah segmen, M14 PSAK vs US GAAP)</span>:
+    lima langkah terpandu — <strong>navigasi &amp; MD&A</strong>, <strong>notes</strong>,
+    <strong>segmen</strong>, <strong>risk factors &amp; going concern</strong>, lalu
+    <strong>checklist penutup 10 cek</strong> sebelum memberi verdict.
+    MD&A (<em>Management Discussion &amp; Analysis</em>) adalah tempat manajemen
+    menjelaskan perubahan penjualan, margin, dan kas — tapi MD&A
+    <strong>tidak diaudit</strong> seperti laporan keuangan, jadi setiap kalimatnya
+    harus diuji ke angka.
+    Contoh kerja modul ini memakai angka kanonis
+    <strong>PT Cemerlang Abadi</strong> <span class="tag">(perusahaan FIKTIF — seluruh angka ilustratif)</span>:
+    penjualan <span style="font-family:var(--font-mono)">Rp520.000</span> juta, HPP
+    <span style="font-family:var(--font-mono)">Rp338.000</span> juta, laba kotor
+    <span style="font-family:var(--font-mono)">Rp182.000</span> juta, EBIT
+    <span style="font-family:var(--font-mono)">Rp72.000</span> juta, bunga
+    <span style="font-family:var(--font-mono)">Rp14.000</span> juta, PBT
+    <span style="font-family:var(--font-mono)">Rp58.000</span> juta, pajak
+    <span style="font-family:var(--font-mono)">Rp12.760</span> juta, laba bersih
+    <span style="font-family:var(--font-mono)">Rp45.240</span> juta.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Annual Report Explorer: Lima Langkah Membaca</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka Cemerlang
+    <strong>kanonis</strong> (Rp juta); kalimat manajemen dalam contoh MD&A
+    <strong>ilustratif</strong> (fiktif) dan diberi label.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="nav">1 · Navigasi &amp; MD&amp;A</button>
+    <button class="stmt-tab" data-stmt="notes">2 · Notes</button>
+    <button class="stmt-tab" data-stmt="segmen">3 · Segmen</button>
+    <button class="stmt-tab" data-stmt="risiko">4 · Risiko &amp; Going Concern</button>
+    <button class="stmt-tab" data-stmt="checklist">5 · Checklist Penutup</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, rujukan modul, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Uji Klaim MD&A — Percaya, Cek, atau Tolak?</h2>
+  <p class="sub">Enam klaim dari contoh MD&A ilustratif Cemerlang. Untuk tiap klaim, jawab <strong>dua hal</strong>: apakah klaim didukung angka laporan, dan apa tindakan analis.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Verifikasi Angka di Balik Narasi MD&amp;A</h2>
+  <p class="sub">Enam perhitungan — hitung ulang setiap angka yang diklaim contoh MD&A ilustratif Cemerlang (Rp juta) dari angka kanonis 2025 vs 2024, plus satu soal pilihan ganda tentang CFO.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "MD&amp;A Cemerlang: Narasi vs Angka"</h2>
+  <p class="sub">Kamu analis. Di bawah ini contoh MD&A
+    <strong>ILUSTRATIF</strong> (fiktif, ditulis untuk pembelajaran — bukan dokumen resmi
+    PT Cemerlang Abadi): setiap angka keuangannya kanonis 2025, setiap kalimat
+    narasi manajemennya ilustratif. Tugasmu: uji tiap kalimat terhadap tabel angka
+    acuan, lalu tulis <strong>verdict</strong> — klaim mana yang lolos, klaim mana yang
+    menyesatkan, dan apa yang masih harus diverifikasi — dari tiga lensa.</p>
+  <div class="explain" style="border:2px solid var(--ink);border-radius:var(--radius);background:var(--card);padding:1rem 1.2rem;margin-bottom:1rem">
+    <h3 style="margin-top:0">Contoh MD&amp;A ilustratif — PT Cemerlang Abadi, tahun buku 2025 <span class="tag">ILUSTRATIF — narasi fiktif, angka kanonis</span></h3>
+    <p>&ldquo;Penjualan tahun 2025 mencapai <span style="font-family:var(--font-mono)">Rp520.000</span> juta, naik 30,0% dari <span style="font-family:var(--font-mono)">Rp400.000</span> juta pada 2024, didorong permintaan pasar yang kuat di kedua segmen kami. Laba kotor <span style="font-family:var(--font-mono)">Rp182.000</span> juta dengan margin 35,0%, naik dari 34,0%, mencerminkan efisiensi operasional dan bauran produk yang membaik. Laba operasi <span style="font-family:var(--font-mono)">Rp72.000</span> juta (margin 13,8%) dan laba bersih <span style="font-family:var(--font-mono)">Rp45.240</span> juta — naik 52,6% dari <span style="font-family:var(--font-mono)">Rp29.640</span> juta — merupakan kinerja terbaik dalam sejarah perusahaan. Arus kas operasi kami kuat: <span style="font-family:var(--font-mono)">Rp30.800</span> juta, mendanai belanja modal <span style="font-family:var(--font-mono)">Rp48.000</span> juta; kas akhir tahun <span style="font-family:var(--font-mono)">Rp21.440</span> juta. Segmen Ritel menyumbang penjualan <span style="font-family:var(--font-mono)">Rp312.000</span> juta dengan laba operasi <span style="font-family:var(--font-mono)">Rp46.800</span> juta dan tetap menjadi mesin laba kami. Manajemen optimistis prospek 2026 tetap cerah.&rdquo;</p>
+  </div>
+  <h3>Angka acuan — PT Cemerlang Abadi (kanonis, Rp juta kecuali disebut)</h3>
+  <div class="tblwrap">
+  <table class="stmt">
+    <tr><th>Pos</th><th style="text-align:right">2025</th><th style="text-align:right">2024</th><th style="text-align:right">Perubahan</th></tr>
+    <tr><td>Penjualan</td><td class="val">520.000</td><td class="val">400.000</td><td class="val">+30,0%</td></tr>
+    <tr><td>HPP</td><td class="val">(338.000)</td><td class="val">(264.000)</td><td class="val">+28,0%</td></tr>
+    <tr><td>Laba kotor (margin)</td><td class="val">182.000 (35,0%)</td><td class="val">136.000 (34,0%)</td><td class="val">+33,8%</td></tr>
+    <tr><td>EBIT (margin operasi)</td><td class="val">72.000 (13,8%)</td><td class="val">48.000 (12,0%)</td><td class="val">+50,0%</td></tr>
+    <tr><td>Laba bersih (margin bersih)</td><td class="val">45.240 (8,7%)</td><td class="val">29.640 (7,4%)</td><td class="val">+52,6%</td></tr>
+    <tr><td>Laba bersih continuing (tanpa one-off jual aset 8.000)</td><td class="val">39.000</td><td class="val">29.640</td><td class="val">+31,6%</td></tr>
+    <tr><td>CFO</td><td class="val">30.800</td><td class="val">44.000</td><td class="val">−30,0%</td></tr>
+    <tr><td>Capex / FCFF</td><td class="val">(48.000) / (6.280)</td><td class="val">—</td><td class="val">—</td></tr>
+    <tr><td>Kas (awal → akhir)</td><td class="val">33.200 → 21.440</td><td class="val">—</td><td class="val">(11.760)</td></tr>
+    <tr><td>Piutang usaha (DSO)</td><td class="val">104.000 (73,0 hari)</td><td class="val">55.000</td><td class="val">+89,1%</td></tr>
+    <tr><td>Kas dari pelanggan (direct method)</td><td class="val">471.000</td><td class="val">—</td><td class="val">—</td></tr>
+    <tr><td>Segmen Ritel — penjualan / laba operasi</td><td class="val">312.000 / 46.800</td><td class="val">—</td><td class="val">margin 15,0%</td></tr>
+    <tr><td>Segmen Distribusi — penjualan / laba operasi</td><td class="val">208.000 / 25.200</td><td class="val">—</td><td class="val">margin 12,1%</td></tr>
+  </table>
+  </div>
+  <p class="sub">Sumber angka: CANONICAL-DATA.md (kanonis). Perubahan dihitung dari angka kanonis: pertumbuhan penjualan (520.000−400.000)÷400.000; laba kotor (182.000−136.000)÷136.000; CFO (30.800−44.000)÷44.000; piutang (104.000−55.000)÷55.000.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> dari enam klaim MD&amp;A ilustratif, dua lolos uji angka dan empat menyesatkan atau belum terbukti. Yang lolos: penjualan naik 30,0% (<span class="num">400.000</span> &rarr; <span class="num">520.000</span>) dan Ritel sebagai mesin laba — <span class="num">46.800</span> dari <span class="num">72.000</span> laba operasi (<span class="num">65,0%</span>), margin <span class="num">15,0%</span> vs <span class="num">12,1%</span> Distribusi. Yang menyesatkan: &ldquo;laba bersih naik 52,6%&rdquo; memakai headline — continuing NI hanya <span class="num">39.000</span> (<span class="num">+31,6%</span>) karena <span class="num">8.000</span> adalah laba jual aset sekali jadi; &ldquo;kas operasi kuat&rdquo; dibalik angka — CFO <span class="num">30.800</span> turun dari <span class="num">44.000</span> dan lebih kecil dari NI <span class="num">45.240</span>. &ldquo;Permintaan kuat&rdquo; dan &ldquo;efisiensi&rdquo; belum terbukti tanpa rincian volume vs harga — margin kotor hanya naik <span class="num">1,0</span> poin (<span class="num">34,0%</span> &rarr; <span class="num">35,0%</span>). Satu hal yang membunuh tesis &ldquo;kinerja terbaik&rdquo;: bila pertumbuhan piutang <span class="num">+89,1%</span> (DSO <span class="num">73,0</span> hari) ternyata penjualan yang ditarik maju — kas dari pelanggan <span class="num">471.000</span> sudah memberi sinyal. Keputusan: TAHAN — valuasi memakai continuing NI <span class="num">39.000</span>, bukan headline <span class="num">45.240</span>.</p>
+<p><strong>Lensa kredit:</strong> kemampuan bayar Cemerlang masih memadai tapi arahnya melemah. Coverage <span class="num">5,14x</span> (<span class="num">72.000</span> &divide; <span class="num">14.000</span>) dan CR <span class="num">2,17x</span> masih sehat, D/E <span class="num">1,52x</span> — tapi kas turun <span class="num">11.760</span> (<span class="num">33.200</span> &rarr; <span class="num">21.440</span>), FCFF negatif <span class="num">(6.280)</span>, dan CFO <span class="num">30.800</span> tidak menutup capex <span class="num">48.000</span> — selisihnya ditutup utang neto <span class="num">11.440</span>. Klaim MD&amp;A &ldquo;CFO mendanai capex&rdquo; salah hitung: <span class="num">30.800</span> &lt; <span class="num">48.000</span>. Keputusan: APPROVE bersyarat — fasilitas jalan dengan covenant DSO &le; <span class="num">75</span> hari dan larangan dividen bila FCFF negatif dua tahun berturut-turut.</p>
+<p><strong>Lensa forensik:</strong> tiga verifikasi sebelum percaya: (1) konsistensi internal — <span class="num">58.000</span> &minus; <span class="num">12.760</span> = <span class="num">45.240</span> dan <span class="num">451.440</span> = <span class="num">272.000</span> + <span class="num">179.440</span> harus cocok; (2) rincian piutang di notes — bruto <span class="num">108.100</span>, allowance <span class="num">4.100</span> (ECL <span class="num">3,8%</span>): apakah kenaikan <span class="num">49.000</span> terkonsentrasi di sedikit pelanggan atau menua; (3) opini audit dan emphasis of matter — MD&amp;A tidak diaudit, jadi satu temuan yang membuat saya menolak mentah-mentah: opini selain wajar tanpa pengecualian, atau emphasis of matter atas going concern yang tidak disebut MD&amp;A sama sekali. Thesis testing: bukti penguat = rincian volume vs harga + umur piutang yang sehat; bukti pematah = piutang menua tanpa tambahan allowance.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 45.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-44/" class="pn-prev">← Modul 44</a>
+  <a href="/modul-46/" class="pn-next">Modul 46 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 45 · angka Cemerlang Abadi dari CANONICAL-DATA (ilustratif); contoh MD&A fiktif-ilustratif untuk pembelajaran — bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul45.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

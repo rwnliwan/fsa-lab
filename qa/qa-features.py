@@ -44,27 +44,30 @@ r = subprocess.run(["python3", f"{WEB}/tools/gen_review_bank.py"],
 check("gen exit 0", r.returncode == 0)
 # Modul yang punya QUIZ = sumber kebenaran (modul 19-24 bisa lahir kapan saja;
 # generator skip yang belum ada — ekspektasi dihitung dinamis, bukan hardcode)
-# Phase 11: M39-M43 lahir -> range 1..43
+# Phase 11: M39-M48 lahir -> range 1..48 (M12/M18/M30/M35 = 8 soal pasca-lipatan)
 exp_mods = []
-for n in range(1, 44):
+for n in range(1, 49):
     p = f"{WEB}/js/modul{n}.js"
     if os.path.exists(p) and "var QUIZ" in open(p, encoding="utf-8").read():
         exp_mods.append(n)
 print("    (modul ber-QUIZ saat ini: %s)" % exp_mods)
+sys.path.insert(0, os.path.join(WEB, "tools"))
+from gen_review_bank import parse_quiz_array  # noqa: E402
+exp_total = sum(len(parse_quiz_array(open(f"{WEB}/js/modul{n}.js", encoding="utf-8").read())) for n in exp_mods)
 check("gen %d modul" % len(exp_mods), "%d modul" % len(exp_mods) in r.stdout)
-check("gen %d soal" % (5 * len(exp_mods)), "%d soal" % (5 * len(exp_mods)) in r.stdout)
+check("gen %d soal" % exp_total, "%d soal" % exp_total in r.stdout)
 src = open(f"{WEB}/js/review-bank.js", encoding="utf-8").read()
 m = re.search(r"var REVIEW_BANK = (\[.*\]);\s*$", src, re.S)
 check("REVIEW_BANK parse-able", m is not None)
 bank = json.loads(m.group(1)) if m else []
-check("%d soal" % (5 * len(exp_mods)), len(bank) == 5 * len(exp_mods))
+check("%d soal" % exp_total, len(bank) == exp_total)
 mods = sorted(set(q["m"] for q in bank)) if bank else []
 check("modul bank = modul ber-QUIZ", mods == exp_mods)
 check("tiap soal 4 opsi", all(len(q["o"]) == 4 for q in bank))
 check("a valid 0-3", all(isinstance(q["a"], int) and 0 <= q["a"] <= 3 for q in bank))
 check("a menunjuk opsi valid",
       all(0 <= q["a"] < len(q["o"]) for q in bank))
-check("5 soal per modul", all(sum(1 for q in bank if q["m"] == n) == 5 for n in exp_mods))
+check("soal per modul (5; M12/M18/M30/M35=8)", all(sum(1 for q in bank if q["m"] == n) == (8 if n in (12, 18, 30, 35) else 5) for n in exp_mods))
 check("q non-kosong", all(q["q"].strip() for q in bank))
 
 # ---------- F2: halaman review ----------

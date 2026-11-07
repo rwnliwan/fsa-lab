@@ -71,7 +71,7 @@ check("growth +53% ((45.240-29.640)/29.640)", abs((ni25-ni24)/ni24 - 0.526) < 0.
 check("CFO -30% ((30.800-44.000)/44.000)", abs((cfo25-cfo24)/cfo24 - (-0.30)) < 0.005)
 
 print("== FIX #2: parser angka Indonesia ==")
-fn = re.search(r"function parseIDNumber\(str\)\{.*?\n\}", m2, re.S).group(0)
+fn = re.search(r"function parseIDNumber\(str[^)]*\)\{.*?\n\}", m2, re.S).group(0)  # R14/R15: signature kini (str, isDecimal)
 cases = {"14.440":14440,"14.440,0":14440,"9,75":9.75,"0.68":0.68,"109.7":109.7,
          "5.14":5.14,"1.234.567":1234567,"40,0":40.0,"2,27":2.27,"54,75":54.75}
 js = fn + "\nvar out={};\n" + "\n".join(
@@ -83,7 +83,7 @@ for k, exp in cases.items():
 r2 = subprocess.run(["node","-e",fn+"\nconsole.log(isNaN(parseIDNumber(''))&&isNaN(parseIDNumber('abc'))?'nan-ok':'bad')"],
                     capture_output=True, text=True)
 check("parser tolak kosong/non-numerik", "nan-ok" in r2.stdout)
-check("ratio lab pakai parseIDNumber", "parseIDNumber($(\"#rin\"+i).value)" in m1 and "parseIDNumber($(\"#rin\"+i).value)" in m2)
+check("ratio lab pakai parseIDNumber", "parseIDNumber($(\"#rin\"+i).value," in m1 and "parseIDNumber($(\"#rin\"+i).value," in m2)
 
 print("== FIX #3–#8: guard regresi ==")
 check("M1 gate link ke modul-2", '../modul-2/' in m1)

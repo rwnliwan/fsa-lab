@@ -11,9 +11,11 @@ Method (Instinct R18 section 3; validated against R18's published numbers):
   length-sorted (descending) option list; a tie block occupies consecutive
   positions.
 - Module luck-pass = max over r of P(Poisson-binomial(p_1..p_n) >= GATE),
-  GATE = 4 (80% gate, 5 questions per module). Exact arithmetic (Fraction).
-- Also reported: worst expected score (max over r of sum p_i; R17 bar < 3.5/5)
-  and guaranteed score (max over r of count of p_i == 1; agreed bar <= 3/5).
+  GATE = ceil(80% x n questions) per module (4/5, 7/8). Exact arithmetic
+  (Fraction).
+- Also reported: worst expected score ratio (max over r of sum p_i / n;
+  R17 bar < 0.70) and guaranteed score ratio (max over r of count of
+  p_i == 1 / n; agreed bar <= 0.60).
 - Guard: FAIL if any module luck-pass > 25%.
 
 History:
@@ -34,7 +36,7 @@ from fractions import Fraction
 from math import comb
 
 ROOT = "/home/hatch/workspace/fsa-web"
-GATE = 4          # 80% gate on 5 questions
+GATE = None       # per-module gate: ceil(80% x n questions), computed in main()
 LIMIT = Fraction(1, 4)  # polish target: luck-pass <= 25% per module
 
 NODE_EXTRACT = r"""
@@ -59,7 +61,9 @@ function extractArr(src, varName) {
   return eval(src.slice(start, i + 1));
 }
 const out = {};
-for (let n = 1; n <= 43; n++) {
+const _nums = fs.readdirSync('js').filter(f => f.startsWith('modul') && f.endsWith('.js'))
+  .map(f => parseInt(f.slice(5, -3), 10)).sort((a, b) => a - b);
+for (const n of _nums) {
   try {
     const q = extractArr(fs.readFileSync('js/modul' + n + '.js', 'utf8'), 'QUIZ');
     if (q) out[n] = q.map(x => ({o: x.o, a: x.a}));
@@ -124,33 +128,33 @@ def main():
             print(f"FAIL modul {n} ter-parse: {qs.get('error')}")
             fails.append(f"M{n} parse")
             continue
-        assert len(qs) == 5, f"modul {n}: {len(qs)} soal (asumsi 5)"
+        gate = -(-len(qs) * 4 // 5)  # gate modul = ceil(80% x soal): 4/5, 7/8
         best_lp, best_r, best_exp, best_guar = Fraction(0), None, Fraction(0), 0
         for r in range(1, 5):
             ps = [strategy_p(q["o"], q["a"], r) for q in qs]
-            lp = p_pass(ps)
+            lp = p_pass(ps, gate)
             exp = sum(ps)
             guar = sum(1 for p in ps if p == 1)
             if lp > best_lp:
                 best_lp, best_r = lp, r
             best_exp = max(best_exp, exp)
             best_guar = max(best_guar, guar)
-        rows.append((int(n), best_lp, best_r, best_exp, best_guar))
+        rows.append((int(n), len(qs), best_lp, best_r, best_exp, best_guar))
         flag = "FAIL " if best_lp > LIMIT else "ok   "
         print(f"{flag}M{int(n):>2}: luck-pass {float(best_lp)*100:5.1f}% "
-              f"({best_lp}) via rank {best_r} | exp {float(best_exp):.2f}/5 "
-              f"| guaranteed {best_guar}/5")
+              f"({best_lp}) via rank {best_r} | exp {float(best_exp):.2f}/{len(qs)} "
+              f"| guaranteed {best_guar}/{len(qs)}")
         if best_lp > LIMIT:
             fails.append(f"M{n} luck-pass {float(best_lp)*100:.1f}%")
     print()
-    worst_exp = max(r[3] for r in rows)
-    worst_guar = max(r[4] for r in rows)
-    print(f"INFO worst expected score: {float(worst_exp):.2f}/5 (bar R17 < 3.5/5)")
-    print(f"INFO worst guaranteed score: {worst_guar}/5 (bar disepakati <= 3/5)")
-    if worst_exp >= Fraction(7, 2):
-        fails.append(f"worst expected {float(worst_exp):.2f} >= 3.5")
-    if worst_guar > 3:
-        fails.append(f"worst guaranteed {worst_guar} > 3")
+    worst_exp_ratio = max(r[4] / r[1] for r in rows)
+    worst_guar_ratio = max(r[5] / r[1] for r in rows)
+    print(f"INFO worst expected score ratio: {float(worst_exp_ratio):.2f} (bar R17 < 0.70)")
+    print(f"INFO worst guaranteed score ratio: {float(worst_guar_ratio):.2f} (bar disepakati <= 0.60)")
+    if worst_exp_ratio >= Fraction(7, 10):
+        fails.append(f"worst expected ratio {float(worst_exp_ratio):.2f} >= 0.70")
+    if worst_guar_ratio > Fraction(3, 5):
+        fails.append(f"worst guaranteed ratio {float(worst_guar_ratio):.2f} > 0.60")
     if fails:
         print(f"RESULT: {len(fails)} FAILURES — {fails}")
         return 1

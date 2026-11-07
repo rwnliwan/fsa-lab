@@ -4,7 +4,7 @@
 Membaca js/modulN.js (N=1..43) dan mengekstrak tiap entri QUIZ {q, o, a}
 menjadi js/review-bank.js untuk halaman Spaced Repetition.
 
-- Bank mencakup 43 modul (M1-M43). WAJIB regenerate setiap modul baru lahir
+- Bank mencakup 48 modul (M1-M48). WAJIB regenerate setiap modul baru lahir
   atau ada kunci quiz yang berubah.
 - Output: var REVIEW_BANK = [{m:6, q:"...", o:["..","..","..",".."], a:0, why:"..."}, ...];
 - Deterministik: urut modul naik, urut soal sesuai file.
@@ -132,7 +132,7 @@ def main():
     from review_why_data import WHY
     bank = []
     found = []
-    for n in range(1, 44):
+    for n in range(1, 49):
         path = os.path.join(WEB, "js", "modul%d.js" % n)
         if not os.path.exists(path):
             continue  # modul belum ada — skip, regenerate nanti

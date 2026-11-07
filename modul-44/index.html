@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 44 — Lab Excel dari Nol: Model 3-Laporan · FSA Lab</title>
+<meta name="description" content="Modul 44 FSA Lab: bangun model 3-laporan dari blank workbook di Excel — sheet Asumsi, IS/BS/CFS ter-link rumus, balance check 7 uji artikulasi, circularity bunga, dan sensitivitas. Kasus PT Cemerlang Abadi (M31), template .xlsx siap unduh.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-44/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M44</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 48 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 44</span>
+</nav>
+<p class="mod-count">Modul 44 dari 48</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 44</p>
+  <h1>Dari Blank Workbook ke <em>Balance Check 0.</em></h1>
+  <p class="lede">Di M31 kamu <strong>membaca</strong> model 3-laporan PT Cemerlang Abadi.
+    Di modul ini kamu <strong>membangunnya sendiri dari blank workbook</strong>:
+    satu sheet <strong>Asumsi</strong> sebagai sumber kebenaran, lalu
+    <strong>IS</strong>, <strong>BS</strong>, dan <strong>CFS</strong> yang seluruhnya
+    rumus ter-link — tanpa satu pun angka yang diketik dua kali.
+    Targetnya terukur: laba bersih 2026
+    <span style="font-family:var(--font-mono)">Rp53.695</span> juta,
+    CFO <span style="font-family:var(--font-mono)">Rp70.735</span> juta,
+    kas akhir <span style="font-family:var(--font-mono)">Rp36.175</span> juta,
+    dan balance check
+    <span style="font-family:var(--font-mono)">A − (L+E) = 0</span>.
+    Semua angka <strong>kanonis</strong> (Rp juta) dari
+    <strong>PT Cemerlang Abadi</strong> <span class="tag">(perusahaan FIKTIF — seluruh angka ilustratif)</span>,
+    forecast 2026 &amp; sensitivitas dari <strong>M31</strong>.
+    Template jadi (.xlsx, rumus penuh) bisa diunduh di bawah — tapi kerjakan dulu
+    langkah 1–5 dengan tanganmu sendiri, baru bandingkan.</p>
+  <p><a class="btn btn-primary" href="../downloads/templates/fsa-lab-model-3-laporan-cemerlang.xlsx" download>Unduh template .xlsx — Model 3-Laporan Cemerlang</a></p>
+</header>
+
+<div class="tblwrap">
+<table class="stmt">
+<tr><th>Langkah</th><th>Yang dibangun</th><th style="text-align:right">Bukti selesai</th></tr>
+<tr><td>1 · Asumsi</td><td>Sheet Asumsi: growth, GM, opex, DSO/DIO/DPO, pajak, depresiasi, capex, dividen, bunga flat</td><td class="val">582.400</td></tr>
+<tr><td>2 · Bangun</td><td>IS / BS / CFS 2026, semua rumus ter-link ke Asumsi</td><td class="val">NI 53.695</td></tr>
+<tr><td>3 · Balance check</td><td>7 uji artikulasi: NI=PBT−pajak, A=L+E, ΔWC, CFO, Δkas, roll-forward, kas CFS=kas BS</td><td class="val">selisih 0</td></tr>
+<tr><td>4 · Circularity</td><td>Kenapa bunga dari rata-rata utang sirkular; cara M31 memutusnya; iterative calculation + risikonya</td><td class="val">bunga 14.000</td></tr>
+<tr><td>5 · Sensitivitas</td><td>4 skenario M31: growth +6pp, GM −2pp, WC +10 hari, WC efisien</td><td class="val">CFO 54.779–86.691</td></tr>
+</table>
+</div>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Excel Lab Explorer: Lima Langkah Membangun Model</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka Cemerlang
+    <strong>kanonis</strong> (Rp juta); forecast 2026 &amp; sensitivitas
+    <strong>ilustratif</strong> (M31) dan diberi label.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="asumsi">Langkah 1 · Asumsi</button>
+    <button class="stmt-tab" data-stmt="bangun">Langkah 2 · Bangun IS/BS/CFS</button>
+    <button class="stmt-tab" data-stmt="check">Langkah 3 · Balance Check</button>
+    <button class="stmt-tab" data-stmt="circ">Langkah 4 · Circularity</button>
+    <button class="stmt-tab" data-stmt="sens">Langkah 5 · Sensitivitas</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, rumus Excel, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Ubah Satu Input di Asumsi — Apa yang Bergerak?</h2>
+  <p class="sub">Enam kartu: tebak arah <strong>dua ukuran</strong> per kartu. Semua kartu dijawab dengan mengubah SATU input di sheet Asumsi template — lalu saksikan rumusnya bekerja.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Buktikan Modelmu Terartikulasi</h2>
+  <p class="sub">Enam perhitungan — angka yang harus muncul di template bila rumusmu benar (Rp juta). Lima angka + satu soal pilihan ganda tentang circularity.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Dari Blank Workbook ke Balance Check 0"</h2>
+  <p class="sub">Kamu analis. <strong>PT Cemerlang Abadi (FIKTIF)</strong> memintamu membangun
+    model 3-laporan 2026 dari blank workbook: penjualan
+    <span style="font-family:var(--font-mono)">582.400</span>, NI
+    <span style="font-family:var(--font-mono)">53.695</span>, CFO
+    <span style="font-family:var(--font-mono)">70.735</span>, kas akhir
+    <span style="font-family:var(--font-mono)">36.175</span>, balance check
+    <span style="font-family:var(--font-mono)">0</span> (Rp juta, M31).
+    Utang bank <span style="font-family:var(--font-mono)">141.440</span> diasumsikan tetap
+    sehingga bunga flat <span style="font-family:var(--font-mono)">14.000</span> —
+    dan direksi bertanya: "kenapa tidak dibuat dinamis saja, kan lebih realistis?"
+    Tugasmu: tulis <strong>verdict</strong> — modelmu bisa dipercaya atau tidak, asumsi mana
+    yang paling rapuh, dan jawabanmu ke direksi soal utang dinamis — dari tiga lensa.
+    Bandingkan hasilmu dengan template:
+    <a href="../downloads/templates/fsa-lab-model-3-laporan-cemerlang.xlsx" download>Unduh .xlsx — Model 3-Laporan Cemerlang</a>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> model ini bisa dipakai menilai — tetapi dengan potongan. NI <span class="num">53.695</span> (+18,7% vs 45.240) bertumpu pada dua asumsi rapuh: growth +12% dan GM tetap 35%. Sensitivitas yang saya jalankan: GM −2pp saja memotong NI <span class="num">9.085</span> (ke 44.610) dan CFO <span class="num">11.976</span> (ke 58.759) — margin adalah tuas tertajam, lebih tajam dari growth ±6pp. Saya memotong NI 20% sebagai margin of safety sebelum membayar kelipatan laba, karena CFO hanya <span class="num">70.735</span> dan growth menelan <span class="num">14.960</span> di WC. Satu hal yang membunuh tesis "Cemerlang murah": bila GM 35% ternyata tidak bertahan karena kenaikan bahan baku, NI jatuh ke 44.610 dan valuasi berbasis laba runtuh. Keputusan: TUNGGU — beli hanya bila harga sudah mencerminkan NI 44.610, bukan 53.695.</p>
+<p><strong>Lensa kredit:</strong> kemampuan bayar terbaca kuat di base case: D/E <span class="num">1,24x</span>, coverage <span class="num">5,92x</span>, CFO <span class="num">70.735</span> vs bunga <span class="num">14.000</span>. Tetapi skenario yang paling mengancam bukan growth — melainkan WC +10 hari: NI tetap <span class="num">53.695</span>, tetapi CFO anjlok ke <span class="num">54.779</span> (−15.956) dan coverage kas ikut tertekan walau laba diam. Covenant yang saya tulis: DSO ≤ 80 hari dan CFO ÷ bunga ≥ <span class="num">3,5x</span> — covenant kas, bukan covenant laba, karena laba tidak membayar utang. Soal direksi: utang dinamis saya TOLAK untuk forecast satu tahun ini — utang tetap <span class="num">141.440</span> membuat bunga flat <span class="num">14.000</span> tanpa iterasi, dan kas internal <span class="num">36.175</span> cukup menutup kebutuhan growth. Keputusan: APPROVE bersyarat — fasilitas jalan dengan covenant WC + kas.</p>
+<p><strong>Lensa forensik:</strong> tiga verifikasi sebelum percaya: (1) balance check — total aset <span class="num">508.175</span> = liabilitas <span class="num">281.040</span> + ekuitas <span class="num">227.135</span>, selisih 0; (2) ΔWC dari delta BS — piutang +12.480, persediaan +11.520, utang usaha +7.440, utang pajak +1.600 → −14.960 — harus sama dengan ΔWC di CFS; (3) laba ditahan roll-forward — <span class="num">79.440</span> + <span class="num">53.695</span> − <span class="num">6.000</span> = <span class="num">127.135</span>. Asumsi 'tetap' yang paling mencurigakan: GM 35% dan DSO/DIO/DPO yang dipegang sama persis dengan 2025 — di dunia nyata tidak ada yang sekonstan itu. Satu temuan yang membuat saya menolak mentah-mentah: kas akhir CFS tidak sama dengan kas di BS, atau selisih balance check yang ditutup dengan plug kas. Thesis testing: bukti penguat = ketujuh uji artikulasi lulus 0; bukti pematah = satu angka yang diketik manual di IS/BS/CFS.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 44.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-43/" class="pn-prev">← Modul 43</a>
+  <a href="/modul-45/" class="pn-next">Modul 45 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 44 · angka Cemerlang Abadi dari CANONICAL-DATA (ilustratif); forecast 2026 &amp; sensitivitas dari M31 — bukan rekomendasi investasi. Template .xlsx: rumus ter-link antar sheet; nilai base NI 53.695, CFO 70.735, kas akhir 36.175, balance check 0.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul44.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

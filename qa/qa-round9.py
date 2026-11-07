@@ -2,7 +2,7 @@
 """QA Round 9 — guard permanen temuan review ronde 5 (stabilization round).
 G1: konverter vs tabel resmi IAI (tidak ada pola +200)
 G2: quiz exploit — tidak ada single-position pass di semua modul
-G3: tiap posisi kunci <=2 per modul (5 soal)
+G3: tiap posisi kunci <=2 per modul (5 soal) / <=3 (8 soal)
 G4: review page loop 1..34
 G5: mobile — tidak ada tabel telanjang (delegasi ke qa-mobile.py bila ada)
 G6: Jiwasraya = kasasi Agu 2021 (bukan "vonis final")
@@ -58,7 +58,8 @@ for f in sorted(glob.glob("js/modul*.js")):
     name = f.split("/")[-1]
     c = Counter(keys)
     dist = [c.get(str(i), 0) for i in range(4)]
-    check(f"G3 {name} max<=2", max(dist) <= 2, f"dist={dist}")
+    _thr = len(keys) // 4 + 1  # 5 soal -> 2; 8 soal -> 3 (satu di atas rata-rata)
+    check(f"G3 {name} max<={_thr}", max(dist) <= _thr, f"dist={dist}")
     sim = max(sum(1 for k in keys if k == str(i)) / len(keys) for i in range(4))
     check(f"G2 {name} no single-pass", sim < 0.8, f"max={sim:.0%}")
 
