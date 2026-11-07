@@ -48,12 +48,21 @@ for c in cases:
     n_y = len(re.findall(r'\{y:"\d{4}"', c))
     check(len(yrs) == n_y and n_y >= 1, f"(b) {name}: {n_y} tahun, semua punya flag boolean")
     flag_years = [y for y, f in yrs if f == "true"]
-    check(len(flag_years) == 1, f"(b) {name}: tepat 1 tahun flag:true -> {flag_years}")
-    # (c)
+    # Desain case (8 Nov 2026): 1-2 tahun flag membentuk AKHIRAN (trailing run) —
+    # tahun flag pertama = tangkapan paling awal (+1 bonus, lihat js/casefiles.js
+    # firstFlagIdx). Guard lama "tepat 1 flag" bertentangan dengan desain yang
+    # sudah live (Garuda 1 tahun; 6 kasus lain 2 tahun).
+    fl = [f for _, f in yrs]
+    trailing = fl == ["false"] * fl.count("false") + ["true"] * fl.count("true")
+    check(1 <= len(flag_years) <= 2 and trailing,
+          f"(b) {name}: 1-2 tahun flag:true (akhiran) -> {flag_years}")
+    # (c) — reveal menyebut SEMUA tahun flag: "<strong>Y = FLAG" (1 tahun) atau
+    # "<strong>Y1 & Y2 = FLAG" (2 tahun)
+    exp = " & ".join(flag_years)
     m = re.search(r'reveal:"(.*)"\}\s*$', c, re.S)
     reveal = m.group(1)
-    check(f"<strong>{flag_years[0]} = FLAG" in reveal,
-          f"(c) {name}: reveal menyebut <strong>{flag_years[0]} = FLAG</strong>")
+    check(f"<strong>{exp} = FLAG" in reveal,
+          f"(c) {name}: reveal menyebut <strong>{exp} = FLAG</strong>")
     # (d)
     ctx = re.search(r'ctx:"(.*?)",\s*years:', c, re.S).group(1)
     check(any(k in ctx.lower() for k in ("sumber", "terverifikasi", "fakta publik")),

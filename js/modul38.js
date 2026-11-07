@@ -313,11 +313,11 @@ $("#journal-text").addEventListener("input", function(){
 setLens("invest");
 
 /* ---------- QUIZ + GATE ---------- */
-var QUIZ = [ {q:"Cover menulis 'untuk enam bulan yang berakhir 30 Juni 2026' (ilustratif). Laporan laba rugi di dalamnya mencakup periode…", o:["1 Jan–30 Jun 2026 (YTD — enam bulan penuh)", "1 Apr–30 Jun 2026 (kuartal kedua saja)", "30 Jun 2025–30 Jun 2026 (dua belas bulan berjalan)", "1 Jan–31 Des 2026 (tahun penuh proyeksi)"], a:0},
- {q:"Revenue H1 Rp290.000jt, Q1 Rp135.000jt, basis selaras (ilustratif). Revenue Q2 standalone…", o:["Rp155.000jt","Rp425.000jt","Rp145.000jt","Rp135.000jt"], a:0},
- {q:"Manakah pernyataan yang BENAR tentang derivasi H1−Q1?", o:["Laba bersih Q2 = H1 − Q1 bila basis selaras — flow boleh dikurangkan", "'Kas Q2' = kas 30 Jun − kas 31 Des — kas juga arus", "NPL Q2 = NPL H1 − NPL Q1 — rasio ikut dikurangkan", "Margin Q2 = margin H1 − margin Q1 — konsisten dengan cara derivasi komponen"], a:0},
- {q:"NII H1 Rp4.800jt, rata-rata earning assets Rp160.000jt (ilustratif, Bank Nusantara). NIM annualisasi…", o:["6,00% — NII×2 ÷ rata-rata EA", "3,00% — tanpa annualisasi setengah tahun", "5,65% — pakai saldo akhir 170.000", "12,00% — annualisasi ×4"], a:0},
- {q:"Analis A menghitung: margin Q2 = margin H1 − margin Q1. Di mana letak kesalahannya?", o:["Rasio adalah hasil bagi — ia harus dihitung ulang dari komponen Q2, bukan dikurangkan", "Tidak ada yang salah — selama basis selaras, semua angka interim boleh dikurangkan langsung", "Salahnya di pembulatan — pakai 4 desimal maka selisihnya hilang", "Margin H1 seharusnya dibagi dua dulu sebelum dikurangkan"], a:0}];
+var QUIZ = [ {q:"Cover menulis 'untuk enam bulan yang berakhir 30 Juni 2026' (ilustratif). Laporan laba rugi di dalamnya mencakup periode…", o:["30 Jun 2025–30 Jun 2026 (dua belas bulan berjalan)","1 Jan–31 Des 2026 (tahun penuh proyeksi)","1 Jan–30 Jun 2026 (YTD — enam bulan penuh)","1 Apr–30 Jun 2026 (kuartal kedua saja)"], a:2},
+ {q:"Revenue H1 Rp290.000jt, Q1 Rp135.000jt, basis selaras (ilustratif). Revenue Q2 standalone…", o:["Rp135.000jt","Rp155.000jt","Rp425.000jt","Rp145.000jt"], a:1},
+ {q:"Manakah pernyataan yang BENAR tentang derivasi H1−Q1?", o:["Margin Q2 = margin H1 − margin Q1 — konsisten dengan cara derivasi komponen","Laba bersih Q2 = H1 − Q1 bila basis selaras — flow boleh dikurangkan","'Kas Q2' = kas 30 Jun − kas 31 Des — kas juga arus","NPL Q2 = NPL H1 − NPL Q1 — rasio ikut dikurangkan"], a:1},
+ {q:"NII H1 Rp4.800jt, rata-rata earning assets Rp160.000jt (ilustratif, Bank Nusantara). NIM annualisasi…", o:["3,00% — tanpa annualisasi setengah tahun","5,65% — pakai saldo akhir 170.000","12,00% — annualisasi ×4","6,00% — NII×2 ÷ rata-rata EA"], a:3},
+ {q:"Analis A menghitung: margin Q2 = margin H1 − margin Q1. Di mana letak kesalahannya?", o:["Rasio adalah hasil bagi — ia harus dihitung ulang dari komponen Q2, bukan dikurangkan","Tidak ada yang salah — selama basis selaras, semua angka interim boleh dikurangkan langsung","Salahnya di pembulatan — pakai 4 desimal maka selisihnya hilang","Margin H1 seharusnya dibagi dua dulu sebelum dikurangkan"], a:0}];
 (function(){
   var h = "";
   QUIZ.forEach(function(q,i){

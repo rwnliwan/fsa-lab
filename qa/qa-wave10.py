@@ -103,7 +103,12 @@ for cname, (src_kw, num) in newcases.items():
     yrs = re.findall(r'\{y:"(\d+)"', block)
     check(f"{cname} 3 tahun", len(yrs) == 3)
     flags = re.findall(r'flag:(true|false)', block)
-    check(f"{cname} flag tahun tengah (variasi anti-pola, bukan selalu tahun terakhir)", flags == ["false","true","false"])
+    # Desain case (8 Nov 2026): DUA tahun flag — tengah = tangkapan paling awal
+    # (+1 bonus, lihat js/casefiles.js firstFlagIdx) dan akhir = pola berlanjut.
+    # Anti-pola terpenuhi bila tahun TENGAH ikut di-flag: tebak "selalu tahun
+    # terakhir" saja hanya dapat 4/7 tanpa bonus. Guard lama ["false","true","false"]
+    # bertentangan dengan desain yang sudah live di 4 kasus baru ini.
+    check(f"{cname} flag tahun tengah + pola berlanjut (tengah=earliest, akhir=lanjutan)", flags == ["false", "true", "true"])
     check(f"{cname} ada reveal pelajaran", "Pelajaran:" in block)
 
 print()

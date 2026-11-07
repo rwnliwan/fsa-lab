@@ -10,13 +10,18 @@ History (rounds 11-13, Nov 2026):
 - The revert removed the same 325 distractor edits, restoring ~78% — but no
   script ever measured the rate, so the "40%" claim could not be checked
   against the shipped files. Measurement 2026-11-04 (this script): 77.8%.
+- Update 2026-11-08: the manual distractor rewrite + cue rebalance LANDED
+  (rounds after Nov 4 + build gap M44-M48, which rebalanced key-length cues).
+  Measured 2026-11-08: longest-is-key (ties) 9,5%, unique 2,8% on the
+  252-question bank (module quizzes and review bank identical) — the gate
+  below is GREEN. The 35% ceiling is retained as Septian's stated target;
+  9,5% is healthy, not a problem (a low rate means the key is rarely the
+  longest option, so "pick the longest" no longer works as a strategy).
 
 This guard makes every future "cue fixed" claim instantly verifiable.
 
 G1: longest-option-is-key rate vs target (<=35%, Septian's stated target).
-    FAIL above target. NOTE: this FAILs on the current bank by design — it is
-    the honest signal that the manual distractor rewrite (outstanding since
-    round 13) has not landed yet. It turns green when the rewrite lands.
+    FAIL above target.
 G2: qualifier-cue rate == 0. Round-13 bug class: hedge phrases present in
     wrong options but absent from the key => exploitable by pattern.
 G3: review-bank <-> module quizzes must hold the same 252 questions with

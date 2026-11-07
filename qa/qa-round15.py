@@ -66,23 +66,31 @@ inline_scripts, ev_handlers, js_urls, bad_src, ext_src = [], [], [], [], []
 for rel in PAGES:
     html = read(rel)
     base = os.path.dirname(rel)
-    # blok <script> tanpa src
-    if re.search(r"<script(?![^>]*\bsrc=)[^>]*>", html):
+    # blok <script> tanpa src — KECUALI application/ld+json (data block JSON-LD,
+    # bukan script executable; CSP script-src tidak berlaku padanya — 8 Nov 2026:
+    # index.html sempat FAIL palsu karena blok ld+json ini)
+    if re.search(r"<script(?![^>]*\bsrc=)(?![^>]*type=\"application/ld\+json\")[^>]*>", html):
         inline_scripts.append(rel)
     # event handler inline (onX="...") — hindari false positive "content="
     if re.search(r'\son(click|load|change|submit|input|error|mouseover)="', html):
         ev_handlers.append(rel)
     if "javascript:" in html:
         js_urls.append(rel)
+    # resolver path: src/href root-absolute ("/js/...") = relatif terhadap ROOT situs,
+    # BUKAN path absolut filesystem (os.path.join mengabaikan ROOT bila src diawali "/"
+    # — 8 Nov 2026: redflag-memo sempat FAIL palsu karena 3 ref root-absolute ini)
+    def resolve(p):
+        return os.path.normpath(os.path.join(ROOT, p.lstrip("/"))) if p.startswith("/") \
+            else os.path.normpath(os.path.join(ROOT, base, p))
     for src in re.findall(r'<script\s+src="([^"]+)"', html):
         if src.startswith("http"):
             ext_src.append(rel + " :: " + src)
-        elif not os.path.exists(os.path.normpath(os.path.join(ROOT, base, src))):
+        elif not os.path.exists(resolve(src)):
             bad_src.append(rel + " :: " + src)
     for href in re.findall(r'<link\s+rel="stylesheet"\s+href="([^"]+)"', html):
         if href.startswith("http"):
             ext_src.append(rel + " :: " + href)
-        elif not os.path.exists(os.path.normpath(os.path.join(ROOT, base, href))):
+        elif not os.path.exists(resolve(href)):
             bad_src.append(rel + " :: " + href)
 check("G2 tak ada <script> inline", not inline_scripts, str(inline_scripts[:3]))
 check("G2 tak ada event handler inline", not ev_handlers, str(ev_handlers[:3]))
