@@ -255,7 +255,7 @@ var RATIOS = [
 
 /* ---------- JOURNAL ---------- */
 var LENSES = {
- invest:"Lensa investasi — PT Sejahtera Abadi (fiktif): DBO naik 5.000 → 5.610, liabilitas neto naik 800 → 1.040, tapi laba bersih tidak bergerak karena rugi OCI 114. Apakah sahamnya layak dibeli? Tulis 3 baris: apa yang menarik, apa yang mengganggumu, keputusanmu.",
+ invest:"Lensa investasi — PT Sejahtera Abadi (fiktif): DBO naik 5.000 → 5.610, liabilitas neto naik 800 → 1.040, tapi rugi OCI 114 tidak menyentuh laba bersih (beban P&L 376 tetap menggerakkan laba). Apakah sahamnya layak dibeli? Tulis 3 baris: apa yang menarik, apa yang mengganggumu, keputusanmu.",
  credit:"Lensa kredit — kamu analis kredit / calon pembeli obligasi Sejahtera Abadi: liabilitas neto pensiun 1.040 (funding ratio 81,5%), iuran kas 250 di bawah beban P&L 376, OCI rugi 114. Tulis 3 baris: kekuatan, risiko yang perlu covenant, kesimpulanmu.",
  forensic:"Lensa forensik — verifikasi jembatan 5.000 → 5.610 dan 4.200 → 4.570: dari mana actuarial loss 120 dan return aset 300 berasal? Apa yang TIDAK bisa kamu verifikasi dari angka agregat ini? Tulis 3 baris: yang terverifikasi, lubang terbesar, data tambahan yang kamu minta."
 };
