@@ -60,7 +60,7 @@ QP = re.compile(r'\{q:"((?:[^"\\]|\\.)*)",\s*o:\[((?:"(?:[^"\\]|\\.)*",?\s*)+)\]
 HEDGE = ["dalam kondisi normal", "dalam keadaan normal", "pada umumnya",
          "secara umum", "biasanya", "cenderung", "umumnya", "pada dasarnya"]
 
-TARGET_PCT = 35.0
+TARGET_PCT = 20.0
 
 
 def _dec(raw):
