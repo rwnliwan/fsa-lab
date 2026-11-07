@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 43 — IFRS 18 / PSAK 118: Penyajian Baru &amp; MPM · FSA Lab</title>
+<meta name="description" content="Modul 43 FSA Lab: PSAK 118 (IFRS 18, efektif 1 Jan 2027) — tiga kategori laba-rugi, subtotal wajib operating profit, MPM dan rekonsiliasi wajibnya, klasifikasi bunga dan dividen, serta demo reklasifikasi PT Cemerlang Abadi.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-43/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M43</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 43 = jumlah modul saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 43</span>
+</nav>
+<p class="mod-count">Modul 43 dari 43</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 43</p>
+  <h1>Laba Sama, <em>Penyajian Baru.</em></h1>
+  <p class="lede"><strong>PSAK 118 = IFRS 18, efektif 1 Jan 2027</strong>
+    <span class="tag">(standar baru — fondasi: M1 laporan laba rugi, M14 PSAK vs US GAAP)</span>:
+    laporan laba rugi kini wajib dikelompokkan ke tiga kategori —
+    <strong>operating</strong>, <strong>investing</strong>, <strong>financing</strong> —
+    dengan subtotal <strong>operating profit</strong> yang berdefinisi standar,
+    dan setiap <strong>MPM</strong> (ukuran kinerja definisi manajemen) wajib
+    direkonsiliasi ke subtotal IFRS terdekat.
+    Demo modul ini memakai angka kanonis
+    <strong>PT Cemerlang Abadi</strong> <span class="tag">(perusahaan FIKTIF — seluruh angka ilustratif)</span>:
+    penjualan <span style="font-family:var(--font-mono)">Rp520.000</span> juta, HPP
+    <span style="font-family:var(--font-mono)">Rp338.000</span> juta, EBIT
+    <span style="font-family:var(--font-mono)">Rp72.000</span> juta, bunga
+    <span style="font-family:var(--font-mono)">Rp14.000</span> juta, PBT
+    <span style="font-family:var(--font-mono)">Rp58.000</span> juta, pajak
+    <span style="font-family:var(--font-mono)">Rp12.760</span> juta, laba bersih
+    <span style="font-family:var(--font-mono)">Rp45.240</span> juta.
+    Setelah reklasifikasi, <strong>total laba TIDAK berubah</strong> — hanya
+    klasifikasinya yang pindah.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · IFRS 18 Explorer: Kategori, Subtotal, MPM</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka Cemerlang
+    <strong>kanonis</strong> (Rp juta); angka MPM dan dividen
+    <strong>ilustratif</strong> (fiktif) dan diberi label.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="kat">3 Kategori</button>
+    <button class="stmt-tab" data-stmt="sub">Subtotal Wajib</button>
+    <button class="stmt-tab" data-stmt="mpm">MPM</button>
+    <button class="stmt-tab" data-stmt="analis">Bagi Analis</button>
+    <button class="stmt-tab" data-stmt="bunga">Bunga &amp; Dividen</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, acuan PSAK 118 / IFRS 18, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Reklasifikasi — Naik, Turun, atau Tetap?</h2>
+  <p class="sub">Enam kartu reklasifikasi PSAK 118. Tebak arah <strong>dua ukuran</strong> per kartu.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Susun Ulang P&amp;L Cemerlang ke Format IFRS 18</h2>
+  <p class="sub">Enam perhitungan — reklasifikasi P&amp;L kanonis 2025 (Rp juta) ke format PSAK 118, plus satu rekonsiliasi MPM ilustratif. Buktikan: total laba tidak berubah.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Operating Profit 72.000: Baru, Tapi Bukan Laba Baru"</h2>
+  <p class="sub">Kamu analis. <strong>PT Cemerlang Abadi (FIKTIF)</strong> mengadopsi PSAK 118:
+    operating profit <span style="font-family:var(--font-mono)">72.000</span>,
+    bunga <span style="font-family:var(--font-mono)">14.000</span> kini di financing,
+    PBT <span style="font-family:var(--font-mono)">58.000</span>, laba bersih
+    <span style="font-family:var(--font-mono)">45.240</span> (Rp juta, kanonis) —
+    dan manajemen melaporkan MPM "laba operasi disesuaikan"
+    <span style="font-family:var(--font-mono)">78.000</span>
+    <strong>(ilustratif)</strong> dengan rekonsiliasi
+    <span style="font-family:var(--font-mono)">72.000 + 6.000</span>.
+    Narasi manajemen: "laba operasi kami 78.000".
+    Tugasmu: tulis <strong>verdict</strong> — angka mana yang kamu pakai, angka mana yang
+    kamu tolak, dan kenapa — dari tiga lensa.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis verdict tiga lensamu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> operating profit <span class="num">72.000</span> (margin <span class="num">13,8%</span>) adalah laba inti Cemerlang yang kini berdefinisi standar — saya bisa membandingkannya dengan emiten sejenis tanpa normalisasi definisi. MPM "laba disesuaikan" <span class="num">78.000</span> (ilustratif) tidak mengubah keputusan saya: ia hanya operating profit ditambah biaya restrukturisasi <span class="num">6.000</span> yang dikeluarkan manajemen — dan restrukturisasi yang dikeluarkan tiap tahun bukan biaya sekali jadi. Laba bersih tetap <span class="num">45.240</span>: tidak ada laba baru di sini, hanya penyajian baru. Satu hal yang membunuh tesis "margin membaik": bila kenaikan operating profit <span class="num">48.000</span> &rarr; <span class="num">72.000</span> ternyata didorong beban operasi yang dipindah ke investing, bukan penjualan — saya minta rincian reklasifikasi 2024. Keputusan: TUNGGU — valuasi memakai operating profit 72.000, bukan MPM 78.000.</p>
+<p><strong>Lensa kredit:</strong> kemampuan bayar Cemerlang terbaca lebih bersih: operating profit <span class="num">72.000</span> menutup bunga <span class="num">14.000</span> sebanyak <span class="num">5,14x</span> — dan kini penyebut itu standar, sehingga saya bisa membandingkannya dengan debitur lain. MPM <span class="num">78.000</span> tidak saya pakai sebagai penyebut covenant: covenant saya patok ke operating profit IFRS <span class="num">72.000</span>, dengan ambang coverage &ge; <span class="num">3,0x</span> dan larangan dividen bila coverage &lt; <span class="num">2,5x</span>. Laba bersih <span class="num">45.240</span> yang tidak berubah menegaskan kapasitas bayar tidak berubah — yang berubah hanya keterbandingan. Keputusan: APPROVE bersyarat — fasilitas jalan dengan covenant berbasis operating profit standar.</p>
+<p><strong>Lensa forensik:</strong> tiga verifikasi sebelum percaya: (1) rekonsiliasi MPM — <span class="num">78.000</span> = <span class="num">72.000</span> + <span class="num">6.000</span> lengkap dengan efek pajak per item? Bila efek pajak tidak diungkap, pengungkapan belum lengkap; (2) konsistensi internal — <span class="num">72.000</span> &minus; <span class="num">14.000</span> = <span class="num">58.000</span> dan <span class="num">58.000</span> &minus; <span class="num">12.760</span> = <span class="num">45.240</span> harus cocok sampai rupiah terakhir; NI yang berubah setelah adopsi = reklasifikasi salah; (3) satu temuan yang membuat saya menolak mentah-mentah: biaya restrukturisasi <span class="num">6.000</span> yang dikeluarkan dari MPM ternyata muncul juga di tahun 2024 sebagai "sekali jadi" — biaya yang berulang tiap tahun bukan one-off, dan MPM yang mengeluarkannya tiap tahun adalah laba yang dipoles. Thesis testing: bukti penguat = rekonsiliasi lengkap + komparatif 2024 konsisten; bukti pematah = definisi MPM berubah tahun depan.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> untuk menuntaskan Modul 43.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-42/" class="pn-prev">← Modul 42</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 43 · angka Cemerlang Abadi dari CANONICAL-DATA (ilustratif); MPM 78.000, dividen 5.000, dan bunga bank 10.000 fiktif-ilustratif untuk pembelajaran — bukan rekomendasi investasi.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul43.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

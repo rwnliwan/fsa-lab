@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 41 — Imbalan Pascakerja: Mekanika Pensiun · FSA Lab</title>
+<meta name="description" content="Modul 41 FSA Lab: mekanika akuntansi imbalan pascakerja PSAK 219 (IAS 19) — DC vs DB, DBO dan projected unit credit, service cost, net interest, remeasurement di OCI, asset ceiling, dan rekonsiliasi DBO serta aset program yang menutup tepat.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-41/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M41</span></span>
+</nav>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 41</span>
+</nav>
+<p class="mod-count">Modul 41 dari 43</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 41</p>
+  <h1>DBO Naik, <em>Laba Tetap.</em></h1>
+  <p class="lede"><strong>PERUSAHAAN ILUSTRATIF — PT Sejahtera Abadi (fiktif)</strong>
+    <span class="tag">(seluruh angka fiktif untuk pembelajaran)</span>:
+    program pensiun manfaat pasti dengan DBO awal
+    <span style="font-family:var(--font-mono)">Rp5.000</span> juta, aset program
+    <span style="font-family:var(--font-mono)">Rp4.200</span> juta, dan liabilitas neto
+    <span style="font-family:var(--font-mono)">Rp800</span> juta. Setahun kemudian DBO menjadi
+    <span style="font-family:var(--font-mono)">Rp5.610</span> juta dan liabilitas neto
+    <span style="font-family:var(--font-mono)">Rp1.040</span> juta — tetapi laba bersih tidak bergerak.
+    Ke mana larinya selisih itu? Di modul ini kamu membongkar mekanikanya —
+    <strong>service cost, net interest, remeasurement di OCI, dan asset ceiling</strong> —
+    dengan jembatan angka yang harus cocok sampai rupiah terakhir.
+    Cara <em>membaca</em> catatan imbalan kerja sudah diajarkan di M7; di sini mekanikanya.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Pensiun Explorer: Dari Janji Menjadi Angka</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>kredit</strong> (berani meminjamkan?), <strong>forensik</strong> (angkanya bisa diverifikasi?).
+    Semua angka <strong>ilustratif</strong> (fiktif, Rp juta): yang penting bukan besarnya, melainkan
+    <strong>cara angka-angka itu saling mengunci</strong>. Standar acuan: <strong>PSAK 219 = IAS 19</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="dcdb">DC vs DB</button>
+    <button class="stmt-tab" data-stmt="dbo">DBO &amp; Projected Unit Credit</button>
+    <button class="stmt-tab" data-stmt="service">Service Cost</button>
+    <button class="stmt-tab" data-stmt="netint">Net Interest</button>
+    <button class="stmt-tab" data-stmt="remeas">Remeasurement di OCI</button>
+    <button class="stmt-tab" data-stmt="ceiling">Asset Ceiling &amp; Pendanaan</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, acuan PSAK 219, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Pensiun — Naik atau Turun?</h2>
+  <p class="sub">Enam skenario analis pensiun. Tebak arah <strong>dua ukuran</strong> per skenario. Semua angka ilustratif (Rp juta).</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Rekonsiliasi yang Menutup Tepat</h2>
+  <p class="sub">Lima perhitungan mekanika pensiun — DBO, aset program, liabilitas neto, beban P&amp;L, dan sensitivitas diskonto.
+    Hitung dari petunjuknya, lalu nilai: apakah jembatanmu menutup? Angka dasar (ilustratif, Rp juta):
+    DBO awal <span style="font-family:var(--font-mono)">5.000</span>, aset program awal
+    <span style="font-family:var(--font-mono)">4.200</span>, diskonto <span style="font-family:var(--font-mono)">7%</span>,
+    service cost <span style="font-family:var(--font-mono)">320</span>, imbalan dibayar
+    <span style="font-family:var(--font-mono)">180</span>, actuarial loss
+    <span style="font-family:var(--font-mono)">120</span>, return aktual aset
+    <span style="font-family:var(--font-mono)">300</span>, iuran pemberi kerja
+    <span style="font-family:var(--font-mono)">250</span>.</p>
+  <div id="ratio-wrap"></div>
+  <div class="forensic" style="margin-top:1rem"><strong>Cek silang jembatan neto:</strong>
+    liabilitas neto awal 800 → akhir 1.040, naik 240. Sisi lain: beban P&amp;L 376 + rugi OCI 114 − iuran kas 250 = 240. ✓
+    Kedua sisi cocok — bila jembatanmu tidak menutup, ada komponen yang tertukar antara P&amp;L, OCI, dan kas.</div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "DBO Naik, Laba Tetap: Ke Mana Larinya 114?"</h2>
+  <p class="sub">Kamu analis independen. Data <strong>ilustratif</strong> PT Sejahtera Abadi (fiktif):
+    DBO <span style="font-family:var(--font-mono)">5.000 → 5.610</span>, aset program
+    <span style="font-family:var(--font-mono)">4.200 → 4.570</span>, liabilitas neto
+    <span style="font-family:var(--font-mono)">800 → 1.040</span>, beban pensiun di laba rugi
+    <span style="font-family:var(--font-mono)">376</span>, iuran kas
+    <span style="font-family:var(--font-mono)">250</span>, rugi remeasurement di OCI
+    <span style="font-family:var(--font-mono)">114</span> — tetapi laba bersih tahun ini
+    <strong>tidak bergerak</strong> oleh 114 itu.
+    Tugasmu: tulis <strong>analisis tiga lensa</strong> — ke mana larinya 114, dan apa artinya bagi pembaca laporan.
+    Analis yang baik tidak berhenti di "laba tetap"; ia menelusuri <strong>ke mana volatilitas dipindahkan</strong>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menjelaskan <strong>ke mana larinya 114</strong> — actuarial loss 120 dikurangi gain aset 6, parkir di OCI, tidak direklasifikasi ke P&amp;L.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> perusahaan ilustratif ini terlihat tenang di laba bersih — tetapi ketenangan itu dibeli dengan memindahkan volatilitas ke OCI. DBO naik <span class="num">Rp610 juta</span> (5.000 → 5.610), liabilitas neto naik <span class="num">800 → 1.040</span>, dan rugi remeasurement <span class="num">Rp114 juta</span> (actuarial loss 120 − gain aset 6) menggerus ekuitas tanpa menyentuh laba. Yang menggangguku: iuran kas <span class="num">250</span> di bawah beban P&amp;L <span class="num">376</span> — perusahaan membayar lebih kecil dari bebannya, sehingga liabilitas neto membengkak <span class="num">240</span> dalam setahun. Keputusan: TAHAN — beli hanya bila harga sudah mencerminkan liabilitas neto 1.040 dan tren OCI negatif ini.</p>
+<p><strong>Lensa kredit:</strong> sebagai calon pembeli obligasi — kekuatan: program <em>funded</em> dengan <em>funding ratio</em> <span class="num">81,5%</span> (4.570 ÷ 5.610) dan iuran kas yang masih dibayar teratur; risiko: liabilitas neto <span class="num">1.040</span> adalah utang ekonomi yang bersaing dengan utang bank atas kas yang sama, dan <em>actuarial loss</em> <span class="num">120</span> menandakan asumsi tahun lalu terlalu optimistis. <em>Covenant</em> yang saya minta: <em>funding ratio</em> &ge; 75%, iuran kas &ge; beban P&amp;L, dan pengungkapan asumsi diskonto tiap tahun. Kesimpulan: layak dengan harga yang tepat — pensiun <em>funded</em> 81,5% bukan bom waktu, tapi juga bukan tanpa beban.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">5.000 → 5.610</span> dan <span class="num">4.200 → 4.570</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya menutup tepat (DBO: 5.000 + 320 + 350 − 180 + 120 = 5.610; aset: 4.200 + 300 + 250 − 180 = 4.570; cek silang neto 240 = 376 + 114 − 250); lubang terbesar &mdash; angka agregat tidak menunjukkan ASUMSI mana yang meleset hingga menghasilkan <em>actuarial loss</em> 120, dan return aset 300 tidak dirinci per kelas aset; data tambahan yang saya minta &mdash; tabel asumsi aktuaria 3 tahun + analisis sensitivitas ±1 pp + komposisi aset program. Satu hal yang membunuh tesis &ldquo;laba stabil&rdquo;: bila <em>actuarial loss</em> 120 terulang tiap tahun karena diskonto yang dipatok terlalu tinggi — maka 114 bukan kejadian satu kali, melainkan liabilitas yang diakui secara mencicil lewat OCI.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 42.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- Latihan lanjut: kembali ke M7 -->
+<section class="modul-sec" id="latihan-lanjut">
+  <h2>Latihan lanjut · dari mekanika kembali ke catatan</h2>
+  <p class="sub">Semua angka di modul ini ilustratif. Mekanika di atas menjelaskan <em>bagaimana</em> angka pensiun terbentuk;
+    cara <em>membacanya</em> di catatan laporan keuangan sudah diajarkan di
+    <a href="/modul-7/"><strong>Modul 7: Membaca Catatan &amp; Opini Audit</strong></a> — tab "Imbalan Kerja (PSAK 219)",
+    dengan DBO, projected unit credit, liabilitas neto, dan analisis sensitivitas asumsi aktuaria.
+    Uji pemahamanmu di sana: buka tab imbalan kerja M7 dan cocokkan setiap barisnya dengan jembatan DBO 5.000 → 5.610 di modul ini.</p>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-40/" class="pn-prev">← Modul 40</a>
+  <a href="/modul-42/" class="pn-next">Modul 42 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 41 · seluruh angka ilustratif (fiktif) untuk pembelajaran — bukan rekomendasi investasi maupun kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul41.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

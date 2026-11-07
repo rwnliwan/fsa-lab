@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 40 — Obligasi &amp; Utang Jangka Panjang · FSA Lab</title>
+<meta name="description" content="Modul 40 FSA Lab: akuntansi obligasi ilustratif — par vs diskon vs premium, metode bunga efektif PSAK 109, jadwal amortisasi, pelunasan dini, dan obligasi konversi.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-40/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M40</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 43; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 40</span>
+</nav>
+<p class="mod-count">Modul 40 dari 43</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 40</p>
+  <h1>Utang yang Dibayar <em>Lebih Mahal</em> dari Kasnya</h1>
+  <p class="lede"><strong>PERUSAHAAN ILUSTRATIF — PT Dana Abadi (fiktif)</strong>
+    <span class="tag">(seluruh angka fiktif untuk pembelajaran)</span>:
+    menerbitkan obligasi 3 tahun nilai nominal
+    <span style="font-family:var(--font-mono)">Rp10.000</span> juta, kupon
+    <span style="font-family:var(--font-mono)">8%</span> per tahun, saat suku bunga pasar
+    <span style="font-family:var(--font-mono)">10%</span> — sehingga harga terbitnya hanya
+    <span style="font-family:var(--font-mono)">Rp9.502,63</span> juta (diskon
+    <span style="font-family:var(--font-mono)">Rp497,37</span> juta).
+    Kas yang dibayar tiap tahun tetap Rp800 juta, tetapi beban bunga tahun pertama
+    Rp950,26 juta. Selisih Rp150,26 juta itu nyata di laba rugi — meski tidak pernah
+    keluar sebagai kas. Di modul ini kamu membedah mekanika itu: mengapa diskon muncul,
+    bagaimana bunga efektif bekerja, dan kapan pelunasan dini menimbulkan laba atau rugi.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Explorer Obligasi: dari Harga Terbit sampai Pelunasan</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>investasi</strong> (apa arti angka ini bagi pemegang obligasi?),
+    <strong>kredit</strong> (seberapa berat beban utang penerbit?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?).
+    Semua angka <strong>ilustratif</strong> (fiktif): yang penting bukan besarnya, melainkan
+    <strong>cara angka-angka itu saling mengunci</strong>. Acuan: liabilitas keuangan pada
+    biaya perolehan diamortisasi, <strong>PSAK 109 (IFRS 9)</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="pardiskon">Par vs Diskon vs Premium</button>
+    <button class="stmt-tab" data-stmt="efektif">Metode Bunga Efektif</button>
+    <button class="stmt-tab" data-stmt="jadwal">Jadwal Amortisasi</button>
+    <button class="stmt-tab" data-stmt="pelunasan">Pelunasan Dini</button>
+    <button class="stmt-tab" data-stmt="konversi">Obligasi Konversi</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, acuan PSAK, dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Obligasi — Naik atau Turun?</h2>
+  <p class="sub">Enam skenario analis obligasi. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Obligasi Rp10.000 Juta, Kupon 8%, Pasar 10%</h2>
+  <p class="sub">Contoh kerja utama (ilustratif): obligasi 3 tahun PT Dana Abadi (fiktif), nilai nominal Rp10.000 juta, kupon 8% per tahun (kas Rp800 juta), suku bunga pasar 10%. Harga terbit = nilai kini (PV) seluruh arus kas masa depan, didiskonto pada suku bunga pasar 10%:</p>
+  <p class="sub">Harga terbit = 800/1,10 + 800/1,10² + 10.800/1,10³ = 727,27 + 661,16 + 8.114,20 = <strong>Rp9.502,63 juta</strong>. Diskon = 10.000 − 9.502,63 = <strong>Rp497,37 juta</strong>.</p>
+  <div class="tblwrap">
+  <table class="stmt">
+    <tr><th>Tahun</th><th style="text-align:right">Nilai tercatat awal</th><th style="text-align:right">Beban bunga 10%</th><th style="text-align:right">Kas kupon</th><th style="text-align:right">Amortisasi diskon</th><th style="text-align:right">Nilai tercatat akhir</th></tr>
+    <tr><td>1</td><td class="val">9.502,63</td><td class="val">950,26</td><td class="val">800,00</td><td class="val">150,26</td><td class="val">9.652,89</td></tr>
+    <tr><td>2</td><td class="val">9.652,89</td><td class="val">965,29</td><td class="val">800,00</td><td class="val">165,29</td><td class="val">9.818,18</td></tr>
+    <tr><td>3</td><td class="val">9.818,18</td><td class="val">981,82</td><td class="val">800,00</td><td class="val">181,82</td><td class="val">10.000,00</td></tr>
+  </table>
+  </div>
+  <p class="sub">Uji rekonsiliasi: amortisasi 150,26 + 165,29 + 181,82 = 497,37 = diskon awal — dan nilai tercatat akhir tahun ke-3 kembali <strong>tepat</strong> ke 10.000,00. Beban bunga naik tiap tahun (950,26 → 965,29 → 981,82) meski kas kupon tetap 800,00: itulah metode bunga efektif. Hitung sendiri lima angka di bawah, lalu nilai: apakah jadwalmu mengunci?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Diskon 500 Juta: Beban Bunga yang Tak Terlihat di Kas"</h2>
+  <p class="sub">Kamu analis PT Dana Abadi (fiktif). Obligasi 3 tahun, nominal
+    <span style="font-family:var(--font-mono)">Rp10.000</span> juta, kupon
+    <span style="font-family:var(--font-mono)">8%</span>, pasar
+    <span style="font-family:var(--font-mono)">10%</span>: harga terbit
+    <span style="font-family:var(--font-mono)">Rp9.502,63</span> juta, diskon
+    <span style="font-family:var(--font-mono)">Rp497,37</span> juta (dibulatkan "500 juta" di judul case).
+    Tahun pertama: kas kupon keluar Rp800 juta, tetapi beban bunga Rp950,26 juta.
+    Manajemen berkata: "Beban bunga kami cuma Rp800 juta — sebesar kas yang kami bayar."
+    Tugasmu: tulis <strong>analisis tiga lensa</strong> — apakah klaim manajemen itu benar,
+    dan apa yang disembunyikan selisih Rp150,26 juta itu. Analis yang baik tidak percaya
+    pada kas saja; ia menguji apakah <strong>beban yang diakui cocok dengan utang yang ditanggung</strong>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — klaim manajemen BENAR / SALAH, dengan alasan satu kalimat. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari case</strong> — harga terbit, beban bunga, kas kupon, atau amortisasi — dengan satuannya. Bukan &ldquo;besar&rdquo; atau &ldquo;kecil&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko atau asumsi yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (imbal hasil pemegang obligasi), kredit (beban utang penerbit), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> klaim manajemen SALAH — beban bunga tahun pertama <span class="num">Rp950,26 juta</span>, bukan Rp800 juta. Pemegang obligasi menerima kas kupon <span class="num">Rp800 juta</span> tetapi imbal hasil ekonomisnya <span class="num">10%</span> atas nilai tercatat <span class="num">Rp9.502,63 juta</span>; selisih <span class="num">Rp150,26 juta</span> adalah amortisasi diskon — bagian dari imbal hasil yang dibayar dalam bentuk kenaikan nilai tercatat, bukan kas. Investor yang menilai obligasi dari kuponnya saja meremehkan imbal hasil sebenarnya.</p>
+<p><strong>Lensa kredit:</strong> beban utang penerbit LEBIH BERAT dari kasnya — <span class="num">Rp950,26 juta</span> vs kas <span class="num">Rp800 juta</span> di tahun pertama, dan beban itu NAIK tiap tahun (<span class="num">965,29</span> lalu <span class="num">981,82</span>) sementara kas tetap. <em>Covenant</em> berbasis laba (mis. <em>interest coverage</em>) harus memakai beban bunga efektif, bukan kas kupon — memakai kas kupon membuat coverage tampak <span class="num">19%</span> lebih baik dari kenyataan (950,26 ÷ 800 = 1,19). Kesimpulan: utang ini murah di kas, mahal di laba.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">9.502,63 &rarr; 950,26 &rarr; 150,26 &rarr; 9.652,89</span> (ilustratif): yang terverifikasi — aritmetika jadwalnya (amortisasi tiga tahun berjumlah <span class="num">497,37</span> = diskon awal; tahun ke-3 kembali tepat ke <span class="num">10.000</span>); lubang terbesar — suku bunga pasar <span class="num">10%</span> adalah asumsi saat terbit yang tidak tampak di laporan — bila penerbit memakai <span class="num">9%</span>, harga terbit dan beban bunga berubah total; data tambahan yang saya minta &mdash; jadwal amortisasi lengkap di catatan atas laporan keuangan + pengungkapan suku bunga efektif. Satu hal yang membunuh tesis &ldquo;beban bunga cuma Rp800 juta&rdquo;: bila auditor menemukan diskon <span class="num">Rp497,37 juta</span> tidak pernah diamortisasi — maka laba tiga tahun telah dilebihsajikan sebesar diskon itu.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 41.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- Latihan lanjut: obligasi sebagai keputusan kredit (M33) + covenant (M23) -->
+<section class="modul-sec" id="latihan-lanjut">
+  <h2>Latihan lanjut · obligasi sebagai keputusan kredit</h2>
+  <p class="sub">Mekanika akuntansi obligasi sudah dikuasai. Sekarang pakai sebagai analis kredit:
+  <a href="/modul-33/"><strong>Modul 33 · Credit Deep-Dive</strong></a> — obligasi subordinasi idBBB di harga 82, waterfall 40%: soal pricing dan keputusan beli, bukan akuntansi;
+  dan <a href="/modul-23/"><strong>Modul 23 · Covenant</strong></a> — covenant berbasis beban bunga harus memakai bunga efektif, bukan kas kupon.</p>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-39/" class="pn-prev">← Modul 39</a>
+  <a href="/modul-41/" class="pn-next">Modul 41 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 40 · seluruh angka ilustratif (fiktif) untuk pembelajaran — bukan rekomendasi investasi maupun kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul40.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

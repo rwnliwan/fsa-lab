@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """QA Round 18 — guard permanen untuk fix Instinct Recheck Round 14 (9,0/10).
 
-R14-F1: quiz length cue — kunci unik-terpanjang <= 10/190 per bank; tak ada modul
+R14-F1: quiz length cue — kunci unik-terpanjang <= 10/215 per bank; tak ada modul
         dengan >=4 kunci unik-terpanjang; nol qualifier template di distractor.
 R14-F2: Credit Memo satu sumber bunga (tak ada #s-int); spread 2025 = kanonis
         (EBITDA 102.000, bunga 14.000, utang berbunga 201.440).
@@ -56,7 +56,7 @@ function extractArr(src, varName) {
   return eval(src.slice(start, i + 1));
 }
 const out = {modules: {}, bank: null};
-for (let n = 1; n <= 38; n++) {
+for (let n = 1; n <= 43; n++) {
   const p = 'js/modul' + n + '.js';
   try {
     const q = extractArr(fs.readFileSync(p, 'utf8'), 'QUIZ');
@@ -133,8 +133,8 @@ bank_qs = data["bank"] if isinstance(data["bank"], list) else []
 
 t1, u1, qh1, pm1, rd1 = analyze(mod_qs, "modul")
 t2, u2, qh2, pm2, rd2 = analyze(bank_qs, "bank")
-check("F1: 190 soal modul", t1 == 190, f"got {t1}")
-check("F1: 190 soal review bank", t2 == 190, f"got {t2}")
+check("F1: 215 soal modul", t1 == 215, f"got {t1}")
+check("F1: 215 soal review bank", t2 == 215, f"got {t2}")
 check("F1: kunci unik-terpanjang modul <= 10", u1 <= 10, f"{u1}/{t1}")
 check("F1: kunci unik-terpanjang bank <= 10", u2 <= 10, f"{u2}/{t2}")
 bad_mods = [m for m, c in pm1.items() if c >= 4]
@@ -161,7 +161,7 @@ check("F2: stress pakai sel spread 2026F", "data[5].v[2]" in mk)
 
 # ---------- R14-F3 / R15-F2: flag desimal per soal (+ r.dec opsional) ----------
 bad_calls = []
-for n in range(1, 38):
+for n in range(1, 44):
     src = read(f"js/modul{n}.js")
     for m in re.finditer(r'parseIDNumber\(\$\("#rin"\+i\)\.value(.*?)\)', src):
         if "r.dec !== undefined" not in m.group(1):
@@ -191,7 +191,7 @@ function extractArr(src, varName) {
   return eval(src.slice(start, i + 1));
 }
 const bad = [];
-for (let n = 1; n <= 38; n++) {
+for (let n = 1; n <= 43; n++) {
   let lab = null;
   try { lab = extractArr(fs.readFileSync('js/modul' + n + '.js', 'utf8'), 'RATIOS'); } catch (e) {}
   if (!lab) continue;

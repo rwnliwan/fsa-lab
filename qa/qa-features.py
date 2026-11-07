@@ -44,9 +44,9 @@ r = subprocess.run(["python3", f"{WEB}/tools/gen_review_bank.py"],
 check("gen exit 0", r.returncode == 0)
 # Modul yang punya QUIZ = sumber kebenaran (modul 19-24 bisa lahir kapan saja;
 # generator skip yang belum ada — ekspektasi dihitung dinamis, bukan hardcode)
-# Phase 10: M36-M37 lahir -> range 1..37
+# Phase 11: M39-M43 lahir -> range 1..43
 exp_mods = []
-for n in range(1, 38):
+for n in range(1, 44):
     p = f"{WEB}/js/modul{n}.js"
     if os.path.exists(p) and "var QUIZ" in open(p, encoding="utf-8").read():
         exp_mods.append(n)

@@ -23,6 +23,30 @@ val:{ title:"Jembatan ke valuasi — ilustratif (Rp juta)", cols:["Langkah","Ang
   {l:"Utang bersih", v:"180.000", v2:"Rp juta", d:"201.440 − 21.440 = 180.000.", psak:"—", f:"—"},
   {l:"Nilai ekuitas", v:"97.778", v2:"277.778 − 180.000", d:"EV − utang bersih = nilai untuk pemegang saham. Di BAWAH nilai buku 179.440 — utang memakan nilai ekuitas.", psak:"—", f:"EV ≠ nilai ekuitas. Lupa mengurangkan utang bersih = kesalahan valuasi paling klasik."},
   {l:"Cross-check: DCF × multiples (→ M24)", v:"wajib", v2:"jangkar realitas", d:"DCF tidak pernah berdiri sendiri: EV 277.778 (ilustratif) harus masuk akal DIBANDING multiples pasar. M24: EV/EBITDA 7,3x (ilustratif) × EBITDA 102.000 ≈ 744.600 — jauh di atas hasil DCF. Selisihnya = pertanyaan: FCFF 25.000 terlalu pesimis, atau pasar terlalu optimis? DCF selalu di-cross-check dengan multiples — lihat Modul 24.", psak:"—", f:"Analis yang hanya punya DCF bisa 'membuktikan' harga apa pun lewat g dan WACC. Multiples adalah jangkar realitasnya."}
+ ]},
+bank:{ title:"Valuasi Bank Nusantara (M30) — DDM vs residual income, HARUS sama (ilustratif, Rp miliar)", cols:["Langkah","Angka","Catatan"],
+ rows:[
+  {l:"Jangkar: BV Rp9.500 miliar, laba tahun-1 Rp1.900 miliar, ROE 20%", v:"9.500", v2:"ROE 20%",
+   d:"Jangkar yang sama dengan Modul 30 (Bank Nusantara Fiktif): ekuitas / nilai buku (BV) Rp9.500 miliar, laba Rp1.900 miliar → ROE = 1.900 ÷ 9.500 = 20%. Laba tahun-1 (NI1) = 1.900: ROE atas BV awal, sebelum pertumbuhan. Semua angka ilustratif, Rp miliar.",
+   psak:"—", f:"Jangkar yang sama = valuasi yang bisa dicek silang ke M30. Bila valuasi memakai BV lain, tanya dari mana datangnya."},
+  {l:"Payout 50% → dividen tahun-1 Rp950 miliar; g = ROE × retention = 10%", v:"950", v2:"g = 10%",
+   d:"Payout 50% → dividen D1 = 50% × 1.900 = 950; separuh laba ditahan (retention 50%). Bila ROE dipertahankan 20%, laba & BV tumbuh g = ROE × retention = 20% × 50% = 10% per tahun, seterusnya. Hubungan ini KUNCI: g bukan asumsi bebas — ia lahir dari ROE dan kebijakan dividen. Ubah payout, g ikut berubah.",
+   psak:"—", f:"g yang ditebak bebas (mis. '5% karena lazim') tanpa dikaitkan ke ROE × retention = asumsi yang tidak mengunci ke neraca."},
+  {l:"DDM (Gordon): nilai = D1 ÷ (CoE − g) = Rp47.500 miliar", v:"47.500", v2:"950 ÷ (12% − 10%)",
+   d:"Cost of equity (CoE) 12% (ilustratif) → nilai ekuitas = 950 ÷ (12% − 10%) = 950 ÷ 0,02 = 47.500. Dividen adalah arus kas yang BENAR-BENAR diterima pemegang saham bank — karena itu DDM, bukan DCF, adalah model arus kas untuk bank.",
+   psak:"—", f:"Penyebut hanya 2 pp: ubah CoE 12% → 13%, nilai jatuh ke 31.667 (−33%). Sensitivitas ekstrem = alasan valuasi bank selalu disertai skenario."},
+  {l:"Residual income tahun-1: Rp760 miliar = 1.900 − 12% × 9.500", v:"760", v2:"laba − beban modal",
+   d:"Residual income (RI) = laba − (CoE × BV awal) = 1.900 − (12% × 9.500) = 1.900 − 1.140 = 760. Bank mencetak laba DI ATAS yang diminta pemegang saham — selisih 760 itulah 'nilai tambah' tahun ini. Bank dengan ROE = CoE punya RI nol: ia tidak menciptakan nilai di atas biaya modalnya.",
+   psak:"—", f:"RI negatif bertahun-tahun + dividen tetap dibayar = bank memakan modalnya sendiri. Cek RI sebelum memuji ROE."},
+  {l:"Rekonsiliasi: nilai RI = BV + PV(RI) = 9.500 + 38.000 = Rp47.500 miliar ✓", v:"47.500", v2:"sama dengan DDM",
+   d:"RI tumbuh 10% (g) → PV seluruh RI masa depan = 760 ÷ (12% − 10%) = 38.000. Nilai = BV 9.500 + 38.000 = 47.500 — PERSIS sama dengan DDM. Bukan kebetulan: DDM dan RI adalah dua cara menghitung model yang SAMA; bila hasilnya beda, ada asumsi yang tidak konsisten — biasanya g yang tidak sama dengan ROE × retention.",
+   psak:"—", f:"Dua model, satu jawaban = bukti aritmetika mengunci. Satu model tanpa rekonsiliasi = angka yang belum diuji."},
+  {l:"P/BV implisit 5,0x = 47.500 ÷ 9.500", v:"5,0x", v2:"ROE 20% > CoE 12%",
+   d:"P/BV 5,0x terlihat mahal — tapi wajar secara model: bank yang ROE-nya (20%) jauh di atas CoE (12%) LAYAK diperdagangkan jauh di atas nilai buku, karena tiap rupiah modal menghasilkan laba di atas biaya modal. Aturan umum: P/BV > 1 bila ROE > CoE; P/BV < 1 bila ROE < CoE. Bandingkan dengan multiples di M24 — dan ingat g 10% selamanya adalah asumsi agresif: dalam praktik, g jangka panjang mendekati pertumbuhan ekonomi, sehingga nilai wajarnya lebih rendah dari ilustrasi ini.",
+   psak:"—", f:"P/BV tinggi + ROE tinggi = konsisten. P/BV tinggi + ROE ≈ CoE = pasar membayar mahal untuk nilai tambah yang tidak ada."},
+  {l:"Kenapa bukan DCF? Utang bank = bahan baku, bukan pendanaan", v:"bukan DCF", v2:"DDM / RI / P-BV",
+   d:"DCF (FCFF) mengasumsikan utang = pendanaan yang dikurangkan dari nilai perusahaan — untuk bank itu salah kaprah: menghimpun dana (DPK, utang) dan menyalurkannya sebagai kredit ADALAH bisnisnya, seperti persediaan bagi ritel. Perubahan utang bank = operasi, bukan financing — FCFF bank tidak terdefinisi bersih. Karena itu valuasi bank memakai DDM (arus ke pemegang saham), residual income (laba di atas biaya modal), dan P/BV — bukan DCF.",
+   psak:"—", f:"Analis yang memaksakan FCFF ke bank biasanya 'menemukan' nilai berapa pun yang ia mau — karena definisi arusnya bisa digeser-geser. Model yang tepat = model yang arusnya terdefinisi."}
  ]}
 };
 
@@ -177,7 +201,9 @@ var RATIOS = [
  {q:"EV ilustrasi (Rp juta)", hint:"FCFF ÷ (WACC − g): 25.000 ÷ (0,12 − 0,03)", ans:277778, dec:false, tol:500,
   why:"277.778 — dari FCFF perpetuity ilustratif."},
  {q:"Nilai ekuitas ilustrasi (Rp juta)", hint:"EV − utang bersih: 277.778 − 180.000", ans:97778, dec:false, tol:500,
-  why:"97.778 — di bawah nilai buku 179.440. Pelajaran: utang 180.000 memakan nilai ekuitas."}
+  why:"97.778 — di bawah nilai buku 179.440. Pelajaran: utang 180.000 memakan nilai ekuitas."},
+ {q:"Nilai ekuitas Bank Nusantara via DDM (Rp miliar)", hint:"D1 ÷ (CoE − g): 950 ÷ (0,12 − 0,10) — bank ilustratif M30", ans:47500, dec:false, tol:100,
+  why:"47.500 — sama persis dengan residual income (9.500 + 38.000). P/BV implisit 5,0x: ROE 20% > CoE 12% layak di atas nilai buku."}
 ];
 (function(){
   var h = "";

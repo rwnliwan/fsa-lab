@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 39 — Translasi Mata Uang Asing · FSA Lab</title>
+<meta name="description" content="Modul 39 FSA Lab: translasi mata uang asing (PSAK 221 = IAS 21) — mata uang fungsional, transaksi valas, metode kurs berjalan vs temporal, CTA di OCI, dan hiperinflasi IAS 29. Contoh ilustratif PT Cakrawala Global (fiktif), anak di Singapura.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-39/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M39</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 43 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 39</span>
+</nav>
+<p class="mod-count">Modul 39 dari 43</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 39</p>
+  <h1>Laba Naik di Singapura, <em>Ekuitas ke Mana?</em></h1>
+  <p class="lede"><strong>PERUSAHAAN ILUSTRATIF — PT Cakrawala Global (fiktif)</strong>
+    <span class="tag">(seluruh angka fiktif untuk pembelajaran)</span>:
+    induk di Indonesia melaporkan dalam IDR; anak di Singapura beroperasi dalam SGD
+    dengan aset <span style="font-family:var(--font-mono)">SGD 1.000 ribu</span>, liabilitas
+    <span style="font-family:var(--font-mono)">SGD 600 ribu</span>, dan laba bersih
+    <span style="font-family:var(--font-mono)">SGD 100 ribu</span>. Kurs
+    <span style="font-family:var(--font-mono)">IDR/SGD (ilustratif)</span>: saat investasi
+    <span style="font-family:var(--font-mono)">10.000</span>, rata-rata
+    <span style="font-family:var(--font-mono)">11.000</span>, penutup
+    <span style="font-family:var(--font-mono)">12.000</span>.
+    Di modul ini kamu menerjemahkan laporan anak asing ke mata uang induk —
+    mata uang fungsional, current-rate vs temporal, CTA di OCI —
+    dan membuktikan bahwa neraca tertranslasi tetap seimbang sampai rupiah terakhir.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Translasi Explorer: Dari Mata Uang Fungsional sampai CTA</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>kredit</strong> (berani meminjamkan?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka
+    <strong>ilustratif</strong> (fiktif): yang penting bukan besarnya, melainkan
+    <strong>cara angka-angka itu saling mengunci</strong>. Acuan: PSAK 221 = IAS 21.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="func">Mata Uang Fungsional</button>
+    <button class="stmt-tab" data-stmt="trans">Transaksi Valas</button>
+    <button class="stmt-tab" data-stmt="current">Current-Rate Method</button>
+    <button class="stmt-tab" data-stmt="temporal">Temporal Method</button>
+    <button class="stmt-tab" data-stmt="pilih">Kapan Pakai yang Mana</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris translasi ↑</h3>
+    <p>Penjelasan, acuan PSAK 221 (IAS 21), dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Skenario Kurs — Naik atau Turun?</h2>
+  <p class="sub">Enam skenario analis multinasional. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Translate Seperti Analis Multinasional</h2>
+  <p class="sub">Empat perhitungan analis translasi — aset current-rate, laba current-rate, CTA, dan laba temporal. Hitung dari petunjuknya, lalu nilai: angkanya saling mengunci? Semua angka ilustratif (fiktif), kurs IDR/SGD: investasi 10.000, rata-rata 11.000, penutup 12.000.</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Anak di Singapura: laba naik, ekuitas ke mana?"</h2>
+  <p class="sub">Kamu analis grup PT Cakrawala Global (fiktif). Data <strong>ilustratif</strong> anak Singapura:
+    laba bersih <span style="font-family:var(--font-mono)">SGD 100 ribu</span> (tertranslasi
+    <span style="font-family:var(--font-mono)">Rp1.100 juta</span> current-rate),
+    aset tertranslasi <span style="font-family:var(--font-mono)">Rp12.000 juta</span>,
+    ekuitas tertranslasi <span style="font-family:var(--font-mono)">Rp4.800 juta</span> —
+    tetapi di dalamnya ada CTA <span style="font-family:var(--font-mono)">Rp700 juta</span>,
+    dan laba temporalnya <span style="font-family:var(--font-mono)">Rp1.200 juta</span>, bukan
+    <span style="font-family:var(--font-mono)">Rp1.100 juta</span>.
+    Tugasmu: tulis <strong>analisis tiga lensa</strong> — dari mana datangnya Rp700 juta itu,
+    apa artinya bagi pembaca laporan, dan apa yang berubah bila metodenya temporal.
+    Analis yang baik tidak mengagumi satu angka; ia menguji apakah
+    <strong>seluruh ceritanya konsisten</strong>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> laba anak yang 'naik' ke <span class="num">Rp1.100 juta</span> (ilustratif) tidak otomatis berarti operasi membaik: ekuitas tertranslasi <span class="num">Rp4.800 juta</span> berisi CTA <span class="num">Rp700 juta</span> — selisih kurs yang bukan kas dan bisa berbalik bila SGD melemah. Yang menarik: anak menghasilkan laba SGD 100 ribu dari aset SGD 1.000 ribu; yang menggangguku: <span class="num">Rp700 juta</span> dari ekuitas adalah penilaian kembali, bukan laba ditahan kas. Keputusan: TAHAN — beli hanya bila harga sudah mencerminkan bahwa sebagian 'pertumbuhan' ekuitas adalah kurs, bukan operasi.</p>
+<p><strong>Lensa kredit:</strong> sebagai calon pembeli obligasi induk &mdash; kekuatan: aset anak <span class="num">Rp12.000 juta</span> menopang grup dan labanya positif; risiko yang perlu <em>covenant</em>: <span class="num">Rp700 juta</span> ekuitas adalah CTA yang menguap bila SGD melemah, dan utang anak SGD 600 ribu (<span class="num">Rp7.200 juta</span>) membengkak bila SGD menguat. <em>Covenant</em> yang saya minta: ekuitas untuk rasio dihitung tanpa CTA, dan batas utang valas neto. Kesimpulan: CONDITIONAL APPROVE — grup ini sehat bila CTA dikeluarkan dari bantalan modal.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">12.000 = 7.200 + 3.000 + 1.100 + 700</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya (CTA adalah selisih penyeimbang yang tepat); lubang terbesar &mdash; angka agregat tidak menunjukkan kurs historis tiap pos non-moneter dan tanggal pembelian persediaan/aset tetap; data tambahan yang saya minta &mdash; rincian posisi moneter neto awal dan akhir plus jadwal pembelian aset non-moneter. Satu hal yang membunuh tesis &ldquo;ekuitas grup tumbuh&rdquo;: bila SGD kembali ke 10.000, CTA <span class="num">Rp700 juta</span> lenyap dan ekuitas tertranslasi kembali ke <span class="num">Rp4.100 juta</span> tanpa satu pun operasi yang berubah.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 40.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- Latihan lanjut: bandingkan dengan hedge (M29) dan konsolidasi (M35) -->
+<section class="modul-sec" id="latihan-lanjut">
+  <h2>Latihan lanjut · dari translasi ke lindung nilai</h2>
+  <p class="sub">Semua angka di modul ini ilustratif. Kalau translasi sudah dikuasai,
+  bandingkan dengan <a href="/modul-29/"><strong>Modul 29: Hedge Accounting</strong></a> — lindung nilai
+  atas eksposur transaksi dan translasi (PSAK 109) — dan
+  <a href="/modul-35/"><strong>Modul 35: Konsolidasi &amp; Metode Ekuitas</strong></a> — bagaimana
+  anak asing masuk ke laporan konsolidasian induk. Bedakan: translasi mengubah mata uang
+  laporan; hedge mengubah eksposur ekonominya.</p>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-38/" class="pn-prev">← Modul 38</a>
+  <a href="/modul-40/" class="pn-next">Modul 40 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 39 · seluruh angka ilustratif (fiktif) untuk pembelajaran — bukan rekomendasi investasi maupun kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul39.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

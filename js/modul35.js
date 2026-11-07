@@ -80,6 +80,29 @@ forensik:{ title:"Empat sudut forensik grup: di mana nilai bisa bocor lewat stru
    d:"Goodwill 8.000 di contoh ini tidak diamortisasi — wajib diuji penurunan nilai minimal setahun sekali. Manajemen yang 'selalu lolos uji' dengan asumsi diskonto/growth agresif = menunda pengakuan rugi. Uji: sensitivitas asumsi di catatan impairment.",
    tag:"Praktik umum (kasus: M20)",
    k:"Lensa kredit: kreditur menganggap goodwill NOL saat hitung tangible net worth — 8.000 ini bukan penyangga utang."}
+ ]},
+joint:{ title:"Joint arrangements: operasi bersama vs ventura bersama. Contoh angka ILUSTRATIF (Rp juta).", cols:["Bentuk","Perlakuan","Standar"],
+ rows:[
+  {l:"Pengendalian bersama (joint control): keputusan bulat", v:"unanimous consent", v2:"PSAK 111",
+   d:"Joint arrangement = pengaturan di mana dua pihak atau lebih BERBAGI pengendalian — dan pengendalian itu BERSAMA: keputusan tentang aktivitas relevan mensyaratkan persetujuan BULAT (unanimous consent) dari semua pihak yang berbagi pengendalian. Satu pihak tidak bisa memutuskan sendiri, betapapun besar porsinya. Inilah pembeda dari kontrol (PSAK 110: satu pihak memutuskan) dan dari pengaruh signifikan (PSAK 228: satu pihak memengaruhi tapi tidak mengendalikan). PSAK 111 (dulu PSAK 66), setara IFRS 11.",
+   tag:"PSAK 111 (dulu PSAK 66) · IFRS 11",
+   k:"Lensa forensik: 'pengaturan bersama' di catatan tapi satu pihak memutuskan semua hal penting = bukan joint arrangement — uji siapa yang benar-benar memegang veto, jangan percaya labelnya."},
+  {l:"Joint operations: akui BAGIANMU — aset, liabilitas, pendapatan, beban", v:"bagian proporsional", v2:"langsung di laporan",
+   d:"Dalam joint operation, tiap operator punya hak LANGSUNG atas ASET dan kewajiban atas LIABILITAS pengaturan itu. Ia mengakui bagiannya baris per baris di laporan keuangannya sendiri: 50% aset = asetnya, 50% liabilitas = liabilitasnya, 50% pendapatan dan beban = pendapatan dan bebannya. Ini mirip konsolidasi proporsional secara EKONOMI — tapi BUKAN konsolidasi: tidak ada entitas anak, tidak ada NCI, tidak ada goodwill. Contoh: lihat baris contoh di bawah.",
+   tag:"PSAK 111 · joint operations",
+   k:"Lensa kredit: utang bagian operator MASUK neracanya langsung — leverage terbaca penuh. Jangan lewatkan liabilitas joint operation saat hitung D/E."},
+  {l:"Joint ventures: SATU BARIS metode ekuitas — seperti asosiasi", v:"satu baris", v2:"PSAK 228",
+   d:"Dalam joint venture, venturer hanya punya hak atas ASET NETO (ekuitas) pengaturan — bukan atas aset individualnya. Perlakuannya: metode ekuitas (PSAK 228) — satu baris 'investasi pada ventura bersama' di neraca dan satu baris 'bagian laba ventura bersama' di laba rugi. Dividen yang diterima MENGURANGI nilai tercatat investasi — bukan pendapatan; sama seperti asosiasi di tab Metode Pencatatan. Bedanya dengan asosiasi bukan CARA mencatatnya, melainkan SIFAT pengendaliannya (lihat baris berikut).",
+   tag:"PSAK 111 + PSAK 228 · IFRS 11 + IAS 28",
+   k:"Lensa investasi: laba ventura bersama 'satu baris' = laba TANPA kas yang bisa dipakai venturer semaunya — bandingkan bagian laba vs dividen kas yang benar-benar diterima, seperti asosiasi."},
+  {l:"Pembeda dengan asosiasi: veto bersama vs pengaruh sepihak", v:"kontrol vs pengaruh", v2:"bukan persen",
+   d:"Asosiasi (20–50%, presumsi awal): investor punya pengaruh SIGNIFIKAN — bisa memengaruhi kebijakan, tapi pihak lain bisa memutuskan tanpa persetujuannya. Ventura bersama: TIDAK ADA keputusan penting tanpa persetujuan bulat — tiap venturer memegang veto efektif atas aktivitas relevan. Jadi pembedanya bukan PERSEN kepemilikan (JV bisa 50:50, bisa juga 30:70 bila perjanjian memberi hak veto ke minoritas), melainkan ADA-TIDAKNYA pengendalian bersama dalam perjanjian. Rujuk tab Metode Pencatatan untuk ambang 20–50% — jangan hafal persennya, baca perjanjiannya.",
+   tag:"Konsep PSAK 111 vs PSAK 228",
+   k:"Lensa forensik: kepemilikan 50% tanpa veto kontraktual = BUKAN pengendalian bersama — mungkin hanya asosiasi (atau bahkan aset keuangan). Klasifikasi mengikuti perjanjian, bukan persen."},
+  {l:"Contoh ilustratif 50:50 — JV aset 1.000, liabilitas 400, laba 120 (Rp juta)", v:"500 vs 300", v2:"JO vs JV",
+   d:"Dua venturer 50:50. Ventura punya aset 1.000, liabilitas 400 → ekuitas 600; laba tahun berjalan 120. JOINT VENTURE (metode ekuitas): tiap venturer mencatat SATU BARIS investasi 50% × 600 = 300 dan bagian laba 50% × 120 = 60. JOINT OPERATION (bagian langsung): tiap operator mencatat 50% × 1.000 = 500 aset DAN 50% × 400 = 200 liabilitas langsung di neracanya, plus 50% pendapatan dan beban. Perhatikan: eksposur ekonomi SAMA (500 − 200 = 300), tapi TAMPILANNYA beda total — JO menggelembungkan aset & liabilitas, JV menyembunyikannya dalam satu baris. Itulah kenapa klasifikasi JO vs JV mengubah leverage yang terbaca.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Lensa kredit: dua venturer dengan eksposur ekonomi identik bisa menampilkan D/E yang sangat berbeda hanya karena klasifikasi JO vs JV — hitung leverage dengan MEMASUKKAN kembali bagian JV bila perlu."}
  ]}
 };
 

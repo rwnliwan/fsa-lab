@@ -59,7 +59,7 @@ function extractArr(src, varName) {
   return eval(src.slice(start, i + 1));
 }
 const out = {};
-for (let n = 1; n <= 38; n++) {
+for (let n = 1; n <= 43; n++) {
   try {
     const q = extractArr(fs.readFileSync('js/modul' + n + '.js', 'utf8'), 'QUIZ');
     if (q) out[n] = q.map(x => ({o: x.o, a: x.a}));

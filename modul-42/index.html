@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 42 — Akuntansi Asuransi: Membaca Insurer · FSA Lab</title>
+<meta name="description" content="Modul 42 FSA Lab: akuntansi asuransi PSAK 117 (IFRS 17) — building blocks, CSM, insurance revenue vs premi kas, PAA, combined ratio, dan rekonsiliasi CSM 3 tahun atas insurer ilustratif PT Proteksi Sejahtera (fiktif).">
+<link rel="canonical" href="https://fsa-lab.pages.dev/modul-42/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/modul.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/">← FSA Lab</a>
+  <span class="brand"><span class="brand-badge">M42</span></span>
+</nav>
+
+<!-- F08: breadcrumb + hitungan modul (total 43 = jumlah direktori modul-*/ saat generate; update bila modul bertambah) -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/">Beranda</a><span class="sep" aria-hidden="true">/</span>
+  <a href="/#kurikulum">Phase 11</a><span class="sep" aria-hidden="true">/</span>
+  <span aria-current="page">Modul 42</span>
+</nav>
+<p class="mod-count">Modul 42 dari 43</p>
+
+<header class="modul-hero">
+  <p class="kicker">Phase 11 · Topik Lanjutan CFA · Modul 42</p>
+  <h1>Premi Masuk, <em>Revenue Belum Tentu.</em></h1>
+  <p class="lede"><strong>INSURER ILUSTRATIF — PT Proteksi Sejahtera (fiktif)</strong>
+    <span class="tag">(seluruh angka fiktif untuk pembelajaran)</span>:
+    insurer jiwa + umum. Grup kontrak jiwa 3 tahun: premi diterima
+    <span style="font-family:var(--font-mono)">Rp1.200</span> miliar, klaim ekspektasian
+    <span style="font-family:var(--font-mono)">Rp900</span> miliar, beban
+    <span style="font-family:var(--font-mono)">Rp90</span> miliar, risk adjustment
+    <span style="font-family:var(--font-mono)">Rp60</span> miliar — CSM awal
+    <span style="font-family:var(--font-mono)">Rp150</span> miliar, dilepas
+    <span style="font-family:var(--font-mono)">Rp50</span> miliar per tahun.
+    Insurance revenue tahun 1 hanya
+    <span style="font-family:var(--font-mono)">Rp380</span> miliar — bukan 1.200.
+    Di modul ini kamu membaca insurer seperti analis: PSAK 117 (IFRS 17),
+    building blocks, PAA, dan jembatan angka yang harus cocok sampai rupiah terakhir.</p>
+</header>
+
+<!-- A: EXPLORER -->
+<section class="modul-sec" id="explorer">
+  <h2>A · Explorer: Membaca Insurer per Blok PSAK 117</h2>
+  <p class="sub">Klik baris mana pun. <strong>Tiga lensa</strong> kerja di tiap baris —
+    <strong>kredit</strong> (berani meminjamkan?), <strong>investasi</strong> (layak dibeli sahamnya?),
+    <strong>forensik</strong> (angkanya bisa diverifikasi?). Semua angka
+    <strong>ilustratif</strong> (fiktif): yang penting bukan besarnya, melainkan
+    <strong>cara angka-angka itu saling mengunci</strong>.</p>
+  <div class="stmt-tabs">
+    <button class="stmt-tab active" data-stmt="kenapa">1 · Kenapa IFRS 17</button>
+    <button class="stmt-tab" data-stmt="blocks">2 · Building Blocks</button>
+    <button class="stmt-tab" data-stmt="revenue">3 · Revenue vs Expense</button>
+    <button class="stmt-tab" data-stmt="paa">4 · PAA</button>
+    <button class="stmt-tab" data-stmt="finance">5 · Finance + Reasuransi</button>
+    <button class="stmt-tab" data-stmt="baca">6 · Membaca Insurer</button>
+  </div>
+  <div id="stmt-wrap"></div>
+  <div class="explain" id="explain">
+    <h3>Klik salah satu baris ↑</h3>
+    <p>Penjelasan, acuan PSAK 117 (IFRS 17), dan tiga lensa akan muncul di sini.</p>
+  </div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- B: PLAYGROUND -->
+<section class="modul-sec" id="playground">
+  <h2>B · Playground: Skenario Insurer — Naik atau Turun?</h2>
+  <p class="sub">Enam skenario analis asuransi. Tebak arah <strong>dua ukuran</strong> per skenario.</p>
+  <div id="pg-wrap"></div>
+  <p>Skor playground: <span class="pg-score" id="pg-score">Skor: 0 / 12</span></p>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- C: LAB -->
+<section class="modul-sec" id="ratiolab">
+  <h2>C · Lab Hitungan: Rekonsiliasi CSM 3 Tahun (Grup Jiwa Ilustratif)</h2>
+  <p class="sub">Contoh kerja utama — portofolio jiwa grup 3 tahun, seluruh angka <strong>ilustratif</strong> (Rp miliar).
+  Disederhanakan: tanpa akresi bunga dan tanpa perubahan asumsi, pelepasan CSM garis lurus.</p>
+  <div class="tblwrap"><table class="stmt">
+    <tr><th style="text-align:left">Langkah</th><th style="text-align:right">Rp miliar</th><th style="text-align:left">Keterangan</th></tr>
+    <tr><td>Premi diterima (kas, awal kontrak)</td><td class="val">1.200</td><td>Kas masuk — BUKAN revenue</td></tr>
+    <tr><td>Klaim ekspektasian (3 tahun)</td><td class="val">−900</td><td>300 per tahun</td></tr>
+    <tr><td>Beban (akuisisi + administrasi, 3 tahun)</td><td class="val">−90</td><td>30 per tahun</td></tr>
+    <tr><td>Risk adjustment</td><td class="val">−60</td><td>Kompensasi ketidakpastian non-keuangan</td></tr>
+    <tr><td><strong>CSM awal</strong></td><td class="val"><strong>150</strong></td><td>Laba yang belum diakui</td></tr>
+  </table></div>
+  <p class="sub">CSM roll-forward (disederhanakan):</p>
+  <div class="tblwrap"><table class="stmt">
+    <tr><th style="text-align:left">Tahun</th><th style="text-align:right">CSM awal</th><th style="text-align:right">Dilepas</th><th style="text-align:right">CSM akhir</th><th style="text-align:right">Revenue</th><th style="text-align:right">Service expense</th><th style="text-align:right">Service result</th></tr>
+    <tr><td>Tahun 1</td><td class="val">150</td><td class="val">50</td><td class="val">100</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
+    <tr><td>Tahun 2</td><td class="val">100</td><td class="val">50</td><td class="val">50</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
+    <tr><td>Tahun 3</td><td class="val">50</td><td class="val">50</td><td class="val">0</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
+  </table></div>
+  <p class="sub">Revenue tiap tahun = klaim ekspektasian 300 + beban 30 + pelepasan CSM 50 = <strong>380</strong>.
+  Service expense = klaim 300 + beban 30 = <strong>330</strong>. Service result = 380 − 330 = <strong>50</strong> —
+  sama dengan pelepasan CSM, karena dalam contoh ini klaim aktual sama dengan ekspektasi dan tidak ada perubahan asumsi.</p>
+  <p class="sub"><strong>PAA vs general model</strong> (kontrak umum 1 tahun, ilustratif): premi 120, klaim ekspektasian 84,
+  beban 12, risk adjustment 6 → CSM general model = 120 − 84 − 12 − 6 = <strong>18</strong>; revenue general model =
+  84 + 12 + 18 = <strong>114</strong>; revenue PAA = <strong>120</strong> (seluruh premi dialokasikan). Selisih
+  <strong>6</strong> = risk adjustment yang di general model dipisah dan dilepas bertahap, sedangkan di PAA menyatu
+  dalam premi yang dialokasikan.</p>
+  <p class="sub">Empat perhitungan analis asuransi — hitung dari petunjuknya, lalu nilai: angkanya saling mengunci?</p>
+  <div id="ratio-wrap"></div>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- D: CASE + JOURNAL -->
+<section class="modul-sec" id="case">
+  <h2>D · Case: "Premi 1,2 T, Revenue Bukan 1,2 T"</h2>
+  <p class="sub">Kamu analis. Data <strong>ilustratif</strong> PT Proteksi Sejahtera (fiktif):
+    premi diterima <span style="font-family:var(--font-mono)">Rp1.200</span> miliar (grup jiwa 3 tahun),
+    insurance revenue tahun 1 <span style="font-family:var(--font-mono)">Rp380</span> miliar,
+    insurance service result tahun 1 <span style="font-family:var(--font-mono)">Rp50</span> miliar,
+    CSM awal <span style="font-family:var(--font-mono)">Rp150</span> miliar, combined ratio portofolio umum
+    <span style="font-family:var(--font-mono)">94,1%</span> — tetapi klaim aktual tahun 1
+    <span style="font-family:var(--font-mono)">Rp340</span> miliar, di atas ekspektasi
+    <span style="font-family:var(--font-mono)">Rp300</span> miliar, dan reasuransi menanggung 60% atas satu klaim besar
+    <span style="font-family:var(--font-mono)">Rp200</span> miliar.
+    Tugasmu: tulis <strong>mini insurance view</strong> — vonis ringkas —
+    dari tiga lensa. Analis yang baik tidak mengagumi premi; ia menguji apakah
+    <strong>seluruh ceritanya konsisten</strong>.</p>
+  <div class="journal">
+    <div class="journal-tabs">
+      <button class="stmt-tab active" data-lens="invest">Lensa Investasi</button>
+      <button class="stmt-tab" data-lens="credit">Lensa Kredit</button>
+      <button class="stmt-tab" data-lens="forensic">Lensa Forensik</button>
+    </div>
+    <div id="lens-prompt" class="sub"></div>
+    <textarea id="journal-text" placeholder="Tulis analisismu di sini..."></textarea>
+    <div class="meta"><span id="journal-status">Belum ada catatan.</span><span id="journal-count"></span></div>
+  </div>
+<details class="reveal-panel">
+  <summary>Tulis dulu, lalu bandingkan</summary>
+  <div class="reveal-body">
+    <h3>Rubrik self-check</h3>
+    <p class="sub">Tulis dulu jawabanmu di atas &mdash; baru buka panel ini. Centang yang sudah kamu penuhi:</p>
+<label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
+    <h3>Contoh jawaban model</h3>
+    <div class="exemplar">
+<p><strong>Lensa investasi:</strong> insurer ilustratif ini MENARIK di permukaan: CSM awal <span class="num">Rp150 miliar</span> (laba masa depan yang sudah terkunci), <em>combined ratio</em> <span class="num">94,1%</span> (underwriting untung), <em>service result</em> tahun 1 <span class="num">Rp50 miliar</span> &mdash; seluruh angka ilustratif modul. Yang menggangguku: klaim aktual <span class="num">Rp340 miliar</span> melampaui ekspektasi <span class="num">Rp300 miliar</span> &mdash; bila itu tren, bukan sekali kejadian, CSM 150 akan tergerus revisi asumsi. Keputusan: beli HANYA bila harga mencerminkan risiko klaim &mdash; CSM adalah janji, klaim aktual adalah kenyataan.</p>
+<p><strong>Lensa kredit:</strong> sebagai calon pembeli obligasi &mdash; kekuatan: CSM <span class="num">Rp150 miliar</span> + <em>combined ratio</em> 94,1% (ilustratif) = bantalan laba masa depan; risiko yang perlu <em>covenant</em>: klaim aktual melebihi ekspektasi <span class="num">Rp40 miliar</span> di tahun 1 dan ketergantungan pada reasuransi untuk klaim besar (<span class="num">Rp200 miliar</span>, 60% ditanggung reasuradur). <em>Covenant</em> yang saya minta: <em>combined ratio</em> &le; 100%, CSM akhir &ge; <span class="num">Rp100 miliar</span>, dan batas konsentrasi reasuradur tunggal. Kesimpulan: layak dengan harga yang tepat &mdash; insurer sekuat ini jarang <em>default</em>, tapi <em>spread</em> harus membayar risiko klaim.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">1.200 &rarr; 380 &rarr; 50</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya (CSM 150 = 1.200 &minus; 900 &minus; 90 &minus; 60; revenue 380 = 300 + 30 + 50); lubang terbesar &mdash; angka agregat tidak menunjukkan asumsi: klaim ekspektasian 900 bisa terlalu optimistis dan <em>risk adjustment</em> 60 bisa terlalu tipis; data tambahan yang saya minta &mdash; analisis pengalaman klaim 8 kuartal + sensitivitas CSM terhadap perubahan asumsi klaim &plusmn;5%. Satu hal yang membunuh tesis &ldquo;insurer ini sehat&rdquo;: bila klaim aktual 340 adalah awal tren &mdash; maka CSM 150 menyusut tiap tahun dan kontrak yang tampak menguntungkan berubah <em>onerous</em>.</p>
+    </div>
+    <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
+  </div>
+</details>
+</section>
+
+<div class="stripes stripes-thin" aria-hidden="true"></div>
+
+<!-- E: QUIZ + GATE -->
+<section class="modul-sec" id="quiz">
+  <h2>E · Quiz &amp; Gerbang</h2>
+  <p class="sub">5 soal · lulus <strong>≥80%</strong> sebagai checkpoint penguasaan sebelum Modul 43.</p>
+  <div id="quiz-wrap"></div>
+  <button class="btn btn-primary" id="quiz-submit">Kumpulkan Jawaban</button>
+  <div class="gate-box" id="gate-box" style="display:none"></div>
+</section>
+
+<!-- Latihan lanjut: Bedah Sendiri Proteksi (insurer fiktif) -->
+<section class="modul-sec" id="latihan-lanjut">
+  <h2>Latihan lanjut · insurer fiktif, format sungguhan</h2>
+  <p class="sub">Semua angka di modul ini ilustratif. Uji CSM roll-forward, combined ratio, dan insurance revenue
+  di latihan format Bedah Sendiri: <a href="/bedah-sendiri/proteksi/"><strong>Bedah Sendiri: PT Proteksi Sejahtera (fiktif)</strong></a> —
+  baca blind atas ringkasan LK ilustratif, input angka + disiplin sumber, 6 cek mekanis insurer, 3 lensa blind,
+  lalu bandingkan dengan kunci jawaban dari data ilustratif yang sama. Beda dengan
+  <a href="/bedah-sendiri/bbri/"><strong>Bedah Sendiri: BBRI</strong></a> (bank sungguhan, filing asli FY2024) —
+  di sini tidak ada filing asli, jadi seluruh angka dilabeli ilustratif di setiap layar.</p>
+</section>
+
+<!-- F08: navigasi antar-modul (prev/next) -->
+<nav class="mod-pagenav" aria-label="Navigasi modul">
+  <a href="/modul-41/" class="pn-prev">← Modul 41</a>
+  <a href="/modul-43/" class="pn-next">Modul 43 →</a>
+</nav>
+
+<footer>
+  <div class="foot-inner">
+    <span class="brand"><img src="../assets/brand/v1/logo-color.svg" alt="FSA Lab" class="brand-logo"></span>
+    <p>Modul 42 · seluruh angka insurer ilustratif (fiktif) untuk pembelajaran — bukan rekomendasi investasi maupun kredit.</p>
+  </div>
+  <div class="stripes stripes-thin" aria-hidden="true"></div>
+</footer>
+
+<script src="../js/tblwrap.js"></script>
+<script src="../js/mistake-log.js"></script>
+<script src="../js/modul42.js"></script>
+  <script src="../js/track.js"></script>
+  <script src="../js/section-nav.js"></script>
+</body>
+</html>

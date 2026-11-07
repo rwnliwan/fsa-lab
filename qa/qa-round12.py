@@ -24,7 +24,7 @@ check("G1 variant keys 132 varian", r.returncode == 0, r.stderr[-300:] if r.retu
 
 # G2: rubric panel in 37 modules + weekly note
 missing = []
-for m in range(1, 38):
+for m in range(1, 44):
     p = f"modul-{m}/index.html"
     try:
         h = open(p, encoding="utf-8").read()
@@ -32,7 +32,7 @@ for m in range(1, 38):
     except FileNotFoundError: missing.append(p + " (missing)")
 h = open("analisis-mingguan/index.html", encoding="utf-8").read()
 if "Tulis dulu, lalu bandingkan" not in h: missing.append("analisis-mingguan/")
-check("G2 rubric panel 36 pages", not missing, str(missing[:5]))
+check("G2 rubric panel 44 pages", not missing, str(missing[:5]))
 
 # G3: chain gates
 j33 = open("js/modul33.js", encoding="utf-8").read()
@@ -55,12 +55,12 @@ check("G5 honesty/keterbatasan stated",
 
 # G6: mistake-log hooks
 nohook = []
-for m in range(1, 38):
+for m in range(1, 44):
     try:
         j = open(f"js/modul{m}.js", encoding="utf-8").read()
         if "FSAMistake" not in j and "mistake" not in j.lower(): nohook.append(m)
     except FileNotFoundError: nohook.append(m)
-check("G6 mistake-log hooks 37/37", not nohook, str(nohook[:8]))
+check("G6 mistake-log hooks 43/43", not nohook, str(nohook[:8]))
 
 # G7: review bank 175 keys
 r = subprocess.run([sys.executable, "qa/qa-round6.py"], capture_output=True, text=True)

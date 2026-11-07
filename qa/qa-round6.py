@@ -42,9 +42,9 @@ wb = open(WEB+"workbench/fsa_toolkit.py", encoding="utf-8").read()
 wbi = page_all("workbench/index.html")
 
 print("== V1 kunci quiz vs ajaran modul ==")
-check("M20 goodwill a:1", '"Dikurangkan dari tangible net worth","Setara kas","Jaminan utama pinjaman"], a:1}' in m20)
+check("M20 goodwill a:1", '"Dikurangkan dari tangible net worth","Setara kas untuk covenant","Jaminan utama pinjaman bila gagal bayar"], a:1}' in m20)
 check("M20 kunci salah hilang", 'a:2}' not in m20.split("Kreditur menilai goodwill")[1].split("}")[0])
-check("M21 kontinjensi a:2", '"Diungkap sebagai liabilitas kontinjensi","Dicatat sebagai aset"], a:2}' in m21)
+check("M21 kontinjensi a:2", '"Diungkap sebagai liabilitas kontinjensi","Dicatat sebagai aset kontinjensi"], a:2}' in m21)
 
 print("== V2 angka explorer ==")
 check("M23 ruang dividen 16.620", "16.620" in m23)
@@ -66,7 +66,7 @@ check("bank = 5 x modul ber-QUIZ", len(entries) == 5 * len(set(e["m"] for e in e
 qpat = re.compile(r'\{q:"((?:[^"\\]|\\.)*)", o:\[((?:"(?:[^"\\]|\\.)*"\s*,\s*)*(?:"(?:[^"\\]|\\.)*"))\], a:(\d)\}')
 opat = re.compile(r'"((?:[^"\\]|\\.)*)"')
 mm = 0
-for n in range(1, 38):
+for n in range(1, 44):
     src = open(f"{WEB}js/modul{n}.js", encoding="utf-8").read()
     # source: q -> TEKS kunci (bukan posisi, karena bank me-shuffle opsi)
     src_qs = {}
@@ -76,7 +76,7 @@ for n in range(1, 38):
     for e in [x for x in entries if x["m"] == n]:
         if src_qs.get(e["q"], None) != e["o"][e["a"]]:
             mm += 1
-check("185/185 kunci cocok sumber (by teks)", mm == 0)
+check("215/215 kunci cocok sumber (by teks)", mm == 0)
 
 print("== V5 workbench 8 tools (10.7 + 11.4) ==")
 for t in ["beneish_mscore", "dso_screen", "benford_test", "xbrl_parse_ratios",

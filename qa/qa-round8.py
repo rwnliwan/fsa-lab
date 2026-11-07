@@ -89,7 +89,7 @@ for feat in ["memo-kredit/", "komparator/", "risk-map/"]:
 check("workbench covenant_break", "covenant_break" in read("workbench/fsa_toolkit.py"))
 check("workbench dcf_inputs", "dcf_inputs" in read("workbench/fsa_toolkit.py"))
 check("Phase 8 card", "Phase 8" in landing)
-check("hero 10 phase", '<span class="num" id="stat-phase">10</span>' in landing)
+check("hero 11 phase", '<span class="num" id="stat-phase">11</span>' in landing)
 
 # ---------- G7: lens balance — credit & investment features ----------
 print("== G7 lens balance ==")

@@ -12,7 +12,10 @@ capital:{ title:"Permodalan — bantalan pertama saat kredit macet", cols:["Pos"
    psak:"POJK KPMM", f:"Kredit: buffer tebal = bank tahan guncangan; tapi cek komposisi modal — modal inti vs modal pelengkap. Investasi: CAR jumbo = aman, namun modal menganggur menekan ROE. Forensik: CAR naik tanpa setoran modal? Curigai ATMR yang 'menyusut' — cek perubahan bobot risiko."},
   {l:"Rasio ekuitas terhadap aset 11,2%", v:"11,2%", v2:"9.500 ÷ 85.000",
    d:"Ekuitas Rp9.500 miliar ÷ aset Rp85.000 miliar = 11,2% — setiap Rp100 aset didanai Rp11,2 modal sendiri. Leverage aset ≈ 8,9x, konservatif untuk bank. Jembatan ROE: 2,24% × 8,9x ≈ 20%.",
-   psak:"—", f:"Kredit: leverage rendah = klaim kreditur lebih aman. Investasi: leverage adalah mesin ROE bank — tapi leverage tinggi tanpa CAR tebal = rapuh. Forensik: ekuitas naik karena laba ditahan (bagus) atau revaluasi aset (lunak)?"}
+   psak:"—", f:"Kredit: leverage rendah = klaim kreditur lebih aman. Investasi: leverage adalah mesin ROE bank — tapi leverage tinggi tanpa CAR tebal = rapuh. Forensik: ekuitas naik karena laba ditahan (bagus) atau revaluasi aset (lunak)?"},
+  {l:"ATMR Rp42.986 miliar — penyebut CAR", v:"42.986", v2:"9.500 ÷ 22,1%",
+   d:"ATMR (aset tertimbang menurut risiko) = setiap aset dikali bobot risikonya: kredit korporasi berbobot lebih tinggi daripada obligasi pemerintah, misalnya. CAR 22,1% = modal Rp9.500 miliar ÷ ATMR Rp42.986 miliar — ATMR di sini DITURUNKAN dari CAR (9.500 ÷ 22,1%), bukan angka laporan yang berdiri sendiri. Densitas risiko: ATMR ÷ aset = 42.986 ÷ 85.000 ≈ 50,6% — moderat. ATMR naik (kredit tumbuh ke segmen berisiko) → CAR turun walau modal tetap.",
+   psak:"POJK KPMM", f:"Kredit: ATMR yang 'menyusut' tanpa perubahan portofolio = curigai perubahan bobot atau model internal. Investasi: pertumbuhan kredit ke segmen berisiko menggerus CAR lebih cepat daripada pertumbuhan nominalnya. Forensik: bandingkan ATMR ÷ aset antar bank — bank dengan densitas jauh lebih rendah atas portofolio serupa mungkin memakai bobot yang lebih longgar."}
  ]},
 asset:{ title:"Kualitas aset — di sinilah bank hidup atau mati", cols:["Pos","Angka","Konteks"],
  rows:[
@@ -30,7 +33,10 @@ asset:{ title:"Kualitas aset — di sinilah bank hidup atau mati", cols:["Pos","
    psak:"PSAK 109", f:"Kredit: awasi porsi S2 (9,2% di sini) — S2 yang membengkak = NPL masa depan. Investasi: migrasi ke S3 memicu lifetime ECL → beban CKPN melonjak → laba terpukul. Forensik: staging adalah area judgment terbesar bank — bandingkan definisi 'significant increase in credit risk' antar bank."},
   {l:"Kredit restrukturisasi (COVID legacy) Rp3.200 miliar", v:"3.200", v2:"BUKAN NPL",
    d:"Restrukturisasi lancar ≠ NPL: debitur yang direstrukturisasi dan membayar sesuai jadwal baru tercatat performing. Rp3.200 miliar (5,3% kredit) dipantau TERPISAH — bahayanya bila jadwal baru gagal: langsung melompat ke NPL. Stress-test: 30% gagal = Rp960 miliar NPL baru → NPL gross 2,8% → 4,4%.",
-   psak:"POJK Restrukturisasi", f:"Kredit: ini 'NPL tertunda' — minta disclosure vintage & kolektibilitasnya. Investasi: pasar menghukum bank yang restrukturisasinya meledak belakangan. Forensik: restrukturisasi berulang atas debitur yang sama = evergreening — macet yang didandani."}
+   psak:"POJK Restrukturisasi", f:"Kredit: ini 'NPL tertunda' — minta disclosure vintage & kolektibilitasnya. Investasi: pasar menghukum bank yang restrukturisasinya meledak belakangan. Forensik: restrukturisasi berulang atas debitur yang sama = evergreening — macet yang didandani."},
+  {l:"CoC (cost of credit) 3,0% — ilustratif", v:"3,0%", v2:"1.800 ÷ 60.000",
+   d:"CoC = beban CKPN periode berjalan ÷ rata-rata kredit = Rp1.800 miliar (ilustratif) ÷ Rp60.000 miliar = 3,0%. Ini ARUS (beban satu periode) — jangan dicampur dengan STOK total CKPN Rp2.436 miliar di neraca: beban 1.800 menambah cadangan, yang lalu dipakai menutup hapus buku. Harga risiko ini besar: beban CKPN Rp1.800 miliar 'memakan' 1.800 ÷ 3.900 ≈ 46% pendapatan bunga bersih (lihat baris NIM). CoC naik = kualitas kredit memburuk SEBELUM NPL bergerak — beban CKPN adalah sinyal dini.",
+   psak:"PSAK 109", f:"Kredit: CoC naik + coverage turun = cadangan dikuras untuk memoles laba. Investasi: NIM − CoC tidak bisa dikurangkan mentah-mentah (penyebut berbeda: aset produktif vs kredit) — bandingkan dalam rupiah: 3.900 vs 1.800. Forensik: CoC turun sementara NPL naik = cadangan dikuras (lihat coverage)."}
  ]},
 manage:{ title:"Manajemen — dinilai dari keputusan, terbaca dari efisiensi", cols:["Pos","Angka","Konteks"],
  rows:[
@@ -39,12 +45,15 @@ manage:{ title:"Manajemen — dinilai dari keputusan, terbaca dari efisiensi", c
    psak:"—", f:"Kredit: CIR tinggi = buffer laba tipis saat pendapatan bunga tertekan. Investasi: CIR turun 5 pp ≈ laba naik signifikan (operational leverage). Forensik: CIR 'membaik' karena pendapatan one-off — pisahkan recurring vs non-recurring."},
   {l:"Kualitas tata kelola & manajemen risiko", v:"kualitatif", v2:"self-assessment",
    d:"Huruf 'M' dinilai kualitatif: komposisi direksi/komisaris, independensi komite audit & risiko, kedisiplinan limit, budaya kepatuhan. Tidak ada di laporan laba rugi — tapi semua angka di tab lain adalah AKIBAT keputusan manajemen ini.",
-   psak:"POJK Tata Kelola", f:"Kredit: governance lemah = covenant harus lebih ketat. Investasi: bank adalah bisnis kepercayaan — diskon valuasi untuk governance buruk. Forensik: pergantian direksi + strategi 'agresif tumbuh kredit' + NPL naik = pola klasik."}
+   psak:"POJK Tata Kelola", f:"Kredit: governance lemah = covenant harus lebih ketat. Investasi: bank adalah bisnis kepercayaan — diskon valuasi untuk governance buruk. Forensik: pergantian direksi + strategi 'agresif tumbuh kredit' + NPL naik = pola klasik."},
+  {l:"BOPO 62% — label OJK untuk CIR", v:"62%", v2:"sama dengan CIR",
+   d:"BOPO (Biaya Operasional terhadap Pendapatan Operasional) = beban operasional ÷ pendapatan operasional — RUMUS YANG SAMA dengan CIR 62% di baris atas, hanya labelnya label OJK. Bukan rasio kedua, bukan angka kedua: satu ukuran, dua nama. Kalau laporan bank menyebut BOPO 62% dan CIR 62%, itu SATU fakta yang disebut dua kali — jangan dijumlahkan, jangan dirata-rata.",
+   psak:"POJK (istilah OJK)", f:"Kredit: BOPO tinggi = buffer laba tipis saat pendapatan tertekan. Investasi: BOPO turun 5 pp ≈ laba naik signifikan (operational leverage). Forensik: BOPO 'membaik' karena pendapatan one-off — pisahkan recurring vs non-recurring, sama seperti CIR."}
  ]},
 earning:{ title:"Rentabilitas — dari mana laba bank berasal", cols:["Pos","Angka","Konteks"],
  rows:[
   {l:"NIM (Net Interest Margin) 5,2%", v:"5,2%", v2:"bunga bersih ÷ aset produktif",
-   d:"NIM = pendapatan bunga bersih ÷ rata-rata aset produktif = 5,2% — tinggi, ditopang CASA 58% (dana murah). NIM adalah 'upah' bank atas risiko kreditnya: ia harus cukup menutup biaya dana + biaya kredit (cost of risk) + operasional.",
+   d:"NIM = pendapatan bunga bersih ÷ rata-rata aset produktif = Rp3.900 miliar (ilustratif) ÷ Rp75.000 miliar (ilustratif) = 5,2% tepat — tinggi, ditopang CASA 58% (dana murah). NIM adalah 'upah' bank atas risiko kreditnya: ia harus cukup menutup biaya dana + biaya kredit (cost of risk) + operasional.",
    psak:"—", f:"Kredit: NIM tebal = bank mampu menyerap kenaikan CKPN tanpa merugi. Investasi: NIM driver utama ROE bank — tapi NIM tinggi sering berarti segmen berisiko. Forensik: NIM naik saat suku bunga turun? Cek pengakuan bunga dari kredit bermasalah (non-accrual)."},
   {l:"ROA 2,24% · ROE 20,0%", v:"20,0%", v2:"1.900 ÷ 9.500",
    d:"ROA = 1.900 ÷ 85.000 = 2,24%; ROE = 1.900 ÷ 9.500 = 20,0%. Jembatan: ROE = ROA × leverage (2,24% × 8,9x ≈ 20%). ROE 20% = kuat — tapi selalu tanya: dari NIM sehat, atau dari leverage & under-provisioning?",
@@ -218,7 +227,9 @@ var RATIOS = [
  {q:"NPL net (%)", hint:"(NPL bruto Rp1.680 miliar − CKPN atas NPL Rp1.140 miliar) ÷ kredit Rp60.000 miliar × 100%", ans:0.9, tol:0.05,
   why:"0,9% — risiko bersih setelah cadangan. Ingat: yang dikurangkan hanya CKPN atas kredit bermasalah, bukan total CKPN."},
  {q:"Coverage ratio (%)", hint:"Total CKPN Rp2.436 miliar ÷ NPL bruto Rp1.680 miliar × 100%", ans:145.0, dec:true, tol:0.5,
-  why:"145,0% — di atas 100% karena CKPN total mencakup ECL Stage 1 & 2 (PSAK 109). Rekonsiliasi: 1.140 + 1.296 = 2.436."}
+  why:"145,0% — di atas 100% karena CKPN total mencakup ECL Stage 1 & 2 (PSAK 109). Rekonsiliasi: 1.140 + 1.296 = 2.436."},
+ {q:"CoC — cost of credit (%)", hint:"Beban CKPN Rp1.800 miliar (ilustratif) ÷ rata-rata kredit Rp60.000 miliar × 100%", ans:3.0, dec:true, tol:0.05,
+  why:"3,0% — harga risiko kredit periode ini. Ingat: beban CKPN (arus) bukan total CKPN Rp2.436 miliar (stok). Beban 1.800 'memakan' ≈46% pendapatan bunga bersih 3.900."}
 ];
 (function(){
   var h = "";

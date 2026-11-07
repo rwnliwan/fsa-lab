@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="../../assets/brand/v1/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../assets/brand/v1/favicon.ico">
+<link rel="apple-touch-icon" href="../../assets/brand/v1/app-icon-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedah Sendiri: PT Proteksi Sejahtera (fiktif) · FSA Lab</title>
+<meta name="description" content="Latihan analisis insurer fiktif PT Proteksi Sejahtera (seluruh angka ilustratif): input ±19 pos + disiplin definisi, 6 cek mekanis insurer PSAK 117, 3 lensa blind, lalu bandingkan dengan kunci jawaban dari data ilustratif yang sama.">
+<link rel="canonical" href="https://fsa-lab.pages.dev/bedah-sendiri/proteksi/">
+<!-- Fonts: self-hosted WOFF2 subset latin (css/fonts.css). Dulu Google Fonts; dipindah agar CSP ketat tanpa domain eksternal. -->
+<link rel="stylesheet" href="../../css/fonts.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/modul.css">
+<style>
+.mono{font-family:var(--font-mono)}
+.honest{border:2px solid var(--ink);border-left:10px solid var(--sunset-deep);border-radius:var(--radius);
+  background:#fffdf7;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.9rem}
+.honest strong{font-family:var(--font-display)}
+.stepper{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.6rem}
+.step{border:2px solid var(--ink);border-radius:20px;padding:.3rem .9rem;font-size:.82rem;font-weight:600;background:#fffdf7}
+.step.done{background:#eef7e8}
+.step.active{background:var(--mustard)}
+.step.lock{opacity:.55}
+.bstep{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;margin-bottom:1.2rem;overflow:hidden}
+.bstep-head{background:var(--ink);color:#fffdf7;padding:.6rem 1.1rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.bstep-head .n{font-family:var(--font-mono);font-weight:700;background:var(--mustard);color:var(--ink);
+  border-radius:50%;width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.bstep-head h2{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.bstep-body{padding:1rem 1.2rem}
+.bstep-body textarea{width:100%;border:2px solid var(--ink);border-radius:8px;padding:.6rem .8rem;
+  font-family:var(--font-body);font-size:.9rem;min-height:5.5rem;box-sizing:border-box}
+.bstep-body input[type=text]{border:2px solid var(--ink);border-radius:8px;padding:.45rem .6rem;
+  font-family:var(--font-body);font-size:.88rem;box-sizing:border-box}
+.bstep-body select{border:2px solid var(--ink);border-radius:8px;padding:.35rem .4rem;font-size:.82rem;background:#fff}
+.bstep-body input[type=checkbox]{transform:scale(1.3);accent-color:var(--ink)}
+table.figs{width:100%;border-collapse:collapse;font-size:.82rem}
+table.figs th,table.figs td{border:1px solid var(--ink);padding:.4rem .5rem;vertical-align:top}
+table.figs th{background:var(--ink);color:#fffdf7;font-size:.78rem}
+table.figs tr.ndrow td{background:#f3f0e6;color:var(--ink-soft)}
+table.figs input[type=text]{width:100%;min-width:5rem}
+.okmsg{color:#2e5d33;font-weight:600;font-size:.9rem;margin-top:.6rem}
+.ck-row{display:flex;gap:.8rem;align-items:flex-start;border:2px solid var(--ink);border-radius:var(--radius);
+  padding:.7rem .9rem;margin-bottom:.6rem;background:#fffdf7}
+.ck{font-family:var(--font-mono);font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;flex:none;margin-top:.15rem}
+.ck.ok{background:#eef7e8;color:#2e5d33;border:1px solid #2e5d33}
+.ck.bad{background:#fbe9e9;color:#a33;border:1px solid #a33}
+.ck.skip{background:#f0ede4;color:var(--ink-soft);border:1px solid var(--ink-soft)}
+.ck.info{background:#e9ecf5;color:#3a4a7a;border:1px solid #5a6fa8}
+.ck-det{font-size:.88rem}
+.ck-hint{font-size:.82rem;color:var(--ink-soft)}
+.lens{border:2px solid var(--ink);border-radius:var(--radius);background:#fffdf7;padding:1rem 1.1rem;margin-bottom:.9rem}
+.lens h3{font-family:var(--font-display);margin:0 0 .4rem}
+.lens .q{font-size:.88rem;color:var(--ink-soft);margin-bottom:.6rem}
+.cnt{font-size:.78rem;color:var(--ink-soft);margin-top:.3rem}
+.cnt.ok{color:#2e5d33;font-weight:700}
+tr.diverge td{background:#fdf3d7}
+#s4-locknote{display:none;border:2px dashed var(--ink);border-radius:var(--radius);padding:.7rem 1rem;
+  font-size:.88rem;background:#f7f3e8;margin-top:.8rem}
+.btnrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:.9rem}
+.readtask{border:2px dashed var(--ink);border-radius:var(--radius);padding:.8rem 1rem;margin:.8rem 0;background:#fff}
+.readtask li{margin-bottom:.4rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="modul-nav">
+  <a class="back" href="/bedah-sendiri/">← Bedah Sendiri</a>
+  <span class="brand"><span class="brand-badge">BS</span></span>
+</nav>
+
+<header class="modul-hero">
+  <p class="kicker">Latihan · Bedah Sendiri · Insurer fiktif</p>
+  <h1>Bedah Sendiri: <em>Proteksi.</em></h1>
+  <p class="lede">Satu insurer fiktif — <strong>PT Proteksi Sejahtera (fiktif), ringkasan LK ilustratif FY2025</strong> —
+  kamu baca sendiri, angkanya kamu input sendiri, lensanya kamu jawab <em>blind</em>. Baru setelah itu kunci jawaban
+  dibuka dan jawabanmu dibandingkan. Di insurer, rasio adalah <em>kontrak definisi</em> — latihan ini
+  melatihmu membaca definisinya, bukan sekadar angkanya. Prasyarat: <a href="/modul-42/"><strong>Modul 42 (PSAK 117)</strong></a> lulus.</p>
+</header>
+
+<section class="modul-sec">
+  <div class="honest">
+    <strong>Kotak jujur — baca dulu.</strong>
+    Ini <strong>BUKAN filing asli</strong>: PT Proteksi Sejahtera adalah perusahaan <strong>fiktif</strong> dan
+    <strong>seluruh angka ilustratif</strong> untuk latihan format Bedah Sendiri — tidak ada filing insurer real
+    yang diverifikasi di sesi ini. Kunci jawaban di langkah 5 adalah <strong>kunci dari data ilustratif yang sama</strong>
+    (label <strong>[T]</strong> = terhitung dari data ilustratif), <strong>bukan benchmark terverifikasi ke filing</strong>
+    seperti KLBF/MIKA/BBRI. Interpretasi analis di langkah 5 = <strong>satu interpretasi, bukan jawaban benar</strong>.
+    Situs <strong>tidak menilai tulisanmu</strong> — yang dinilai mesin hanya aritmetika dan konsistensi angkamu sendiri.<br>
+    ⚠️ <strong>Jebakan satuan by design:</strong> kartu referensi dalam <strong>jutaan Rupiah</strong>, tapi input default
+    <strong>miliar</strong> — konversi sendiri, seperti analis sungguhan.
+  </div>
+  <div class="stepper" id="stepper" aria-label="Progres 5 langkah"></div>
+</section>
+
+<section class="modul-sec">
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">1</span><h2>Baca dulu (blind)</h2></div>
+    <div class="bstep-body">
+      <div class="tblwrap"><table class="stmt">
+        <tbody>
+          <tr><th style="text-align:left">Perusahaan</th><td>PT Proteksi Sejahtera (<span class="mono">fiktif</span>) — insurer jiwa + umum (ilustratif)</td></tr>
+          <tr><th style="text-align:left">Dokumen</th><td><em>Ringkasan LK ilustratif FY2025</em> — kartu referensi A–D di bawah (bukan filing asli)</td></tr>
+          <tr><th style="text-align:left">Mata uang</th><td><span class="mono">Rupiah</span> — angka kartu referensi dalam <strong>jutaan</strong> Rupiah</td></tr>
+          <tr><th style="text-align:left">Sumber</th><td>Kartu referensi di halaman ini (data ilustratif, disusun untuk latihan) · Materi: <a href="/modul-42/">Modul 42 — Akuntansi Asuransi (PSAK 117)</a></td></tr>
+          <tr><th style="text-align:left">Estimasi</th><td>±30–45 menit baca (fokus: revenue jasa, CSM roll-forward, combined ratio, reasuransi)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="readtask">
+        <strong>🎯 Kartu referensi angka (ilustratif, Rp juta):</strong>
+        <div class="tblwrap"><table class="stmt figs">
+          <thead><tr><th>Kartu</th><th>Pos</th><th>Nilai (Rp juta)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>Premi diterima (gross written premium)</td><td class="mono">1.200.000</td></tr>
+            <tr><td><strong>A</strong></td><td>Insurance revenue FY2025</td><td class="mono">1.080.000</td></tr>
+            <tr><td><strong>A</strong></td><td>Klaim terjadi (incurred claims)</td><td class="mono">620.000</td></tr>
+            <tr><td><strong>A</strong></td><td>Beban akuisisi &amp; administrasi</td><td class="mono">180.000</td></tr>
+            <tr><td><strong>A</strong></td><td>Laba bersih FY2025</td><td class="mono">210.000</td></tr>
+            <tr><td><strong>B</strong></td><td>CSM awal tahun (grup jiwa 3 tahun, lih. M42)</td><td class="mono">150.000</td></tr>
+            <tr><td><strong>B</strong></td><td>Pelepasan CSM tahun berjalan</td><td class="mono">50.000</td></tr>
+            <tr><td><strong>B</strong></td><td>Risk adjustment</td><td class="mono">60.000</td></tr>
+            <tr><td><strong>B</strong></td><td>Fulfilment cash flows</td><td class="mono">1.050.000</td></tr>
+            <tr><td><strong>C</strong></td><td>Premi reasuransi (reinsurance held)</td><td class="mono">120.000</td></tr>
+            <tr><td><strong>C</strong></td><td>Recovery dari reasuradur atas klaim besar</td><td class="mono">60.000</td></tr>
+            <tr><td><strong>D</strong></td><td>Total aset 31 Des 2025</td><td class="mono">2.400.000</td></tr>
+            <tr><td><strong>D</strong></td><td>Total ekuitas 31 Des 2025</td><td class="mono">900.000</td></tr>
+          </tbody>
+        </table></div>
+        <ol>
+          <li>Baca <strong>kartu A–D</strong> — cari tiga angka yang menentukan cerita insurer ini: <strong>insurance revenue</strong>, <strong>CSM akhir</strong> (hitung sendiri), dan <strong>combined ratio</strong> (hitung sendiri).</li>
+          <li>Catat: premi kas <strong>1.200.000</strong> bukan revenue — revenue hanya <strong>1.080.000</strong>. Kenapa selisihnya ada? (Jawaban: M42.)</li>
+        </ol>
+        <p><label>Nilai <strong>insurance revenue</strong> (Rp juta):<br><input type="text" id="s1-rev" placeholder="mis. 1.080.000" style="width:100%;max-width:26rem"></label></p>
+        <p><label>Nilai <strong>CSM akhir</strong> hitunganmu (Rp juta):<br><input type="text" id="s1-csm" placeholder="mis. 100.000" style="width:100%;max-width:26rem"></label></p>
+        <p><label>Nilai <strong>combined ratio</strong> hitunganmu (%):<br><input type="text" id="s1-cr" placeholder="mis. 74,1" style="width:100%;max-width:26rem"></label></p>
+      </div>
+      <p class="sub">Tulis 3 hal ini <em>sebelum</em> menyentuh angka:</p>
+      <p><label><strong>a. Yang menarik</strong></label><br><textarea id="s1-a" placeholder="Satu hal yang menarik perhatianmu dari ringkasan ini…"></textarea></p>
+      <p><label><strong>b. Yang membingungkan</strong></label><br><textarea id="s1-b" placeholder="Satu hal yang belum kamu pahami…"></textarea></p>
+      <p><label><strong>c. Satu pertanyaan</strong></label><br><textarea id="s1-c" placeholder="Satu pertanyaan yang ingin kamu jawab dari angka-angkanya…"></textarea></p>
+      <p><label><input type="checkbox" id="s1-read"> Saya sudah membaca kartu referensinya (honor system — jujur ke diri sendiri).</label></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s1-save">Simpan langkah 1 →</button><span class="okmsg" id="s1-ok"></span></div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">2</span><h2>Input angka + disiplin sumber &amp; definisi</h2></div>
+    <div class="bstep-body">
+      <p class="sub"><span class="mono">17</span> pos kunci + <span class="mono">2</span> rasio. Isi dengan angka <strong>FY2025</strong> (laba rugi)
+      / posisi <strong>31 Des 2025</strong> (neraca) dari kartu referensi. Tiap baris: nilai + kartu sumber + periode + satuan + mata uang + basis.
+      Baris kosong <strong>wajib</strong> dicentang "tidak diungkapkan".
+      Format angka Indonesia (<span class="mono">1.200</span> atau <span class="mono">1.200,5</span>) diterima.
+      <strong>Ingat jebakan satuan:</strong> kartu dalam jutaan, input default miliar.</p>
+      <div class="tblwrap"><table class="stmt figs">
+        <thead><tr><th>Pos</th><th>Nilai</th><th>Kartu</th><th>Periode</th><th>Satuan</th><th>Mata uang</th><th>Basis</th><th title="Tidak diungkapkan di ringkasan">Tdk diungkap?</th></tr></thead>
+        <tbody id="fig-tbody"></tbody>
+      </table></div>
+      <div class="btnrow"><button class="btn btn-primary" id="s2-save">Simpan 19 baris →</button><span class="okmsg" id="s2-ok"></span></div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">3</span><h2>Cek mekanis insurer (atas angkamu sendiri)</h2></div>
+    <div class="bstep-body">
+      <p class="sub">Situs tidak menilai interpretasimu — hanya aritmetika, konsistensi, dan <strong>disiplin definisi</strong>.
+      Toleransi: <strong>±1%</strong> (atau ±Rp1 miliar, mana yang lebih besar); rasio ±0,5pp.
+      <strong>GAGAL = informasi, bukan nilai.</strong></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s3-run">Jalankan 6 cek →</button><span class="okmsg" id="s3-ok"></span></div>
+      <div id="check-results" style="margin-top:1rem"></div>
+      <p id="extra-ratios" style="font-size:.88rem;margin-top:.8rem"></p>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">4</span><h2>Tiga lensa — SEBELUM reveal</h2></div>
+    <div class="bstep-body">
+      <p class="sub">Pola <strong>thesis testing</strong>: tiap jawaban wajib memuat bukti <strong>penguat</strong> +
+      <strong>pematah</strong> + <strong>angka yang dikutip</strong> dari langkah 2 (min. 50 karakter &amp; ada angka).
+      Membuka langkah 5 akan <strong>mengunci</strong> jawaban ini permanen.</p>
+      <div class="lens">
+        <h3>Lensa investasi</h3>
+        <p class="q">Apakah return insurer ini sepadan dengan risiko klaim yang diambil? Tulis SATU bukti yang MENGUATKAN (mis. CSM/service margin/combined ratio) dan SATU yang MEMATAHKAN (mis. tren klaim/ketergantungan reasuransi), beserta angkanya.</p>
+        <textarea id="lens-inv" placeholder="Contoh pola: CSM … menguatkan karena …; tetapi klaim … mematahkan karena …"></textarea>
+        <p class="cnt" id="cnt-inv"></p>
+      </div>
+      <div class="lens">
+        <h3>Lensa kredit</h3>
+        <p class="q">Apakah CSM cukup sebagai bantalan laba masa depan? Bagaimana kualitas underwriting (combined ratio)? Dan seberapa besar ketergantungan pada reasuransi? Bukti penguat + pematah + angka.</p>
+        <textarea id="lens-cred" placeholder="Contoh pola: combined ratio …% menutup klaim …; tetapi …"></textarea>
+        <p class="cnt" id="cnt-cred"></p>
+      </div>
+      <div class="lens">
+        <h3>Lensa forensik</h3>
+        <p class="q">Satu hal tentang CSM / asumsi klaim / risk adjustment yang paling ingin kamu investigasi — dan pertanyaan apa yang kamu ajukan? (Bukan vonis. Contoh pola: "CSM naik tapi klaim aktual naik lebih cepat — kenapa?")</p>
+        <textarea id="lens-foren" placeholder="Contoh pola: saya ingin investigasi … karena angkanya …; pertanyaan saya: …"></textarea>
+        <p class="cnt" id="cnt-foren"></p>
+      </div>
+      <p><label><strong>Vonis 1 kalimat</strong> (beli / tahan / jual / hindari / butuh info + 1 kalimat alasan):</label><br>
+        <input type="text" id="vonis" maxlength="280" placeholder="mis. Tahan — …" style="width:100%"></p>
+      <div class="btnrow"><button class="btn btn-primary" id="s4-save">Simpan 3 lensa + vonis →</button><span class="okmsg" id="s4-ok"></span></div>
+      <div id="s4-locknote">🔒 <strong>Terkunci.</strong> Kunci jawaban sudah dibuka — jawaban blind-mu dijaga apa adanya. Inilah upaya unaided-mu.</div>
+    </div>
+  </div>
+
+  <div class="bstep">
+    <div class="bstep-head"><span class="n">5</span><h2>Kunci jawaban (reveal)</h2></div>
+    <div class="bstep-body">
+      <div id="l5-gate">
+        <p class="sub">Kunci jawaban dari data ilustratif yang sama (±17 angka + 2 rasio [T] + bacaan analis 3 lensa) terbuka
+        <strong>hanya setelah langkah 1–4 selesai</strong>. Membukanya mengunci jawaban langkah 4.
+        Ingat: ini kunci dari <strong>data ilustratif</strong>, bukan benchmark terverifikasi ke filing asli.</p>
+        <div class="btnrow"><button class="btn btn-primary" id="reveal-btn">Buka kunci jawaban →</button></div>
+      </div>
+      <div id="l5-content" style="display:none">
+        <h3>Tabel divergensi — angkamu vs kunci jawaban</h3>
+        <p class="sub">Δ &gt; 1% disorot. <strong>[T]</strong> = terhitung dari data ilustratif. Bukan nilai — peta di mana kamu menyimpang.</p>
+        <div class="tblwrap"><table class="stmt figs">
+          <thead><tr><th>Pos</th><th>Angkamu</th><th>Kunci jawaban</th><th>Δ%</th><th>Sumber</th></tr></thead>
+          <tbody id="div-table"></tbody>
+        </table></div>
+        <h3 style="margin-top:1.4rem">Definisi latihan vs definisimu</h3>
+        <p class="sub">Rasio insurer = kontrak definisi. Bandingkan apa yang dimaksud latihan dengan apa yang kamu pakai.</p>
+        <div class="tblwrap"><table class="stmt figs">
+          <thead><tr><th>Rasio</th><th>Definisi latihan</th><th>Definisimu</th></tr></thead>
+          <tbody id="def-table"></tbody>
+        </table></div>
+        <div id="analyst" style="margin-top:1.4rem"></div>
+        <h3>Refleksi</h3>
+        <p class="sub">Di mana kamu paling menyimpang? Definisi mana yang ternyata berbeda dari dugaanmu? Pertanyaan lensa mana yang paling sulit?</p>
+        <textarea id="reflect" placeholder="Tulis refleksimu di sini — tersimpan otomatis di browser-mu."></textarea>
+        <div class="btnrow"><button class="btn btn-primary" id="copy-lembar">Salin Lembar Bedah →</button><span class="okmsg" id="copy-ok"></span></div>
+        <p style="font-size:.85rem;color:var(--ink-soft)">Lembar Bedah = format yang sama dipakai di ujian
+        (header + verdict 5 baris + 3 lensa + definisi + divergensi). Artefak latihan untuk portofoliomu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="modul-sec" style="padding-top:0">
+  <p style="font-size:.85rem;color:var(--ink-soft)">Bedah Sendiri = latihan kurasi ber-benchmark (Proteksi v1 — insurer fiktif, data ilustratif).
+  Latihan bank sungguhan: <a href="/bedah-sendiri/bbri/">Bedah Sendiri BBRI</a> (filing asli FY2024).
+  Materi: <a href="/modul-42/">Modul 42 — Akuntansi Asuransi (PSAK 117)</a>.
+  Beda dengan <a href="/bedah-buta/">Bedah Buta</a>
+  (emiten bebas pilihanmu, tanpa kunci) dan <a href="/bedah-filing/">Bedah Filing SOCI</a> (walkthrough terpandu).
+  <a href="/">← Kembali ke FSA Lab</a></p>
+</footer>
+
+<script src="../../js/tblwrap.js"></script>
+<script src="../../js/bedah-sendiri-proteksi.js"></script>
+</body>
+</html>
