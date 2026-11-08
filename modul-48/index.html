@@ -342,6 +342,24 @@ DIVIDE (
     menjadi satu peringkat — farmasi, rumah sakit, dan bank menjual risiko yang
     berbeda.</p>
 
+  <h3>Resep Build — dari nol ke dashboard (cek tiap langkah)</h3>
+  <p class="sub">Lima langkah di atas adalah peta; tabel ini adalah resep yang bisa diikuti
+    dari nol, tanpa file .pbix bawaan — file .pbix-mu adalah <strong>hasil
+    build-mu sendiri</strong> (R7). Jangan lanjut ke langkah berikut sebelum cek
+    penerimaannya lolos: satu angka yang meleset hampir selalu berarti nama kolom
+    di rumus tidak sama dengan nama kolom di CSV, atau tipe data Tahun belum Text.</p>
+  <div class="tblwrap"><table>
+    <tr><th>#</th><th>Lakukan</th><th>Cek penerimaan — yang harus terlihat / bernilai berapa</th></tr>
+    <tr><td>R0</td><td>Unduh ketiga CSV dari tautan di atas; instal <strong>Power BI Desktop</strong> (gratis, dari situs resmi Microsoft) dan buka.</td><td>3 file tersimpan. klbf-fsa.csv: 26 kolom, 2 baris data (2023, 2024). mika-fsa.csv: 24 kolom, 2 baris. bbri-fsa.csv: 26 kolom, 2 baris.</td></tr>
+    <tr><td>R1</td><td>Impor KLBF: <strong>Get Data → Text/CSV</strong> → klbf-fsa.csv. Di pratinjau, ubah kolom <span style="font-family:var(--font-mono)">Tahun</span> menjadi <strong>Text</strong>, semua kolom nilai menjadi <strong>Decimal Number</strong>, lalu Load.</td><td>Tabel klbf-fsa: 2 baris. Sel Penjualan_Neto 2024 = 32.627.776.108.026. Laba_Usaha 2023 kosong (null) — biarkan kosong, jangan diisi tebakan.</td></tr>
+    <tr><td>R2</td><td>Ulangi R1 untuk mika-fsa.csv dan bbri-fsa.csv. <strong>Jangan</strong> gabungkan ketiga file menjadi satu tabel.</td><td>mika-fsa: 2 baris. bbri-fsa: 2 baris; baris 2023 BBRI hanya 3 kolom terisi — Pinjaman_Diberikan_Gross 1.197.752.706, Total_Aset 1.965.007.030, Ekuitas_Atribusi_Pemilik_Induk 311.363.556 — sisanya null, itu benar, bukan hilang.</td></tr>
+    <tr><td>R3</td><td>Model data: biarkan ketiga tabel berdiri sendiri — <strong>tanpa relasi</strong> antar tabel, <strong>tanpa tabel kalender</strong>. Kolom Tahun menjadi slicer di tiap halaman.</td><td>Model view: 3 tabel, 0 relasi. Slicer Tahun menampilkan 2023 dan 2024.</td></tr>
+    <tr><td>R4</td><td>Tulis ukuran DAX KLBF &amp; MIKA dari Langkah 3 (klik kanan tabel → New measure). Format rasio sebagai Percentage (2 desimal); Current Ratio dan D/E sebagai Decimal number (2 desimal).</td><td>Dengan filter Tahun = 2024: Gross Margin KLBF 39,71% / MIKA 53,68%; Current Ratio 4,11x / 4,74x; Net Margin (Atribusi) 9,93% / 23,52%; ROE (Ekuitas Akhir) 13,18% / 15,64%; ROE (Rata-Rata Ekuitas Total) 13,58% / 16,46%; ROE DuPont KLBF 9,93% × 1,16 × 1,18 = 13,58%; D/E 0,20x / 0,13x; Kualitas Laba 1,47x / 1,41x.</td></tr>
+    <tr><td>R5</td><td>Tulis ukuran DAX BBRI dari Langkah 3. NIM 7,74% dan NPL 2,78% <strong>tidak</strong> dibuatkan ukuran.</td><td>Dengan filter Tahun = 2024: CASA 67,3%; LDR (Hitung Sendiri) 95,1%; CoC 3,35%; ROA 3,06%; ROE Bank 19,14%. NIM dan NPL tampil hanya sebagai kartu teks berlabel [DIUNGKAP BANK] — tanpa ukuran DAX.</td></tr>
+    <tr><td>R6</td><td>Visual: satu halaman per perusahaan + satu halaman perbandingan. Kartu KPI (satu kartu = satu ukuran + label definisi), line chart 2023→2024 per rasio, bar chart KLBF vs MIKA untuk rasio berdefinisi sama, slicer Tahun di tiap halaman, conditional formatting CoC &gt; 3% kuning.</td><td>Kartu KPI sama persis dengan angka R4/R5. Line chart hanya 2 titik — mis. Gross Margin KLBF 38,83% (2023) → 39,71% (2024). Geser slicer ke 2023: semua kartu ikut berubah; kembali ke 2024: angka kembali. CoC BBRI 3,35% berwarna kuning.</td></tr>
+    <tr><td>R7</td><td>Validasi akhir: kerjakan 6 soal “Buktikan hitunganmu” di bawah, lalu cocokkan satu kartu KPI ke LK auditan (mis. CASA = (374.554.340 + 544.426.947) ÷ 1.365.450.104 = 67,3%). Simpan karyamu sebagai file .pbix-mu sendiri.</td><td>Ke-6 jawaban lab sama dengan kartu KPI dashboard-mu. Bila ada kartu yang tidak cocok, cari salah ketik di CSV dulu, bukan di DAX — dan ingat: modul ini tidak menyediakan file .pbix; yang kamu simpan adalah hasil build-mu.</td></tr>
+  </table></div>
+
   <p class="sub">Buktikan hitunganmu — enam rasio di bawah ini harus cocok dengan kartu KPI
     di dashboard-mu. Ketik jawabanmu (persen tanpa tanda %, Current Ratio sebagai
     desimal — koma desimal boleh ditulis dengan koma atau titik).</p>

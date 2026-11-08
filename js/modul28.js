@@ -45,7 +45,7 @@ foot:{ title:"Peta baca footnote — baca BERURUTAN; yang BERUBAH tahun-ke-tahun
    psak:"PSAK 25", f:"Minta angka dampak kuantitatif perubahan. 'Tidak material' tanpa angka = klaim tanpa bukti."},
   {l:"2 · Estimasi & pertimbangan signifikan", v:"asumsi kunci", v2:"—",
    d:"Umur manfaat aset, cadangan kerugian kredit (ECL), asumsi aktuaria, nilai wajar level 3. Di sinilah laba paling lentur: umur manfaat +2 tahun = beban depresiasi turun = laba naik, tanpa satu rupiah kas.",
-   psak:"PSAK 25, PSAK 71", f:"Uji sensitivitas wajib diungkap untuk estimasi material. Asumsi yang selalu 'tepat di batas optimis' = pola."},
+   psak:"PSAK 25, PSAK 109 (dulu PSAK 71)", f:"Uji sensitivitas wajib diungkap untuk estimasi material. Asumsi yang selalu 'tepat di batas optimis' = pola."},
   {l:"3 · Pihak berelasi", v:"sifat + syarat + saldo", v2:"—",
    d:"Siapa, transaksinya apa, syaratnya (bunga? tenor? jaminan?), saldonya berapa. Red flag: syarat 'sesuai kesepakatan para pihak' tanpa angka — itu bukan pengungkapan, itu sensor.",
    psak:"PSAK 7", f:"Rekonsiliasi: penjualan ke berelasi RpX → piutang berelasi naik RpX? Kas masuk berapa? Selisihnya ke mana?"},
@@ -117,7 +117,7 @@ var CARDS = [
  {t:"Pergantian auditor 3x dalam 4 tahun + restatement laba −30%", q1:"Risiko forensik", q2:"Kepercayaan kreditur", a1:"naik", a2:"turun",
   e:"Opinion shopping + koreksi historis = dua red flag KRITIS sekaligus. Risiko forensik naik tajam; kreditur yang cermat menaikkan spread atau memperketat covenant."},
  {t:"Footnote: kebijakan pendapatan berubah + estimasi ECL melonggar di tahun yang sama", q1:"Kualitas laba", q2:"Risiko forensik", a1:"turun", a2:"naik",
-  e:"Dua pelonggaran akuntansi di tahun yang sama, dua-duanya menaikkan laba (PSAK 25, PSAK 71). Kualitas laba turun; risiko forensik naik — hitung dampak kuantitatif keduanya."}
+  e:"Dua pelonggaran akuntansi di tahun yang sama, dua-duanya menaikkan laba (PSAK 25, PSAK 109 (dulu PSAK 71)). Kualitas laba turun; risiko forensik naik — hitung dampak kuantitatif keduanya."}
 ];
 var OPTS3 = ["naik","turun","tetap"];
 var pgScore = 0, pgDone = 0, pgCards = [];
