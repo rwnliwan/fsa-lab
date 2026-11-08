@@ -5,13 +5,13 @@ var $ = function(s){ return document.querySelector(s); };
 var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
 
 var STMTS = {
-comp:{ title:"5 komponen Z-Score 2025 (Rp juta)", cols:["Komponen","Nilai","Bobot"],
+comp:{ title:"5 komponen Z′-Score 2025 (Rp juta) — bobot model Z′ untuk perusahaan privat", cols:["Komponen","Nilai","Bobot"],
  rows:[
-  {l:"X1 — Modal kerja / total aset", v:"0,26", v2:"1,2×", d:"119.440 ÷ 451.440 = 0,26. Likuiditas jangka pendek.", psak:"—", f:"X1 rendah + X4 rendah = perusahaan kehabisan napas dua sisi."},
-  {l:"X2 — Laba ditahan / total aset", v:"0,18", v2:"1,4×", d:"79.440 ÷ 451.440 = 0,18. Umur & profitabilitas kumulatif.", psak:"—", f:"X2 rendah = perusahaan muda atau riwayat rugi — waspadai dividen besar yang menggerus X2."},
-  {l:"X3 — EBIT / total aset", v:"0,16", v2:"3,3×", d:"72.000 ÷ 451.440 = 0,16. Produktivitas aset; bobot TERBESAR.", psak:"—", f:"X3 paling sensitif dimanipulasi via kapitalisasi beban — cek vs arus kas."},
-  {l:"X4 — Ekuitas / liabilitas", v:"0,66", v2:"0,6×", d:"179.440 ÷ 272.000 = 0,66. Bantalan modal terhadap utang.", psak:"—", f:"X4 turun tajam = leverage naik; cek off-balance-sheet."},
-  {l:"X5 — Penjualan / total aset", v:"1,15", v2:"1,0×", d:"520.000 ÷ 451.440 = 1,15. Perputaran aset = asset turnover.", psak:"—", f:"X5 bisa dipompa via channel stuffing — cek DSO."}
+  {l:"X1 — Modal kerja / total aset", v:"0,26", v2:"0,717×", d:"119.440 ÷ 451.440 = 0,26. Likuiditas jangka pendek.", psak:"—", f:"X1 rendah + X4 rendah = perusahaan kehabisan napas dua sisi."},
+  {l:"X2 — Laba ditahan / total aset", v:"0,18", v2:"0,847×", d:"79.440 ÷ 451.440 = 0,18. Umur & profitabilitas kumulatif.", psak:"—", f:"X2 rendah = perusahaan muda atau riwayat rugi — waspadai dividen besar yang menggerus X2."},
+  {l:"X3 — EBIT / total aset", v:"0,16", v2:"3,107×", d:"72.000 ÷ 451.440 = 0,16. Produktivitas aset; bobot TERBESAR (bobot Z′, bukan bobot Z klasik).", psak:"—", f:"X3 paling sensitif dimanipulasi via kapitalisasi beban — cek vs arus kas."},
+  {l:"X4 — Ekuitas / liabilitas", v:"0,66", v2:"0,420×", d:"179.440 ÷ 272.000 = 0,66. Bantalan modal terhadap utang.", psak:"—", f:"X4 turun tajam = leverage naik; cek off-balance-sheet."},
+  {l:"X5 — Penjualan / total aset", v:"1,15", v2:"0,998×", d:"520.000 ÷ 451.440 = 1,15. Perputaran aset = asset turnover.", psak:"—", f:"X5 bisa dipompa via channel stuffing — cek DSO."}
  ]},
 zone:{ title:"Zona Altman Z′-Score (varian perusahaan privat)", cols:["Zona","Batas","Arti"],
  rows:[
@@ -58,7 +58,7 @@ var CARDS = [
  {t:"Tambah utang bank Rp50.000", q1:"X4", q2:"Z-Score", a1:"turun", a2:"turun",
   e:"Liabilitas naik, ekuitas tetap → X4 turun → Z turun. Leverage menekan skor."},
  {t:"Rugi operasi Rp30.000", q1:"X3", q2:"Z-Score", a1:"turun", a2:"turun",
-  e:"EBIT turun → X3 (bobot 3,3×!) turun → Z turun tajam. Komponen berbobot terbesar paling sensitif."},
+  e:"EBIT turun → X3 (bobot Z′ 3,107×!) turun → Z turun tajam. Komponen berbobot terbesar paling sensitif."},
  {t:"Efisiensi aset naik (penjualan +10%, aset tetap)", q1:"X5", q2:"Z-Score", a1:"naik", a2:"naik",
   e:"Penjualan naik → X5 naik → Z naik. Perputaran aset memperbaiki skor."},
  {t:"Rights issue Rp50.000 tunai", q1:"X4", q2:"Z-Score", a1:"naik", a2:"naik",
@@ -175,7 +175,7 @@ var RATIOS = [
  {q:"Z′-Score 2025 (varian privat)", hint:"0,717×0,26 + 0,847×0,18 + 3,107×0,16 + 0,420×0,66 + 0,998×1,15", ans:2.26, tol:0.05,
   why:"2,26 — grey zone Z′ (1,23–2,90). Belum distress, tapi tidak aman. Z′ = varian yang tepat untuk perusahaan tidak tercatat."},
  {q:"X3 — EBIT / total aset", hint:"Laba operasi ÷ total aset: 72.000 ÷ 451.440", ans:0.16, tol:0.01,
-  why:"0,16 — komponen berbobot terbesar (3,3×)."},
+  why:"0,16 — komponen berbobot terbesar (3,107×, bobot Z′)."},
  {q:"X5 — penjualan / total aset", hint:"Penjualan ÷ total aset: 520.000 ÷ 451.440", ans:1.15, tol:0.02,
   why:"1,15 — sama dengan asset turnover dari Modul 3."},
  {q:"Interest coverage 2025 (x)", hint:"Laba operasi ÷ beban bunga: 72.000 ÷ 14.000", ans:5.14, tol:0.1,

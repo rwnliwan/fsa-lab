@@ -12,13 +12,13 @@ rel:{ title:"Peta pihak berelasi 2025 (Rp juta)", cols:["Pos","2025","% dari pos
   {l:"Pembelian dari afiliasi", v:"180.000", v2:"53,3% dari HPP 338.000", d:"Lebih dari setengah HPP dibeli dari afiliasi. Margin bisa digeser naik-turun lewat harga beli ini.", psak:"PSAK 224 (dulu 7)", f:"Pemasok tunggal yang berelasi = transfer pricing dua arah."},
   {l:"Utang usaha ke afiliasi", v:"30.000", v2:"48,4% dari 62.000", d:"Utang ke afiliasi jarang ditagih agresif — fleksibel, tapi juga bisa jadi 'tabungan' laba.", psak:"—", f:"Utang berelasi yang tak kunjung dibayar = ekuitas terselubung."},
   {l:"Pinjaman diberikan ke afiliasi", v:"40.000", v2:"bunga 4%", d:"Dipinjamkan ke afiliasi dengan bunga 4% saat pasar 12%. Selisih 8% = subsidi Rp3.200/th yang tak tercatat sebagai beban.", psak:"—", f:"Pinjaman murah ke afiliasi = dividen terselubung untuk pengendali."},
-  {l:"Jaminan silang untuk utang afiliasi", v:"80.000", v2:"off-balance-sheet", d:"Menjamin utang afiliasi Rp80.000. Nol rupiah di neraca — sampai afiliasinya gagal bayar.", psak:"PSAK 237 (dulu 57)", f:"Jaminan silang = utang yang menunggu giliran pindah ke neracamu."}
+  {l:"Jaminan silang untuk utang afiliasi", v:"80.000", v2:"off-balance-sheet", d:"Menjamin utang afiliasi Rp80.000 — eksposur maksimum ilustratif. Pengakuan & pengukuran jaminan bergantung pada jenis kontrak, standar yang berlaku, estimasi kerugian, dan hak pemulihan; 'nol rupiah di neraca' hanya benar bila belum ada kewajiban yang harus diakui — bila default sudah probable, PSAK 237 justru mewajibkan provisi.", psak:"PSAK 237 (dulu 57)", f:"Jaminan silang = utang yang menunggu giliran pindah ke neracamu."}
  ]},
 tun:{ title:"Tiga skema tunneling — berapa bocornya? (Rp juta/th)", cols:["Skema","Mekanisme","Bocor/th"],
  rows:[
   {l:"1 · Transfer pricing", v:"Jual 120.000 di 80% harga pasar", v2:"30.000", d:"Harga wajar = 120.000 ÷ 0,8 = 150.000. Selisih 30.000/th pindah diam-diam ke afiliasi. (Ilustrasi: harga pasar diestimasi dari pembanding.)", psak:"—", f:"Margin segmen berelasi anjlok vs segmen independen = jejak transfer pricing."},
   {l:"2 · Pinjaman murah ke afiliasi", v:"40.000 @4% vs pasar 12%", v2:"3.200", d:"40.000 × (12% − 4%) = 3.200/th subsidi bunga. Pemegang saham minoritas ikut menanggung, tak ikut menikmati.", psak:"—", f:"Bandingkan yield pinjaman berelasi vs yield pasar — selisihnya = tunneling terukur."},
-  {l:"3 · Jaminan silang", v:"Menjamin utang afiliasi 80.000", v2:"s/d 80.000", d:"Biaya di laporan = 0. Tapi jika afiliasi default, 80.000 jatuh ke Cemerlang — 44,6% dari ekuitas 179.440.", psak:"PSAK 237 (dulu 57)", f:"Baca catatan kontinjensi: jaminan ke pihak berelasi adalah utang yang belum lahir."},
+  {l:"3 · Jaminan silang", v:"Menjamin utang afiliasi 80.000", v2:"s/d 80.000", d:"Eksposur maksimum 80.000 (biaya di laporan = 0 selama belum ada pengakuan). Bila afiliasi default DAN tanpa pemulihan, beban bisa mencapai 80.000 — 44,6% dari ekuitas 179.440. Asumsi: belum ada provisi sebelumnya dan tidak ada hak pemulihan.", psak:"PSAK 237 (dulu 57)", f:"Baca catatan kontinjensi: jaminan ke pihak berelasi adalah utang yang belum lahir."},
   {l:"Total kebocoran terukur", v:"—", v2:"33.200 + risiko 80.000", d:"30.000 + 3.200 = 33.200/th terukur, PLUS risiko kontinjensi 80.000. Bandingkan dengan laba bersih 45.240.", psak:"—", f:"Tunneling 73% dari laba = laba akuntansi milik pengendali, bukan milikmu."}
  ]}
 };
@@ -56,13 +56,13 @@ var CARDS = [
  {t:"Penjualan ke afiliasi naik 2× lipat, margin grup tetap", q1:"Risiko tunneling", q2:"Kualitas laba", a1:"naik", a2:"turun",
   e:"Laba 'naik' tapi didorong transaksi yang harganya dikontrol pengendali. Analis memberi diskon pada laba berelasi."},
  {t:"Piutang berelasi Rp52.000 dilunasi tunai penuh", q1:"Risiko tunneling", q2:"Kas", a1:"turun", a2:"naik",
-  e:"Kas kembali = bukti transaksi berelasi itu riil. Piutang berelasi yang tak pernah dilunasi = dividen terselubung."},
+  e:"Kas kembali = bukti penagihan, bukan bukti harga & substansi transaksi wajar — kas bisa diputar kembali keesokan harinya. Uji umur piutang, pelunasan setelah tanggal laporan, dan sumber dana afiliasi. Piutang berelasi yang tak pernah dilunasi = sinyal dividen terselubung, untuk diselidiki."},
  {t:"Pinjaman ke afiliasi dinaikkan jadi Rp100.000 @4%", q1:"Subsidi bunga per tahun", q2:"Kas bebas", a1:"naik", a2:"turun",
   e:"Subsidi jadi 100.000 × 8% = 8.000/th. Kas perusahaan bekerja untuk afiliasi, bukan untukmu."},
  {t:"Transfer pricing dikoreksi ke harga pasar penuh", q1:"Kebocoran per tahun", q2:"Laba operasi", a1:"turun", a2:"naik",
   e:"Kebocoran 30.000/th berhenti; laba operasi naik 30.000. Inilah kenapa otoritas pajak mengincar transfer pricing."},
  {t:"Afiliasi yang dijamin (Rp80.000) gagal bayar", q1:"Kewajiban kontinjensi", q2:"Ekuitas", a1:"naik", a2:"turun",
-  e:"Jaminan berubah jadi utang sungguhan 80.000 — 44,6% ekuitas lenyap dalam sehari. Inilah bahaya off-balance-sheet."},
+  e:"Jaminan berubah jadi utang sungguhan hingga 80.000 — sampai 44,6% ekuitas — bila afiliasi default DAN tanpa pemulihan, serta belum ada provisi sebelumnya. Inilah bahaya off-balance-sheet: eksposur maksimumnya nyata, realisasinya bersyarat."},
  {t:"Restrukturisasi sepengendali dicatat per PSAK 338", q1:"Laba dari transaksi", q2:"Selisih dicatat ke", a1:"tetap", a2:"naik",
   e:"PSAK 338: transfer antar entitas sepengendali pakai NILAI BUKU — tak boleh ada laba dari jual-beli dengan diri sendiri. Selisihnya masuk ekuitas."}
 ];
@@ -175,7 +175,7 @@ var RATIOS = [
  {q:"Konsentrasi penjualan berelasi 2025 (%)", hint:"Penjualan berelasi ÷ penjualan × 100: 120.000 ÷ 520.000 × 100", ans:23.1, tol:0.3,
   why:"23,1% — hampir seperempat penjualan ke pihak yang harganya bisa diatur pengendali."},
  {q:"Konsentrasi piutang berelasi 2025 (%)", hint:"Piutang berelasi ÷ piutang neto × 100: 52.000 ÷ 104.000 × 100", ans:50.0, dec:true, tol:0.5,
-  why:"50,0% — setengah piutang di afiliasi. Lebih tinggi dari porsi penjualannya (23,1%) = kas tak kembali."},
+  why:"50,0% — setengah piutang di afiliasi. Lebih tinggi dari porsi penjualannya (23,1%) = SINYAL untuk diselidiki, bukan bukti kas tak kembali (saldo vs arus beda periode; cek termin & umur piutang)."},
  {q:"Kebocoran transfer pricing (Rp juta/th)", hint:"Harga wajar − harga jual: 120.000 ÷ 0,8 − 120.000", ans:30000, dec:false, tol:500,
   why:"30.000/th — 66% dari laba bersih 45.240 mengalir keluar lewat 'harga saudara'."},
  {q:"Subsidi bunga pinjaman afiliasi (Rp juta/th)", hint:"Pinjaman × (bunga pasar − bunga afiliasi): 40.000 × (12% − 4%)", ans:3200, dec:false, tol:100,

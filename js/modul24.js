@@ -18,9 +18,9 @@ mult:{ title:"Multiples 2025 — harga saham ilustratif Rp5.600/lembar, 100 jt s
 trap:{ title:"Jebakan multiples — angka yang sama, kesimpulan yang salah", cols:["Jebakan","Angka","Pelajaran"],
  rows:[
   {l:"E negatif", v:"n.m.", v2:"—", d:"P/E perusahaan rugi = tidak bermakna (negatif/tak hingga). Jangan dipaksa — pakai EV/penjualan atau normalisasi laba.", psak:"—", f:"'P/E murah' dari E negatif adalah jebakan paling memalukan di ruang interview."},
-  {l:"One-off dalam E", v:"14,4x vs 12,4x", v2:"—", d:"Laba jual aset 8.000 (sebelum pajak) → continuing EPS 390,0 → P/E continuing 14,4x, bukan 12,4x. Headline menipu 2 poin.", psak:"—", f:"Selalu hitung multiple dari continuing earnings (M11: normalisasi)."},
-  {l:"Beda framework", v:"15,6x vs 12,4x", v2:"—", d:"Versi US GAAP (LIFO): NI 35.880 → EPS 358,8 → P/E 15,6x. Perusahaan SAMA, P/E beda 3,2 poin — hanya karena metode persediaan.", psak:"PSAK 202 = FIFO/rata-rata; US GAAP boleh LIFO", f:"Bandingkan multiple lintas framework tanpa normalisasi = bandingkan apel vs jeruk (lihat Toggle)."},
-  {l:"Buyback mengecilkan pembagi", v:"EPS naik, laba tetap", v2:"—", d:"Buyback 10% saham → saham beredar menyusut → EPS naik ~11% → P/E turun. Laba total TETAP — multiple 'membaik' tanpa perbaikan bisnis.", psak:"—", f:"Cek: EPS naik karena laba tumbuh, atau karena pembaginya menyusut?"},
+  {l:"One-off dalam E", v:"14,4x vs 12,4x", v2:"—", d:"Laba jual aset 8.000 (sebelum pajak) → Adjusted EPS (ilustratif) 390,0 → P/E adjusted 14,4x, bukan 12,4x. Headline menipu 2 poin. Ini adjusted/normalized EPS, bukan 'continuing EPS' formal (operasi yang dilanjutkan pun bisa memuat one-off) — lihat M9.", psak:"—", f:"Selalu hitung multiple dari adjusted/normalized earnings (M9: normalisasi)."},
+  {l:"Beda framework", v:"15,6x vs 12,4x", v2:"—", d:"Versi US GAAP (LIFO): NI 35.880 → EPS 358,8 → P/E 15,6x — dengan NI 35.880 sebagai ASUMSI ilustratif terpisah: saldo LIFO reserve Rp12.000 saja tidak menentukan selisih laba periode (butuh perubahan reserve selama periode + dampak pajaknya). Perusahaan SAMA, P/E beda 3,2 poin — hanya karena metode persediaan.", psak:"PSAK 202 = FIFO/rata-rata; US GAAP boleh LIFO", f:"Bandingkan multiple lintas framework tanpa normalisasi = bandingkan apel vs jeruk (lihat Toggle)."},
+  {l:"Buyback mengecilkan pembagi", v:"EPS naik, laba tetap", v2:"—", d:"Buyback 10% saham → saham beredar menyusut → EPS naik ~11% → P/E turun — DENGAN ASUMSI harga saham & laba total tetap, dan saham dibeli kembali untuk seluruh periode EPS. Laba total TETAP — multiple 'membaik' tanpa perbaikan bisnis.", psak:"—", f:"Cek: EPS naik karena laba tumbuh, atau karena pembaginya menyusut?"},
   {l:"P/B & revaluasi", v:"turun tanpa sebab bisnis", v2:"—", d:"Revaluasi tanah +50.000 (PSAK 216) menaikkan nilai buku → P/B turun dan terlihat 'murah' di kertas. Bisnisnya tidak berubah.", psak:"PSAK 216 (dulu 16)", f:"Tanya: siapa penilainya, kenapa sekarang?"}
  ]}
 };
@@ -60,13 +60,13 @@ var CARDS = [
  {t:"Harga saham −30%, fundamental tetap", q1:"P/E", q2:"Risiko value trap", a1:"turun", a2:"naik",
   e:"P/E turun 30% = terlihat murah. Tapi tanya KENAPA harga jatuh: multiple murah + bisnis memburuk = value trap, bukan diskon."},
  {t:"Buyback 10% saham pakai kas", q1:"EPS", q2:"P/E", a1:"naik", a2:"turun",
-  e:"Saham beredar −10% → EPS +11% → P/E turun. Laba total TETAP — multiple 'membaik' tanpa perbaikan bisnis apa pun."},
+  e:"Saham beredar −10% → EPS +11% → P/E turun — dengan asumsi harga saham & laba tetap dan buyback berlaku penuh satu periode EPS. Laba total TETAP — multiple 'membaik' tanpa perbaikan bisnis apa pun."},
  {t:"EBITDA tetap, utang naik Rp100.000 (akuisisi)", q1:"EV", q2:"EV/EBITDA", a1:"naik", a2:"naik",
   e:"EV = market cap + utang bersih. Utang +100.000 → EV +100.000 → EV/EBITDA naik. Leverage menaikkan multiple walau operasi tetap."},
  {t:"Revaluasi tanah +Rp50.000 (PSAK 216)", q1:"Nilai buku/lembar", q2:"P/B", a1:"naik", a2:"turun",
   e:"Ekuitas +50.000 → nilai buku/lembar naik → P/B turun. Terlihat 'murah' — padahal bisnis tidak berubah. Jebakan P/B klasik emiten properti."},
  {t:"Disajikan versi US GAAP: LIFO reserve Rp12.000", q1:"Laba (E)", q2:"P/E", a1:"turun", a2:"naik",
-  e:"NI 45.240 → 35.880 → EPS 358,8 → P/E 12,4x → 15,6x. Perusahaan sama, multiple beda — normalisasi dulu sebelum bandingkan lintas framework."}
+  e:"NI 45.240 → 35.880 (asumsi ilustratif — bukan hasil yang disimpulkan dari saldo reserve 12.000) → EPS 358,8 → P/E 12,4x → 15,6x. Perusahaan sama, multiple beda — normalisasi dulu sebelum bandingkan lintas framework."}
 ];
 var OPTS3 = ["naik","turun","tetap"];
 var pgScore = 0, pgDone = 0, pgCards = [];

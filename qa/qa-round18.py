@@ -14,6 +14,14 @@ R18-F7 (polish Nov 2026): tie-luck / luck-pass tiap modul <= 25% (model R18 §3:
         gate 4/5; implementasi kanonis qa/qa-luckpass.py).
 R18-F8 (QA-update Nov 2026): koefisien Dechow Model 1 di M25 terkunci (rumus
         lengkap 7 koefisien terbitan + contoh F = 2,25; tanpa koefisien draf 2007).
+R18-F9 (QA-update Nov 2026, ronde 7 MF-4): bobot tabel komponen M15 WAJIB bobot
+        Z′ (0,717 / 0,847 / 3,107 / 0,420 / 0,998) — bobot klasik 3,3× hanya
+        boleh hidup di baris hibrida berlabel; Z′ dihitung ulang = 2,2609.
+R18-F10 (QA-update Nov 2026, ronde 7 MF-6): 430,9 di M27 WAJIB dilabeli dilusi
+        MAKSIMUM / Basic EPS setelah exercise — tidak pernah "Diluted EPS".
+R18-F11 (QA-update Nov 2026, ronde 7 MF-5): piutang usaha M16 WAJIB pendekatan
+        sederhana PSAK 109 (lifetime ECL, tanpa stage); staging hanya sebagai
+        ilustrasi pendekatan umum (pinjaman/obligasi).
 """
 import json
 import os
@@ -329,6 +337,50 @@ check("F8: rumus Dechow Model 1 lengkap (7 koefisien terbitan)", _DECHOW in _m25
 check("F8: tanpa koefisien draf 2007 (1,437/1,125/0,207/2,947)",
       not any(x in _m25 for x in ["1,437", "1,125", "0,207", "2,947"]))
 check("F8: contoh F = 2,25", "F = 0,00834 ÷ 0,0037 = 2,25" in _m25)
+
+# ---------- R18-F9: bobot Z′ M15 (ronde 7 MF-4) ----------
+# Tabel comp WAJIB memakai bobot Z′ privat; bobot klasik (3,3× dkk.) hanya
+# boleh muncul di baris hibrida yang sudah berlabel "bukan model resmi".
+_m15 = read("js/modul15.js")
+_comp = _m15.split("zone:{")[0].split("comp:{", 1)[1]
+_ZPRIME = ["0,717×", "0,847×", "3,107×", "0,420×", "0,998×"]
+check("F9: tabel comp M15 pakai bobot Z′ (0,717/0,847/3,107/0,420/0,998)",
+      all(w in _comp for w in _ZPRIME), str([w for w in _ZPRIME if w not in _comp]))
+check("F9: tabel comp M15 tanpa bobot klasik (1,2/1,4/3,3/0,6/1,0×)",
+      not any(w in _comp for w in ["1,2×", "1,4×", "3,3×", "0,6×", "1,0×"]))
+check("F9: '3,3×' hanya di baris hibrida berlabel", _m15.count("3,3×") == 1
+      and "Hibrida ilustratif (bukan model resmi)" in _m15)
+check("F9: kartu + lab M15 pakai 3,107× (bukan 3,3×)",
+      "bobot Z′ 3,107×" in _m15 and "(3,107×, bobot Z′)" in _m15)
+_z = 0.717 * 0.26 + 0.847 * 0.18 + 3.107 * 0.16 + 0.420 * 0.66 + 0.998 * 1.15
+check("F9: Z′ hitung ulang = 2,2609 (→ 2,26)", abs(_z - 2.2609) < 1e-9, f"got {_z:.4f}")
+
+# ---------- R18-F10: 430,9 bukan diluted EPS (ronde 7 MF-6) ----------
+_m27 = read("js/modul27.js")
+check("F10: tak ada kartu M27 ber-q2 'Diluted EPS'", '"Diluted EPS"' not in _m27)
+check("F10: kartu exercise pakai 'Basic EPS (setelah exercise)'",
+      '"Basic EPS (setelah exercise)"' in _m27)
+check("F10: 430,9 dilabeli dilusi MAKSIMUM, BUKAN diluted EPS PSAK 233",
+      "BUKAN diluted EPS PSAK 233" in _m27 and "dilusi MAKSIMUM ilustratif" in _m27)
+check("F10: RAKB = LJK; laporan keberlanjutan = LJK+Emiten+PP (ronde 7 MF-7)",
+      "LJK menyusun RAKB; LJK, Emiten & Perusahaan Publik menerbitkan laporan keberlanjutan" in _m27
+      and "Emiten & lembaga jasa keuangan menyusun RAKB" not in _m27)
+
+# ---------- R18-F11: simplified approach piutang M16 (ronde 7 MF-5) ----------
+_m16 = read("js/modul16.js")
+check("F11: M16 sebut pendekatan sederhana PSAK 109 (lifetime ECL, tanpa stage)",
+      "pendekatan sederhana" in _m16 and "tanpa stage 1/2/3" in _m16)
+check("F11: NOTE_PIUTANG tampil di tab ecl", "NOTE_PIUTANG" in _m16
+      and 'if(key==="ecl")' in _m16)
+check("F11: tabel ECL M16 berlabel ilustrasi pendekatan umum",
+      "ilustrasi pendekatan umum" in _m16)
+check("F11: tak ada staging piutang (kartu/kuis/lab M16)",
+      "Piutang Rp5.000 migrasi ke stage 3" not in _m16
+      and "Stage 3 dalam ECL berarti piutang" not in _m16
+      and "piutang pindah stage 1→2→3" not in _m16)
+_m11 = read("js/modul11.js")
+check("F11: NOTE_PIUTANG M11 bertahan (fix R6 SF-4)", "NOTE_PIUTANG" in _m11
+      and "pendekatan sederhana" in _m11)
 
 print()
 if fails:

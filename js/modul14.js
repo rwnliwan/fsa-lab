@@ -237,7 +237,7 @@ var QUIZ = [
  {q:"Metode LIFO di PSAK…", o:["Dilarang","Boleh","Tak diatur","Wajib"], a:0},
  {q:"Reversal impairment di US GAAP…", o:["Boleh","Tak diatur","Dilarang","Wajib"], a:2},
  {q:"Bunga dibayar di US GAAP diklasifikasikan…", o:["Investasi","Operasi","Pendanaan","Ekuitas"], a:1},
- {q:"Development cost di US GAAP dicatat…", o:["Beban","Aset","Ekuitas","Tidak dicatat"], a:0},
+ {q:"Biaya R&D umum di US GAAP (di luar software & pengecualian lain) dicatat…", o:["Beban","Aset","Ekuitas","Tidak dicatat"], a:0},
  {q:"Analis peduli beda PSAK vs GAAP karena…", o:["Kepatuhan regulasi","Kemudahan audit","Perhitungan pajak","Komparabilitas"], a:3}
 ];
 (function(){

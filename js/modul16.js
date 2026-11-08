@@ -12,9 +12,9 @@ klas:{ title:"Klasifikasi instrumen keuangan — PSAK 109", cols:["Kategori","Pe
   {l:"FVTPL", v:"Nilai wajar via laba rugi", v2:"Trading / gagal SPPI", d:"Kategori sisa. Perubahan nilai wajar langsung ke laba rugi — laba jadi volatil mengikuti pasar.", psak:"PSAK 109 (dulu 71)", f:"FVTPL besar + laba stabil = curiga; cek instrumen apa yang disembunyikan di sini."},
   {l:"Uji SPPI", v:"Solely Payments of Principal & Interest", v2:"Arus kas = pokok + bunga?", d:"Syarat arus kas kontraktual. Gagal SPPI → otomatis FVTPL, tidak bisa AC/FVOCI.", psak:"PSAK 109 (dulu 71)", f:"Struktur eksotis (derivatif melekat) = gagal SPPI = FVTPL."}
  ]},
-ecl:{ title:"ECL 3 stage — piutang Cemerlang 2025 (Rp juta)", cols:["Stage","Piutang","ECL"],
+ecl:{ title:"ECL 3 stage — ilustrasi pendekatan umum (Rp juta)", cols:["Stage","Piutang","ECL"],
  rows:[
-  {l:"Stage 1 — lancar", v:"80.000", v2:"800 (1%)", d:"Risiko kredit belum naik signifikan. ECL 12 bulan: 80.000 × 1% = 800.", psak:"PSAK 109 (dulu 71)", f:"Stage 1 terlalu gemuk = manajemen enggan mengakui kenaikan risiko."},
+  {l:"Stage 1 — lancar", v:"80.000", v2:"800 (1%)", d:"Risiko kredit belum naik signifikan. ECL 12 bulan: 80.000 × 1% = 800. (Ilustrasi pendekatan umum; piutang usaha memakai pendekatan sederhana PSAK 109: lifetime ECL tanpa stage 1/2/3 — lihat catatan di bawah tabel.)", psak:"PSAK 109 (dulu 71)", f:"Stage 1 terlalu gemuk = manajemen enggan mengakui kenaikan risiko."},
   {l:"Stage 2 — risiko naik", v:"18.000", v2:"900 (5%)", d:"Risiko naik signifikan sejak pengakuan awal. ECL seumur hidup: 18.000 × 5% = 900.", psak:"PSAK 109 (dulu 71)", f:"Migrasi 1→2 yang lambat = tunda beban. Bandingkan dengan DSO 73 hari."},
   {l:"Stage 3 — gagal bayar", v:"10.100", v2:"2.400 (23,8%)", d:"Bukti objektif impairment. 10.100 × 23,8% = 2.400.", psak:"PSAK 109 (dulu 71)", f:"Stage 3 = 9,3% dari bruto. Naik tiap tahun = kualitas pelanggan memburuk."},
   {l:"TOTAL", v:"108.100", v2:"4.100 (3,8%)", d:"800 + 900 + 2.400 = 4.100 = allowance di neraca ✓. Neto: 108.100 − 4.100 = 104.000 ✓.", psak:"PSAK 109 (dulu 71)", f:"ECL forward-looking: naik SEBELUM gagal bayar. Model incurred lama menunggu rugi dulu."}
@@ -29,12 +29,15 @@ fv:{ title:"Hierarki nilai wajar — PSAK 113 (dulu 68): seberapa 'bisa dicek' a
  ]}
 };
 
+var NOTE_PIUTANG = '<div class="explain" style="margin-bottom:1rem"><h3>Piutang usaha: pendekatan sederhana PSAK 109</h3><p>Piutang usaha memakai <strong>pendekatan sederhana</strong> (<em>simplified approach</em>) PSAK 109: cadangan <strong>lifetime ECL</strong> dihitung sejak pengakuan awal &mdash; <strong>tanpa stage 1/2/3</strong> dan tanpa menilai apakah risiko kredit naik signifikan. Jadi baris Stage 1/2/3 di tabel di atas adalah ilustrasi pendekatan umum (untuk pinjaman dan obligasi, misalnya), BUKAN cara cadangan piutang usaha dihitung.</p><p><strong>Contoh:</strong> tagihan baru Rp10.000 ke pelanggan dengan histori gagal bayar 2% langsung dicadangkan lifetime ECL Rp200 (2% &times; 10.000) sejak hari pertama &mdash; tidak menunggu 12 bulan, tidak menunggu memburuk. Konsisten dengan tabel: cadangan 4.100 atas bruto 108.100 = ECL rate 3,8% &mdash; seluruhnya lifetime ECL pendekatan sederhana, bukan cadangan 12 bulan.</p></div>';
 function fmtStmt(key){
   var s = STMTS[key], h = '<table class="stmt"><tr><th>'+s.cols[0]+'</th><th style="text-align:right">'+s.cols[1]+'</th><th style="text-align:right">'+s.cols[2]+'</th></tr>';
   s.rows.forEach(function(r,i){
     h += '<tr class="clickable" data-stmt="'+key+'" data-i="'+i+'"><td>'+r.l+'</td><td class="val">'+r.v+'</td><td class="val" style="color:var(--ink-soft)">'+r.v2+'</td></tr>';
   });
-  return h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
+  var out = h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
+  if(key==="ecl"){ out += NOTE_PIUTANG; }
+  return out;
 }
 function renderStmt(key){
   $("#stmt-wrap").innerHTML = fmtStmt(key);
@@ -59,12 +62,12 @@ renderStmt("klas");
 
 /* ---------- PLAYGROUND ---------- */
 var CARDS = [
- {t:"Piutang Rp5.000 migrasi ke stage 3", q1:"ECL", q2:"Laba", a1:"naik", a2:"turun",
-  e:"Stage 3 = tarif tertinggi → ECL naik → beban naik → laba turun."},
+ {t:"Pinjaman Rp5.000 migrasi ke stage 3", q1:"ECL", q2:"Laba", a1:"naik", a2:"turun",
+  e:"Stage 3 = tarif tertinggi → ECL naik → beban naik → laba turun. (Pendekatan umum untuk pinjaman/obligasi — piutang usaha tidak pakai stage.)"},
  {t:"Obligasi FVTPL, pasar bergejolak", q1:"Volatilitas laba", q2:"Sensitivitas ke pasar", a1:"naik", a2:"naik",
   e:"FVTPL: nilai wajar via laba rugi → pasar goyang, laba ikut goyang."},
  {t:"Ekonomi memburuk tajam", q1:"Migrasi stage", q2:"ECL", a1:"naik", a2:"naik",
-  e:"Forward-looking: piutang pindah stage 1→2→3 → ECL naik SEBELUM gagal bayar terjadi."},
+  e:"Forward-looking: pinjaman/obligasi pindah stage 1→2→3 → ECL naik SEBELUM gagal bayar terjadi. (Piutang usaha tidak pakai stage — lihat catatan pendekatan sederhana di tabel ECL.)"},
  {t:"Suku bunga naik 2%", q1:"Nilai wajar obligasi", q2:"OCI", a1:"turun", a2:"turun",
   e:"Bunga naik → harga obligasi turun → FVOCI mencatat rugi di OCI."},
  {t:"Lunasi obligasi yang dimiliki Rp10.000", q1:"Aset keuangan", q2:"Kas", a1:"turun", a2:"naik",
@@ -181,11 +184,11 @@ var RATIOS = [
  {q:"ECL total 2025 (Rp juta)", hint:"ECL stage 1 + 2 + 3: 800 + 900 + 2.400", ans:4100, dec:false, tol:50,
   why:"4.100 — sama persis dengan allowance di neraca ✓."},
  {q:"Porsi stage 3 dari piutang bruto (%)", hint:"10.100 ÷ 108.100 × 100", ans:9.3, tol:0.2,
-  why:"9,3% piutang sudah gagal bayar — pantau trennya tiap tahun."},
+  why:"9,3% — porsi stage 3 pada ilustrasi pendekatan umum di atas (bukan cadangan piutang usaha — piutang memakai lifetime ECL tanpa stage)."},
  {q:"ECL rate keseluruhan (%)", hint:"ECL total ÷ piutang bruto × 100: 4.100 ÷ 108.100 × 100", ans:3.8, tol:0.2,
   why:"3,8% — cadangan rata-rata atas seluruh piutang bruto."},
- {q:"Piutang stage 1 (Rp juta)", hint:"Lihat tabel ECL 3 stage di atas", ans:80000, dec:false, tol:500,
-  why:"80.000 — 74% piutang masih lancar (stage 1)."}
+ {q:"Porsi stage 1 — ilustrasi pendekatan umum (Rp juta)", hint:"Lihat tabel ECL 3 stage di atas", ans:80000, dec:false, tol:500,
+  why:"80.000 — 74% dari bruto pada ilustrasi pendekatan umum (stage 1 = ECL 12 bulan; piutang usaha sendiri tidak di-stage)."}
 ];
 (function(){
   var h = "";
@@ -211,7 +214,7 @@ var RATIOS = [
 
 /* ---------- JOURNAL ---------- */
 var LENSES = {
- invest:"Lensa investasi — Stage 3 = 9,3% dari piutang. Apakah ini mengancam laba masa depan? Tulis 3 baris.",
+ invest:"Lensa investasi — Stage 3 = 9,3% dari bruto (ilustrasi pendekatan umum). Apakah ini mengancam laba masa depan? Tulis 3 baris.",
  credit:"Lensa kredit — Cadangan 4.100 atas bruto 108.100. Cukup konservatif? Apa yang kamu tanyakan ke manajemen?",
  forensic:"Lensa forensik — ECL adalah area judgment terbesar. Tulis 3 cara manajemen bisa mengecilkan cadangan — dan cara mendeteksinya."
 };
@@ -241,7 +244,7 @@ setLens("invest");
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
  {q:"FVTPL artinya instrumen diukur pada…", o:["Biaya perolehan diamortisasi","Nilai wajar via laba rugi","Nilai wajar via OCI","Harga perolehan historis yang tidak pernah direvaluasi"], a:1},
- {q:"Stage 3 dalam ECL berarti piutang…", o:["Lancar (tanpa bukti impairment)","Menunggak ringan (SICR terdeteksi)","Gagal bayar (bukti objektif impairment)","Baru diterbitkan (belum ada riwayat bayar)"], a:2},
+ {q:"Stage 3 dalam ECL berarti aset keuangan…", o:["Lancar (tanpa bukti impairment)","Menunggak ringan (SICR terdeteksi)","Gagal bayar (bukti objektif impairment)","Baru diterbitkan (belum ada riwayat bayar)"], a:2},
  {q:"Bedanya ECL dengan model incurred lama…", o:["ECL menunggu rugi terjadi","Keduanya berbasis kerugian historis","Incurred lebih antisipatif","ECL ekspektasian ke depan"], a:3},
  {q:"Reklasifikasi kategori instrumen keuangan…", o:["Dilarang total tanpa kecuali","Bebas kapan saja sesuai keinginan","Boleh kapan saja selama harga pasar berubah","Jarang, hanya saat model bisnis berubah"], a:3},
  {q:"Efek FVTPL terhadap laba rugi…", o:["Volatil mengikuti pasar","Laba selalu stabil","Tidak masuk laba rugi","Naik terus mengikuti pasar"], a:0}

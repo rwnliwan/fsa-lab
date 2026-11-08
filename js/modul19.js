@@ -10,8 +10,8 @@ k10:{ title:"Anatomi 10-K — laporan tahunan perusahaan AS", cols:["Bagian","Is
   {l:"Item 1 · Bisnis", v:"Model bisnis & operasi", v2:"baca pertama", d:"Apa yang dijual, ke siapa, bagaimana menghasilkan uang — konteks untuk SEMUA angka.", psak:"—", f:"Bisnis yang tak bisa dijelaskan dalam 2 kalimat = red flag."},
   {l:"Item 1A · Faktor risiko", v:"Daftar risiko", v2:"jangan di-skip", d:"Risiko yang diakui perusahaan sendiri — dibaca sebagai daftar cek, bukan ramalan harga.", psak:"—", f:"Risiko yang hilang dibanding kompetitor = patut dicurigai."},
   {l:"Item 7 · MD&A", v:"Pembahasan manajemen", v2:"narasi vs angka", d:"Penjelasan manajemen atas hasil, likuiditas & prospek — WAJIB dibandingkan dengan Item 8.", psak:"—", f:"Narasi optimis + angka memburuk = cek classification shifting."},
-  {l:"Item 8 · Laporan keuangan", v:"LK diaudit + catatan", v2:"sumber angka", d:"Neraca, laba rugi, arus kas, ekuitas + catatan kaki. Satu-satunya bagian yang diaudit penuh.", psak:"—", f:"Catatan related-party & kebijakan akuntansi = tempat mayat disembunyikan."},
-  {l:"Item 9A · Kontrol internal", v:"Efektivitas kontrol", v2:"material weakness?", d:"Opini atas kontrol internal pelaporan keuangan. 'Material weakness' = angkanya boleh diragukan.", psak:"—", f:"Material weakness + pergantian auditor = lampu merah ganda."},
+  {l:"Item 8 · Laporan keuangan", v:"LK diaudit + catatan", v2:"sumber angka", d:"Neraca, laba rugi, arus kas, ekuitas + catatan kaki. Bagian utama yang menjadi objek opini audit laporan keuangan.", psak:"—", f:"Catatan related-party & kebijakan akuntansi = tempat mayat disembunyikan."},
+  {l:"Item 9A · Kontrol internal", v:"Efektivitas kontrol", v2:"material weakness?", d:"Penilaian/pengungkapan terkait kontrol internal pelaporan keuangan, sesuai status & kewajiban filer (atestasi auditor atas ICFR tidak berlaku untuk semua kategori filer — 'bila berlaku'). 'Material weakness' = angkanya boleh diragukan.", psak:"—", f:"Material weakness + pergantian auditor = lampu merah ganda."},
   {l:"Part III · via proxy", v:"Gaji & related-party", v2:"rujuk DEF 14A", d:"10-K merujuk ke proxy statement untuk kompensasi eksekutif & transaksi pihak berelasi — dokumen forensik terkaya.", psak:"—", f:"Transaksi dengan perusahaan milik direksi = baca kontraknya, bukan ringkasannya."}
  ]},
 src:{ title:"EDGAR vs IDX — dua gerbang filing", cols:["Aspek","EDGAR (AS)","IDX (Indonesia)"],
@@ -235,7 +235,7 @@ setLens("invest");
 
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
- {q:"10-K itu…", o:["Laporan kuartalan perusahaan AS yang diaudit","Laporan tahunan perusahaan AS yang diaudit","Pengumuman insiden material ke SEC","Proxy statement untuk rapat pemegang saham"], a:1},
+ {q:"10-K itu…", o:["Laporan kuartalan perusahaan AS yang memuat laporan keuangan auditan","Laporan tahunan perusahaan AS yang memuat laporan keuangan auditan","Pengumuman insiden material ke SEC","Proxy statement untuk rapat pemegang saham"], a:1},
  {q:"Merger diumumkan pagi ini. Dokumen resmi tercepat yang dibuka…", o:["10-K","10-Q","Proxy DEF 14A","8-K"], a:3},
  {q:"Gaji CEO dan transaksi pihak berelasi dicari di…", o:["Proxy DEF 14A","Item 7 (MD&A)","Item 1 (bisnis)","8-K"], a:0},
  {q:"Laporan keuangan auditan emiten Indonesia diunduh dari…", o:["sec.gov","Kantor OJK","idx.co.id","BPS"], a:2},

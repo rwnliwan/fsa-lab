@@ -17,7 +17,7 @@ esop:{ title:"ESOP / MSOP — ILUSTRATIF: Cemerlang kanonis TIDAK punya ESOP; an
  ]},
 esg:{ title:"ESG disclosure — kewajiban emiten Indonesia & standar global", cols:["Aturan","Isi pokok","Status"],
  rows:[
-  {l:"POJK 51/POJK.03/2017", v:"laporan keberlanjutan wajib", v2:"emiten & LJK", d:"POJK 51/2017 mewajibkan emiten dan lembaga jasa keuangan menyusun Rencana Aksi Keuangan Berkelanjutan (RAKB) dan menerbitkan LAPORAN KEBERLANJUTAN tahunan — terpisah atau bagian dari laporan tahunan.", psak:"POJK 51/2017", f:"Laporan ada tapi isinya templat generik + foto CSR = sinyal greenwashing. Bandingkan angka (emisi, energi) antar tahun — bukan narasinya."},
+  {l:"POJK 51/POJK.03/2017", v:"laporan keberlanjutan wajib", v2:"RAKB: LJK; laporan: LJK+Emiten+PP", d:"RAKB wajib disusun oleh Lembaga Jasa Keuangan (LJK); LAPORAN KEBERLANJUTAN tahunan wajib diterbitkan oleh LJK, Emiten, dan Perusahaan Publik — terpisah atau bagian dari laporan tahunan. (POJK 51/POJK.03/2017: jangan campur subjek kedua kewajiban ini.)", psak:"POJK 51/2017", f:"Laporan ada tapi isinya templat generik + foto CSR = sinyal greenwashing. Bandingkan angka (emisi, energi) antar tahun — bukan narasinya."},
   {l:"Isi pokok laporan keberlanjutan", v:"E, S, G", v2:"—", d:"Lingkungan (emisi, energi, air, limbah), Sosial (tenaga kerja, K3, masyarakat), Tata kelola (struktur, etik, anti-korupsi). POJK 51 menuntut penjelasan strategi keberlanjutan, bukan sekadar daftar kegiatan CSR.", psak:"POJK 51/2017", f:"Cek konsistensi: klaim 'ramah lingkungan' di laporan vs denda lingkungan di CALK kontinjensi. Kontradiksi = red flag."},
   {l:"IFRS S1", v:"pengungkapan sustainability umum", v2:"efektif 2024 (global)", d:"IFRS S1 (sumber: IFRS Foundation): kerangka umum pengungkapan risiko & peluang terkait sustainability yang memengaruhi prospek arus kas, akses pendanaan, dan biaya modal.", psak:"IFRS S1", f:"S1 memaksa manajemen bicara soal risiko yang DULU bisa disembunyikan di narasi. Baca bagian 'risiko' — di situlah kejujuran diuji."},
   {l:"IFRS S2", v:"pengungkapan terkait iklim", v2:"efektif 2024 (global)", d:"IFRS S2 (sumber: IFRS Foundation): pengungkapan KHUSUS iklim — emisi GRK scope 1-2-3, target transisi, analisis skenario, dan ketahanan strategi bisnis terhadap perubahan iklim.", psak:"IFRS S2", f:"Scope 3 (rantai pasok) adalah tempat angka 'hilang' paling sering. Emisi scope 1 kecil + scope 3 tak diungkap = cerita belum lengkap."},
@@ -58,18 +58,18 @@ renderStmt("esop");
 var CARDS = [
  {t:"MSOP 5 jt opsi: fair value 12.000, vesting 4 thn (ilustratif)", q1:"Beban tahunan", q2:"Laba bersih", a1:"naik", a2:"turun",
   e:"PSAK 102: 12.000 ÷ 4 = 3.000/tahun diakui SELAMA vesting. Beban naik → laba turun 3.000/thn — padahal belum ada satu opsi pun yang di-exercise."},
- {t:"Semua 5 jt opsi di-exercise (ilustratif)", q1:"Saham beredar", q2:"Diluted EPS", a1:"naik", a2:"turun",
-  e:"Saham 100 → 105 juta → 45.240 ÷ 105 = 430,9 (vs basic 452,4). Laba sama, pembagi membesar — inilah dilusi."},
+ {t:"Semua 5 jt opsi di-exercise (ilustratif)", q1:"Saham beredar", q2:"Basic EPS (setelah exercise)", a1:"naik", a2:"turun",
+  e:"Saham 100 → 105 juta → basic EPS setelah exercise 45.240 ÷ 105 = 430,9 (vs basic 452,4 sebelum exercise). Ini dilusi MAKSIMUM ilustratif — SEMUA opsi dihitung penuh — BUKAN diluted EPS PSAK 233: metode baku (treasury stock method) menganggap proceeds exercise dipakai buyback, sehingga tambahan bersih < 5 jt dan diluted EPS-nya lebih tinggi dari 430,9."},
  {t:"Harga saham jatuh 40% → strike price di-repricing turun", q1:"Nilai transfer ke karyawan", q2:"Kepercayaan investor", a1:"naik", a2:"turun",
   e:"Repricing menghidupkan kembali opsi yang 'tenggelam' — karyawan diuntungkan atas kegagalan. Pemegang saham menanggung, kepercayaan turun."},
  {t:"Grant date selalu di harga terendah bulan itu", q1:"Probabilitas kebetulan", q2:"Risiko backdating", a1:"turun", a2:"naik",
   e:"Backdating: tanggal grant dimundurkan agar opsi langsung in-the-money. Pola berulang di titik terendah = hampir pasti disengaja."},
  {t:"POJK 51/2017: emiten wajib lapor keberlanjutan", q1:"Biaya kepatuhan", q2:"Risiko reputasi (bila patuh)", a1:"naik", a2:"turun",
   e:"Laporan wajib = biaya (data, assurance, SDM). Imbalannya: risiko reputasi turun bila pengungkapannya jujur dan konsisten antar tahun."},
- {t:"IFRS S2: ungkap emisi scope 1-2-3 + target iklim", q1:"Transparansi risiko iklim", q2:"Biaya modal (jangka panjang)", a1:"naik", a2:"turun",
-  e:"Risiko iklim yang terukur = risiko yang bisa dihargai pasar. Transparansi menaikkan kepercayaan → premi risiko menyusut → biaya modal berpotensi turun."}
+ {t:"IFRS S2: ungkap emisi scope 1-2-3 + target iklim", q1:"Transparansi risiko iklim", q2:"Biaya modal (jangka panjang)", a1:"naik", a2:"tidak dapat ditentukan",
+  e:"Risiko iklim yang terukur = risiko yang bisa dihargai pasar. Transparansi BERPOTENSI menurunkan premi risiko bila pasar menilai risikonya lebih rendah dari dugaan — tapi bila pengungkapan justru mengungkap risiko lebih besar dari dugaan, biaya modal bisa NAIK. Arahnya tidak dapat ditentukan dari pengungkapan saja."}
 ];
-var OPTS3 = ["naik","turun","tetap"];
+var OPTS3 = ["naik","turun","tetap","tidak dapat ditentukan"];
 var pgScore = 0, pgDone = 0, pgCards = [];
 function renderPg(){
   var h = "";
@@ -240,7 +240,7 @@ var QUIZ = [ {q:"Fakta kanonis: PT Cemerlang Abadi TIDAK punya ESOP. Maka contoh
  {q:"Menurut PSAK 102, beban share-based payment diakui…", o:["Selama periode vesting, berdasar fair value pada grant date","Saat opsi di-exercise oleh karyawan yang bersangkutan","Tidak diakui — cukup diungkap di CALK","Hanya bila harga saham naik di atas strike price yang disepakati"], a:0},
  {q:"Dilusi MAKSIMUM ilustratif = 45.240 ÷ 105 (tanpa treasury stock method) sama dengan… (Rp)", o:["452,4","445,0","460,2","430,9"], a:3},
  {q:"Treasury stock method intinya…", o:["Semua opsi karyawan langsung dihitung penuh sebagai saham baru yang beredar tanpa asumsi buyback dari proceeds exercise","Proceeds dari exercise DIANGGAP dipakai buyback saham di pasar — tambahan bersih lebih kecil dari jumlah opsi","Opsi karyawan tidak pernah bersifat dilutif bagi pemegang saham lama perusahaan","Metode ini hanya berlaku untuk opsi yang sudah vesting penuh oleh karyawan"], a:1},
- {q:"POJK 51/2017 mewajibkan…", o:["Emiten & lembaga jasa keuangan menyusun RAKB dan menerbitkan laporan keberlanjutan","Semua perusahaan di Indonesia wajib menerbitkan laporan keuangan bilingual setiap tahun buku","Hanya BUMN yang wajib melaporkan emisi karbonnya ke KLHK","Semua ESOP wajib diganti dengan bonus tunai bagi karyawan"], a:0}];
+ {q:"POJK 51/2017 mewajibkan…", o:["LJK menyusun RAKB; LJK, Emiten & Perusahaan Publik menerbitkan laporan keberlanjutan","Semua perusahaan di Indonesia wajib menerbitkan laporan keuangan bilingual setiap tahun buku","Hanya BUMN yang wajib melaporkan emisi karbonnya ke KLHK","Semua ESOP wajib diganti dengan bonus tunai bagi karyawan"], a:0}];
 (function(){
   var h = "";
   QUIZ.forEach(function(q,i){

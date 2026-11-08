@@ -51,16 +51,16 @@ renderStmt("tri");
 
 /* ---------- PLAYGROUND ---------- */
 var CARDS = [
- {t:"Target laba tak masuk akal dari direksi", q1:"Risiko fraud", q2:"Skor M", a1:"naik", a2:"naik",
-  e:"Tekanan ekstrem = sisi pertama segitiga. Target mustahil hampir selalu dibayar dengan manipulasi."},
+ {t:"Target laba tak masuk akal dari direksi", q1:"Risiko fraud", q2:"Skor M", a1:"naik", a2:"tetap",
+  e:"Tekanan ekstrem = sisi pertama segitiga (risiko fraud NAIK). Target mustahil hampir selalu dibayar dengan manipulasi — TAPI skor M dihitung dari angka keuangan historis, jadi tanpa perubahan data keuangan skornya TETAP. Risiko kualitatif (triangle) ≠ skor kuantitatif (M-score)."},
  {t:"DSRI 1,45 terdeteksi", q1:"Risiko fraud", q2:"Skor M", a1:"naik", a2:"naik",
   e:"Piutang tumbuh > penjualan = jejak pendapatan prematur. DSRI tinggi menaikkan M-score."},
  {t:"Auditor resign tiba-tiba", q1:"Risiko fraud", q2:"Kepercayaan", a1:"naik", a2:"turun",
-  e:"Auditor yang mundur menolak menandatangani sesuatu. Ini red flag tata kelola paling keras."},
+  e:"Auditor bisa mundur karena banyak alasan (fee, konflik, rotasi, kapasitas) — bukan otomatis menolak menandatangani sesuatu. Ini sinyal investigasi tata kelola yang keras: cek alasan pengunduran diri di pengungkapannya."},
  {t:"Kas cocok dengan laba 5 tahun", q1:"Risiko fraud", q2:"Skor M", a1:"turun", a2:"turun",
-  e:"Laba yang jadi kas bertahun-tahun = kualitas tertinggi. Manipulasi akrual tak bisa bertahan di kas."},
- {t:"Bonus direksi 100% berbasis laba", q1:"Risiko fraud", q2:"Skor M", a1:"naik", a2:"naik",
-  e:"Insentif = tekanan + rasionalisasi ('saya layak dapat ini'). Desain bonus menentukan perilaku."},
+  e:"Laba yang jadi kas bertahun-tahun = kualitas laba yang baik — tapi bukan bukti mutlak: kas bisa dipinjam/diputar atau ditopang penundaan bayar supplier. Uji sumber dan keberlanjutan arus kasnya."},
+ {t:"Bonus direksi 100% berbasis laba", q1:"Risiko fraud", q2:"Skor M", a1:"naik", a2:"tetap",
+  e:"Insentif = tekanan + rasionalisasi ('saya layak dapat ini'). Desain bonus menentukan perilaku — risiko fraud NAIK, tapi skor M dari angka historis TETAP sampai angka keuangannya berubah."},
  {t:"Whistleblowing system kuat & independen", q1:"Risiko fraud", q2:"Skor M", a1:"turun", a2:"tetap",
   e:"Kesempatan menyusut → risiko turun. Tapi skor M dari angka historis tidak berubah."}
 ];

@@ -8,7 +8,7 @@ var STMTS = {
 sloan:{ title:"Toolkit forensik — Cemerlang 2025", cols:["Ukuran","2025","Arti"],
  rows:[
   {l:"Akrual (NI - CFO)", v:"14.440", v2:"Rp juta", d:"45.240 - 30.800 = 14.440. Bagian laba yang belum menjadi kas.", psak:"—", f:"Akrual = tempat manajemen 'menyimpan' laba. Naik terus = curiga."},
-  {l:"Sloan ratio", v:"3,2%", v2:"akrual moderat", d:"14.440 ÷ 451.440 = 3,2%. Di atas 10% persisten = kualitas laba rendah.", psak:"—", f:"Sloan tinggi persisten = perusahaan hidup dari akuntansi, bukan kas."},
+  {l:"Sloan ratio", v:"3,2%", v2:"akrual moderat", d:"14.440 ÷ 451.440 = 3,2%. Di atas 10% persisten = kualitas laba rendah — RULE OF THUMB ilustratif, bukan ambang diagnostik (tergantung definisi akrual, denominator, industri & periode).", psak:"—", f:"Sloan tinggi persisten = perusahaan hidup dari akuntansi, bukan kas."},
   {l:"CFO / NI", v:"0,68x", v2:"di bawah 1", d:"30.800 ÷ 45.240 = 0,68. Laba tidak sepenuhnya didukung kas operasi.", psak:"—", f:"CFO/NI < 1 lima tahun beruntun = pola manipulasi klasik."},
   {l:"Beneish M-score", v:"-1,65", v2:"di atas -1,78", d:"Model 8 variabel (DSRI 1,45; GMI 0,97; LVGI 0,96). Di atas batas -1,78 = flag manipulator.", psak:"—", f:"M-score = probabilitas, bukan vonis. Flag = alasan menggali, bukan alasan menuduh."}
  ]},
@@ -170,7 +170,7 @@ function parseIDNumber(str, isDecimal){
 
 var RATIOS = [
  {q:"Sloan ratio 2025 (%)", hint:"Akrual ÷ total aset × 100: 14.440 ÷ 451.440 × 100", ans:3.2, tol:0.2,
-  why:"3,2% — akrual moderat, di bawah ambang bahaya 10%."},
+  why:"3,2% — akrual moderat, di bawah ambang bahaya 10% (rule of thumb ilustratif, bukan batas diagnostik universal)."},
  {q:"Akrual 2025 (Rp juta)", hint:"Laba bersih - CFO: 45.240 - 30.800", ans:14440, dec:false, tol:100,
   why:"14.440 — laba yang belum menjadi kas."},
  {q:"CFO / NI 2025 (x)", hint:"CFO ÷ laba bersih: 30.800 ÷ 45.240", ans:0.68, tol:0.02,

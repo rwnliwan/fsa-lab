@@ -12,13 +12,13 @@ sys:{ title:"Principles-based vs rules-based — angka yang sama, ekonomi yang s
   {l:"LIFO", v:"Dilarang", v2:"Boleh", d:"Perusahaan LIFO di industri harga naik melaporkan laba & persediaan lebih rendah dari padanan FIFO-nya.", psak:"—", f:"LIFO liquidation (menguras lapisan murah lama) = trik laba khas US."},
   {l:"Reversal inventory writedown", v:"Wajib bila pulih", v2:"Dilarang", d:"PSAK mewajibkan pembalikan penurunan nilai persediaan saat nilai pulih; GAAP melarang.", psak:"—", f:"Timing reversal = tuas legal untuk mengangkat laba periode berikutnya."},
   {l:"Revaluasi aset tetap", v:"Boleh (model revaluasi)", v2:"Cost only", d:"PSAK 216 membolehkan nilai wajar; GAAP hanya biaya historis. Revaluasi menaikkan ekuitas & menurunkan ROA mekanis.", psak:"PSAK 216 (dulu 16)", f:"Revaluasi tepat sebelum covenant test = tanya siapa penilai & kenapa sekarang."},
-  {l:"Rentang tanpa titik terbaik", v:"Midpoint", v2:"Low end", d:"Estimasi 8.000–12.000 tanpa titik terbaik → PSAK akui 10.000, GAAP akui 8.000. Neraca US bisa lebih tipis untuk risiko identik.", psak:"PSAK 237 (dulu 57)", f:"—"},
+  {l:"Rentang tanpa titik terbaik", v:"Midpoint", v2:"Low end", d:"Estimasi 8.000–12.000 tanpa titik terbaik (dan seluruh titik sama mungkin) → PSAK akui 10.000 (midpoint), GAAP akui 8.000 (low end, untuk kontinjensi kerugian). Contoh pada skenario yang diasumsikan di sini — bukan aturan universal tanpa kondisi. Neraca US bisa lebih tipis untuk risiko identik.", psak:"PSAK 237 (dulu 57)", f:"—"},
   {l:"Reversal impairment non-goodwill", v:"Boleh", v2:"Dilarang", d:"PSAK membolehkan pembalikan (kecuali goodwill); GAAP melarang semua reversal.", psak:"PSAK 236 (dulu 48)", f:"—"}
  ]},
 prov:{ title:"Anatomi provisi — PSAK 237 (3 syarat + contoh)", cols:["Unsur","Isi","Contoh"],
  rows:[
   {l:"Syarat 1 · Kewajiban kini", v:"Dari peristiwa masa lalu", v2:"garansi produk terjual", d:"Kewajiban sudah lahir (produk terjual bergaransi) — bukan rencana masa depan.", psak:"PSAK 237 (dulu 57)", f:"Provisi untuk 'rencana' restrukturisasi yang belum diumumkan = tidak sah."},
-  {l:"Syarat 2 · Probable", v:"Arus keluar >50%", v2:"litigasi 70% kalah", d:"'Probable' dibaca lebih-likely-than-not. US GAAP memakai bar yang lebih tinggi dalam praktik.", psak:"PSAK 237 (dulu 57)", f:"Ambang 51% vs 49% = judgment yang menggerakkan laba."},
+  {l:"Syarat 2 · Probable", v:"Arus keluar >50%", v2:"litigasi 70% kalah", d:"'Probable' dibaca lebih-likely-than-not. Dalam beberapa area (mis. kontinjensi kerugian), ambang atau praktik US GAAP dapat berbeda / bar-nya lebih tinggi — bukan aturan umum semua provisi.", psak:"PSAK 237 (dulu 57)", f:"Ambang 51% vs 49% = judgment yang menggerakkan laba."},
   {l:"Syarat 3 · Estimasi andal", v:"Bisa diestimasi", v2:"garansi 1,5% historis", d:"Tanpa estimasi andal, kewajiban probable pun tidak bisa diakui.", psak:"PSAK 237 (dulu 57)", f:"Perubahan asumsi 1,5% → 2,5% = cek motif di baliknya."},
   {l:"Diakui → provisi 7.800", v:"520.000 × 1,5%", v2:"beban (D) / provisi (K)", d:"Jurnal: beban garansi Rp7.800 pada provisi garansi Rp7.800. Laba turun, kas belum keluar.", psak:"PSAK 237 (dulu 57)", f:"Provisi membengkak tiap Q4 lalu dibalik Q1 = cookie-jar reserve."},
   {l:"Tidak diakui → kontinjensi", v:"Possible, tak probable", v2:"hanya diungkap", d:"Kewajiban yang possible tapi tidak probable = liabilitas kontinjensi: DIUNGKAP di catatan, tidak dicatat.", psak:"PSAK 237 (dulu 57)", f:"Kontinjensi yang 'tiba-tiba' jadi probable = baca lagi disclosure 3 tahun ke belakang."},
@@ -61,7 +61,7 @@ var CARDS = [
  {t:"Litigasi Rp10.000 berubah dari probable → possible", q1:"Provisi", q2:"Pengungkapan di catatan", a1:"turun", a2:"tetap",
   e:"Provisi dihapus (Rp10.000 kembali ke laba), TAPI kewajiban tetap diungkap sebagai liabilitas kontinjensi. Hilang dari neraca ≠ hilang dari risiko."},
  {t:"Dua perusahaan kembar: estimasi 8.000–12.000 tanpa titik terbaik", q1:"Selisih provisi (GAAP − PSAK)", q2:"Laba GAAP vs laba PSAK", a1:"turun", a2:"naik",
-  e:"GAAP pakai low end 8.000, PSAK pakai midpoint 10.000 → selisih −2.000. Provisi lebih kecil = laba GAAP lebih besar Rp2.000 untuk ekonomi identik."},
+  e:"Pada skenario/panduan yang diasumsikan di sini (kontinjensi kerugian, tanpa titik terbaik): GAAP pakai low end 8.000, PSAK pakai midpoint 10.000 → selisih −2.000. Provisi lebih kecil = laba GAAP lebih besar Rp2.000 untuk ekonomi identik. Bukan perbedaan umum PSAK-vs-GAAP untuk semua jenis provisi."},
  {t:"Harga pulih: reversal penurunan nilai persediaan Rp2.000", q1:"Laba PSAK", q2:"Laba US GAAP", a1:"naik", a2:"tetap",
   e:"PSAK mewajibkan reversal → laba naik Rp2.000. GAAP melarang → tetap. Satu gudang, dua laba."},
  {t:"Biaya R&D Rp6.000: PSAK kapitalisasi, GAAP dibebankan", q1:"Aset perusahaan PSAK vs GAAP", q2:"Laba tahun ini PSAK vs GAAP", a1:"naik", a2:"naik",
@@ -177,8 +177,8 @@ function parseIDNumber(str, isDecimal){
 var RATIOS = [
  {q:"Provisi garansi 2025 (Rp juta)", hint:"Penjualan 520.000 × 1,5%", ans:7800, dec:false, tol:100,
   why:"7.800 — jurnal: beban garansi (D) 7.800 / provisi garansi (K) 7.800. Laba turun, kas belum keluar."},
- {q:"Provisi PSAK atas rentang 8.000–12.000 — midpoint (Rp juta)", hint:"(8.000 + 12.000) ÷ 2", ans:10000, dec:false, tol:100,
-  why:"10.000 — PSAK pakai midpoint; US GAAP pakai low end 8.000. Selisih Rp2.000 untuk risiko identik."},
+ {q:"Provisi PSAK atas rentang 8.000–12.000 — midpoint, bila semua titik sama mungkin (Rp juta)", hint:"(8.000 + 12.000) ÷ 2", ans:10000, dec:false, tol:100,
+  why:"10.000 — PSAK pakai midpoint bila tidak ada titik yang lebih mungkin (seluruh titik sama mungkin); US GAAP pakai low end 8.000 untuk kontinjensi kerugian. Selisih Rp2.000 untuk risiko identik pada skenario ini."},
  {q:"Tambahan provisi bila estimasi 1,5% → 2,0% (Rp juta)", hint:"520.000 × 0,5%", ans:2600, dec:false, tol:100,
   why:"2.600 — setengah persen dari penjualan = Rp2,6 miliar beban. Asumsi kecil, dampak tidak kecil."},
  {q:"Provisi kontrak memberatkan (Rp juta)", hint:"Biaya tak terhindarkan 5.000 − manfaat 3.500", ans:1500, dec:false, tol:100,
@@ -239,7 +239,7 @@ var QUIZ = [
  {q:"Karakter kedua sistem standar…", o:["PSAK/IFRS principles-based, US GAAP rules-based","Keduanya identik persis tanpa perbedaan","PSAK/IFRS rules-based, US GAAP principles-based juga","Keduanya rules-based secara murni"], a:0},
  {q:"Provisi diakui bila tiga syarat terpenuhi…", o:["Manajemen menginginkannya untuk meratakan laba tahun berjalan","Ada kewajiban kini + arus keluar probable + estimasi andal","Kas sudah benar-benar keluar dari perusahaan","Dewan direksi sudah menyetujui rencana pembayaran"], a:1},
  {q:"Kewajiban yang possible tapi tidak probable…", o:["Diakui penuh di neraca sebagai utang jangka panjang","Diabaikan sama sekali oleh manajemen","Diungkap sebagai liabilitas kontinjensi","Dicatat sebagai aset kontinjensi"], a:2},
- {q:"Rentang 8.000–12.000 tanpa titik terbaik: US GAAP memakai…", o:["Midpoint 10.000 — tengah rentang","High end 12.000 — paling konservatif","Rata-rata tertimbang probabilitas","Low end 8.000"], a:3},
+ {q:"Dalam skenario ini (kontinjensi kerugian, rentang 8.000–12.000 tanpa titik terbaik), US GAAP memakai…", o:["Midpoint 10.000 — tengah rentang","High end 12.000 — paling konservatif","Rata-rata tertimbang probabilitas","Low end 8.000"], a:3},
  {q:"Kontrak memberatkan → provisi sebesar…", o:["Nol — tunggu rugi terealisasi","Total manfaat ekonomik dari kontrak","Biaya tak terhindarkan − manfaat ekonomik","Total pendapatan yang dijanjikan kontrak"], a:2}
 ];
 (function(){

@@ -62,7 +62,7 @@ var CARDS = [
  {t:"Waiver disetujui: bunga naik 150bps", q1:"Beban bunga", q2:"DSCR", a1:"naik", a2:"turun",
   e:"+150bps × 141.440 = +2.122/th. Harga maaf bank: DSCR makin terjepit tahun depan."},
  {t:"Jual aset Rp50.000, lunasi utang bank", q1:"Leverage", q2:"DSCR", a1:"turun", a2:"naik",
-  e:"Utang turun 50.000 → leverage 1,48×; bunga turun → DSCR membaik. Deleveraging = obat dua penyakit."},
+  e:"Utang turun 50.000 → leverage 1,48×; bunga turun → DSCR membaik — DENGAN ASUMSI aset yang dijual nonproduktif, EBITDA & CFO sebelum bunga tetap, dan pokok/bunga berkurang sesuai jadwal. Bila asetnya produktif, EBITDA bisa ikut turun dan arah DSCR belum pasti. Deleveraging = obat dua penyakit, bila asumsinya terpenuhi."},
  {t:"Definisi bank pakai utang NETO (kurangi kas 21.440)", q1:"Leverage terukur", q2:"Headroom", a1:"turun", a2:"naik",
   e:"(201.440 − 21.440) ÷ 102.000 = 1,76×. Definisi ≠ angka akuntansi — selalu baca definisi di perjanjiannya."}
 ];
