@@ -20,7 +20,7 @@ hedge:{ title:"Tiga jenis hubungan lindung nilai — beda risiko yang dilindungi
 syarat:{ title:"Tanpa TIGA ini, tidak ada hedge accounting — seluruh mark-to-market jatuh ke P&L", cols:["Syarat","Inti","Detail"],
  rows:[
   {l:"Dokumentasi formal di awal", v:"TANPA ini = gagal", v2:"—",
-   d:"Desainasi tertulis: item yang dilindungi, instrumen lindung nilai, sifat risiko, dan cara menguji efektivitas. Wajib dibuat SAAT hubungan dimulai — dokumentasi yang dibuat belakangan (backdated) tidak sah dan membatalkan hedge accounting.",
+   d:"Desainasi tertulis: item yang dilindungi, instrumen lindung nilai, sifat risiko, dan cara menguji efektivitas. Wajib dibuat SAAT hubungan dimulai — dokumentasi yang dibuat belakangan (backdated) berarti hubungan itu tidak memenuhi syarat hedge accounting sejak awal dan tidak dapat menerapkan hedge accounting untuk periode sebelum dokumentasi yang diwajibkan tersedia.",
    psak:"PSAK 109 (dulu 71)", f:"Forensik: ini syarat paling mudah diaudit — minta dokumennya, cek tanggalnya. Dokumen rapi tapi dibuat setelah fakta = red flag."},
   {l:"Efektivitas: hubungan ekonomis", v:"dulu 80–125% → kini prinsip", v2:"—",
    d:"Aturan LAMA (PSAK 55 — nomor baru 239): rasio offset harus 80–125%. Aturan BARU PSAK 109 (dulu 71): tiga prinsip — (1) ada hubungan ekonomis antara item & instrumen, (2) efek risiko kredit tidak mendominasi perubahan nilai, (3) hedge ratio = rasio aktual yang dipakai manajemen. Tidak ada lagi angka ajaib 80–125%.",

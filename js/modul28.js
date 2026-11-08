@@ -8,10 +8,10 @@ var STMTS = {
 flags:{ title:"Checklist 10 red flag dokumen — satu saja terpenuhi belum vonis; yang berbahaya adalah POLANYA", cols:["Red flag","Sinyal","Acuan"],
  rows:[
   {l:"Opini audit tidak WTP / WTP dengan paragraf penekanan", v:"KRITIS", v2:"—",
-   d:"Opini WTP (wajar tanpa pengecualian) adalah baseline. Opini modifikasian — atau WTP dengan paragraf penekanan (emphasis of matter) soal kelangsungan usaha — berarti auditor sendiri gelisah. Baca persis kalimat opininya, bukan ringkasan manajemen.",
+   d:"Opini WTP (wajar tanpa pengecualian) adalah baseline. Opini modifikasian berarti opini diubah (mis. pengecualian) — berbeda dengan WTP dengan paragraf penekanan (emphasis of matter) soal kelangsungan usaha: opini tetap WTP, auditor hanya menarik perhatian ke pengungkapan yang sudah ada; 'gelisah' hanya tepat bila paragraf itu memang soal going concern — baca persis kalimat opininya, bukan ringkasan manajemen.",
    psak:"SA 705 / SA 706", f:"Investasi: diskon risiko naik. Kredit: covenant & going concern wajib dicek ulang. Forensik: opini adalah dokumen — siapa auditornya, sejak kapan?"},
   {l:"KAM (Key Audit Matters) baru — terutama soal pendapatan", v:"TINGGI", v2:"—",
-   d:"KAM = hal yang paling menyita perhatian auditor. KAM baru tentang pengakuan pendapatan / estimasi = area abu-abu terbesar tahun ini. Bandingkan daftar KAM 3 tahun: yang baru muncul = yang baru bermasalah.",
+   d:"KAM = hal yang paling menyita perhatian auditor. KAM baru tentang pengakuan pendapatan / estimasi = hal yang baru menyita perhatian signifikan tahun ini — bukan otomatis yang baru bermasalah. Bandingkan daftar KAM 3 tahun: yang baru muncul = yang baru menyita perhatian; uji apakah ada salah saji atau kelemahan di baliknya.",
    psak:"SA 701", f:"KAM bukan tuduhan — tapi peta tempat menggali. Cross-check ke footnote kebijakan pendapatan (PSAK 208)."},
   {l:"Restatement laporan keuangan", v:"KRITIS", v2:"—",
    d:"Laporan tahun lalu 'dikoreksi' = angka yang dulu kamu percayai ternyata salah. Restatement karena kesalahan (bukan perubahan kebijakan) merusak kredibilitas seluruh histori. Ukur: berapa % laba yang direvisi?",
@@ -33,7 +33,7 @@ flags:{ title:"Checklist 10 red flag dokumen — satu saja terpenuhi belum vonis
    psak:"PSAK 210", f:"Cek tanggal: laporan terbit 3 bulan setelah tutup buku — apa yang terjadi di antaranya dan tidak masuk angka?"},
   {l:"MD&A: tone berubah, boilerplate hilang/muncul, kalimat memanjang", v:"SEDANG", v2:"—",
    d:"Narasi manajemen adalah dokumen juga. Optimis → defensif, pengungkapan risiko yang tiba-tiba hilang, kalimat rata-rata 18 → 34 kata (readability turun = menyembunyikan). Lihat tab 'Teknik Teks & Angka'.",
-   psak:"PSAK 201", f:"Bahasa tidak bisa diaudit — justru itu celahnya. Bandingkan MD&A 3 tahun berdampingan, paragraf per paragraf."},
+   psak:"—", f:"Bahasa tidak bisa diaudit — justru itu celahnya. Bandingkan MD&A 3 tahun berdampingan, paragraf per paragraf. Acuan MD&A: ketentuan pasar modal/regulator, bukan PSAK 201 (PSAK 201 hanya mengatur penyajian laporan keuangan)."},
   {l:"Laba positif bertahun-tahun, arus kas operasi negatif", v:"TINGGI", v2:"—",
    d:"Laba adalah opini (akrual), kas adalah fakta. Divergensi laba-vs-kas yang melebar tahun demi tahun = kualitas laba membusuk: piutang tak tertagih, pendapatan fiktif, atau kapitalisasi biaya agresif.",
    psak:"PSAK 207", f:"Investasi: jangan bayar untuk laba yang tak jadi kas. Kredit: debt service dibayar dengan kas, bukan dengan laba."}
@@ -243,8 +243,8 @@ var RATIOS = [
   why:"+88,9% — kalimat memanjang nyaris dua kali lipat dalam setahun. Perubahan sebesar ini jarang 'kebetulan gaya bahasa'."},
  {q:"Deviasi Benford digit-1 (poin persentase)", hint:"Observasi 42,0% − ekspektasi 30,1% — 10.000 jurnal (ilustratif)", ans:11.9, tol:0.3,
   why:"+11,9 pp di atas ekspektasi 30,1% — deviasi signifikan. Sinyal kuat untuk sampling audit; tetap bukan bukti fraud."},
- {q:"Skor checklist red flag (%)", hint:"4 dari 10 red flag terpenuhi × 100% (ilustratif)", ans:40.0, dec:true, tol:0.5,
-  why:"40% — empat red flag termasuk pergantian auditor & KAM pendapatan. Satu red flag = waspada; empat = investigasi serius."}
+ {q:"Skor checklist red flag (%)", hint:"4 dari 10 red flag terpenuhi × 100% (ilustratif — jumlah item terpenuhi, bukan probabilitas fraud)", ans:40.0, dec:true, tol:0.5,
+  why:"40% — empat red flag termasuk pergantian auditor & KAM pendapatan. Satu red flag = waspada; empat = investigasi serius. Skor ini jumlah item terpenuhi — bukan probabilitas fraud."}
 ];
 (function(){
   var h = "";

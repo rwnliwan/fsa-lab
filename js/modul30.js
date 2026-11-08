@@ -7,8 +7,8 @@ var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAl
 var STMTS = {
 capital:{ title:"Permodalan — bantalan pertama saat kredit macet", cols:["Pos","Angka","Konteks"],
  rows:[
-  {l:"CAR (KPMM) 22,1%", v:"22,1%", v2:"min OJK 8%",
-   d:"CAR = modal ÷ ATMR. Minimum OJK 8%; bank ini 22,1% → buffer ≈ 14,1 poin persentase. ATMR ilustratif Rp42.986 miliar (9.500 ÷ 22,1%). Modal tebal = ruang menyerap kerugian kredit sebelum menyentuh batas regulator.",
+  {l:"CAR (KPMM) 22,1%", v:"22,1%", v2:"min OJK 8% (ilustratif)",
+   d:"CAR = modal ÷ ATMR. Minimum OJK 8% (ambang ilustratif — floor dasar yang disederhanakan; batas yang berlaku dapat bergantung pada kategori bank, profil risiko, dan buffer); bank ini 22,1% → buffer ≈ 14,1 poin persentase. ATMR ilustratif Rp42.986 miliar (9.500 ÷ 22,1%). Modal tebal = ruang menyerap kerugian kredit sebelum menyentuh batas regulator.",
    psak:"POJK KPMM", f:"Kredit: buffer tebal = bank tahan guncangan; tapi cek komposisi modal — modal inti vs modal pelengkap. Investasi: CAR jumbo = aman, namun modal menganggur menekan ROE. Forensik: CAR naik tanpa setoran modal? Curigai ATMR yang 'menyusut' — cek perubahan bobot risiko."},
   {l:"Rasio ekuitas terhadap aset 11,2%", v:"11,2%", v2:"9.500 ÷ 85.000",
    d:"Ekuitas Rp9.500 miliar ÷ aset Rp85.000 miliar = 11,2% — setiap Rp100 aset didanai Rp11,2 modal sendiri. Leverage aset ≈ 8,9x, konservatif untuk bank. Jembatan ROE: 2,24% × 8,9x ≈ 20%.",

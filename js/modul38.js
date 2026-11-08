@@ -77,7 +77,7 @@ bank:{ title:"Interim bank: Bank Nusantara H1 2026 (ILUSTRATIF). NIM, NPL, CAR d
    tag:"LO4 · stock",
    k:"Lensa forensik: NPL turun di interim + CKPN turun juga = tanyakan restrukturisasi/hapusbuku, bukan rayakan."},
   {l:"CAR interim", v:"dihitung normal", v2:"nuansa modal",
-   d:"Rasio permodalan dihitung normal dari angka 30 Jun — TAPI: laba H1 yang belum diaudit umumnya tidak diakui penuh sebagai modal inti oleh regulator. CAR interim bisa terlihat lebih konservatif dari realitanya.",
+   d:"Rasio permodalan dihitung normal dari angka 30 Jun — TAPI: apakah laba H1 yang belum diaudit diakui sebagai modal inti bergantung pada aturan regulator dan laporan bank yang bersangkutan — perlu diverifikasi ke ketentuan prudensial yang berlaku. CAR interim bisa terlihat lebih konservatif dari realitanya bila laba belum diakui.",
    tag:"LO5 · nuansa",
    k:"Lensa kredit: untuk bank, CAR interim + tren NPL + LDR = paket tiga serangkai sebelum bicara fasilitas."}
  ]}

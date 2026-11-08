@@ -284,7 +284,7 @@ $("#quiz-submit").addEventListener("click", function(){
   });
   box.style.display = "block";
   if(passed){
-    box.innerHTML = "<h3>Phase 8 Tuntas ✓</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). Kamu membangun model 3-statement yang terartikulasi: NI = PBT − pajak, A = L + E, dan CFO = NI + dep + ΔWC — semuanya cocok sampai rupiah terakhir. Lanjut ke <a href=\"../modul-32/\">Modul 32</a>. 🎓</p>";
+    box.innerHTML = "<h3>Phase 8 Tuntas ✓</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). Kamu membangun model 3-statement yang terartikulasi: NI = PBT − pajak, A = L + E, dan CFO = NI + dep + ΔWC — angka-angka utama yang diuji dalam modul ini terartikulasi. Lanjut ke <a href=\"../modul-32/\">Modul 32</a>. 🎓</p>";
     try{ localStorage.setItem("fsa_gate_m31","lolos"); }catch(e){}
   } else if(localStorage.getItem("fsa_gate_m31") === "lolos"){
     box.innerHTML = "<h3>Belum lolos percobaan ini</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). Tapi status <strong>LULUS</strong>-mu tetap tersimpan — tidak hilang karena satu percobaan gagal.</p>";

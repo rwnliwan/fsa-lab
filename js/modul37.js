@@ -313,6 +313,11 @@ var QUIZ = [ {q:"PT Dagang Prima memakai FIFO (ilustratif). Menurut PSAK 202 (du
   });
   $("#quiz-wrap").innerHTML = h;
 })();
+/* SF-9 (R8): phaseTitle/phaseNote di scope IIFE — dipakai juga blok RESTORE di bawah. */
+var m36ok=false; try{ m36ok = localStorage.getItem("fsa_gate_m36")==="lolos"; }catch(e){}
+var m38ok=false; try{ m38ok = localStorage.getItem("fsa_gate_m38")==="lolos"; }catch(e){}
+var phaseTitle = (m36ok && m38ok) ? "Phase 10 Tuntas \u2713" : "Modul 37 Tuntas \u2713";
+var phaseNote = (m36ok && m38ok) ? "" : "<br>Selesaikan juga <a href=\"../modul-36/\">Modul 36</a> dan <a href=\"../modul-38/\">Modul 38</a> untuk menuntaskan Phase 10.";
 $("#quiz-submit").addEventListener("click", function(){
   var score = 0, picked = [], skipped = [];
   QUIZ.forEach(function(q,i){
@@ -339,10 +344,6 @@ $("#quiz-submit").addEventListener("click", function(){
     });
   });
   box.style.display = "block";
-  var m36ok=false; try{ m36ok = localStorage.getItem("fsa_gate_m36")==="lolos"; }catch(e){}
-  var m38ok=false; try{ m38ok = localStorage.getItem("fsa_gate_m38")==="lolos"; }catch(e){}
-  var phaseTitle = (m36ok && m38ok) ? "Phase 10 Tuntas \u2713" : "Modul 37 Tuntas \u2713";
-  var phaseNote = (m36ok && m38ok) ? "" : "<br>Selesaikan juga <a href=\"../modul-36/\">Modul 36</a> dan <a href=\"../modul-38/\">Modul 38</a> untuk menuntaskan Phase 10.";
   if(passed){
     box.innerHTML = "<h3>"+phaseTitle+"</h3><p>Skor "+score+"/"+QUIZ.length+" ("+pct+"%). Kamu bisa membedakan FIFO vs LIFO di inflasi (dan tahu PSAK 202 melarang LIFO), menyetarakan laporan via LIFO reserve, menguji kapitalisasi vs beban, menghitung impairment PSAK 236 termasuk aturan reversal, dan memakai depresiasi komponen. Kembali ke <a href=\"../index.html\">FSA Lab</a>."+phaseNote+"</p>";
     try{ localStorage.setItem("fsa_gate_m37","lolos"); }catch(e){}

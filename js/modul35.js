@@ -67,7 +67,7 @@ forensik:{ title:"Empat sudut forensik grup: di mana nilai bisa bocor lewat stru
   {l:"Value leaking ke NCI: transaksi di luar harga wajar", v:"8.000 bocor", v2:"ilustratif",
    d:"Anak (80%) membayar jasa 20.000 ke perusahaan milik pemegang 20%, harga wajar 12.000: selisih 8.000 = transfer nilai dari pemilik induk ke kantong NCI. Lacak di catatan pihak berelasi (PSAK 224) + uji kewajaran harga vs pasar.",
    tag:"Ilustrasi modul (angka fiktif)",
-   k:"Lensa forensik: NCI yang 'terlalu bahagia' (dividen/imbaIan jumbo vs kontribusi) = tanya siapa di balik NCI dan berapa harga wajar transaksinya."},
+   k:"Lensa forensik: NCI yang 'terlalu bahagia' (dividen/imbalan jumbo vs kontribusi) = tanya siapa di balik NCI dan berapa harga wajar transaksinya."},
   {l:"Buyout NCI di atas harga wajar", v:"tunneling ke minoritas", v2:"pola",
    d:"Induk membeli 20% sisanya jauh di atas nilai buku/wajar: kas grup mengalir ke pemegang NCI — yang bisa jadi pihak terafiliasi pengendali. Selisih harga vs nilai buku NCI dicatat di ekuitas (bukan goodwill baru). Cek: SIAPA penjualnya dan apa hubungan istimewanya.",
    tag:"Pola umum tunneling",
@@ -77,7 +77,7 @@ forensik:{ title:"Empat sudut forensik grup: di mana nilai bisa bocor lewat stru
    tag:"Pola umum rekayasa grup",
    k:"Lensa forensik: laba asosiasi yang tak pernah jadi dividen kas = laba kertas. Konsolidasi vs ekuitas = batas mana 'grup' versi manajemen vs versi kas."},
   {l:"Goodwill yang tak pernah diuji penurunannya", v:"8.000 abadi?", v2:"peringatan",
-   d:"Goodwill 8.000 di contoh ini tidak diamortisasi — wajib diuji penurunan nilai minimal setahun sekali. Manajemen yang 'selalu lolos uji' dengan asumsi diskonto/growth agresif = menunda pengakuan rugi. Uji: sensitivitas asumsi di catatan impairment.",
+   d:"Goodwill 8.000 di contoh ini tidak diamortisasi — di bawah PSAK 103/236, wajib diuji penurunan nilai minimal setahun sekali. Manajemen yang 'selalu lolos uji' dengan asumsi diskonto/growth agresif = menunda pengakuan rugi. Uji: sensitivitas asumsi di catatan impairment.",
    tag:"Praktik umum (kasus: M20)",
    k:"Lensa kredit: kreditur menganggap goodwill NOL saat hitung tangible net worth — 8.000 ini bukan penyangga utang."}
  ]},
