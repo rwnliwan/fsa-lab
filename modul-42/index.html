@@ -43,7 +43,7 @@
     <span style="font-family:var(--font-mono)">Rp150</span> miliar, dilepas
     <span style="font-family:var(--font-mono)">Rp50</span> miliar per tahun.
     Insurance revenue tahun 1 hanya
-    <span style="font-family:var(--font-mono)">Rp380</span> miliar — bukan 1.200.
+    <span style="font-family:var(--font-mono)">Rp400</span> miliar — bukan 1.200.
     Di modul ini kamu membaca insurer seperti analis: PSAK 117 (IFRS 17),
     building blocks, PAA, dan jembatan angka yang harus cocok sampai rupiah terakhir.</p>
 </header>
@@ -87,31 +87,32 @@
 <section class="modul-sec" id="ratiolab">
   <h2>C · Lab Hitungan: Rekonsiliasi CSM 3 Tahun (Grup Jiwa Ilustratif)</h2>
   <p class="sub">Contoh kerja utama — portofolio jiwa grup 3 tahun, seluruh angka <strong>ilustratif</strong> (Rp miliar).
-  Disederhanakan: tanpa akresi bunga dan tanpa perubahan asumsi, pelepasan CSM garis lurus.</p>
+  Disederhanakan: tanpa akresi bunga dan tanpa perubahan asumsi, pelepasan CSM garis lurus (50/tahun) dan pelepasan
+  risk adjustment garis lurus (20/tahun) — diskonto dianggap nol/tidak material.</p>
   <div class="tblwrap"><table class="stmt">
     <tr><th style="text-align:left">Langkah</th><th style="text-align:right">Rp miliar</th><th style="text-align:left">Keterangan</th></tr>
     <tr><td>Premi diterima (kas, awal kontrak)</td><td class="val">1.200</td><td>Kas masuk — BUKAN revenue</td></tr>
     <tr><td>Klaim ekspektasian (3 tahun)</td><td class="val">−900</td><td>300 per tahun</td></tr>
     <tr><td>Beban (akuisisi + administrasi, 3 tahun)</td><td class="val">−90</td><td>30 per tahun</td></tr>
-    <tr><td>Risk adjustment</td><td class="val">−60</td><td>Kompensasi ketidakpastian non-keuangan</td></tr>
-    <tr><td><strong>CSM awal</strong></td><td class="val"><strong>150</strong></td><td>Laba yang belum diakui</td></tr>
+    <tr><td>Risk adjustment</td><td class="val">−60</td><td>Kompensasi ketidakpastian non-keuangan — bagian dari fulfilment cash flows (990 + 60 = 1.050)</td></tr>
+    <tr><td><strong>CSM awal</strong></td><td class="val"><strong>150</strong></td><td>Laba yang belum diakui (1.200 − FCF 1.050)</td></tr>
   </table></div>
   <p class="sub">CSM roll-forward (disederhanakan):</p>
   <div class="tblwrap"><table class="stmt">
-    <tr><th style="text-align:left">Tahun</th><th style="text-align:right">CSM awal</th><th style="text-align:right">Dilepas</th><th style="text-align:right">CSM akhir</th><th style="text-align:right">Revenue</th><th style="text-align:right">Service expense</th><th style="text-align:right">Service result</th></tr>
-    <tr><td>Tahun 1</td><td class="val">150</td><td class="val">50</td><td class="val">100</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
-    <tr><td>Tahun 2</td><td class="val">100</td><td class="val">50</td><td class="val">50</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
-    <tr><td>Tahun 3</td><td class="val">50</td><td class="val">50</td><td class="val">0</td><td class="val">380</td><td class="val">330</td><td class="val">50</td></tr>
+    <tr><th style="text-align:left">Tahun</th><th style="text-align:right">CSM awal</th><th style="text-align:right">Pelepasan CSM</th><th style="text-align:right">Pelepasan RA</th><th style="text-align:right">CSM akhir</th><th style="text-align:right">Revenue</th><th style="text-align:right">Service expense</th><th style="text-align:right">Service result</th></tr>
+    <tr><td>Tahun 1</td><td class="val">150</td><td class="val">50</td><td class="val">20</td><td class="val">100</td><td class="val">400</td><td class="val">330</td><td class="val">70</td></tr>
+    <tr><td>Tahun 2</td><td class="val">100</td><td class="val">50</td><td class="val">20</td><td class="val">50</td><td class="val">400</td><td class="val">330</td><td class="val">70</td></tr>
+    <tr><td>Tahun 3</td><td class="val">50</td><td class="val">50</td><td class="val">20</td><td class="val">0</td><td class="val">400</td><td class="val">330</td><td class="val">70</td></tr>
   </table></div>
-  <p class="sub">Revenue tiap tahun = klaim ekspektasian 300 + beban 30 + pelepasan CSM 50 = <strong>380</strong>.
-  Service expense = klaim 300 + beban 30 = <strong>330</strong>. Service result = 380 − 330 = <strong>50</strong> —
-  sama dengan pelepasan CSM, karena dalam contoh ini klaim aktual sama dengan ekspektasi dan tidak ada perubahan asumsi.</p>
+  <p class="sub">Revenue tiap tahun = klaim ekspektasian 300 + beban 30 + pelepasan CSM 50 + pelepasan RA 20 = <strong>400</strong>.
+  Service expense = klaim 300 + beban 30 = <strong>330</strong>. Service result = 400 − 330 = <strong>70</strong> —
+  sama dengan pelepasan CSM 50 + pelepasan RA 20, karena dalam contoh ini klaim aktual sama dengan ekspektasi dan tidak ada perubahan asumsi. RA sisa: 60 → 40 → 20 → 0.</p>
   <p class="sub"><strong>PAA vs general model</strong> (kontrak umum 1 tahun, ilustratif): premi 120, klaim ekspektasian 84,
   beban 12, risk adjustment 6 → CSM general model = 120 − 84 − 12 − 6 = <strong>18</strong>; revenue general model =
-  84 + 12 + 18 = <strong>114</strong>; revenue PAA = <strong>120</strong> (seluruh premi dialokasikan). Selisih
-  <strong>6</strong> = risk adjustment yang di general model dipisah dan dilepas bertahap, sedangkan di PAA menyatu
-  dalam premi yang dialokasikan.</p>
-  <p class="sub">Empat perhitungan analis asuransi — hitung dari petunjuknya, lalu nilai: angkanya saling mengunci?</p>
+  84 + 12 + 18 + 6 = <strong>120</strong>; revenue PAA = <strong>120</strong> (seluruh premi dialokasikan). Selisih
+  <strong>0</strong> — total revenue SAMA; di general model risk adjustment dipisah lalu dilepas penuh di tahun itu,
+  sedangkan di PAA ia menyatu dalam premi yang dialokasikan.</p>
+  <p class="sub">Lima perhitungan analis asuransi — hitung dari petunjuknya, lalu nilai: angkanya saling mengunci?</p>
   <div id="ratio-wrap"></div>
 </section>
 
@@ -122,8 +123,8 @@
   <h2>D · Case: "Premi 1,2 T, Revenue Bukan 1,2 T"</h2>
   <p class="sub">Kamu analis. Data <strong>ilustratif</strong> PT Proteksi Sejahtera (fiktif):
     premi diterima <span style="font-family:var(--font-mono)">Rp1.200</span> miliar (grup jiwa 3 tahun),
-    insurance revenue tahun 1 <span style="font-family:var(--font-mono)">Rp380</span> miliar,
-    insurance service result tahun 1 <span style="font-family:var(--font-mono)">Rp50</span> miliar,
+    insurance revenue tahun 1 <span style="font-family:var(--font-mono)">Rp400</span> miliar,
+    insurance service result tahun 1 <span style="font-family:var(--font-mono)">Rp70</span> miliar,
     CSM awal <span style="font-family:var(--font-mono)">Rp150</span> miliar, combined ratio portofolio umum
     <span style="font-family:var(--font-mono)">94,1%</span> (premi yang diperoleh Rp850 miliar — penyebut
     berbeda dengan definisi latihan Bedah Sendiri; lihat catatan di Explorer) — tetapi klaim aktual tahun 1
@@ -151,9 +152,9 @@
 <label class="rubric-item"><input type="checkbox"> <span>Ada <strong>vonis eksplisit</strong> — BELI / TAHAN / JUAL, APPROVE / CONDITIONAL / DECLINE, atau setara. Bukan sekadar ringkasan angka.</span></label><label class="rubric-item"><input type="checkbox"> <span>Mengutip <strong>&ge;3 angka dari laporan</strong> — dengan satuan dan tahunnya. Bukan &ldquo;bagus&rdquo; atau &ldquo;naik&rdquo;.</span></label><label class="rubric-item"><input type="checkbox"> <span>Menyebut <strong>1 hal yang bisa membunuh tesis ini</strong> — risiko yang kamu akui sendiri, bukan risiko versi orang lain.</span></label><label class="rubric-item"><input type="checkbox"> <span><strong>Tiap lensa terwakili</strong> — investasi (return vs risiko), kredit (kemampuan bayar), forensik (apa yang perlu diverifikasi).</span></label>
     <h3>Contoh jawaban model</h3>
     <div class="exemplar">
-<p><strong>Lensa investasi:</strong> insurer ilustratif ini MENARIK di permukaan: CSM awal <span class="num">Rp150 miliar</span> (laba masa depan yang sudah terkunci), <em>combined ratio</em> <span class="num">94,1%</span> (underwriting untung), <em>service result</em> tahun 1 <span class="num">Rp50 miliar</span> &mdash; seluruh angka ilustratif modul. Yang menggangguku: klaim aktual <span class="num">Rp340 miliar</span> melampaui ekspektasi <span class="num">Rp300 miliar</span> &mdash; bila itu tren, bukan sekali kejadian, CSM 150 akan tergerus revisi asumsi. Keputusan: beli HANYA bila harga mencerminkan risiko klaim &mdash; CSM adalah janji, klaim aktual adalah kenyataan.</p>
+<p><strong>Lensa investasi:</strong> insurer ilustratif ini MENARIK di permukaan: CSM awal <span class="num">Rp150 miliar</span> (laba masa depan yang sudah terkunci), <em>combined ratio</em> <span class="num">94,1%</span> (underwriting untung), <em>service result</em> tahun 1 <span class="num">Rp70 miliar</span> &mdash; seluruh angka ilustratif modul. Yang menggangguku: klaim aktual <span class="num">Rp340 miliar</span> melampaui ekspektasi <span class="num">Rp300 miliar</span> &mdash; bila itu tren, bukan sekali kejadian, CSM 150 akan tergerus revisi asumsi. Keputusan: beli HANYA bila harga mencerminkan risiko klaim &mdash; CSM adalah janji, klaim aktual adalah kenyataan.</p>
 <p><strong>Lensa kredit:</strong> sebagai calon pembeli obligasi &mdash; kekuatan: CSM <span class="num">Rp150 miliar</span> + <em>combined ratio</em> 94,1% (ilustratif) = bantalan laba masa depan; risiko yang perlu <em>covenant</em>: klaim aktual melebihi ekspektasi <span class="num">Rp40 miliar</span> di tahun 1 dan ketergantungan pada reasuransi untuk klaim besar (<span class="num">Rp200 miliar</span>, 60% ditanggung reasuradur). <em>Covenant</em> yang saya minta: <em>combined ratio</em> &le; 100%, CSM akhir &ge; <span class="num">Rp100 miliar</span>, dan batas konsentrasi reasuradur tunggal. Kesimpulan: layak dengan harga yang tepat &mdash; insurer sekuat ini jarang <em>default</em>, tapi <em>spread</em> harus membayar risiko klaim.</p>
-<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">1.200 &rarr; 380 &rarr; 50</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya (CSM 150 = 1.200 &minus; 900 &minus; 90 &minus; 60; revenue 380 = 300 + 30 + 50); lubang terbesar &mdash; angka agregat tidak menunjukkan asumsi: klaim ekspektasian 900 bisa terlalu optimistis dan <em>risk adjustment</em> 60 bisa terlalu tipis; data tambahan yang saya minta &mdash; analisis pengalaman klaim 8 kuartal + sensitivitas CSM terhadap perubahan asumsi klaim &plusmn;5%. Satu hal yang membunuh tesis &ldquo;insurer ini sehat&rdquo;: bila klaim aktual 340 adalah awal tren &mdash; maka CSM 150 menyusut tiap tahun dan kontrak yang tampak menguntungkan berubah <em>onerous</em>.</p>
+<p><strong>Lensa forensik:</strong> verifikasi jembatan <span class="num">1.200 &rarr; 400 &rarr; 70</span> (ilustratif): yang terverifikasi &mdash; aritmetika agregatnya (CSM 150 = 1.200 &minus; 900 &minus; 90 &minus; 60; revenue 400 = 300 + 30 + 50 + 20 pelepasan RA); lubang terbesar &mdash; angka agregat tidak menunjukkan asumsi: klaim ekspektasian 900 bisa terlalu optimistis dan <em>risk adjustment</em> 60 bisa terlalu tipis; data tambahan yang saya minta &mdash; analisis pengalaman klaim 8 kuartal + sensitivitas CSM terhadap perubahan asumsi klaim &plusmn;5%. Satu hal yang membunuh tesis &ldquo;insurer ini sehat&rdquo;: bila klaim aktual 340 adalah awal tren &mdash; maka CSM 150 menyusut tiap tahun dan kontrak yang tampak menguntungkan berubah <em>onerous</em>.</p>
     </div>
     <p class="sub">Contoh di atas bukan kunci jawaban &mdash; ia menunjukkan <em>bentuk</em> jawaban yang lolos rubrik: vonis + angka + risiko + tiga lensa. Nilai sendiri: berapa dari 4 checklist yang tercentang di jurnalmu?</p>
   </div>
