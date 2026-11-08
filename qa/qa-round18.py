@@ -12,6 +12,8 @@ R14-F6: PETUNJUK 4 workbook — kolom A <= 90 (muat area cetak), wrap aktif.
 R18-F7 (polish Nov 2026): tie-luck / luck-pass tiap modul <= 25% (model R18 §3:
         fixed single-rank strategy, tie block width k -> 1/k, Poisson-binomial,
         gate 4/5; implementasi kanonis qa/qa-luckpass.py).
+R18-F8 (QA-update Nov 2026): koefisien Dechow Model 1 di M25 terkunci (rumus
+        lengkap 7 koefisien terbitan + contoh F = 2,25; tanpa koefisien draf 2007).
 """
 import json
 import os
@@ -317,6 +319,16 @@ for t in TPLS:
     wraps = sum(1 for row in ws.iter_rows(min_row=5) for c in row
                 if c.value and c.alignment.wrap_text)
     check(f"F6: {t} wrap aktif di baris petunjuk", wraps > 0, f"wraps={wraps}")
+
+# ---------- R18-F8: koefisien Dechow Model 1 (M25) ----------
+# Ronde 5: 5/7 koefisien lesson salah vs Model 1 terbitan (varian draf 2007).
+# Kunci rumus lengkap + contoh F agar tidak berbalik diam-diam.
+_m25 = read("js/modul25.js")
+_DECHOW = "−7,893 + 0,790·RSST + 2,518·ΔREC + 1,191·ΔINV + 1,979·SOFT + 0,171·ΔCS − 0,932·ΔROA + 1,029·ISSUE"
+check("F8: rumus Dechow Model 1 lengkap (7 koefisien terbitan)", _DECHOW in _m25)
+check("F8: tanpa koefisien draf 2007 (1,437/1,125/0,207/2,947)",
+      not any(x in _m25 for x in ["1,437", "1,125", "0,207", "2,947"]))
+check("F8: contoh F = 2,25", "F = 0,00834 ÷ 0,0037 = 2,25" in _m25)
 
 print()
 if fails:

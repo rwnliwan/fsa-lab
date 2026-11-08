@@ -8,8 +8,8 @@ var STMTS = {
 rezim:{ title:"Peta rezim — siapa pakai standar apa & kena pajak apa; salah pilih rezim = salah baca angka", cols:["Rezim","Siapa","Ciri kunci"],
  rows:[
   {l:"PSAK penuh", v:"akuntabilitas publik", v2:"pengungkapan terlengkap",
-   d:"Wajib untuk entitas berakuntabilitas publik: emiten, bank, asuransi, dan entitas yang mengelola aset pihak lain dalam kapasitas fidusia (definisi PSAK 1). Cemerlang Abadi — dengan utang bank Rp141.440 juta dan publikasi penuh — dianalisis dengan lensa PSAK penuh.",
-   psak:"PSAK 1", f:"Kredit: emiten wajib menyampaikan laporan tahunan (POJK 29/2016). Forensik: 'akuntabilitas publik' bukan soal ukuran — perusahaan Rp50 miliar tanpa investor publik tidak wajib PSAK penuh."},
+   d:"Wajib untuk entitas berakuntabilitas publik: emiten, bank, asuransi, dan entitas yang mengelola aset pihak lain dalam kapasitas fidusia (definisi PSAK 201). Cemerlang Abadi — dengan utang bank Rp141.440 juta dan publikasi penuh — dianalisis dengan lensa PSAK penuh.",
+   psak:"PSAK 201", f:"Kredit: emiten wajib menyampaikan laporan tahunan (POJK 29/2016). Forensik: 'akuntabilitas publik' bukan soal ukuran — perusahaan Rp50 miliar tanpa investor publik tidak wajib PSAK penuh."},
   {l:"SAK EP", v:"privat, tanpa akuntabilitas publik", v2:"pengungkapan jauh lebih ringkas",
    d:"Standar Akuntansi Keuangan Entitas Privat — menggantikan SAK ETAP (efektif 2025, DSAK IAI). Untuk PT/CV tertutup yang tidak punya investor publik. Diadopsi dari IFRS for SMEs dengan penyederhanaan: opsi pengukuran lebih sedikit dan pengungkapan jauh lebih ringkas dibanding PSAK penuh.",
    psak:"—", f:"Kredit: laporan SAK EP tidak sedetail PSAK — comparability terbatas antar-rezim. Tutupi dengan covenant & informasi tambahan, bukan dengan asumsi."},
