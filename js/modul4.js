@@ -180,7 +180,9 @@ var RATIOS = [
  {q:"DPO 2025 (hari)", hint:"Utang usaha ÷ HPP × 365: 62.000 ÷ 338.000 × 365", ans:67.0, dec:true, tol:0.5,
   why:"67,0 hari — turun tipis dari 69,1. Bayar supplier sedikit lebih cepat."},
  {q:"Cash conversion cycle 2025 (hari)", hint:"DSO + DIO − DPO: 73,0 + 103,7 − 67,0", ans:109.7, tol:0.5,
-  why:"109,7 hari — naik dari 91,7. Kas terikat 18 hari lebih lama. Inilah kenapa laba +53% tapi kas −35% (kas 33.200 → 21.440)."}
+  why:"109,7 hari — naik dari 91,7. Kas terikat 18 hari lebih lama. Inilah kenapa laba +53% tapi kas −35% (kas 33.200 → 21.440)."},
+ {q:"Modal kerja 2025 (Rp juta)", hint:"(Kas + piutang + persediaan) − (utang usaha + bank pendek + akrual): 221.440 − 102.000", ans:119440, dec:false, tol:100,
+  why:"119.440 — kas 21.440 + piutang 104.000 + persediaan 96.000 dikurangi utang usaha 62.000 + bank pendek 31.440 + akrual 8.560. Semua komponen ada di tabel di atas — tak perlu buka M5."}
 ];
 (function(){
   var h = "";

@@ -24,11 +24,13 @@ sol:{ title:"Solvabilitas 2025 (Rp juta) — selamat dari utang jangka panjang?"
  ]}
 };
 
+var NOTE_SOL = '<div class="explain" style="margin-bottom:1rem"><h3>EBITDA &mdash; baca dulu sebelum tabel solvabilitas</h3><p><strong>EBITDA</strong> = <em>earnings before interest, taxes, depreciation, and amortisation</em>: laba operasi sebelum dikurangi beban bunga, pajak, depresiasi, dan amortisasi. Turunannya dari angka modul ini: EBIT 72.000 + depresiasi 30.000 = <strong>102.000</strong> (Rp juta). Karena itu net debt / EBITDA = (201.440 &minus; 21.440) &divide; 102.000 = 180.000 &divide; 102.000 = <strong>1,76x</strong> &mdash; utang bersih lunas kira-kira 1,8 tahun dari EBITDA.</p><p><strong>Batasnya:</strong> EBITDA BUKAN arus kas. Ia mengabaikan capex (di sini 48.000 &mdash; hampir setengah EBITDA), perubahan modal kerja, pajak, dan bunga &mdash; semuanya kas keluar beneran. Perusahaan bisa punya EBITDA besar sambil kehabisan kas. Jadi net debt / EBITDA hanya proksi kasar kapasitas bayar utang, bukan vonis. Sandingkan selalu dengan CFO (30.800) dan FCFF ((6.280)).</p></div>';
 function fmtStmt(key){
   var s = STMTS[key], h = '<table class="stmt"><tr><th>'+s.cols[0]+'</th><th style="text-align:right">'+s.cols[1]+'</th><th style="text-align:right">'+s.cols[2]+'</th></tr>';
   s.rows.forEach(function(r,i){
     h += '<tr class="clickable" data-stmt="'+key+'" data-i="'+i+'"><td>'+r.l+'</td><td class="val">'+r.v+'</td><td class="val" style="color:var(--ink-soft)">'+r.v2+'</td></tr>';
   });
+  if(key==="sol"){ h = NOTE_SOL + h; }
   return h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
 }
 function renderStmt(key){
@@ -180,7 +182,9 @@ var RATIOS = [
  {q:"D/E ratio 2025 (x)", hint:"Total liabilitas ÷ ekuitas: 272.000 ÷ 179.440", ans:1.52, tol:0.05,
   why:"1,52x — tiap Rp1 ekuitas menanggung Rp1,52 utang. Membaik dari 1,70x."},
  {q:"Interest coverage 2025 (x)", hint:"Laba operasi ÷ beban bunga: 72.000 ÷ 14.000", ans:5.14, tol:0.1,
-  why:"5,14x — laba operasi menutup bunga 5x lipat. Di bawah 2x = zona bahaya."}
+  why:"5,14x — laba operasi menutup bunga 5x lipat. Di bawah 2x = zona bahaya."},
+ {q:"Net debt / EBITDA 2025 (x)", hint:"(Utang berbunga − kas) ÷ EBITDA: (201.440 − 21.440) ÷ 102.000", ans:1.76, tol:0.05,
+  why:"1,76x — utang bersih lunas ~1,8 tahun dari EBITDA. Ingat: EBITDA bukan arus kas — cek juga FCFF (6.280)."}
 ];
 (function(){
   var h = "";

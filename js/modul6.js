@@ -14,7 +14,8 @@ fc:{ title:"Jembatan kas bebas 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Bunga setelah pajak", v:"(10.920)", v2:"(7.800)", d:"14.000 × (1−22%). Bagian kreditur — dikurangkan untuk sampai ke FCFE.", psak:"—", f:"—"},
   {l:"Perubahan utang neto", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang − bayar utang (bukan saldo — saldo utang neto di M5 = 180.000.", psak:"—", f:"—"},
   {l:"FCFE", v:"(5.760)", v2:"4.000", d:"−6.280 − 10.920 + 11.440. Kas bebas untuk PEMEGANG SAHAM.", psak:"—", f:"FCFE 2025 negatif = defisit agregat — dividen 6.000 ditutup campuran CFO, utang neto, dan penurunan kas, bukan dividen tertentu 'dari utang'. 2024 positif 4.000 — bukan dua tahun struktural."},
-  {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Dibayar saat FCFE −5.760 = dari kantong utang.", psak:"—", f:"Dividen > FCFE = tidak sustainable."}
+  {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Dibayar saat FCFE −5.760 = dari kantong utang.", psak:"—", f:"Dividen > FCFE = tidak sustainable."},
+  {l:"Rekonsiliasi: jual anak perusahaan 60.000 (skenario)", v:"+12.000", v2:"—", d:"Bila anak perusahaan dijual 60.000: CFI menjadi (48.000) + 60.000 = +12.000, tapi FCFF TETAP (6.280) dan FCFE TETAP (5.760) menurut definisi modul (FCFF = CFO + bunga setelah pajak − capex) — hasil pelepasan masuk CFI, bukan CFO/capex. 'FCFF' yang memasukkan proceeds = (6.280) + 60.000 = 53.720 adalah angka sekali lewat; perubahan kas skenario = (11.760) + 60.000 = +48.240. Bila ada gain akuntansi dari pelepasan, gain itu dikeluarkan kembali saat menyusun CFO (metode tidak langsung) — CFO tetap 30.800. Jangan diannualkan.", psak:"—", f:"Anak perusahaan yang dijual tidak menghasilkan kas tahun depan — valuasi recurring harus mengeluarkannya."}
  ]},
 use:{ title:"Ke mana perginya kas 2025 (Rp juta)", cols:["Pos","2025","% CFO"],
  rows:[
@@ -67,7 +68,7 @@ var CARDS = [
  {t:"Buyback saham Rp20.000", q1:"FCFE", q2:"D/E ratio", a1:"tetap", a2:"naik",
   e:"Buyback DIBAYAR dari FCFE, bukan menguranginya. Ekuitas turun → D/E naik."},
  {t:"Jual anak perusahaan Rp60.000 (sekali)", q1:"FCFF", q2:"Arus investasi (CFI)", a1:"tetap", a2:"naik",
-  e:"Kas masuk → CFI naik (kurang negatif). Tapi FCFF TETAP menurut definisi modul (FCFF = CFO + bunga setelah pajak − capex): hasil pelepasan masuk CFI, bukan CFO/capex. Pisahkan sebagai non-recurring — jangan diannualkan."}
+  e:"Kas masuk → CFI naik (kurang negatif). Tapi FCFF TETAP menurut definisi modul (FCFF = CFO + bunga setelah pajak − capex): hasil pelepasan masuk CFI, bukan CFO/capex. Pisahkan sebagai non-recurring — jangan diannualkan. Rekonsiliasi lengkap ada di tabel Jembatan kas bebas."}
 ];
 var OPTS3 = ["naik","turun","tetap"];
 var pgScore = 0, pgDone = 0, pgCards = [];

@@ -15,6 +15,8 @@ rev:{ title:"Pendapatan 2025 (Rp juta)", cols:["Pos","2025","2024"],
 eps:{ title:"EPS & one-off 2025", cols:["Pos","2025","2024"],
  rows:[
   {l:"Saham beredar", v:"100 juta", v2:"100 juta", d:"Tidak berubah. Basis per-saham.", psak:"PSAK 233 (dulu 56)", f:"—"},
+  {l:"Buyback tengah tahun — saham tertimbang", v:"95 juta", v2:"—", d:"Ilustratif: buyback 10 juta saham per 1 Juli. PSAK 233 memakai rata-rata tertimbang: 100 − 10 × 6/12 = 95 juta — BUKAN saldo akhir 90 juta. Saham yang dibeli kembali (treasury shares) dikeluarkan dari pembagi sejak tanggal buyback.", psak:"PSAK 233", f:"—"},
+  {l:"EPS dasar (buyback tengah tahun)", v:"476,2", v2:"—", d:"45.240 ÷ 95 juta. Bandingkan: memakai saldo akhir 90 juta → 45.240 ÷ 90 = 502,7 — EPS tampak 5,6% lebih tinggi dari yang benar. Inilah kenapa pembagi EPS tidak pernah memakai saldo akhir begitu saja.", psak:"PSAK 233", f:"Buyback menaikkan EPS lewat pembagi yang menyusut — bukan kinerja."},
   {l:"EPS dasar", v:"452,4", v2:"296,4", d:"45.240 ÷ 100 juta. +52,6% YoY.", psak:"PSAK 233", f:"EPS naik — tapi berapa yang recurring?"},
   {l:"Dilusi", v:"Tidak ada", v2:"—", d:"Tanpa opsi/saham konversi → diluted = dasar.", psak:"PSAK 233", f:"—"},
   {l:"One-off: laba jual aset", v:"8.000", v2:"—", d:"Sebelum pajak. Setelah pajak 6.240 = 13,8% dari laba.", psak:"—", f:"One-off di headline = ilusi pertumbuhan."},
@@ -67,7 +69,7 @@ var CARDS = [
  {t:"Piutang naik 89%, penjualan 30%", q1:"DSO", q2:"Kewaspadaan analis", a1:"naik", a2:"naik",
   e:"DSO melar 50,2 → 73 hari — sinyal untuk diuji (umur piutang, termin, bauran kredit), BUKAN bukti piutang makin tak tertagih. Kolektibilitas baru bisa dinilai setelah uji itu."},
  {t:"Buyback 10% saham beredar", q1:"EPS", q2:"Jumlah saham", a1:"naik", a2:"turun",
-  e:"Pembagi menyusut → EPS naik. Bukan kinerja — aritmetika."},
+  e:"Pembagi menyusut → EPS naik. Bukan kinerja — aritmetika. Bila buyback tengah tahun, pembaginya rata-rata tertimbang (lihat tabel EPS: 95 juta, bukan 90 juta)."},
  {t:"Stock split 2:1", q1:"EPS per saham", q2:"Total laba", a1:"turun", a2:"tetap",
   e:"Saham berlipat → EPS per saham turun setengah. Nilai perusahaan tidak berubah."},
  {t:"Hapusbuku piutang tak tertagih (cadangan belum cukup)", q1:"EPS", q2:"Kualitas laba", a1:"turun", a2:"naik",
@@ -187,6 +189,8 @@ var RATIOS = [
   why:"13,8% — hampir seperenam EPS = sekali lewat."},
  {q:"Payout ratio (%)", hint:"Dividen ÷ laba: 6.000 ÷ 45.240 × 100", ans:13.3, tol:0.3,
   why:"13,3% — kecil. Tapi ditutup campuran utang neto + penurunan kas (FCFE negatif)."},
+ {q:"EPS dasar bila buyback 10 juta saham per 1 Juli", hint:"Laba ÷ rata-rata tertimbang: 45.240 ÷ 95", ans:476.2, tol:0.5,
+  why:"476,2 — pembagi 95 juta (100 − 10 × 6/12), bukan saldo akhir 90 juta yang memberi 502,7."}
 ];
 (function(){
   var h = "";

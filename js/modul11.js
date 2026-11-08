@@ -26,12 +26,15 @@ stok:{ title:"Persediaan 2025 (Rp juta)", cols:["Pos","Ilustrasi","Keterangan"],
  ]}
 };
 
+var NOTE_PIUTANG = '<div class="explain" style="margin-bottom:1rem"><h3>Piutang usaha: pendekatan sederhana PSAK 109</h3><p>Piutang usaha memakai <strong>pendekatan sederhana</strong> (<em>simplified approach</em>) PSAK 109: cadangan <strong>lifetime ECL</strong> dihitung sejak pengakuan awal &mdash; <strong>tanpa stage 1/2/3</strong> dan tanpa menilai apakah risiko kredit naik signifikan. Jadi baris Stage 1/2/3 di tabel di atas adalah ilustrasi pendekatan umum (untuk pinjaman dan obligasi, misalnya), BUKAN cara cadangan piutang usaha dihitung.</p><p><strong>Contoh:</strong> tagihan baru Rp10.000 ke pelanggan dengan histori gagal bayar 2% langsung dicadangkan lifetime ECL Rp200 (2% &times; 10.000) sejak hari pertama &mdash; tidak menunggu 12 bulan, tidak menunggu memburuk. Konsisten dengan tabel: cadangan 4.100 atas bruto 108.100 = ECL rate 3,8% &mdash; seluruhnya lifetime ECL pendekatan sederhana, bukan cadangan 12 bulan.</p></div>';
 function fmtStmt(key){
   var s = STMTS[key], h = '<table class="stmt"><tr><th>'+s.cols[0]+'</th><th style="text-align:right">'+s.cols[1]+'</th><th style="text-align:right">'+s.cols[2]+'</th></tr>';
   s.rows.forEach(function(r,i){
     h += '<tr class="clickable" data-stmt="'+key+'" data-i="'+i+'"><td>'+r.l+'</td><td class="val">'+r.v+'</td><td class="val" style="color:var(--ink-soft)">'+r.v2+'</td></tr>';
   });
-  return h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
+  var out = h + '</table><p class="sub" style="font-size:.82rem">'+s.title+'</p>';
+  if(key==="piutang"){ out += NOTE_PIUTANG; }
+  return out;
 }
 function renderStmt(key){
   $("#stmt-wrap").innerHTML = fmtStmt(key);
@@ -182,7 +185,9 @@ var RATIOS = [
  {q:"Stage-3 share (%)", hint:"Stage 3 ÷ bruto × 100: 10.100 ÷ 108.100 × 100", ans:9.3, tol:0.3,
   why:"9,3% — hampir 1 dari 10 rupiah piutang sudah credit-impaired."},
  {q:"DIO 2025 (hari)", hint:"Persediaan ÷ HPP × 365: 96.000 ÷ 338.000 × 365", ans:103.7, tol:0.5,
-  why:"103,7 hari — membaik dari 110,6. Stok berputar sedikit lebih cepat."}
+  why:"103,7 hari — membaik dari 110,6. Stok berputar sedikit lebih cepat."},
+ {q:"Lifetime ECL tagihan baru Rp10.000 (Rp juta)", hint:"Pendekatan sederhana PSAK 109: 2% × 10.000, langsung lifetime sejak hari pertama", ans:200, dec:false, tol:10,
+  why:"200 — tanpa stage 1/2: piutang usaha langsung dicadangkan lifetime ECL sejak pengakuan awal."}
 ];
 (function(){
   var h = "";
