@@ -20,7 +20,7 @@ is:{ title:"Income Statement 2025 (Rp juta) — 2024 sebagai pembanding", cols:[
 bs:{ title:"Balance Sheet 31 Des 2025 (Rp juta)", cols:["Pos","2025","2024"],
  rows:[
   {l:"Kas dan setara kas", v:"21.440", v2:"33.200", d:"Turun 11.760 — padahal laba naik.", psak:"—", f:"Kas turun saat laba naik = alarm pertama kualitas laba."},
-  {l:"Piutang usaha", v:"104.000", v2:"55.000", d:"+89% YoY. DSO 2025 = 73 hari (2024: 50 hari).", psak:"PSAK 109 (dulu 71) — ECL", f:"RED FLAG utama: piutang tumbuh 3x lipat penjualan. Fiktif? Channel stuffing? Cek umur piutang & cadangan ECL."},
+  {l:"Piutang usaha", v:"104.000", v2:"55.000", d:"+89% YoY. DSO 2025 = 73 hari (2024: 50 hari).", psak:"PSAK 109 (dulu 71) — ECL", f:"RED FLAG utama: piutang tumbuh +89,1% — sekitar 3x LAJU pertumbuhan penjualan (+30,0%), bukan 3x penjualan. Fiktif? Channel stuffing? Cek umur piutang & cadangan ECL."},
   {l:"Persediaan", v:"96.000", v2:"80.000", d:"+20%.", psak:"PSAK 202 (dulu 14)", f:"—"},
   {l:"Total aset lancar", v:"221.440", v2:"168.200", d:"Sumber daya yang menjadi kas dalam 12 bulan.", psak:"—", f:"—"},
   {l:"Aset tetap neto", v:"230.000", v2:"210.000", d:"Capex kas 48.000 (+ aset hak-guna 2.000) > depresiasi 30.000 = ekspansi.", psak:"PSAK 216 (dulu 16)", f:"—"},

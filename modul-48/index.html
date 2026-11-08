@@ -112,7 +112,10 @@
     angka yang dijumlahkan), semua kolom nilai menjadi
     <strong>Decimal Number</strong>. Kolom kosong (mis. Laba_Usaha KLBF 2023, sebagian
     besar baris BBRI 2023) biarkan kosong — Power BI membacanya sebagai
-    <em>null</em>, dan fungsi agregasi DAX mengabaikan <em>null</em>. Ulangi untuk
+    <em>null</em>, dan fungsi agregasi DAX mengabaikan <em>null</em>. <strong>Skala:</strong>
+    nilai CSV dalam rupiah PENUH (mis. Penjualan_Neto 2024 = 32.627.776.108.026) — Decimal Number
+    Power BI muat hingga ~19 digit, jadi jangan membagi 1.000.000 saat impor; bila ingin tampilan
+    jutaan, ubah format tampilannya, bukan datanya. Ulangi untuk
     ketiga file. <strong>Jangan</strong> menggabungkan ketiga file menjadi satu tabel
     di tahap ini — tiap perusahaan punya struktur laporan yang berbeda.</p>
 
@@ -317,6 +320,26 @@ DIVIDE (
     <tr><td>ROE headline KLBF / MIKA</td><td class="val">14,66% / 18,61%</td><td>Penyebutnya rata-rata <strong>ekuitas pemilik induk</strong> — CSV hanya punya total ekuitas. DAX di modul ini memakai total ekuitas (13,58% / 16,46%) dan diberi label jujur.</td></tr>
   </table></div>
 
+  <h3>Kerangka umum definisi rasio — sebelum membandingkan dua angka, samakan dulu definisinya</h3>
+  <p class="sub">Dua angka yang namanya sama belum tentu rasio yang sama. Setiap rasio didefinisikan oleh tiga hal:
+    <strong>(1) pembilang, (2) penyebut, (3) rata-rata vs saldo akhir</strong> — dan setiap angka di modul ini
+    berlabel <strong>[T]</strong> (terhitung dari CSV — bisa kamu hitung ulang) atau <strong>[B]</strong> (diungkap
+    bank/perusahaan — penyebutnya tidak tersedia di CSV, jadi tidak bisa dihitung ulang). Contoh dari modul ini:</p>
+  <div class="tblwrap"><table>
+    <tr><th>Rasio</th><th>Pembilang</th><th>Penyebut</th><th>Label</th></tr>
+    <tr><td>LDR hitung-sendiri BBRI 95,1%</td><td>Pinjaman gross Rp1.298,32T</td><td>DPK Rp1.365,45T</td><td class="val">[T]</td></tr>
+    <tr><td>LDR bank 88,85%</td><td>Pembiayaan Rp1.354,64T (bank memakai pembiayaan, bukan hanya pinjaman gross)</td><td>DPK versi bank</td><td class="val">[B]</td></tr>
+    <tr><td>ROE headline KLBF 14,66%</td><td>Laba bersih atribusi pemilik induk</td><td>Rata-rata ekuitas pemilik induk</td><td class="val">headline</td></tr>
+    <tr><td>ROE DAX KLBF 13,58%</td><td>Laba bersih atribusi pemilik induk</td><td>Rata-rata TOTAL ekuitas (CSV hanya punya total ekuitas)</td><td class="val">[T]</td></tr>
+    <tr><td>Gross Margin KLBF 39,71%</td><td>Laba bruto</td><td>Penjualan neto</td><td class="val">[T]</td></tr>
+    <tr><td>NIM BBRI 7,74%</td><td>Pendapatan bunga bersih</td><td>Rata-rata aset produktif — tidak ada di CSV</td><td class="val">[B]</td></tr>
+  </table></div>
+  <p class="sub">Aturannya: <strong>jangan bandingkan [T] dengan [B] seolah satu rasio</strong> — LDR 95,1% vs 88,85%
+    bukan 'bank salah hitung', melainkan dua definisi. <strong>Rata-rata vs saldo akhir</strong> juga mengubah
+    hasil: ROE atas rata-rata ekuitas (13,58%) berbeda dari ROE atas ekuitas akhir (13,18%) — sebutkan
+    penyebutnya setiap kali kamu mengutip rasio. Dan angka <strong>[B] tanpa penyebut yang bisa diverifikasi
+    adalah klaim, bukan bukti</strong> — pakai sebagai pembanding, bukan sebagai kebenaran.</p>
+
   <p class="sub"><span class="step-tag">Langkah 4</span> <strong>Visual.</strong>
     Susun satu halaman per perusahaan, lalu satu halaman perbandingan:
     <strong>kartu KPI</strong> (Gross Margin, Current Ratio, ROE, plus satu ukuran
@@ -338,7 +361,9 @@ DIVIDE (
     memverifikasi</strong> — bila CSV salah ketik satu digit, dashboard tetap tampil
     rapi dan salah. Selalu cocokkan satu kartu KPI dengan LK auditan sebelum
     mempercayai dashboard. Dataset ini hanya dua tahun: cukup untuk arah, tidak
-    cukup untuk menyimpulkan tren. Dan tiga perusahaan ini tidak bisa diringkas
+    cukup untuk menyimpulkan tren. Dua titik hanya menunjukkan perubahan antarperiode — dan dapat
+    dipengaruhi basis 2023 yang rendah/tinggi, kejadian satu kali, atau faktor makro — jadi jangan
+    ekstrapolasi garis lurus dari dua titik. Dan tiga perusahaan ini tidak bisa diringkas
     menjadi satu peringkat — farmasi, rumah sakit, dan bank menjual risiko yang
     berbeda.</p>
 
@@ -351,8 +376,9 @@ DIVIDE (
   <div class="tblwrap"><table>
     <tr><th>#</th><th>Lakukan</th><th>Cek penerimaan — yang harus terlihat / bernilai berapa</th></tr>
     <tr><td>R0</td><td>Unduh ketiga CSV dari tautan di atas; instal <strong>Power BI Desktop</strong> (gratis, dari situs resmi Microsoft) dan buka.</td><td>3 file tersimpan. klbf-fsa.csv: 26 kolom, 2 baris data (2023, 2024). mika-fsa.csv: 24 kolom, 2 baris. bbri-fsa.csv: 26 kolom, 2 baris.</td></tr>
-    <tr><td>R1</td><td>Impor KLBF: <strong>Get Data → Text/CSV</strong> → klbf-fsa.csv. Di pratinjau, ubah kolom <span style="font-family:var(--font-mono)">Tahun</span> menjadi <strong>Text</strong>, semua kolom nilai menjadi <strong>Decimal Number</strong>, lalu Load.</td><td>Tabel klbf-fsa: 2 baris. Sel Penjualan_Neto 2024 = 32.627.776.108.026. Laba_Usaha 2023 kosong (null) — biarkan kosong, jangan diisi tebakan.</td></tr>
+    <tr><td>R1</td><td>Impor KLBF: <strong>Get Data → Text/CSV</strong> → klbf-fsa.csv. Di pratinjau, ubah kolom <span style="font-family:var(--font-mono)">Tahun</span> menjadi <strong>Text</strong>, semua kolom nilai menjadi <strong>Decimal Number</strong>, lalu Load.</td><td>Tabel klbf-fsa: 2 baris. Sel Penjualan_Neto 2024 = 32.627.776.108.026. Laba_Usaha 2023 kosong (null) — biarkan kosong, jangan diisi tebakan. <strong>Skala:</strong> nilai dalam rupiah penuh (14 digit) — Decimal Number muat hingga ~19 digit; jangan bagi 1.000.000 saat impor.</td></tr>
     <tr><td>R2</td><td>Ulangi R1 untuk mika-fsa.csv dan bbri-fsa.csv. <strong>Jangan</strong> gabungkan ketiga file menjadi satu tabel.</td><td>mika-fsa: 2 baris. bbri-fsa: 2 baris; baris 2023 BBRI hanya 3 kolom terisi — Pinjaman_Diberikan_Gross 1.197.752.706, Total_Aset 1.965.007.030, Ekuitas_Atribusi_Pemilik_Induk 311.363.556 — sisanya null, itu benar, bukan hilang.</td></tr>
+    <tr><td>R2.5</td><td>Kontrol kualitas data SEBELUM menulis DAX — lima cek di tiap tabel: (1) <strong>duplikasi:</strong> kolom Tahun harus unik (tepat 2 baris: 2023, 2024); (2) <strong>missing:</strong> sel kosong harus null yang dijelaskan (Laba_Usaha KLBF 2023, sebagian besar baris BBRI 2023) — bukan 0 dan bukan tebakan; (3) <strong>tanda:</strong> nilai negatif hanya bila memang maknanya negatif — bila muncul tiba-tiba, cek tanda kurung/minus di sumber; (4) <strong>satuan:</strong> semua nilai dalam rupiah penuh — bila satu kolom dalam jutaan dan lainnya penuh, semua rasio hancur; (5) <strong>uji total:</strong> cocokkan satu kolom ke LK auditan (mis. Penjualan_Neto KLBF 2024 = 32.627.776.108.026).</td><td>0 duplikat Tahun; null hanya yang dijelaskan di R1/R2; tidak ada negatif yang tak dijelaskan; skala seragam rupiah penuh; satu kolom terverifikasi ke LK. Bila satu cek gagal — perbaiki CSV-nya dulu, jangan lanjut ke DAX.</td></tr>
     <tr><td>R3</td><td>Model data: biarkan ketiga tabel berdiri sendiri — <strong>tanpa relasi</strong> antar tabel, <strong>tanpa tabel kalender</strong>. Kolom Tahun menjadi slicer di tiap halaman.</td><td>Model view: 3 tabel, 0 relasi. Slicer Tahun menampilkan 2023 dan 2024.</td></tr>
     <tr><td>R4</td><td>Tulis ukuran DAX KLBF &amp; MIKA dari Langkah 3 (klik kanan tabel → New measure). Format rasio sebagai Percentage (2 desimal); Current Ratio dan D/E sebagai Decimal number (2 desimal).</td><td>Dengan filter Tahun = 2024: Gross Margin KLBF 39,71% / MIKA 53,68%; Current Ratio 4,11x / 4,74x; Net Margin (Atribusi) 9,93% / 23,52%; ROE (Ekuitas Akhir) 13,18% / 15,64%; ROE (Rata-Rata Ekuitas Total) 13,58% / 16,46%; ROE DuPont KLBF 9,93% × 1,16 × 1,18 = 13,58%; D/E 0,20x / 0,13x; Kualitas Laba 1,47x / 1,41x.</td></tr>
     <tr><td>R5</td><td>Tulis ukuran DAX BBRI dari Langkah 3. NIM 7,74% dan NPL 2,78% <strong>tidak</strong> dibuatkan ukuran.</td><td>Dengan filter Tahun = 2024: CASA 67,3%; LDR (Hitung Sendiri) 95,1%; CoC 3,35%; ROA 3,06%; ROE Bank 19,14%. NIM dan NPL tampil hanya sebagai kartu teks berlabel [DIUNGKAP BANK] — tanpa ukuran DAX.</td></tr>

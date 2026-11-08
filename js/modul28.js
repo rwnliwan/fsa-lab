@@ -73,6 +73,18 @@ teks:{ title:"Teknik teks & angka — membaca narasi seperti forensik, menguji a
   {l:"Benford's Law — KAPAN TIDAK valid", v:"angka assigned / dataset kecil", v2:"—",
    d:"JANGAN pakai Benford untuk: nomor faktur berurutan, kode akun, harga yang dipatok (mis. Rp9.999), data berbatas (threshold), atau sampel kecil (< ~1.000). Di sana deviasi adalah sifat data, bukan sinyal fraud. Kesalahan paling umum: memakai Benford lalu menuduh — itu pseudosains forensik.",
    psak:"—", f:"Aturan praktis: tanya dulu 'apakah angka ini BISA mengikuti Benford secara natural?' Kalau tidak — jangan diuji."}
+ ]},
+evid:{ title:"Hierarki evidensi — sinyal vs red flag vs bukti: kapan analis boleh menulis vonis", cols:["Tingkat","Arti","Tindakan"],
+ rows:[
+  {l:"1 · Sinyal — sesuatu yang menarik perhatian, belum berarti apa-apa", v:"catat", v2:"gali",
+   d:"Sinyal adalah satu observasi yang tidak biasa: tone MD&A berubah, satu KAM baru muncul, satu angka menyimpang dari Benford. Satu sinyal tidak membuktikan apa pun — ia hanya berkata 'lihat ke sini'. Kesalahan paling umum: menulis sinyal seolah kesimpulan. Yang benar: catat sinyalnya, lalu cari yang kedua dari sumber yang BERBEDA.",
+   psak:"—", f:"Sinyal yang tidak ditindaklanjuti = sinyal yang hilang. Sinyal yang langsung jadi vonis = analis yang melompat."},
+  {l:"2 · Red flag — pola atau gabungan sinyal yang menaikkan probabilitas masalah", v:"uji hipotesis", v2:"cari pembanding",
+   d:"Red flag naik satu tingkat bila sinyal-sinyal membentuk POLA atau datang dari sumber independen: piutang +89% DITAMBAH CFO < NI DITAMBAH opini berubah dari WTP — tiga sinyal independen yang menunjuk ke arah yang sama. Sepuluh red flag di checklist modul ini (tab pertama) masing-masing masih red flag, bukan vonis. Di tingkat ini analis merumuskan hipotesis ('pendapatan mungkin dipompa lewat channel stuffing') dan mengujinya — cek umur piutang, konsentrasi debitur, kas yang diterima setelah periode.",
+   psak:"—", f:"Red flag yang diuji dan GAGAL terbukti = hipotesis yang gugur — itu hasil yang baik, bukan kegagalan. Red flag yang tidak pernah diuji = tuduhan yang belum lahir."},
+  {l:"3 · Bukti — fakta terverifikasi yang bisa ditunjukkan ke pihak ketiga", v:"vonis boleh ditulis", v2:"tunjukkan sumbernya",
+   d:"Bukti adalah fakta yang terverifikasi dan bisa direproduksi pihak lain: restatement yang mengakui kesalahan, angka yang direkonsiliasi ke dokumen sumber (kontrak, rekening koran, konfirmasi pihak ketiga), atau pengakuan manajemen yang tercatat. Baru di tingkat ini vonis boleh ditulis — dan vonisnya harus menyebut buktinya ('restatement 2024 mengakui pendapatan fiktif RpX') bukan red flag-nya. Aturan keras: satu red flag ≠ bukti; sepuluh sinyal dari sumber yang SAMA ≠ bukti (satu sumber yang salah menghitung sepuluh kali tetap satu kesalahan); bukti harus independen dari klaim yang diuji. Benford yang menyimpang = sinyal; Benford + piutang tak tertagih + kas tak masuk = red flag; konfirmasi debitur yang membantah saldo = bukti.",
+   psak:"—", f:"Tanyakan sebelum menulis vonis: 'bila pihak yang saya tuduh membaca ini, bukti apa yang tidak bisa mereka bantah?' Bila jawabannya hanya red flag — tulis red flag-nya, bukan vonisnya."}
  ]}
 };
 
