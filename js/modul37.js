@@ -41,7 +41,11 @@ reserve:{ title:"LIFO reserve: jembatan LIFO → FIFO. Selisih persediaan 2.000,
   {l:"Kapan LIFO reserve menyusut: sinyal bahaya", v:"likuidasi lapisan", v2:"peringatan",
    d:"LIFO reserve menyusut tajam tanpa penjelasan = perusahaan menjual persediaan TUA (likuidasi lapisan): HPP tiba-tiba murah → laba melonjak satu kali. Ini bukan efisiensi — ini makan tabungan. Analis menandai tahun likuidasi sebagai non-recurring dan mengeluarkannya dari laba inti.",
    tag:"Pola umum (peringatan)",
-   k:"Lensa forensik: 'margin membaik' + LIFO reserve anjlok + volume penjualan datar = laba dari gudang, bukan dari pasar."}
+   k:"Lensa forensik: 'margin membaik' + LIFO reserve anjlok + volume penjualan datar = laba dari gudang, bukan dari pasar."},
+  {l:"Keterbatasan data: LIFO reserve tidak selalu diungkapkan rinci", v:"caveat", v2:"batas penyetaraan",
+   d:"Penyetaraan di atas memakai LIFO reserve 2.000 yang diungkapkan emiten. Bila emiten tidak mengungkapkan LIFO reserve, atau hanya mengungkapkan angka agregat tanpa rincian per segmen, penyetaraan tidak dapat dilakukan dengan presisi — analis memilih: memakai estimasi dari perubahan persediaan dan HPP, membandingkan hanya dalam kelompok metode yang sama, atau memberi diskon atas ketidakpastian. Emiten yang memakai metode campuran (sebagian LIFO, sebagian FIFO) membuat satu angka reserve tidak cukup untuk seluruh persediaan.",
+   tag:"Caveat analis (batas data)",
+   k:"Lensa forensik: emiten yang berhenti mengungkapkan LIFO reserve setelah bertahun-tahun mengungkapkannya — tanyakan kenapa: apakah lapisannya sudah habis, atau angkanya tidak lagi menguntungkan?"}
  ]},
 capex:{ title:"Kapitalisasi vs beban: overhaul mesin Rp8.000 juta, umur 4 tahun. Angka ILUSTRATIF.", cols:["Tahun 1","Kapitalisasi","Beban langsung"],
  rows:[

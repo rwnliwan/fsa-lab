@@ -58,6 +58,48 @@ fiskal:{ title:"Rekonsiliasi fiskal Cemerlang Abadi 2025 (Rp juta, rincian ilust
   {l:"Beban pajak akuntansi vs PPh terutang", v:"12.760 vs 11.440", v2:"selisih 1.320",
    d:"Beban pajak di laporan laba rugi (kanonis: 12.760) = pajak kini 11.440 + beban pajak tangguhan 1.320. Rincian 1.320: pembalikan DTA (beda waktu −6.000) → beban +1.320 (22% × 6.000). Tidak ada DTA/DTL dari beda tetap — beda tetap tidak pernah berbalik. ETR akuntansi = 12.760 ÷ 58.000 = 22,0% tepat. Rumus kunci: beban pajak = pajak kini + pajak tangguhan.",
    psak:"PSAK 212", f:"Forensik: beban pajak tangguhan yang berayun liar tanpa beda waktu yang jelas = area abu-abu. Minta rincian DTA/DTL per komponen."}
+ ]},
+status:{ title:"Status data & asumsi — baca DULU: angka mana yang kanonis, mana yang turunan, mana yang sekadar contoh", cols:["Angka","Status","Sumber / cara pakai"],
+ rows:[
+  {l:"PBT 58.000 · beban pajak 12.760 · utang pajak & akrual 8.560 · CFO 30.800", v:"KANONIS", v2:"LK 2025",
+   d:"Angka laporan keuangan PT Cemerlang Abadi 2025 yang dipakai konsisten di semua modul FSA Lab sebagai data dasar (Rp juta). Modul lain (M31, M29) memakai angka yang sama — jangan diubah.",
+   psak:"—", f:"Kredit: angka kanonis adalah jangkar — seluruh rekonsiliasi di modul ini bermuara ke sini."},
+  {l:"PKP 52.000 · PPh terutang 11.440 · beban pajak tangguhan 1.320 · ETR 22,0% · PPh 29 3.080", v:"TURUNAN (dihitung)", v2:"verifikasi ulang",
+   d:"Dihitung dari angka kanonis lewat rekonsiliasi fiskal di tab sebelah — verifikasi dengan menghitung ulang, bukan menghafal.",
+   psak:"PSAK 212", f:"Investasi: angka turunan yang tidak dapat dihitung ulang dari angka kanonis patut diuji ulang sebelum dipercaya."},
+  {l:"Koreksi fiskal +4.000 / −4.000 / −6.000 · PPh 25 8.360 · DTA awal 3.300", v:"ILUSTRATIF", v2:"rincian contoh",
+   d:"Rincian contoh yang ditetapkan modul untuk latihan (Rp juta). Ilustrasinya masuk akal, tetapi rinciannya bukan angka laporan — yang kanonis adalah totalnya (PBT, beban pajak, PKP).",
+   psak:"—", f:"Forensik: bedakan rincian ilustratif dari total kanonis — yang diuji analis adalah totalnya."},
+  {l:"Skenario playground: beda tetap +2.000 · sengketa kalah 3.000 · rugi fiskal dikompensasi", v:"HIPOTETIS", v2:"bagaimana bila",
+   d:"Angka 'bagaimana bila' untuk melatih arah perubahan — bukan prediksi dan bukan data.",
+   psak:"—", f:"Kredit: skenario hipotetis melatih arah, bukan besaran — jangan pakai untuk menetapkan provisi."}
+ ]},
+dta:{ title:"Roll-forward pajak tangguhan — dari saldo awal ke saldo akhir, plus uji recoverability DTA (PSAK 212)", cols:["Pos","Rp juta","Arti"],
+ rows:[
+  {l:"Saldo awal DTA", v:"3.300", v2:"ilustratif",
+   d:"Aset pajak tangguhan awal 2025 (ilustratif): beda waktu kumulatif 15.000 × 22% = 3.300 — dari provisi & penyusutan akuntansi yang belum boleh dikurangkan fiskal. DTA = pajak yang 'dibayar di muka' dan akan dipulihkan saat beda waktu berbalik.",
+   psak:"PSAK 212 (dulu PSAK 46)", f:"Kredit: DTA adalah klaim atas kas masa depan — nilainya hanya sebesar laba fiskal yang bisa memulihkannya."},
+  {l:"Pembalikan 2025", v:"(1.320)", v2:"−6.000 × 22%",
+   d:"Beda waktu −6.000 tahun ini (lihat tab fiskal) membalikkan DTA 6.000 × 22% = 1.320. Inilah beban pajak tangguhan tahun ini — dan satu-satunya komponennya.",
+   psak:"PSAK 212", f:"Forensik: pembalikan DTA menaikkan beban pajak tanpa kas keluar — bedakan dari pajak yang benar-benar dibayar."},
+  {l:"Saldo akhir DTA", v:"1.980", v2:"3.300 − 1.320",
+   d:"3.300 − 1.320 = 1.980. Footing roll-forward: saldo awal − pembalikan + pembentukan baru = saldo akhir. Bila tidak ada pembentukan baru, saldo akhir = 1.980.",
+   psak:"PSAK 212", f:"Investasi: saldo akhir DTA adalah janji pemulihan masa depan — uji di baris recoverability di bawah."},
+  {l:"Saldo DTL", v:"0", v2:"—",
+   d:"Tidak ada liabilitas pajak tangguhan di contoh ini (ilustratif): seluruh beda waktu modul adalah tipe DTA. Di perusahaan nyata, DTA dan DTL disajikan terpisah per entitas dan saling hapus hanya bila memenuhi syarat saling hapus PSAK 212.",
+   psak:"PSAK 212", f:"Kredit: DTA dan DTL tidak boleh dijumlah mentah-mentah — baca penyajian bersihnya di neraca."},
+  {l:"Dasar pengakuan DTA", v:"probable", v2:"PSAK 212",
+   d:"DTA diakui hanya bila besar kemungkinan (probable) laba kena pajak masa depan memadai untuk memulihkan beda waktu — PSAK 212 (dulu PSAK 46). Bukan otomatis dari adanya beda waktu: beda waktu tanpa laba masa depan = DTA yang tidak diakui.",
+   psak:"PSAK 212 (dulu PSAK 46)", f:"Forensik: DTA besar + laba fiskal menyusut = klaim yang makin rapuh — minta proyeksi laba yang mendasarinya."},
+  {l:"Uji recoverability — skenario lolos", v:"5.500 > 1.980", v2:"lolos",
+   d:"Uji sederhana (ilustratif): proyeksi laba fiskal 5 tahun 25.000 → kapasitas serap 25.000 × 22% = 5.500 > DTA 1.980 → lolos, DTA penuh diakui.",
+   psak:"PSAK 212", f:"Investasi: kapasitas serap yang jauh di atas DTA = bantalan kenyamanan — tetapi proyeksi itu sendiri yang harus diuji."},
+  {l:"Uji recoverability — skenario gagal", v:"1.100 < 1.980", v2:"turun 880",
+   d:"Skenario buruk (ilustratif): proyeksi laba fiskal hanya 5.000 → kapasitas 5.000 × 22% = 1.100 < DTA 1.980 → DTA diturunkan 880 (1.980 − 1.100) dan beban pajak naik 880. Uji ini diulang tiap tanggal pelaporan.",
+   psak:"PSAK 212", f:"Kredit: penurunan DTA adalah kabar buruk ganda — laba akuntansi terpukul DAN klaim pajak masa depan menyusut."},
+  {l:"Sinyal analis: DTA tumbuh, laba fiskal menyusut", v:"red flag", v2:"—",
+   d:"DTA yang tumbuh sementara laba fiskal menyusut = red flag: perusahaan mengakui 'pajak di muka' yang mungkin tidak pernah kembali. Bandingkan tren DTA dengan proyeksi laba — bukan dengan laba tahun berjalan saja.",
+   psak:"—", f:"Forensik: DTA yang tidak pernah diuji recoverability-nya di catatan = minta uji itu sebelum percaya angkanya."}
  ]}
 };
 
@@ -87,7 +129,7 @@ $$(".stmt-tab[data-stmt]").forEach(function(b){
     b.classList.add("active"); renderStmt(b.dataset.stmt);
   });
 });
-renderStmt("rezim");
+renderStmt("status");
 
 /* ---------- PLAYGROUND ---------- */
 var CARDS = [
@@ -217,7 +259,11 @@ var RATIOS = [
  {q:"DTA yang dipulihkan dari beda waktu 2025 (Rp juta)", hint:"Rp6.000 juta × 22% — reversal DTA periode lalu (ilustratif)", ans:1320, dec:false, tol:5,
   why:"Rp1.320 juta — beda waktu yang menekan PKP tahun ini membalikkan DTA periode lalu; inilah satu-satunya komponen beban pajak tangguhan tahun ini."},
  {q:"Cash tax rate ilustratif 2025 (%)", hint:"Pajak dibayar kas Rp8.360 juta (PPh 25) ÷ PBT Rp58.000 juta × 100%", ans:14.4, tol:0.3,
-  why:"14,4% — ilustratif. Kas yang benar-benar keluar jauh di bawah beban akuntansi 22%; selisihnya menjadi PPh 29 kurang bayar Rp3.080 juta."}
+  why:"14,4% — ilustratif. Kas yang benar-benar keluar jauh di bawah beban akuntansi 22%; selisihnya menjadi PPh 29 kurang bayar Rp3.080 juta."},
+ {q:"Saldo akhir DTA 2025 (Rp juta)", hint:"DTA awal 3.300 (ilustratif) − pembalikan 1.320", ans:1980, dec:false, tol:5,
+  why:"1.980 = 3.300 − 1.320 — footing roll-forward DTA; tanpa pembentukan baru, inilah saldo akhir."},
+ {q:"Penurunan DTA bila proyeksi laba fiskal hanya 5.000 (Rp juta)", hint:"Kapasitas serap 5.000 × 22% = 1.100; DTA akhir 1.980 − 1.100 (ilustratif)", ans:880, dec:false, tol:5,
+  why:"880 — DTA yang tidak terpulihkan diturunkan dan menambah beban pajak; uji recoverability diulang tiap tanggal pelaporan."}
 ];
 (function(){
   var h = "";

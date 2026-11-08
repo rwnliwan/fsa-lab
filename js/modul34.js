@@ -146,6 +146,52 @@ konsep:{ title:"Konsep kunci: aset vs liabilitas kontrak, dan principal vs agent
    d:"Enron mencatat nilai penuh transaksi perdagangan energi sebagai pendapatan (seolah prinsipal atas tiap megawatt), sehingga top-line membengkak spektakuler sementara margin menyusut — pola yang juga dipakai menutupi transaksi SPE pihak berelasi.",
    tag:"Fakta publik; Case Files FSA Lab — Kasus 2 Enron",
    k:"Buka Case Files Kasus 2, lalu baca ulang dengan lensa ini: 'pendapatan +150% tapi laba datar' = ciri pendapatan bruto tanpa substansi. Pelajaran: revenue tanpa margin = vanity metric."}
+ ]},
+modif:{ title:"Modifikasi kontrak — saat jumlah, harga, atau ruang lingkup berubah di tengah jalan (PSAK 115)", cols:["Perlakuan","Kapan?","Catatan"],
+ rows:[
+  {l:"Kontrak baru (prospektif)", v:"tambah distinct + harga = SSP", kl:"Lensa investasi",
+   d:"Bila modifikasi menambah barang/jasa yang DISTINCT dan harganya mencerminkan standalone selling price-nya, modifikasi diperlakukan sebagai KONTRAK TERPISAH — akuntansi kontrak lama tidak disentuh. Contoh (ilustratif): tambah 10 unit alat baru seharga 30.000 (= SSP 30.000) → kontrak baru; pendapatan diakui saat unit baru diserahkan.",
+   tag:"PSAK 115 (dulu 72)",
+   k:"Investor: kontrak baru berarti tidak ada koreksi masa lalu — forecast lama tetap berlaku, forecast baru ditambahkan."},
+  {l:"Catch-up kumulatif", v:"ubah harga / tidak distinct", kl:"Sudut forensik",
+   d:"Bila modifikasi mengubah harga atau ruang lingkup barang yang TIDAK distinct dari sisa kontrak, harga transaksi baru dialokasikan ulang ke kewajiban yang belum selesai — dan pendapatan yang sudah diakui dikoreksi sekaligus (cumulative catch-up). Contoh (ilustratif): harga Surya Nusa dipotong 120.000 → 108.000 tanpa perubahan barang → alokasi baru alat 80.000, instalasi 12.000, garansi 16.000; yang sudah diakui 102.222,22 dikoreksi turun 10.222,22.",
+   tag:"PSAK 115 (dulu 72)",
+   k:"Forensik: catch-up negatif yang muncul tepat setelah tutup tahun = tanyakan kapan modifikasi benar-benar disepakati — tanggalnya menentukan tahun koreksi."},
+  {l:"Campuran: sebagian baru, sebagian catch-up", v:"pisahkan dulu", kl:"Lensa investasi",
+   d:"Bila modifikasi menambah barang distinct TAPI sekaligus mengubah harga barang lama, perlakukan dua bagian secara terpisah: bagian tambahan sebagai kontrak baru, bagian lama dengan catch-up. Kuncinya: pisahkan dulu mana yang distinct dan mana yang tidak.",
+   tag:"PSAK 115 (dulu 72)",
+   k:"Investor: modifikasi campuran yang dilaporkan sebagai satu 'kontrak baru' menyembunyikan koreksi atas kontrak lama — minta pemisahannya."},
+  {l:"Garansi setelah modifikasi", v:"666,67/bulan", kl:"Lensa investasi",
+   d:"Pada contoh catch-up di atas, garansi baru 16.000 ÷ 24 bulan = 666,67/bulan (dari 740,74/bulan sebelumnya) — berlaku sejak modifikasi, bukan surut. Sisa liabilitas kontrak ikut dihitung ulang dari alokasi baru.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Analis: tarif garansi per bulan yang berubah tanpa penjelasan = jejak modifikasi yang tidak diungkap narasinya."},
+  {l:"Uji analis: modifikasi sebelum tutup tahun", v:"uji distinct + SSP", kl:"Sudut forensik",
+   d:"Modifikasi yang muncul tepat sebelum tutup tahun + pendapatan melonjak = uji: apakah tambahan barangnya benar-benar distinct dan harganya benar-benar SSP? Bila tidak, 'kontrak baru' itu mungkin hanya cara menghindari catch-up negatif.",
+   tag:"Pola forensik pendapatan",
+   k:"Screen: baca klausul modifikasi di catatan LK — modifikasi tanpa dokumen tertulis = pendapatan yang dibangun di atas kesepakatan lisan."}
+ ]},
+ecl:{ title:"ECL atas receivable & contract asset — keduanya membawa impairment (PSAK 109)", cols:["Saldo","ECL","Cara baca"],
+ rows:[
+  {l:"Receivable — ECL lifetime, pendekatan sederhana", v:"2% × 40.000 = 800", kl:"Lensa kredit",
+   d:"Piutang usaha tanpa komponen pembiayaan signifikan memakai pendekatan sederhana PSAK 109: ECL SEUMUR HIDUP sejak hari pertama, tanpa stage 1/2/3. Contoh (ilustratif): piutang 40.000 × tarif 2% = allowance 800. Tarif naik bila umur piutang menua — baca matriks umur di catatan.",
+   tag:"PSAK 109 (dulu 71)",
+   k:"Kreditur: allowance piutang adalah 'diskon kualitas' atas agunan piutang — piutang bruto tanpa allowance bukan nilai yang bisa ditagih."},
+  {l:"Contract asset — ECL juga", v:"1% × 13.333 = 133,33", kl:"Sudut forensik",
+   d:"Contract asset membawa ECL yang sama seperti piutang — hak bersyarat bukan berarti bebas impairment. Contoh (ilustratif): contract asset 13.333,33 (instalasi Surya Nusa yang belum bisa ditagih) × 1% = 133,33. Tarifnya bisa berbeda dari piutang karena profil risikonya berbeda — tetapi bukan nol hanya karena 'belum ditagih'.",
+   tag:"PSAK 109 (dulu 71)",
+   k:"Forensik: contract asset membengkak + allowance nol = manajemen menganggap pendapatan yang belum bisa ditagih itu pasti tertagih. Uji ke pelanggan yang sama."},
+  {l:"Allowance vs saldo — rasio yang dibaca analis", v:"800 ÷ 40.000 = 2,0%", kl:"Lensa kredit",
+   d:"Cara baca analis: allowance ÷ saldo. Naiknya rasio ini (dengan saldo yang sama) berarti manajemen melihat risiko memburuk — atau akhirnya mengakui risiko lama. Turunnya rasio sementara saldo menua berarti cadangan dikuras.",
+   tag:"Teknik analis",
+   k:"Kreditur: bandingkan rasio allowance/saldo antar kuartal dan antar peers — rasio yang selalu paling rendah di industri = cadangan yang paling tipis."},
+  {l:"Write-off vs allowance — jangan tertukar", v:"cadangan ≠ hapus", kl:"Lensa investasi",
+   d:"Allowance adalah CADANGAN (estimasi) — bukan penghapusan. Piutang yang dihapus (write-off) mengurangi allowance dan saldo bruto bersamaan; rasio allowance/saldo sesudah write-off bisa terlihat 'membaik' padahal kerugian sudah terjadi. Baca mutasi allowance: saldo awal + beban ECL − write-off = saldo akhir.",
+   tag:"PSAK 109",
+   k:"Investor: rasio allowance yang 'membaik' setelah write-off besar = perbaikan kosmetik — cek beban ECL-nya, bukan rasionya."},
+  {l:"Sinyal gabungan: contract asset + allowance tipis + revenue > kas", v:"tiga sinyal", kl:"Sudut forensik",
+   d:"Contract asset membengkak + allowance tipis + revenue tumbuh di atas kas = tiga sinyal yang menunjuk ke arah yang sama (lihat Langkah 5). Satu sinyal saja belum vonis — polanya yang dinilai.",
+   tag:"Pola forensik pendapatan",
+   k:"Forensik: tiga sinyal independen yang searah lebih kuat dari satu sinyal besar — kumpulkan ketiganya sebelum menulis kesimpulan."}
  ]}
 };
 
@@ -305,7 +351,11 @@ var RATIOS = [
  {q:"Cash conversion 2025: kas dari pelanggan ÷ penjualan (%)", hint:"471.000 ÷ 520.000 × 100% (angka kanonis)", ans:90.58, tol:0.5,
   why:"90,6% (kanonis) — dari tiap Rp100 penjualan, Rp90,6 tertagih tunai. Di bawah 80% dua tahun beruntun = red flag kualitas pendapatan."},
  {q:"Pendapatan GARANSI yang diakui selama 2026 (Rp juta)", hint:"17.777,78 ÷ 24 bulan × 10 bulan (ilustratif)", ans:7407.41, tol:1,
-  why:"7.407,41 — garansi diakui straight-line 740,74/bulan sejak Maret 2026. Sisa 10.370,37 tetap jadi liabilitas kontrak di akhir 2026."}
+  why:"7.407,41 — garansi diakui straight-line 740,74/bulan sejak Maret 2026. Sisa 10.370,37 tetap jadi liabilitas kontrak di akhir 2026."},
+ {q:"Koreksi catch-up modifikasi harga 120.000 → 108.000 (Rp juta)", hint:"Sudah diakui 102.222,22 (alat+instalasi) − alokasi baru 92.000 (ilustratif)", ans:10222.22, dec:true, tol:1,
+  why:"10.222,22 — pendapatan kumulatif dikoreksi turun sekaligus; garansi baru 16.000 ÷ 24 = 666,67/bulan."},
+ {q:"Allowance ECL piutang (Rp juta)", hint:"Piutang 40.000 × tarif 2% (ilustratif, pendekatan sederhana PSAK 109)", ans:800, dec:false, tol:5,
+  why:"800 — allowance 2,0% dari saldo; naiknya rasio ini dengan saldo yang sama berarti risiko memburuk."}
 ];
 (function(){
   var h = "";

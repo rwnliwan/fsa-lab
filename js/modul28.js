@@ -85,6 +85,24 @@ evid:{ title:"Hierarki evidensi — sinyal vs red flag vs bukti: kapan analis bo
   {l:"3 · Bukti — fakta terverifikasi yang bisa ditunjukkan ke pihak ketiga", v:"vonis boleh ditulis", v2:"tunjukkan sumbernya",
    d:"Bukti adalah fakta yang terverifikasi dan bisa direproduksi pihak lain: restatement yang mengakui kesalahan, angka yang direkonsiliasi ke dokumen sumber (kontrak, rekening koran, konfirmasi pihak ketiga), atau pengakuan manajemen yang tercatat. Baru di tingkat ini vonis boleh ditulis — dan vonisnya harus menyebut buktinya ('restatement 2024 mengakui pendapatan fiktif RpX') bukan red flag-nya. Aturan keras: satu red flag ≠ bukti; sepuluh sinyal dari sumber yang SAMA ≠ bukti (satu sumber yang salah menghitung sepuluh kali tetap satu kesalahan); bukti harus independen dari klaim yang diuji. Benford yang menyimpang = sinyal; Benford + piutang tak tertagih + kas tak masuk = red flag; konfirmasi debitur yang membantah saldo = bukti.",
    psak:"—", f:"Tanyakan sebelum menulis vonis: 'bila pihak yang saya tuduh membaca ini, bukti apa yang tidak bisa mereka bantah?' Bila jawabannya hanya red flag — tulis red flag-nya, bukan vonisnya."}
+ ]},
+mda:{ title:"MD&A: sumber regulasinya & batasnya — narasi manajemen BUKAN laporan keuangan", cols:["Sumber / batas","Isi","Cara pakai"],
+ rows:[
+  {l:"Sumber Indonesia: POJK 29/2016", v:"laporan tahunan emiten", v2:"—",
+   d:"Analisis dan Pembahasan Manajemen (MD&A) wajib dimuat dalam Laporan Tahunan emiten atau perusahaan publik menurut POJK No. 29/POJK.04/2016 — bersama laporan keuangan audited, laporan tata kelola, dan tanggung jawab direksi/komisaris. Inilah sumber normatif MD&A emiten Indonesia — bukan standar akuntansi.",
+   psak:"POJK 29/2016", f:"Kredit: MD&A yang tidak ada di laporan tahunan emiten = kewajiban pelaporan yang dilanggar — cek keterbukaan BEI."},
+  {l:"Referensi praktik: SEC Regulation S-K Item 303", v:"emiten AS", v2:"pembanding",
+   d:"Untuk emiten AS (dan sebagai pembanding praktik), MD&A diatur SEC Regulation S-K Item 303: pembahasan likuiditas, sumber daya modal, hasil operasi, dan tren yang diketahui. Berguna sebagai pembanding kualitas — MD&A emiten Indonesia yang baik menjawab pertanyaan yang sama.",
+   psak:"SEC Reg S-K Item 303", f:"Investasi: bandingkan kedalaman MD&A emiten Indonesia dengan standar Item 303 — MD&A yang hanya mengulang angka LK tanpa analisis = MD&A yang tidak bekerja."},
+  {l:"MD&A ≠ laporan keuangan", v:"laporan manajemen", v2:"bukan LK",
+   d:"MD&A adalah LAPORAN MANAJEMEN (narasi + analisis + prospek), bukan bagian laporan keuangan yang diaudit. Angkanya harus konsisten dengan laporan keuangan, tetapi tingkat keyakinannya berbeda: auditor tidak memberi opini atas MD&A seperti atas laporan keuangan.",
+   psak:"—", f:"Forensik: klaim MD&A yang tidak ada jejaknya di laporan keuangan audited = narasi tanpa jangkar — minta angka pendukungnya."},
+  {l:"Catatan atas laporan keuangan (CaLK)", v:"bagian LK, diaudit", v2:"PSAK 201",
+   d:"Berbeda dengan MD&A, catatan atas laporan keuangan (CaLK) ADALAH bagian laporan keuangan yang diaudit dan mengikuti PSAK 201 (penyajian). Bila MD&A dan CaLK bercerita berbeda tentang angka yang sama, CaLK yang dipegang — dan selisihnya ditanyakan.",
+   psak:"PSAK 201", f:"Investasi: CaLK adalah sumber yang diaudit — MD&A adalah tafsir manajemen atas sumber itu. Pegang sumbernya, bukan tafsirnya."},
+  {l:"Klaim prospektif di MD&A", v:"ekspektasi, bukan fakta", v2:"uji realisasi",
+   d:"Pernyataan ke depan (target, proyeksi, rencana) di MD&A adalah ekspektasi manajemen — bukan fakta dan bukan janji. Analis mengujinya ke realisasi periode berikut: MD&A tahun lalu yang menjanjikan X, berapa yang benar-benar terjadi? Selisih yang berulang tanpa penjelasan adalah sinyal.",
+   psak:"—", f:"Forensik: MD&A yang tiap tahun menjanjikan hal yang sama dan tiap tahun meleset = manajemen yang tidak belajar — atau tidak jujur."}
  ]}
 };
 

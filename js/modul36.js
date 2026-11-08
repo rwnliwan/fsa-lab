@@ -80,6 +80,29 @@ mult:{ title:"Dampak ke multiples: harga saham Rp6.000 — basic vs diluted P/E.
    d:"Manajemen cenderung memandu dengan basic EPS (lebih tinggi) atau 'adjusted EPS' yang mengeluarkan SBC SEKALIGUS (pembilang dibesarkan, penyebut dikecilkan — double count keuntungan). Uji: minta guidance dalam diluted EPS GAAP, lalu bandingkan dengan adjusted. Selisih yang melebar tiap tahun = kualitas laba menurun.",
    tag:"Praktik umum (peringatan)",
    k:"Lensa investasi: 'adjusted EPS naik 20%' sementara diluted GAAP EPS datar = pertumbuhannya berasal dari penyesuaian, bukan operasi."}
+ ]},
+pajak:{ title:"Pajak & arus kas atas SBC — tax benefit, excess tax benefit, dan klasifikasi arus kas (PSAK 102/212)", cols:["Perlakuan","Angka","Catatan"],
+ rows:[
+  {l:"Deduksi pajak saat exercise — bukan saat vesting", v:"12.000 × 22% = 2.640", v2:"ilustratif",
+   d:"Beban SBC akuntansi (PSAK 102, dulu PSAK 53) diakui selama vesting sebesar 3.000/tahun — tetapi pengurang pajak umumnya baru diakui saat opsi DIEKSEKUSI, sebesar nilai intrinsik saat itu. Contoh (ilustratif): nilai intrinsik total saat exercise 12.000 → manfaat pajak 12.000 × 22% = 2.640. Beda waktu antara beban akuntansi dan deduksi fiskal inilah yang menciptakan DTA selama vesting.",
+   tag:"PSAK 102 (dulu PSAK 53) · PSAK 212",
+   k:"Lensa investasi: manfaat pajak SBC adalah kas yang benar-benar dihemat — tetapi waktunya mengikuti exercise, bukan vesting."},
+  {l:"DTA selama vesting", v:"3.000 × 22% = 660/thn", v2:"ilustratif",
+   d:"Tiap tahun vesting, beban 3.000 yang belum dapat dikurangkan fiskal membentuk DTA 660 (3.000 × 22%, ilustratif). Saat exercise, DTA dipakai dan manfaat pajak final dihitung dari nilai intrinsik — selisihnya menyesuaikan beban pajak periode exercise.",
+   tag:"PSAK 212 (dulu PSAK 46)",
+   k:"Lensa kredit: DTA dari SBC hanya pulih bila opsi benar-benar dieksekusi — opsi yang hangus menghapus DTA itu."},
+  {l:"Excess tax benefit — ke ekuitas, bukan ke laba", v:"660 ke ekuitas", v2:"ilustratif",
+   d:"Bila manfaat pajak (2.640) melebihi manfaat atas beban akuntansi kumulatif (9.000 × 22% = 1.980), kelebihan 660 diakui langsung di EKUITAS menurut PSAK 212 (dulu PSAK 46) — bukan menambah laba. Sebaliknya, bila manfaat pajak lebih kecil dari beban akuntansi, kekurangannya membebani P&L. Inilah alasan 'pajak SBC' tidak seluruhnya terlihat di laba rugi.",
+   tag:"PSAK 212 (dulu PSAK 46)",
+   k:"Lensa forensik: laba yang 'naik' karena excess tax benefit SBC = laba dari pajak, bukan dari operasi — pisahkan sebelum menilai tren."},
+  {l:"Klasifikasi arus kas — IFRS vs US GAAP", v:"operasi vs operasi", v2:"cek catatan",
+   d:"Manfaat pajak SBC: di bawah IFRS, arus kas pajak penghasilan umumnya disajikan sebagai arus kas OPERASI (bagian dari pajak yang dibayar) — praktik yang dipakai modul ini. Di bawah US GAAP (ASC 718, setelah ASU 2016-09), excess tax benefit juga disajikan sebagai operasi; sebelumnya diklasifikasikan sebagai pendanaan. Analis lintas-yurisdiksi memeriksa catatan arus kas, bukan hanya total CFO.",
+   tag:"PSAK 207 (dulu PSAK 2) · ASC 718",
+   k:"Lensa investasi: CFO dua perusahaan teknologi hanya sebanding bila klasifikasi manfaat pajak SBC-nya sama — cek catatan arus kasnya."},
+  {l:"Proceeds exercise — arus kas PENDANAAN", v:"24 × 200 = 4.800", v2:"ilustratif",
+   d:"Kas yang diterima saat karyawan mengeksekusi opsi (24 juta × Rp200 = 4.800, ilustratif) adalah arus kas PENDANAAN (penerbitan saham) — bukan operasi. Jangan campur dengan add-back SBC 3.000 di CFO: add-back itu non-kas, sedangkan 4.800 ini kas masuk yang sesungguhnya.",
+   tag:"PSAK 207 (dulu PSAK 2)",
+   k:"Lensa kredit: proceeds exercise adalah kas masuk satu kali — jangan jadikan dasar proyeksi CFO berulang."}
  ]}
 };
 
@@ -239,7 +262,11 @@ var RATIOS = [
  {q:"Diluted EPS (Rp, 1 desimal)", hint:"60.000 ÷ (200 + 12) juta — TSM: 24 − (24×200÷400) (ilustratif)", ans:283.0, dec:false, tol:0.6,
   why:"Rp283,0 — 60.000 ÷ 212. Dilution drag Rp17 (≈5,7%) vs basic."},
  {q:"FCFE dengan addback SBC (Rp juta)", hint:"CFO 55.000 − capex 25.000 + net borrowing 1.500 (ilustratif)", ans:31500, dec:false, tol:1,
-  why:"31.500 — CFO sudah termasuk add-back SBC 3.000 (non-kas). Tanpa add-back = 28.500: under-value 3.000."}
+  why:"31.500 — CFO sudah termasuk add-back SBC 3.000 (non-kas). Tanpa add-back = 28.500: under-value 3.000."},
+ {q:"Manfaat pajak SBC saat exercise (Rp juta)", hint:"Nilai intrinsik 12.000 × tarif 22% (ilustratif)", ans:2640, dec:false, tol:5,
+  why:"2.640 — dari jumlah itu 1.980 terkait beban akuntansi (ke P&L) dan 660 excess ke ekuitas."},
+ {q:"Excess tax benefit SBC ke ekuitas (Rp juta)", hint:"(12.000 − 9.000) × 22% — manfaat di atas beban akuntansi kumulatif (ilustratif)", ans:660, dec:false, tol:5,
+  why:"660 — kelebihan manfaat pajak atas SBC diakui di ekuitas (PSAK 212), bukan menambah laba."}
 ];
 (function(){
   var h = "";

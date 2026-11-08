@@ -104,6 +104,33 @@ pf:{ title:"Project finance: DSCR, LLCR, dan cash waterfall. Contoh proyek ILUST
    d:"DSCR di bawah 1 berarti CFADS periode itu lebih kecil dari kewajiban cicilan — proyek harus menggerus reserve, injeksi ekuitas, atau restrukturisasi (cash sweep: seluruh kelebihan kas disapu untuk utang). Bukan vonis mati, tapi lampu merah.",
    tag:"Praktik umum",
    k:"Rekomendasi kredit wajib menjawab: pada DSCR < 1, berapa bulan reserve bertahan? Itulah runway negosiasimu."}
+ ]},
+pkpu:{ title:"PKPU lebih operasional — klaim, kelas kreditor, valuasi, dan cara menguji proposal perdamaian (UU 37/2004)", cols:["Langkah operasional","Isi","Catatan"],
+ rows:[
+  {l:"Penentuan klaim — verifikasi pengurus", v:"terverifikasi dulu", v2:"baru voting",
+   d:"Pengurus memverifikasi tiap tagihan: jumlah, dasar hukum, dan jaminan. Klaim yang tidak terverifikasi tidak ikut voting dan tidak dibayar dari harta pailit. Contoh modul: senior 200.000 dan subordinasi 150.000 adalah klaim TERVERIFIKASI yang dipakai di waterfall — klaim fiktif yang lolos verifikasi adalah awal dari recovery palsu.",
+   tag:"Sumber: UU 37/2004",
+   k:"Kreditur: sebelum menghitung recovery-mu, pastikan klaimmu terverifikasi — klaim yang ditolak pengurus = recovery nol."},
+  {l:"Kelas kreditor — separatis, preferen, konkuren", v:"3 kelas", v2:"voting per kelas",
+   d:"Kreditor dibagi kelas menurut haknya: separatis (pemegang jaminan — dibayar dari objek jaminan), preferen (gaji, pajak — didahulukan undang-undang), konkuren (tanpa jaminan — dibayar dari sisa harta). Voting perdamaian dilakukan PER KELAS: rencana butuh persetujuan tiap kelas yang dirugikan.",
+   tag:"Sumber: UU 37/2004",
+   k:"Kreditur: kenali kelasmu SEBELUM voting — separatis dan konkuren punya kepentingan yang berlawanan atas rencana yang sama."},
+  {l:"Valuasi: going concern vs likuidasi", v:"260.000 vs 180.000", v2:"selisih 80.000",
+   d:"Dua angka jangkar negosiasi (ilustratif): going concern EV 260.000 vs likuidasi 180.000. Selisih 80.000 = nilai yang dipertahankan bila perusahaan lanjut. Recovery senior: 100% (going concern) vs 90% (likuidasi: 180.000 ÷ 200.000); subordinasi: 40% vs 0%. Kelas yang menolak perdamaian membandingkan kedua angka ini.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Kreditur: valuasi likuidasi adalah 'harga lantai'-mu — proposal apa pun di bawah angka itu merugikanmu."},
+  {l:"Uji proposal perdamaian — best interest test", v:"≥ recovery likuidasi", v2:"per kelas",
+   d:"Uji pertama: tiap kelas menerima MINIMAL sebesar recovery likuidasinya (best interest test). Senior 100% ≥ 90% lolos; subordinasi 40% ≥ 0% lolos; ekuitas 0% = 0% (tidak dirugikan karena memang tidak ada sisa). Proposal yang memberi satu kelas di bawah recovery likuidasi seharusnya tidak disahkan.",
+   tag:"Praktik restrukturisasi",
+   k:"Kreditur: hitung best interest test untuk kelasmu sendiri — jangan percaya klaim 'semua kelas diuntungkan' tanpa angka per kelas."},
+  {l:"Uji arus kas proposal — DSCR proyeksi", v:"1,20x", v2:"batas covenant",
+   d:"Uji kedua: apakah jadwal bayar baru realistis? Proyeksi CFADS 120.000 ÷ debt service 100.000 = DSCR 1,20x (ilustratif, pada batas covenant umum). Di bawah 1,0x, proposal hanya menunda pailit — minta skenario downside (CFADS −20% → 96.000 ÷ 100.000 = 0,96x) sebelum menyetujui.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Kreditur: proposal dengan DSCR proyeksi di bawah 1,20x tanpa reserve yang tebal = restrukturisasi jilid dua yang menunggu waktu."},
+  {l:"Persetujuan & pengesahan (homologasi)", v:"mengikat semua", v2:"termasuk yang menolak",
+   d:"Rencana yang lolos voting per kelas disahkan pengadilan (homologasi) dan mengikat SEMUA kreditor — termasuk yang menolak. Setelah disahkan, debitur menjalankan jadwal baru di bawah pengawasan; gagal bayar atas jadwal perdamaian membuka jalan ke pailit.",
+   tag:"Sumber: UU 37/2004",
+   k:"Kreditur: suara menolak tidak membebaskanmu dari rencana yang disahkan — lawan di voting, bukan setelah homologasi."}
  ]}
 };
 
@@ -263,7 +290,11 @@ var RATIOS = [
  {q:"LLCR sederhana", hint:"NPV CFADS 780.000 ÷ outstanding debt 600.000 (ilustratif)", ans:1.30, tol:0.02,
   why:"1,30x — total kas seumur pinjaman menutup utang 1,3 kali. Lensa jangka panjang pendamping DSCR."},
  {q:"Notching ilustratif: issuer idBBB → obligasi subordinasi idBB", hint:"Hitung langkah notch: idBBB → idBBB− → idBB+ → idBB (PEFINDO)", ans:3, dec:true, tol:0.1,
-  why:"3 notch — idBBB → idBBB− → idBB+ → idBB. PEFINDO memakai idBBB−, jangan dilewati."}
+  why:"3 notch — idBBB → idBBB− → idBB+ → idBB. PEFINDO memakai idBBB−, jangan dilewati."},
+ {q:"Recovery senior bila dilikuidasi (%)", hint:"Nilai likuidasi 180.000 ÷ klaim senior 200.000 × 100% (ilustratif)", ans:90, dec:false, tol:1,
+  why:"90% — vs 100% bila perusahaan lanjut (going concern EV 260.000); selisih 10 pp ini harga perdamaian bagi senior."},
+ {q:"DSCR proyeksi proposal perdamaian (x)", hint:"CFADS proyeksi 120.000 ÷ debt service 100.000 (ilustratif)", ans:1.2, dec:true, tol:0.02,
+  why:"1,20x — tepat pada batas covenant umum; skenario downside CFADS −20% → 0,96x, di bawah 1,0x."}
 ];
 (function(){
   var h = "";

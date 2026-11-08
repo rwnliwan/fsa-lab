@@ -80,6 +80,29 @@ bank:{ title:"Interim bank: Bank Nusantara H1 2026 (ILUSTRATIF). NIM, NPL, CAR d
    d:"Rasio permodalan dihitung normal dari angka 30 Jun — TAPI: apakah laba H1 yang belum diaudit diakui sebagai modal inti bergantung pada aturan regulator dan laporan bank yang bersangkutan — perlu diverifikasi ke ketentuan prudensial yang berlaku. CAR interim bisa terlihat lebih konservatif dari realitanya bila laba belum diakui.",
    tag:"LO5 · nuansa",
    k:"Lensa kredit: untuk bank, CAR interim + tren NPL + LDR = paket tiga serangkai sebelum bicara fasilitas."}
+ ]},
+assurance:{ title:"Assurance level laporan interim — unaudited, review terbatas, atau audit penuh: tiga bobot yang berbeda", cols:["Tingkat assurance","Ciri","Bobot analis"],
+ rows:[
+  {l:"Unaudited — tanpa review", v:"tanpa assurance", v2:"bobot paling rendah",
+   d:"Laporan interim yang hanya disusun manajemen tanpa keterlibatan auditor eksternal: tidak ada prosedur assurance apa pun. Analis mengandalkan konsistensi internal dan rekonsiliasi ke periode audited — bobot paling rendah. Labelnya di cover: 'tidak diaudit' (tanpa kata 'direviu').",
+   tag:"LO5 · kalibrasi",
+   k:"Lensa forensik: unaudited + revisi besar saat audit tahunan = pola yang dicatat. Bandingkan interim vs audited tahun lalu untuk membaca 'gaya' manajemen."},
+  {l:"Review terbatas (limited review)", v:"negative assurance", v2:"SA 2410",
+   d:"Auditor independen melaksanakan reviu atas informasi keuangan interim (SA 2410): prosedur analitis + permintaan keterangan (inquiry) kepada manajemen — tanpa pengujian substantif mendalam seperti audit. Kesimpulannya berbentuk negative assurance: 'tidak ada hal yang membuat kami percaya laporan tidak disajikan secara wajar'. Bobotnya di atas unaudited, di bawah audit.",
+   tag:"LO5 · kalibrasi",
+   k:"Lensa investasi: laporan interim yang direviu memberi keyakinan lebih atas angka H1 — tetapi tetap bukan opini audit; tesis menunggu audit tahunan."},
+  {l:"Audit penuh atas interim", v:"positive assurance", v2:"jarang",
+   d:"Jarang dilakukan untuk laporan interim karena biaya dan waktu: auditor memberi opini (reasonable assurance) seperti audit tahunan. Bila interim sudah diaudit penuh, angkanya hampir sekuat angka tahunan — tetapi tetap bisa berubah karena peristiwa setelah tanggal interim.",
+   tag:"LO5 · kalibrasi",
+   k:"Lensa kredit: interim yang diaudit penuh bisa dipakai untuk covenant — tetapi cek tanggal opininya: opini atas 30 Jun tidak mencakup semester kedua."},
+  {l:"Yang diuji review vs yang tidak", v:"analitis + inquiry", v2:"bukan substantif",
+   d:"Review menguji kewajaran penyajian lewat analitis dan inquiry — ia tidak menguji rincian transaksi satu per satu, tidak mengonfirmasi saldo ke pihak ketiga, dan tidak menilai pengendalian internal secara mendalam. Temuan review terbatas pada hal material yang terlihat dari prosedur itu.",
+   tag:"LO5 · batas review",
+   k:"Lensa forensik: review yang 'bersih' bukan bukti tidak ada salah saji — ia hanya bukti tidak ada yang terlihat dari prosedur terbatas itu."},
+  {l:"Cara membaca label di cover", v:"3 label, 3 bobot", v2:"cek kata-katanya",
+   d:"Tiga label, tiga bobot: 'tidak diaudit' = tanpa assurance; 'telah direviu' + nama KAP = review terbatas (cari laporan reviu-nya, baca kesimpulan dan paragraf penekanannya bila ada); 'diaudit' + opini = audit penuh. Bila cover tidak menyebut apa pun, perlakukan sebagai unaudited sampai terbukti sebaliknya.",
+   tag:"LO5 · baca cover",
+   k:"Lensa investasi: sebelum menghitung rasio interim apa pun, tulis dulu label assurance-nya — rasio dari angka unaudited dan angka direviu tidak sebanding bobotnya."}
  ]}
 };
 

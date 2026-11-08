@@ -48,6 +48,24 @@ fx:{ title:"FX: transaksi vs translasi — PSAK 221 (dulu 10); dampak ke leverag
   {l:"Translation: anak usaha luar negeri", v:"OCI", v2:"goyang ekuitas", d:"Aset/liabilitas anak usaha → kurs PENUTUP; laba rugi anak → kurs RATA-RATA; selisihnya → OCI (akumulasi selisih kurs), BUKAN laba. Direklasifikasi ke P&L hanya saat investasi asing dilepas.", psak:"PSAK 221 (dulu 10)", f:"Ekuitas book value berayun tanpa menyentuh laba — analis yang hanya membaca laba bersih tidak melihatnya."},
   {l:"Dampak ke leverage & covenant", v:"headroom", v2:"menyusut", d:"Utang USD membengkak karena kurs → D/E dan ND/EBITDA naik, interest coverage turun — headroom covenant menyusut TANPA perusahaan meminjam sepeser pun. Covenant berbasis ekuitas bisa jebol dari rugi translasi di OCI.", psak:"—", f:"Kredit: untuk debitur berutang USD, stress test WAJIB pakai skenario kurs — bukan cuma skenario penjualan."},
   {l:"Yang dicek di catatan", v:"checklist", v2:"—", d:"(1) Mata uang fungsional & penyajian tiap entitas; (2) sensitivitas kurs (mis. ±10% → dampak ke laba); (3) utang valas yang TIDAK di-hedge vs yang di-hedge — sambungkan ke catatan lindung nilai PSAK 109.", psak:"PSAK 221 (dulu 10); PSAK 107 (dulu 60)", f:"Sensitivitas kurs yang hilang dari catatan = manajemen tak mau kamu menghitung skenario buruknya."}
+ ]},
+lanjut:{ title:"Treatment lanjutan hedge accounting — cost of hedging, basis adjustment, forecast yang batal", cols:["Treatment","Ke mana?","Catatan"],
+ rows:[
+  {l:"Cost of hedging: time value & forward element", v:"OCI, diamortisasi", v2:"bukan ineffectiveness",
+   d:"Nilai wajar derivatif terdiri dari intrinsic value (bagian yang meng-offset risiko) dan time value / forward element (biaya lindung nilai). PSAK 109 memisahkan keduanya: time value atau forward element dicatat di OCI sebagai cost of hedging reserve, lalu diamortisasi ke P&L selama periode lindung nilai — bukan langsung ke P&L sebagai ineffectiveness. Contoh terpisah (ilustratif): kontrak forward 12 bulan dengan forward element 300 → 25/bulan ke P&L (300 ÷ 12), sementara intrinsic value-nya meng-offset item yang dilindungi seperti biasa.",
+   psak:"PSAK 109 (dulu 71) = IFRS 9", f:"Analis: cost of hedging yang diamortisasi adalah 'biaya asuransi' yang terlihat di P&L bertahap — jangan samakan dengan ineffectiveness yang langsung menggoyang laba."},
+  {l:"Time value vs intrinsic value — pisahkan dulu", v:"pisahkan dulu", v2:"—",
+   d:"Sebelum menguji efektivitas, pisahkan perubahan nilai wajar derivatif menjadi intrinsic value (terkait langsung dengan risiko yang dilindungi) dan time value (nilai waktu). Hanya intrinsic value yang diuji terhadap item yang dilindungi; time value diperlakukan sebagai cost of hedging di atas. Tanpa pemisahan ini, time value yang menyusut alami akan terbaca sebagai ineffectiveness — dan laba berayun tanpa alasan ekonomi.",
+   psak:"PSAK 109 (dulu 71) = IFRS 9", f:"Investasi: hedge yang 'bocor' tiap periode bisa jadi hanya time value yang tak dipisahkan — minta rincian komponen nilai wajarnya."},
+  {l:"Basis adjustment: hedge atas pembelian aset non-finansial", v:"ke harga perolehan aset", v2:"bukan ke P&L",
+   d:"Bila cash flow hedge melindungi forecast purchase aset non-finansial (mis. pembelian mesin dalam USD), saldo OCI reserve tidak direklasifikasi ke P&L saat transaksi terjadi — melainkan menyesuaikan harga perolehan aset (basis adjustment). Contoh (ilustratif): reserve 4.600 dialihkan ke harga perolehan mesin — mesin dicatat lebih rendah 4.600, lalu disusutkan dari basis yang sudah disesuaikan. Efek ke P&L muncul bertahap lewat depresiasi yang lebih kecil, bukan sekaligus.",
+   psak:"PSAK 109 (dulu 71)", f:"Forensik: basis adjustment menyembunyikan gain/loss hedge di dalam aset — cek harga perolehan aset impor vs harga pasarnya."},
+  {l:"Forecast transaction tidak lagi probable", v:"reklas segera ke P&L", v2:"penundaan berakhir",
+   d:"Bila transaksi yang diramalkan tidak lagi diperkirakan terjadi (not probable), saldo akumulasi OCI reserve direklasifikasi segera ke P&L — penundaan berakhir. Bila transaksi masih diperkirakan terjadi tetapi tidak lagi memenuhi syarat highly probable, hedge accounting dihentikan prospektif dan saldo OCI tetap menunggu sampai transaksi terjadi (atau direklas bila akhirnya batal). Contoh (ilustratif): rencana pembelian USD yang dibatalkan sementara reserve-nya 4.600 → reserve 4.600 langsung masuk P&L periode berjalan.",
+   psak:"PSAK 109 (dulu 71)", f:"Forensik: saldo OCI 'ngendon' bertahun-tahun + transaksi tak kunjung terjadi = tanyakan apakah transaksi itu masih probable — bila tidak, P&L seharusnya sudah menanggungnya."},
+  {l:"Rebalancing vs discontinuation", v:"rebalancing dulu", v2:"—",
+   d:"Bila hedge ratio bergeser karena harga bergerak (bukan karena hubungan ekonomis putus), PSAK 109 meminta rebalancing — sesuaikan jumlah instrumen atau item yang dilindungi — sebelum menghentikan hedge accounting. Discontinuation hanya bila hubungan ekonomis benar-benar putus atau syarat kualifikasi tak lagi terpenuhi. Rebalancing menjaga hedge tetap hidup; discontinuation mengakhirinya.",
+   psak:"PSAK 109 (dulu 71)", f:"Kredit: manajemen yang langsung mencabut desainasi saat hedge ratio bergeser mungkin menghindari rebalancing — tanyakan kenapa."}
  ]}
 };
 
@@ -207,7 +225,9 @@ var RATIOS = [
  {q:"Cash flow hedge reserve terhadap ekuitas (%)", hint:"4.600 ÷ 179.440 × 100% — ekuitas kanonis 2025 (ilustratif)", ans:2.56, tol:0.05,
   why:"2,56% dari ekuitas — 'laba yang ditunda' di OCI. Kecil sekarang; analis memantaunya karena reklasifikasi masa depan = laba masa depan."},
  {q:"Dampak bersih ke laba (tanpa designasi hedge accounting, Rp juta, setelah pajak)", hint:"(5.000 − 4.600) × (1 − 22%) — swap gain dikurangi rugi utang, ilustratif", ans:312, dec:false, tol:5,
-  why:"312 — tanpa designasi, swap gain 5.000 dan rugi utang 4.600 SAMA-SAMA masuk P&L: net 400 pretax, 312 setelah pajak 22%. Hedge accounting tidak mengubah total ekonomi — ia mengubah TIMING: 4.600 ditunda di OCI (cash flow hedge reserve) sampai item yang dilindungi memengaruhi laba. Bandingkan: tanpa hedge ekonomi sama sekali, P&L tidak dapat 5.000 maupun (4.600)."}
+  why:"312 — tanpa designasi, swap gain 5.000 dan rugi utang 4.600 SAMA-SAMA masuk P&L: net 400 pretax, 312 setelah pajak 22%. Hedge accounting tidak mengubah total ekonomi — ia mengubah TIMING: 4.600 ditunda di OCI (cash flow hedge reserve) sampai item yang dilindungi memengaruhi laba. Bandingkan: tanpa hedge ekonomi sama sekali, P&L tidak dapat 5.000 maupun (4.600)."},
+ {q:"Amortisasi cost of hedging per bulan (Rp juta)", hint:"Forward element 300 (ilustratif) ÷ 12 bulan — cost of hedging reserve", ans:25, dec:false, tol:1,
+  why:"25/bulan — cost of hedging diamortisasi bertahap ke P&L selama periode lindung nilai, bukan sekaligus sebagai ineffectiveness (PSAK 109)."}
 ];
 (function(){
   var h = "";

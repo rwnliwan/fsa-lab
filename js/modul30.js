@@ -73,6 +73,51 @@ sensitiv:{ title:"Sensitivitas — apa yang terjadi bila suku bunga bergerak", c
   {l:"Repricing gap 1 tahun −Rp5.000 miliar (ilustratif)", v:"−5.000", v2:"+100 bps → NII ≈ −50",
    d:"Aset yang repricing <1 tahun Rp40.000 miliar vs liabilitas Rp45.000 miliar → gap −Rp5.000 miliar (ilustratif). Kenaikan bunga 100 bps ≈ −Rp50 miliar NII tahunan (5.000 × 1%). Gap negatif = bank dirugikan saat bunga naik, diuntungkan saat bunga turun.",
    psak:"—", f:"Kredit: gap besar = laba bank (dan kemampuan bayar utangnya) sensitif ke BI-rate. Investasi: di siklus bunga turun, gap negatif justru menguntungkan. Forensik: gap dihitung dari asumsi perilaku (CASA dianggap 'sticky') — asumsi berubah, kesimpulan berubah."}
+ ]},
+status:{ title:"Status data & asumsi — baca DULU: angka mana yang data dasar, mana yang turunan, mana yang sekadar contoh", cols:["Angka","Status","Sumber / cara pakai"],
+ rows:[
+  {l:"Aset 85.000 · modal 9.500 · kredit 60.000 · DPK 68.000 · laba 1.900", v:"DATA DASAR MODUL", v2:"Rp miliar",
+   d:"Angka yang ditetapkan modul sebagai titik berangkat analisis bank fiktif ini (Rp miliar). Bukan data laporan bank nyata mana pun — dipakai konsisten di semua tab agar rasio-rasio bisa dihitung ulang.",
+   psak:"—", f:"Kredit: data dasar adalah 'fakta' modul ini — seluruh rasio di bawah dihitung dari sini."},
+  {l:"CAR 22,1% · ATMR 42.986 · NPL 2,8% / 0,9% · coverage 145% · LCR 150% · NSFR 112,5%", v:"TURUNAN (dihitung)", v2:"verifikasi ulang",
+   d:"Dihitung dari data dasar dengan rumus di barisnya masing-masing — verifikasi dengan menghitung ulang dari data dasar, bukan dengan menghafal angkanya.",
+   psak:"—", f:"Investasi: angka turunan yang tidak dapat dihitung ulang dari data dasar patut diuji ulang sebelum dipercaya."},
+  {l:"NII 3.900 · beban CKPN 1.800 · HQLA 12.000 · ASF 72.672 · RSF 64.600", v:"ILUSTRATIF", v2:"contoh latihan",
+   d:"Angka contoh yang ditetapkan modul untuk latihan hitung (Rp miliar). Nilainya masuk akal untuk bank sebesar ini, tetapi bukan angka laporan — jangan dikutip sebagai fakta bank nyata.",
+   psak:"—", f:"Forensik: label 'ilustratif' adalah batas kejujuran modul — angka tanpa label ini yang berbahaya."},
+  {l:"Skenario playground: rights issue 1.500 · restrukturisasi gagal 960 · kredit +15%", v:"HIPOTETIS", v2:"bagaimana bila",
+   d:"Angka 'bagaimana bila' untuk menguji arah perubahan — bukan prediksi dan bukan data. Dipakai hanya untuk melatih intuisi sebab-akibat.",
+   psak:"—", f:"Kredit: skenario hipotetis melatih arah, bukan besaran — jangan pakai untuk menetapkan limit."},
+  {l:"Ambang regulator: CAR min 8% · NPL 5% · LCR/NSFR 100%", v:"AMBANG UMUM", v2:"patokan latihan",
+   d:"Ambang yang dipakai modul sebagai patokan latihan — floor dasar yang disederhanakan; batas yang berlaku untuk bank nyata bergantung pada kategori bank, profil risiko, dan buffer yang berlaku.",
+   psak:"POJK KPMM", f:"Kredit: ambang umum untuk latihan — batas nyata dicek ke ketentuan regulator yang berlaku."}
+ ]},
+likuid:{ title:"Likuiditas regulasi: LCR (30 hari stres) & NSFR (struktur pendanaan) — angka contoh ILUSTRATIF dari neraca modul", cols:["Rasio","Rumus / angka","Makna"],
+ rows:[
+  {l:"LCR — Liquidity Coverage Ratio", v:"150%", v2:"ambang umum 100%",
+   d:"LCR = HQLA ÷ arus kas keluar bersih 30 hari. Mengukur apakah bank bertahan 30 hari skenario stres tanpa bantuan eksternal. Ambang umum 100% (ketentuan regulator — POJK likuiditas). Contoh modul (ilustratif): HQLA 12.000 ÷ net outflow 8.000 = 150%.",
+   psak:"POJK Likuiditas", f:"Kredit: LCR di bawah 100% = bank tidak sanggup membayar penarikan 30 hari dalam skenario stres — fasilitas jangka pendek ke bank itu dipertanyakan."},
+  {l:"HQLA 12.000 — kas + SBN", v:"12.000", v2:"2.000 + 10.000",
+   d:"High-Quality Liquid Assets: kas + surat berharga pemerintah yang mudah dijual tanpa potongan besar. Contoh modul (ilustratif): kas 2.000 + SBN 10.000 = 12.000. Aset ini tidak termasuk kredit — kredit tidak likuid dalam 30 hari.",
+   psak:"—", f:"Investasi: HQLA adalah 'tabungan darurat' bank — besarnya HQLA menekan imbal hasil, tetapi membeli kelangsungan hidup."},
+  {l:"Arus keluar 30 hari 10.000", v:"10.000", v2:"1.972 + 2.856 + 5.172",
+   d:"Run-off DPK: CASA 39.440 × 5% = 1.972; deposito 28.560 × 10% = 2.856; utang jangka pendek & komitmen tak terpakai yang jatuh tempo 30 hari 5.172 (ilustratif). Total 10.000. Faktor run-off di sini disederhanakan untuk latihan — faktor regulator sebenarnya berbeda per jenis simpanan.",
+   psak:"—", f:"Forensik: CASA yang 'stabil' di laporan tapi run-off-nya tinggi di stres = dana transaksional yang ternyata volatile."},
+  {l:"Arus masuk 30 hari 2.000 → net outflow 8.000", v:"8.000", v2:"10.000 − 2.000",
+   d:"Cicilan kredit yang jatuh tempo dalam 30 hari 2.000 (ilustratif). Net outflow = 10.000 − 2.000 = 8.000. Arus masuk dibatasi maksimal 75% arus keluar — di sini 2.000 di bawah 7.500, jadi seluruhnya dihitung.",
+   psak:"—", f:"Kredit: bank yang mengandalkan arus masuk besar untuk menutup outflow-nya rapuh — cicilan bisa macet tepat saat dibutuhkan."},
+  {l:"NSFR — Net Stable Funding Ratio", v:"112,5%", v2:"ambang umum 100%",
+   d:"NSFR = pendanaan stabil tersedia (ASF) ÷ pendanaan stabil yang dibutuhkan (RSF). Mengukur struktur pendanaan jangka panjang: apakah aset jangka panjang didanai sumber yang stabil. Ambang umum 100%. Contoh modul (ilustratif): ASF 72.672 ÷ RSF 64.600 = 112,5%.",
+   psak:"POJK Likuiditas", f:"Investasi: NSFR di atas 100% = bank tidak mendanai kredit jangka panjang dengan dana semalam — struktur pendanaannya sehat."},
+  {l:"ASF 72.672 — pendanaan stabil tersedia", v:"72.672", v2:"9.500 + 37.468 + 25.704",
+   d:"Available Stable Funding: modal 9.500 × 100% + CASA 39.440 × 95% (37.468) + deposito 28.560 × 90% (25.704) = 72.672. DPK stabil berbobot tinggi karena diasumsikan bertahan; modal berbobot penuh. Faktor di sini disederhanakan untuk latihan.",
+   psak:"—", f:"Kredit: ASF yang didominasi deposito jangka pendek (bukan CASA/modal) = pendanaan stabil yang semu."},
+  {l:"RSF 64.600 — pendanaan stabil dibutuhkan", v:"64.600", v2:"600 + 51.000 + 13.000",
+   d:"Required Stable Funding: HQLA 12.000 × 5% (600) + kredit 60.000 × 85% (51.000) + aset lain 13.000 × 100% (13.000) = 64.600. Kredit butuh pendanaan stabil besar karena tidak mudah dicairkan; HQLA hampir tidak butuh.",
+   psak:"—", f:"Investasi: kredit tumbuh lebih cepat dari DPK stabil = RSF naik, NSFR tertekan — pertumbuhan yang menggerus struktur pendanaan."},
+  {l:"LCR vs NSFR vs LDR — tiga lensa likuiditas", v:"waktu + struktur", v2:"dibaca bersama",
+   d:"LDR 88,2% hanya membandingkan kredit dengan DPK (likuiditas kasar). LCR menambah dimensi WAKTU (30 hari stres) dan KUALITAS aset likuid. NSFR menambah dimensi STRUKTUR (pendanaan jangka panjang). Ketiganya dibaca bersama: LDR sehat + LCR di bawah 100% = bank tetap bisa kehabisan kas dalam sebulan.",
+   psak:"—", f:"Kredit: satu rasio likuiditas tidak pernah cukup — LDR untuk volume, LCR untuk ketahanan sebulan, NSFR untuk struktur."}
  ]}
 };
 
@@ -102,7 +147,7 @@ $$(".stmt-tab[data-stmt]").forEach(function(b){
     b.classList.add("active"); renderStmt(b.dataset.stmt);
   });
 });
-renderStmt("capital");
+renderStmt("status");
 
 /* ---------- PLAYGROUND ---------- */
 var CARDS = [
@@ -234,7 +279,11 @@ var RATIOS = [
  {q:"Coverage ratio (%)", hint:"Total CKPN Rp2.436 miliar ÷ NPL bruto Rp1.680 miliar × 100%", ans:145.0, dec:true, tol:0.5,
   why:"145,0% — di atas 100% karena CKPN total mencakup ECL Stage 1 & 2 (PSAK 109). Rekonsiliasi: 1.140 + 1.296 = 2.436."},
  {q:"CoC — cost of credit (%)", hint:"Beban CKPN Rp1.800 miliar (ilustratif) ÷ rata-rata kredit Rp60.000 miliar × 100%", ans:3.0, dec:true, tol:0.05,
-  why:"3,0% — harga risiko kredit periode ini. Ingat: beban CKPN (arus) bukan total CKPN Rp2.436 miliar (stok). Beban 1.800 'memakan' ≈46% pendapatan bunga bersih 3.900."}
+  why:"3,0% — harga risiko kredit periode ini. Ingat: beban CKPN (arus) bukan total CKPN Rp2.436 miliar (stok). Beban 1.800 'memakan' ≈46% pendapatan bunga bersih 3.900."},
+ {q:"LCR (%)", hint:"HQLA Rp12.000 miliar ÷ arus keluar bersih 30 hari Rp8.000 miliar × 100% (ilustratif)", ans:150, dec:false, tol:1,
+  why:"150% — di atas ambang umum 100%: bank bertahan 30 hari stres dengan buffer 4.000."},
+ {q:"NSFR (%)", hint:"ASF Rp72.672 miliar ÷ RSF Rp64.600 miliar × 100% (ilustratif)", ans:112.5, dec:true, tol:0.3,
+  why:"112,5% — pendanaan stabil menutup kebutuhan stabil; struktur pendanaan jangka panjang memadai."}
 ];
 (function(){
   var h = "";

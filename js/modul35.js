@@ -103,6 +103,60 @@ joint:{ title:"Joint arrangements: operasi bersama vs ventura bersama. Contoh an
    d:"Dua venturer 50:50. Ventura punya aset 1.000, liabilitas 400 → ekuitas 600; laba tahun berjalan 120. JOINT VENTURE (metode ekuitas): tiap venturer mencatat SATU BARIS investasi 50% × 600 = 300 dan bagian laba 50% × 120 = 60. JOINT OPERATION (bagian langsung): tiap operator mencatat 50% × 1.000 = 500 aset DAN 50% × 400 = 200 liabilitas langsung di neracanya, plus 50% pendapatan dan beban. Perhatikan: eksposur ekonomi SAMA (500 − 200 = 300), tapi TAMPILANNYA beda total — JO menggelembungkan aset & liabilitas, JV menyembunyikannya dalam satu baris. Itulah kenapa klasifikasi JO vs JV mengubah leverage yang terbaca.",
    tag:"Hitungan modul (angka ilustratif)",
    k:"Lensa kredit: dua venturer dengan eksposur ekonomi identik bisa menampilkan D/E yang sangat berbeda hanya karena klasifikasi JO vs JV — hitung leverage dengan MEMASUKKAN kembali bagian JV bila perlu."}
+ ]},
+akuisisi:{ title:"Metode akuisisi langkah demi langkah (PSAK 103) — dari tanggal akuisisi sampai goodwill. Angka ILUSTRATIF (Rp juta).", cols:["Langkah akuisisi","Angka / aturan","Catatan"],
+ rows:[
+  {l:"Tanggal akuisisi: saat control beralih", v:"tanggal control", v2:"bukan tanggal MOU",
+   d:"Tanggal ketika pengakuisisi memperoleh pengendalian (PSAK 103, dulu PSAK 22, setara IFRS 3) — bukan tanggal tanda tangan MOU dan bukan tanggal bayar lunas. Seluruh pengukuran (nilai wajar, goodwill) memakai tanggal ini. Akuisisi tengah tahun berarti laba anak hanya dikonsolidasi SEJAK tanggal ini.",
+   tag:"PSAK 103 (dulu PSAK 22) · IFRS 3",
+   k:"Lensa forensik: laba anak setahun penuh yang dikonsolidasi padahal akuisisi baru Juli = laba yang bukan milik grup selama semester pertama."},
+  {l:"Aset & liabilitas teridentifikasi pada nilai wajar", v:"140.000 − 40.000", v2:"= 100.000",
+   d:"Seluruh aset teridentifikasi dan liabilitas yang diambil alih diukur pada NILAI WAJAR tanggal akuisisi — bukan nilai buku anak. Contoh (ilustratif): aset teridentifikasi 140.000 (termasuk aset takberwujud yang baru diakui, mis. merek) − liabilitas 40.000 = aset neto 100.000. Selisih nilai wajar vs nilai buku = step-up yang lalu disusutkan/diamortisasi. Jembatan ke tab NCI: aset neto 100.000 saat akuisisi tumbuh 8.000 pasca-akuisisi menjadi ekuitas anak 108.000 kini.",
+   tag:"PSAK 103 · IFRS 3",
+   k:"Lensa investasi: step-up yang besar berarti beban depresiasi/amortisasi masa depan naik — laba konsolidasian tahun-tahun berikut tertekan oleh harga beli itu sendiri."},
+  {l:"Consideration transferred", v:"88.000", v2:"kas",
+   d:"Imbalan yang dialihkan: kas yang dibayar + nilai wajar aset yang diserahkan + liabilitas yang diambil alih + nilai wajar imbalan kontinjensi (earn-out). Contoh (ilustratif): kas 88.000. Biaya akuisisi (fee penasihat, due diligence) TIDAK termasuk — dibebankan ke P&L periode berjalan.",
+   tag:"PSAK 103 · IFRS 3",
+   k:"Lensa kredit: earn-out yang besar = harga beli yang belum pasti — baca syarat pemicunya; earn-out yang hampir pasti tercapai adalah utang yang disamarkan."},
+  {l:"Partial goodwill", v:"8.000", v2:"88.000 − 80.000",
+   d:"Goodwill parsial = consideration 88.000 − 80% × aset neto 100.000 (80.000) = 8.000. Hanya goodwill milik induk yang diakui; NCI diukur proporsional (20% × 100.000 = 20.000). Inilah angka goodwill 8.000 yang dipakai tab forensik modul ini.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Lensa investasi: partial goodwill menyembunyikan goodwill milik NCI — total goodwill ekonomi grup lebih besar dari yang tercatat."},
+  {l:"Full goodwill", v:"12.000", v2:"88.000 + 24.000 − 100.000",
+   d:"Goodwill penuh = (consideration 88.000 + NCI pada nilai wajar 24.000) − aset neto 100.000 = 12.000. NCI pada nilai wajar (24.000, ilustratif — di atas proporsional 20.000 karena premi pengendalian) membuat goodwill lebih besar 4.000. Pilihan full vs partial adalah kebijakan yang ditetapkan sekali saat akuisisi dan dipakai konsisten setelahnya — pilihan ini mengubah goodwill DAN ekuitas NCI.",
+   tag:"Hitungan modul (angka ilustratif)",
+   k:"Lensa kredit: full goodwill menggelembungkan aset dengan 2.400 yang bukan milik induk — kreditur yang menghitung tangible net worth mengeluarkannya."},
+  {l:"Bargain purchase", v:"gain 5.000", v2:"setelah reassessment",
+   d:"Bila consideration LEBIH KECIL dari bagian aset neto (mis. kas 75.000 vs 80% × 100.000 = 80.000), selisih 5.000 adalah bargain purchase gain — diakui di P&L SETELAH reassessment (periksa ulang apakah semua aset/liabilitas sudah teridentifikasi dan terukur benar). Gain yang muncul tanpa reassessment patut dicurigai.",
+   tag:"PSAK 103 · IFRS 3",
+   k:"Lensa forensik: bargain purchase yang berulang = manajemen membeli aset bermasalah dengan harga murah — atau asetnya dinilai terlalu tinggi."},
+  {l:"Goodwill setelah akuisisi", v:"uji tahunan", v2:"PSAK 103/236",
+   d:"Goodwill 8.000 (parsial) tidak diamortisasi — di bawah PSAK 103/236, diuji penurunan nilai minimal setahun sekali (lihat tab forensik). Impairment goodwill mengurangi laba pemilik dan NCI proporsional bila memakai full goodwill.",
+   tag:"PSAK 103/236",
+   k:"Lensa investasi: goodwill yang tidak pernah diuji dengan asumsi yang menantang = rugi yang ditunda, bukan rugi yang dihindari."}
+ ]},
+lintas:{ title:"Konsolidasi lintas tanggal pelaporan & mata uang — penyesuaian sebelum digabung (PSAK 110/221)", cols:["Situasi lintas","Perlakuan","Catatan"],
+ rows:[
+  {l:"Penyesuaian kebijakan akuntansi", v:"samakan dulu", v2:"PSAK 110",
+   d:"Sebelum digabung, laporan anak disesuaikan ke kebijakan induk (PSAK 110, dulu PSAK 65). Contoh (ilustratif): anak memakai LIFO (dilarang PSAK 202) dengan LIFO reserve 2.000 → persediaan anak dinaikkan 2.000 dan laba ditahan disesuaikan sebelum konsolidasi. Tanpa penyesuaian ini, grup mencampur dua metode dalam satu laporan.",
+   tag:"PSAK 110 (dulu PSAK 65)",
+   k:"Lensa forensik: anak dengan kebijakan berbeda yang digabung tanpa penyesuaian = laporan konsolidasian yang tidak konsisten secara internal."},
+  {l:"Tanggal pelaporan berbeda", v:"maks 3 bulan", v2:"sesuaikan transaksi",
+   d:"Bila anak tutup buku 30 September sementara induk 31 Desember, anak menyusun laporan tambahan per 31 Desember; bila tidak praktis, selisihnya maksimal 3 bulan dan transaksi material di antara kedua tanggal disesuaikan. Contoh: penjualan aset besar anak di November disesuaikan sebelum digabung.",
+   tag:"PSAK 110",
+   k:"Lensa kredit: anak yang tutup buku 3 bulan lebih awal + transaksi besar di antaranya yang tidak disesuaikan = neraca konsolidasian yang kedaluwarsa."},
+  {l:"Translasi anak luar negeri — kurs penutup vs rata-rata", v:"selisih 9.000 ke OCI", v2:"PSAK 221",
+   d:"Laporan anak luar negeri ditranslasi (PSAK 221, dulu PSAK 10): aset/liabilitas memakai kurs PENUTUP, laba rugi memakai kurs RATA-RATA, selisihnya ke OCI (bukan P&L). Contoh (ilustratif, Rp juta): aset neto anak 10.000 ribu USD — modal historis 8.000 ribu USD × 15.000 = 120.000; laba 2.000 ribu USD × 15.500 = 31.000; aset neto pada kurs penutup 16.000 = 160.000; selisih translasi 9.000 ke OCI.",
+   tag:"PSAK 221 (dulu PSAK 10) · IAS 21",
+   k:"Lensa investasi: selisih translasi di OCI menggerakkan ekuitas tanpa menyentuh laba — analis yang hanya membaca laba bersih tidak melihatnya."},
+  {l:"Goodwill & penyesuaian nilai wajar ikut ditranslasi", v:"kurs penutup", v2:"OCI",
+   d:"Goodwill dan penyesuaian nilai wajar dari akuisisi anak luar negeri diperlakukan sebagai aset anak — ditranslasi pada kurs penutup tiap periode, sehingga nilainya dalam rupiah berayun bersama kurs. Ayunan ini masuk OCI, bukan laba.",
+   tag:"PSAK 221",
+   k:"Lensa forensik: goodwill anak luar negeri yang nilainya 'stabil' dalam rupiah sementara kurs bergerak 20% = translasi yang tidak dilakukan."},
+  {l:"Mata uang fungsional anak — translasi vs penjabaran ulang", v:"uji dulu", v2:"PSAK 221",
+   d:"Translasi di atas berlaku bila mata uang fungsional anak BERBEDA dari mata uang penyajian grup. Bila anak beroperasi dalam lingkungan ekonomi yang sama dengan induk, laporannya dijabarkan ulang sebagai transaksi (selisih ke P&L) — bukan ditranslasi ke OCI. Salah menentukan mata uang fungsional membuat seluruh konsolidasi ikut salah.",
+   tag:"PSAK 221 (dulu PSAK 10)",
+   k:"Lensa forensik: anak 'luar negeri' yang seluruh transaksinya dalam rupiah tapi ditranslasi ke OCI = selisih kurs yang disembunyikan dari laba."}
  ]}
 };
 
@@ -262,7 +316,11 @@ var RATIOS = [
  {q:"Laba pemilik entitas induk (Rp juta)", hint:"Laba total 42.000 − NCI 2.400 (ilustratif)", ans:39600, dec:false, tol:1,
   why:"39.600 — inilah angka untuk EPS (Rp495), BUKAN laba total 42.000."},
  {q:"Goodwill saat akuisisi (Rp juta)", hint:"Harga 88.000 − 80% × aset neto teridentifikasi 100.000 (ilustratif)", ans:8000, dec:false, tol:1,
-  why:"8.000 — premi di atas 80% aset neto; diuji impairment tiap tahun, tidak diamortisasi. Contoh ini memakai metode partial goodwill (NCI at proportionate share) — IFRS 3 (PSAK 103) juga mengizinkan full goodwill method (NCI at fair value); pilihan metode mengubah goodwill dan ekuitas NCI."}
+  why:"8.000 — premi di atas 80% aset neto; diuji impairment tiap tahun, tidak diamortisasi. Contoh ini memakai metode partial goodwill (NCI at proportionate share) — IFRS 3 (PSAK 103) juga mengizinkan full goodwill method (NCI at fair value); pilihan metode mengubah goodwill dan ekuitas NCI."},
+ {q:"Full goodwill — NCI pada nilai wajar 24.000 (Rp juta)", hint:"(Consideration 88.000 + NCI 24.000) − aset neto teridentifikasi 100.000 (ilustratif)", ans:12000, dec:false, tol:5,
+  why:"12.000 — vs partial goodwill 8.000; selisih 4.000 = premi pengendalian pada NCI."},
+ {q:"Selisih translasi anak luar negeri ke OCI (Rp juta)", hint:"Aset neto 160.000 (kurs penutup) − modal historis 120.000 − laba 31.000 (kurs rata-rata)", ans:9000, dec:false, tol:5,
+  why:"9.000 — selisih translasi masuk OCI, bukan P&L; goodwill anak luar negeri ikut ditranslasi kurs penutup."}
 ];
 (function(){
   var h = "";
