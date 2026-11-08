@@ -12,17 +12,17 @@ fc:{ title:"Jembatan kas bebas 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Belanja modal (capex)", v:"(48.000)", v2:"(40.000)", d:"Investasi aset tetap — wajib dibayar sebelum bicara 'bebas'.", psak:"—", f:"Capex yang dikapitalisasi berlebihan = laba semu (ingat WorldCom)."},
   {l:"FCFF", v:"(6.280)", v2:"11.800", d:"30.800 + 10.920 − 48.000. Kas bebas untuk SEMUA penyandang dana (sebelum bunga).", psak:"—", f:"FCFF negatif saat ekspansi = wajar; FCFF negatif saat stagnan = bahaya."},
   {l:"Bunga setelah pajak", v:"(10.920)", v2:"(7.800)", d:"14.000 × (1−22%). Bagian kreditur — dikurangkan untuk sampai ke FCFE.", psak:"—", f:"—"},
-  {l:"Utang neto", v:"11.440", v2:"0", d:"Tambah utang − bayar utang.", psak:"—", f:"—"},
-  {l:"FCFE", v:"(5.760)", v2:"4.000", d:"−6.280 − 10.920 + 11.440. Kas bebas untuk PEMEGANG SAHAM.", psak:"—", f:"FCFE 2025 negatif = dividen dibayar dari utang. 2024 positif 4.000 — bukan dua tahun struktural."},
+  {l:"Perubahan utang neto", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang − bayar utang (bukan saldo — saldo utang neto di M5 = 180.000.", psak:"—", f:"—"},
+  {l:"FCFE", v:"(5.760)", v2:"4.000", d:"−6.280 − 10.920 + 11.440. Kas bebas untuk PEMEGANG SAHAM.", psak:"—", f:"FCFE 2025 negatif = defisit agregat — dividen 6.000 ditutup campuran CFO, utang neto, dan penurunan kas, bukan dividen tertentu 'dari utang'. 2024 positif 4.000 — bukan dua tahun struktural."},
   {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Dibayar saat FCFE −5.760 = dari kantong utang.", psak:"—", f:"Dividen > FCFE = tidak sustainable."}
  ]},
 use:{ title:"Ke mana perginya kas 2025 (Rp juta)", cols:["Pos","2025","% CFO"],
  rows:[
   {l:"CFO masuk", v:"30.800", v2:"100%", d:"Kas dari operasi.", psak:"—", f:"—"},
   {l:"Capex", v:"(48.000)", v2:"−156%", d:"156% dari CFO — ekspansi menelan semua kas operasi.", psak:"—", f:"Capex intensity 9,2% dari penjualan."},
-  {l:"Dividen", v:"(6.000)", v2:"−19%", d:"Dibayar dari utang, bukan dari kas bebas.", psak:"—", f:"—"},
-  {l:"Utang neto menutup", v:"11.440", v2:"+37%", d:"Lubang kas ditutup dengan tambah utang.", psak:"—", f:"Pola: operasi − investasi − dividen + utang = gali lubang tutup lubang."},
-  {l:"Perubahan kas", v:"(11.760)", v2:"−38%", d:"30.800 − 48.000 − 6.000 + 11.440 ✓", psak:"—", f:"—"}
+  {l:"Dividen", v:"(6.000)", v2:"−19%", d:"Dibayar saat FCFE negatif — ditutup campuran utang neto + penurunan kas, bukan dari kas bebas.", psak:"—", f:"—"},
+  {l:"Perubahan utang neto menutup", v:"11.440", v2:"+37%", d:"Lubang kas ditutup dengan tambah utang.", psak:"—", f:"Pola: operasi − investasi − dividen + utang = gali lubang tutup lubang."},
+  {l:"Perubahan kas", v:"(11.760)", v2:"−35% YoY", d:"30.800 − 48.000 − 6.000 + 11.440 ✓; kas 33.200 → 21.440 = −35,4% YoY (basis: saldo kas 2024, bukan CFO).", psak:"—", f:"—"}
  ]}
 };
 
@@ -66,8 +66,8 @@ var CARDS = [
   e:"Kas terlepas dari piutang/stok → CFO naik → FCFF naik. Perbaikan operasi = kas bebas beneran."},
  {t:"Buyback saham Rp20.000", q1:"FCFE", q2:"D/E ratio", a1:"tetap", a2:"naik",
   e:"Buyback DIBAYAR dari FCFE, bukan menguranginya. Ekuitas turun → D/E naik."},
- {t:"Jual anak perusahaan Rp60.000 (sekali)", q1:"FCFF", q2:"Kualitas FCFF", a1:"naik", a2:"turun",
-  e:"Kas masuk → FCFF naik. Tapi ini one-off — analis memisahkan FCFF recurring vs non-recurring."}
+ {t:"Jual anak perusahaan Rp60.000 (sekali)", q1:"FCFF", q2:"Arus investasi (CFI)", a1:"tetap", a2:"naik",
+  e:"Kas masuk → CFI naik (kurang negatif). Tapi FCFF TETAP menurut definisi modul (FCFF = CFO + bunga setelah pajak − capex): hasil pelepasan masuk CFI, bukan CFO/capex. Pisahkan sebagai non-recurring — jangan diannualkan."}
 ];
 var OPTS3 = ["naik","turun","tetap"];
 var pgScore = 0, pgDone = 0, pgCards = [];
@@ -178,7 +178,7 @@ var RATIOS = [
  {q:"FCFF 2025 (Rp juta)", hint:"CFO + bunga(1−pajak) − capex: 30.800 + 10.920 − 48.000", ans:-6280, dec:false, tol:100,
   why:"−6.280 — kas bebas sebelum bunga; ekspansi menelan kas operasi."},
  {q:"FCFE 2025 (Rp juta)", hint:"FCFF − bunga(1−pajak) + utang neto: −6.280 − 10.920 + 11.440", ans:-5760, dec:false, tol:100,
-  why:"−5.760 — untuk pemegang saham tidak tersisa kas; dividen 6.000 dibayar dari utang."},
+  why:"−5.760 — untuk pemegang saham tidak tersisa kas; dividen 6.000 ditutup campuran utang neto + penurunan kas (defisit agregat)."},
  {q:"FCFF margin 2025 (%)", hint:"FCFF ÷ penjualan × 100: −6.280 ÷ 520.000 × 100", ans:-1.2, tol:0.3,
   why:"−1,2% — tiap Rp100 penjualan, kas bebas MINUS Rp1,2."},
  {q:"Capex intensity 2025 (%)", hint:"Capex ÷ penjualan × 100: 48.000 ÷ 520.000 × 100", ans:9.2, tol:0.3,

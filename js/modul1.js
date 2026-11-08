@@ -37,7 +37,7 @@ bs:{ title:"Balance Sheet 31 Des 2025 (Rp juta)", cols:["Pos","Nilai"],
   {l:"Laba ditahan", v:"73.000", sub:0, d:"Akumulasi laba − dividen. Naik 38.800 = laba 46.800 − dividen 8.000. ✓ Artikulasi!", psak:"—", f:"Cek OCI: kerugian yang 'diparkir' di ekuitas tanpa lewat laba rugi."},
   {l:"TOTAL EKUITAS", v:"173.000", sub:0, total:1, d:"Aset 401.000 = Liabilitas 228.000 + Ekuitas 173.000 ✓", psak:"—", f:"—"},
   {l:"Laporan perubahan ekuitas (ringkas)", v:"34.200 → 73.000", sub:0, d:"Laporan keempat: saldo awal 34.200 + laba bersih 46.800 − dividen 8.000 = 73.000 ✓. Menjembatani IS ke BS — modal disetor tetap 100.000.", psak:"PSAK 201 (dulu 1)", f:"OCI yang 'diparkir' di ekuitas tanpa lewat laba rugi bersembunyi di laporan ini — baca baris per baris."},
-  {l:"Paket laporan lengkap (2.4)", v:"7 komponen", sub:0, d:"Paket lengkap = IS + BS + arus kas + perubahan ekuitas + CALK, ditambah MD&A (tinjauan manajemen) dan laporan/opini auditor. Profesional baca CALK & MD&A dulu — wajah laporan kedua.", psak:"PSAK 201 (dulu 1)", f:"Jenis opini auditor (wajar tanpa pengecualian vs modifikasian) dan pergantian auditor = red flag tersendiri."}
+  {l:"Paket laporan lengkap (2.4)", v:"5 komponen", sub:0, d:"Laporan keuangan lengkap = 5 komponen (PSAK 201): IS + BS + arus kas + perubahan ekuitas + CALK. MD&A (tinjauan manajemen) dan laporan/opini auditor adalah dokumen pendamping yang dibaca bersama — bukan komponen laporan keuangan. Profesional baca CALK & MD&A dulu — wajah laporan kedua.", psak:"PSAK 201 (dulu 1)", f:"Jenis opini auditor (wajar tanpa pengecualian vs modifikasian) dan pergantian auditor = red flag tersendiri."}
  ]},
 cf:{ title:"Cash Flow Statement 2025 (Rp juta, metode tidak langsung)", cols:["Pos","Nilai"],
  rows:[

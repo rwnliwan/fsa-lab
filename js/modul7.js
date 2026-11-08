@@ -9,8 +9,8 @@ notes:{ title:"Catatan penting 2025 (Rp juta)", cols:["Pos","2025","2024"],
  rows:[
   {l:"Pendapatan (PSAK 115)", v:"520.000", v2:"400.000", d:"Diakui dengan model 5 langkah: identifikasi kontrak, kewajiban pelaksanaan, harga transaksi, alokasi, pengakuan saat kewajiban dipenuhi. Piutang 104.000 = pendapatan yang belum jadi kas.", psak:"PSAK 115 (dulu 72)", f:"Pendapatan adalah pos manipulasi #1. Cek: syarat pengakuan terpenuhi? Retur & diskon diungkap?"},
   {l:"Persediaan (PSAK 202)", v:"96.000", v2:"80.000", d:"Dicatat sebesar lower of cost or NRV; LIFO dilarang. Metode FIFO/rata-rata diungkap di catatan.", psak:"PSAK 202 (dulu 14)", f:"Persediaan usang yang tidak dihapusbukukan = laba semu. Cek umur persediaan & penurunan nilai."},
-  {l:"Sewa (PSAK 116)", v:"Liab 60.000", v2:"58.000", d:"Liabilitas sewa 60.000; aset hak-guna neto 58.000 (bagian dari aset tetap 230.000). Sewa operasi tidak bisa lagi off-balance-sheet.", psak:"PSAK 116 (dulu 73)", f:"Sebelum PSAK 116, sewa operasi disembunyikan dari neraca. Cek: semua kontrak sewa tercatat?"},
-  {l:"ECL piutang (PSAK 109)", v:"(4.100)", v2:"—", d:"Allowance 4.100 dari piutang bruto 108.100 = 3,8%. Model ekspektasian: stage 1 (80.000), stage 2 (18.000), stage 3 (10.100).", psak:"PSAK 109 (dulu 71)", f:"Allowance yang terlalu tipis vs DSO 73 hari = laba dipoles. Bandingkan dengan kolektibilitas aktual."},
+  {l:"Sewa (PSAK 116)", v:"Liab 60.000", v2:"58.000", d:"Liabilitas sewa 60.000; aset hak-guna neto 58.000 (bagian dari aset tetap 230.000). Sewa operasi tidak bisa lagi off-balance-sheet — kecuali sewa jangka pendek dan aset bernilai rendah (PSAK 116).", psak:"PSAK 116 (dulu 73)", f:"Sebelum PSAK 116, sewa operasi disembunyikan dari neraca. Cek: semua kontrak sewa tercatat?"},
+  {l:"ECL piutang (PSAK 109)", v:"(4.100)", v2:"—", d:"Allowance 4.100 dari piutang bruto 108.100 = 3,8%. Ilustrasi staging umum: stage 1 (80.000), stage 2 (18.000), stage 3 (10.100) — piutang usaha sendiri memakai pendekatan sederhana PSAK 109 (lifetime ECL, tanpa stage).", psak:"PSAK 109 (dulu 71)", f:"3,8% saja belum membuktikan cadangan tipis atau cukup — bandingkan dengan umur piutang & kolektibilitas aktual sebelum menilai."},
   {l:"Imbalan kerja & pajak tangguhan (ilustratif)", v:"PSAK 219/212", v2:"—", d:"Ilustratif: liabilitas imbalan pasti dihitung aktuaris (asumsi diskonto & kenaikan gaji); pajak tangguhan dari beda temporer. Keduanya murni estimasi manajemen.", psak:"PSAK 219 (dulu 24) / 212 (dulu 46)", f:"Asumsi aktuaria yang 'optimis' 1% bisa menghapus miliaran liabilitas. Selalu baca analisis sensitivitasnya."},
  ]},
 ben:{ title:"Liabilitas imbalan kerja — PSAK 219 (dulu 24): dibangun dari estimasi (Rp juta, ilustratif)", cols:["Komponen","Angka","Makna"],
@@ -26,7 +26,7 @@ audit:{ title:"Opini audit — kamus bahasa auditor", cols:["Opini","Arti","—"
   {l:"Wajar tanpa modifikasian", v:"✓", v2:"—", d:"Opini tertinggi: auditor memperoleh reasonable assurance bahwa laporan bebas salah saji MATERIAL. Reasonable assurance = keyakinan tinggi, BUKAN jaminan mutlak: salah saji material masih bisa lolos tanpa terdeteksi — audit punya keterbatasan inheren (sampling, estimasi manajemen, potensi kolusi).", psak:"SA 700", f:"Opini bersih bukan vonis sehat. Enron pun pernah dapat opini bersih."},
   {l:"Wajar + penekanan going concern", v:"⚠", v2:"—", d:"Opini tetap wajar, tapi auditor menekankan ketidakpastian kelangsungan usaha. Lampu kuning: baca arus kas & jadwal utang.", psak:"SA 570", f:"Paragraf ini sering muncul 1-2 tahun SEBELUM gagal bayar. Jangan abaikan."},
   {l:"Modifikasian (pengecualian)", v:"✕", v2:"—", d:"'Wajar, kecuali untuk...' — ada area yang auditor tidak bisa verifikasi atau tidak setuju. Red flag serius.", psak:"SA 705", f:"Cek persis area pengecualiannya — biasanya di situlah masalahnya."},
-  {l:"Tidak wajar / menolak opini", v:"✕✕", v2:"—", d:"Laporan menyesatkan secara pervasif, atau auditor tidak dapat bukti cukup. Hindari.", psak:"SA 705", f:"Menolak opini = auditor tidak berani tanda tangan. Itu vonis."},
+  {l:"Tidak wajar / menolak opini", v:"✕✕", v2:"—", d:"Laporan menyesatkan secara pervasif, atau auditor tidak dapat bukti cukup. Hindari.", psak:"SA 705", f:"Menolak opini (disclaimer) = auditor tetap menandatangani laporan audit, tapi dengan opini disclaimer karena tidak memperoleh bukti cukup — vonisnya soal bukti, bukan soal keberanian."},
   {l:"KAM (Key Audit Matters)", v:"Fokus", v2:"—", d:"Hal yang paling SIGNIFIKAN dalam audit — dipilih dari hal-hal yang dikomunikasikan auditor kepada tata kelola (bukan daftar semua risiko fraud). Contoh umum: pengakuan pendapatan & estimasi. KAM = peta harta karun analis forensik.", psak:"SA 701", f:"Baca KAM dulu sebelum baca laporan. Auditor sudah menunjukkan area mana yang paling signifikan dalam audit ini."},
  ]},
 };
@@ -62,7 +62,7 @@ renderStmt("notes");
 /* ---------- PLAYGROUND ---------- */
 var CARDS = [
  {t:"Auditor diganti 3 kali dalam 5 tahun", q1:"Risiko salah saji", q2:"Kepercayaan analis", a1:"naik", a2:"turun",
-  e:"Opini shopping: manajemen mencari auditor yang mau tanda tangan. Pergantian auditor yang sering = red flag klasik."},
+  e:"Pergantian auditor yang sering = sinyal investigasi, bukan bukti opinion shopping — cek alasannya (perselisihan akuntansi? fee? rotasi?) sebelum menyimpulkan manajemen mencari auditor yang mau tanda tangan."},
  {t:"KAM menyebut pengakuan pendapatan", q1:"Risiko salah saji", q2:"Kepercayaan analis", a1:"naik", a2:"turun",
   e:"Auditor sendiri menilai pengakuan pendapatan sebagai hal paling signifikan dalam audit ini. Percaya angkanya? Verifikasi dulu."},
  {t:"Paragraf penekanan kelangsungan usaha", q1:"Risiko salah saji", q2:"Kepercayaan analis", a1:"naik", a2:"turun",
@@ -183,9 +183,9 @@ var RATIOS = [
  {q:"Tarif pajak efektif (%)", hint:"Beban pajak ÷ PBT: 12.760 ÷ 58.000 × 100", ans:22.0, dec:true, tol:0.3,
   why:"22,0% — sama dengan tarif statutori. Tarif efektif yang jauh di bawah statutori = cek insentif atau rugi fiskal."},
  {q:"Payout ratio (%)", hint:"Dividen ÷ laba bersih: 6.000 ÷ 45.240 × 100", ans:13.3, tol:0.3,
-  why:"13,3% — dividen kecil dari laba. Tapi ingat Modul 6: FCFE negatif, jadi dividen ini dibayar dari utang."},
+  why:"13,3% — dividen kecil dari laba. Tapi ingat Modul 6: FCFE negatif, jadi dividen ini ditutup campuran utang neto + penurunan kas (defisit agregat)."},
  {q:"ECL rate (%)", hint:"Allowance ÷ piutang bruto: 4.100 ÷ 108.100 × 100", ans:3.8, tol:0.3,
-  why:"3,8% — cadangan tipis untuk DSO 73 hari. Analis forensik akan menuntut lebih."},
+  why:"3,8% — belum dapat dinilai 'tipis' atau 'wajar' dari DSO 73 hari saja; butuh umur piutang & data kerugian. Selidiki sebelum memberi vonis."},
  {q:"Sewa terhadap liabilitas (%)", hint:"Liabilitas sewa ÷ total liabilitas: 60.000 ÷ 272.000 × 100", ans:22.1, tol:0.3,
   why:"22,1% — seperlima utang adalah sewa. Sejak PSAK 116, leverage 'asli' jadi terlihat."},
 ];

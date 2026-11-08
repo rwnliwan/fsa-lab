@@ -10,10 +10,10 @@ piutang:{ title:"Piutang usaha 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Piutang bruto", v:"108.100", v2:"—", d:"Nilai tagihan sebelum cadangan. Dasar hitung ECL.", psak:"PSAK 109 (dulu 71)", f:"—"},
   {l:"Cadangan ECL (allowance)", v:"(4.100)", v2:"—", d:"Expected credit loss — estimasi yang tidak tertagih.", psak:"PSAK 109 (dulu 71)", f:"Cadangan yang melonjak tiba-tiba = big bath atau antisipasi kerugian besar."},
   {l:"Piutang neto", v:"104.000", v2:"55.000", d:"108.100 − 4.100. Yang tampil di neraca.", psak:"—", f:"—"},
-  {l:"ECL rate", v:"3,8%", v2:"—", d:"4.100 ÷ 108.100. 3,8 sen dari tiap Rp100 piutang dianggap tak tertagih.", psak:"—", f:"ECL rate yang turun saat DSO naik = cadangan kurang konservatif."},
-  {l:"Stage 1 (lancar)", v:"80.000", v2:"—", d:"Risiko kredit belum naik signifikan — cadangan 12 bulan.", psak:"PSAK 109 (dulu 71)", f:"—"},
-  {l:"Stage 2 (risiko naik)", v:"18.000", v2:"—", d:"Risiko naik signifikan — cadangan lifetime.", psak:"PSAK 109 (dulu 71)", f:"Migrasi S1→S2 yang besar = early warning portofolio pelanggan."},
-  {l:"Stage 3 (gagal bayar)", v:"10.100", v2:"—", d:"Sudah gagal bayar — 9,3% dari bruto.", psak:"PSAK 109 (dulu 71)", f:"Stage 3 yang tumbuh = tagihan macet menumpuk; cek umur piutang."},
+  {l:"ECL rate", v:"3,8%", v2:"—", d:"4.100 ÷ 108.100. Rp3,80 dari tiap Rp100 piutang dianggap tak tertagih.", psak:"—", f:"ECL rate yang turun saat DSO naik = cadangan kurang konservatif."},
+  {l:"Stage 1 (lancar)", v:"80.000", v2:"—", d:"Risiko kredit belum naik signifikan — cadangan 12 bulan. (Ilustrasi pendekatan umum; piutang usaha memakai pendekatan sederhana PSAK 109: lifetime ECL tanpa stage 1/2/3.)", psak:"PSAK 109 (dulu 71)", f:"—"},
+  {l:"Stage 2 (risiko naik)", v:"18.000", v2:"—", d:"Risiko naik signifikan — cadangan lifetime. (Ilustrasi pendekatan umum — lihat Stage 1.)", psak:"PSAK 109 (dulu 71)", f:"Migrasi S1→S2 yang besar = early warning portofolio pelanggan."},
+  {l:"Stage 3 (credit-impaired)", v:"10.100", v2:"—", d:"Aset credit-impaired — 9,3% dari bruto. Lebih luas dari 'gagal bayar' semata.", psak:"PSAK 109 (dulu 71)", f:"Stage 3 yang tumbuh = tagihan macet menumpuk; cek umur piutang."},
   {l:"DSO", v:"73,0 hari", v2:"50,2 hari", d:"Rata-rata tagihan tertagih 73 hari.", psak:"—", f:"DSO melar = screen #1 pendapatan prematur (channel stuffing)."}
  ]},
 stok:{ title:"Persediaan 2025 (Rp juta)", cols:["Pos","Ilustrasi","Keterangan"],
@@ -176,11 +176,11 @@ function parseIDNumber(str, isDecimal){
 
 var RATIOS = [
  {q:"ECL rate 2025 (%)", hint:"Allowance ÷ piutang bruto × 100: 4.100 ÷ 108.100 × 100", ans:3.8, tol:0.2,
-  why:"3,8% — cadangan wajar untuk portofolio dengan DSO 73 hari."},
+  why:"3,8% — belum dapat dinilai 'tipis' atau 'wajar' dari DSO 73 hari saja; butuh umur piutang & data kerugian. Selidiki sebelum memberi vonis."},
  {q:"Allowance 2025 (Rp juta)", hint:"Piutang bruto − neto: 108.100 − 104.000", ans:4100, dec:false, tol:50,
   why:"4.100 — buffer atas tagihan yang mungkin tak tertagih."},
  {q:"Stage-3 share (%)", hint:"Stage 3 ÷ bruto × 100: 10.100 ÷ 108.100 × 100", ans:9.3, tol:0.3,
-  why:"9,3% — hampir 1 dari 10 rupiah piutang sudah gagal bayar."},
+  why:"9,3% — hampir 1 dari 10 rupiah piutang sudah credit-impaired."},
  {q:"DIO 2025 (hari)", hint:"Persediaan ÷ HPP × 365: 96.000 ÷ 338.000 × 365", ans:103.7, tol:0.5,
   why:"103,7 hari — membaik dari 110,6. Stok berputar sedikit lebih cepat."}
 ];
@@ -239,7 +239,7 @@ setLens("invest");
 var QUIZ = [
  {q:"ECL 3,8% artinya…", o:["Piutang neto ÷ penjualan","Cadangan ÷ piutang bruto","Cadangan ÷ piutang neto setelah hapus buku","Kerugian aktual ÷ piutang bruto"], a:1},
  {q:"Harga naik + metode FIFO → laba…", o:["Lebih tinggi","Lebih kecil","Sama saja","Tetap seperti LIFO"], a:0},
- {q:"Stage 3 dalam PSAK 109 = …", o:["Menunggak ringan","Lancar","Baru dicairkan","Gagal bayar"], a:3},
+ {q:"Stage 3 dalam PSAK 109 = …", o:["Menunggak ringan","Lancar","Baru dicairkan (belum jatuh tempo)","Credit-impaired"], a:3},
  {q:"Allowance naik tajam tiba-tiba bisa berarti…", o:["Big bath / antisipasi kerugian","Kualitas kredit membaik","Manajemen menaikkan laba tahun ini","Kolektibilitas debitur membaik"], a:0},
  {q:"PSAK 109 memakai pendekatan…", o:["Incurred loss","Nilai wajar","Tanpa cadangan","Expected loss"], a:3}
 ];

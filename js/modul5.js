@@ -19,7 +19,7 @@ sol:{ title:"Solvabilitas 2025 (Rp juta) — selamat dari utang jangka panjang?"
   {l:"Ekuitas", v:"179.440", v2:"140.200", d:"39,7% dari aset.", psak:"—", f:"—"},
   {l:"D/E ratio", v:"1,52x", v2:"1,70x", d:"272.000/179.440. Membaik dari 1,70x.", psak:"—", f:"Membaik karena ekuitas naik dari laba akrual — bukan dari bayar utang."},
   {l:"Utang berbunga", v:"201.440", v2:"188.000", d:"74% dari total liabilitas.", psak:"—", f:"—"},
-  {l:"Net debt / EBITDA", v:"1,76x", v2:"—", d:"(201.440−21.440)/102.000. Utang bersih lunas ~1,8 tahun dari EBITDA.", psak:"—", f:"Di atas 4x = zona merah kredit."},
+  {l:"Net debt / EBITDA", v:"1,76x", v2:"—", d:"EBITDA = EBIT + depresiasi = 72.000 + 30.000 = 102.000; (201.440−21.440)/102.000. Utang bersih lunas ~1,8 tahun dari EBITDA — ingat, EBITDA bukan arus kas aktual.", psak:"—", f:"Di atas 4x = zona merah kredit."},
   {l:"Interest coverage", v:"5,14x", v2:"4,80x", d:"72.000/14.000. Di atas 2x = aman.", psak:"—", f:"Coverage < 1,5x = perusahaan pinjam untuk bayar bunga."}
  ]}
 };

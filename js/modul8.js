@@ -18,7 +18,7 @@ segmen:{ title:"Segmen usaha 2025 (ilustratif, Rp juta)", cols:["Segmen","Penjua
  rows:[
   {l:"Ritel", v:"312.000", v2:"46.800", d:"60% penjualan. Margin 15,0%; aset 270.864; ROA 17,3% — mesin cuan perusahaan.", psak:"PSAK 108 (dulu 5)", f:"—"},
   {l:"Distribusi", v:"208.000", v2:"25.200", d:"40% penjualan. Margin 12,1%; aset 180.576; ROA 14,0% — di bawah Ritel.", psak:"PSAK 108 (dulu 5)", f:"Segmen margin rendah = kandidat divestasi atau perbaikan operasi."},
-  {l:"Total (tie)", v:"520.000", v2:"72.000", d:"312.000+208.000 = 520.000 ✓; 46.800+25.200 = 72.000 ✓; aset 270.864+180.576 = 451.440 ✓", psak:"—", f:"Segmen harus tie ke konsolidasian — kalau tidak, ada yang disembunyikan."},
+  {l:"Total (tie)", v:"520.000", v2:"72.000", d:"312.000+208.000 = 520.000 ✓; 46.800+25.200 = 72.000 ✓; aset 270.864+180.576 = 451.440 ✓ — di sini tie penuh; bila tidak tie, minta rekonsiliasi dulu.", psak:"—", f:"Segmen harus dapat direkonsiliasi ke konsolidasian — selisih yang tidak dijelaskan = tanda tanya (eliminasi antarsegmen & pos korporat tak dialokasi bisa menjelaskan selisih yang sah)."},
  ]},
 };
 
@@ -58,10 +58,10 @@ var CARDS = [
   e:"PBT tergerus bunga → rasio turun → ROE turun. Leverage punya harga."},
  {t:"Margin EBIT naik 2 poin", q1:"ROE", q2:"ROA", a1:"naik", a2:"naik",
   e:"Operasi membaik → keduanya naik. Inilah return yang berkualitas."},
- {t:"Jual aset Distribusi (ROA 14% < 17,3%)", q1:"Perputaran aset", q2:"ROE", a1:"naik", a2:"naik",
-  e:"Lepas aset ber-return rendah → perputaran naik → ROE naik. Divestasi cerdas."},
- {t:"Tambah utang untuk buyback", q1:"Leverage", q2:"ROE", a1:"naik", a2:"naik",
-  e:"Leverage naik → ROE naik SEMU. Cek: ROA tidak bergerak — ini rekayasa, bukan kinerja."},
+ {t:"Jual aset Distribusi seharga nilai buku (ROA 14% < 17,3%)", q1:"Perputaran aset", q2:"Margin EBIT", a1:"tetap", a2:"naik",
+  e:"Perputaran IDENTIK di semua segmen: 520.000/451.440 = 312.000/270.864 = 1,1519x — melepas Distribusi tidak mengubahnya (0,0000x). Margin naik karena segmen tersisa bermargin 15,0% vs konsolidasi 13,8%; ROE sendiri tergantung harga jual & penggunaan kas — tak bisa disimpulkan dari ROA saja."},
+ {t:"Tambah utang untuk buyback", q1:"Leverage", q2:"ROA", a1:"naik", a2:"turun",
+  e:"Leverage naik. Tapi ROA TURUN — laba bersih tergerus beban bunga setelah pajak sementara aset tidak berubah (kas masuk dari utang, keluar untuk buyback). Berbeda dengan buyback tunai di M3 (aset & ekuitas turun, laba tetap → ROA naik): buyback berutang bukan 'ROA tidak bergerak'."},
  {t:"Ritel tumbuh 2x lebih cepat dari Distribusi", q1:"Mix margin", q2:"ROE", a1:"naik", a2:"naik",
   e:"Mix bergeser ke segmen margin tinggi → margin konsolidasi naik → ROE naik."},
 ];

@@ -18,7 +18,7 @@ eps:{ title:"EPS & one-off 2025", cols:["Pos","2025","2024"],
   {l:"EPS dasar", v:"452,4", v2:"296,4", d:"45.240 ÷ 100 juta. +52,6% YoY.", psak:"PSAK 233", f:"EPS naik — tapi berapa yang recurring?"},
   {l:"Dilusi", v:"Tidak ada", v2:"—", d:"Tanpa opsi/saham konversi → diluted = dasar.", psak:"PSAK 233", f:"—"},
   {l:"One-off: laba jual aset", v:"8.000", v2:"—", d:"Sebelum pajak. Setelah pajak 6.240 = 13,8% dari laba.", psak:"—", f:"One-off di headline = ilusi pertumbuhan."},
-  {l:"Continuing EPS", v:"390,0", v2:"—", d:"39.000 ÷ 100 juta. Laba berulang per saham — basis valuasi.", psak:"—", f:"Valuasi pakai continuing EPS — bukan headline."},
+  {l:"Adjusted EPS (ilustratif)", v:"390,0", v2:"—", d:"(45.240 − 8.000×0,78) ÷ 100 juta = 39.000 ÷ 100 juta. Laba berulang per saham setelah mengeluarkan one-off — basis valuasi. Ini adjusted/normalized EPS, bukan 'continuing EPS' formal (operasi yang dilanjutkan pun bisa memuat one-off).", psak:"—", f:"Valuasi pakai adjusted EPS — bukan headline."},
  ]},
 adj:{ title:"Non-GAAP / adjusted: apa yang di-add-back — angka ilustratif, Rp juta", cols:["Penyesuaian","Angka","Makna"],
  rows:[
@@ -62,16 +62,16 @@ renderStmt("rev");
 var CARDS = [
  {t:"Akui pendapatan Rp20.000 lebih awal", q1:"EPS", q2:"Kualitas laba", a1:"naik", a2:"turun",
   e:"EPS naik instan, kualitas anjlok. Inilah premature recognition."},
- {t:"Jual aset, laba one-off 8.000", q1:"EPS", q2:"Continuing EPS", a1:"naik", a2:"tetap",
+ {t:"Jual aset, laba one-off 8.000", q1:"EPS", q2:"Adjusted EPS", a1:"naik", a2:"tetap",
   e:"Headline naik, recurring tidak. Analis memisahkan keduanya."},
- {t:"Piutang naik 89%, penjualan 30%", q1:"Kolektibilitas", q2:"Kualitas pendapatan", a1:"turun", a2:"turun",
-  e:"Pendapatan makin tidak tertagih. Waspada."},
+ {t:"Piutang naik 89%, penjualan 30%", q1:"DSO", q2:"Kewaspadaan analis", a1:"naik", a2:"naik",
+  e:"DSO melar 50,2 → 73 hari — sinyal untuk diuji (umur piutang, termin, bauran kredit), BUKAN bukti piutang makin tak tertagih. Kolektibilitas baru bisa dinilai setelah uji itu."},
  {t:"Buyback 10% saham beredar", q1:"EPS", q2:"Jumlah saham", a1:"naik", a2:"turun",
   e:"Pembagi menyusut → EPS naik. Bukan kinerja — aritmetika."},
  {t:"Stock split 2:1", q1:"EPS per saham", q2:"Total laba", a1:"turun", a2:"tetap",
   e:"Saham berlipat → EPS per saham turun setengah. Nilai perusahaan tidak berubah."},
- {t:"Hapusbuku piutang tak tertagih", q1:"EPS", q2:"Kualitas laba", a1:"turun", a2:"naik",
-  e:"Laba turun sekali, tapi angka jadi jujur. Kualitas naik."},
+ {t:"Hapusbuku piutang tak tertagih (cadangan belum cukup)", q1:"EPS", q2:"Kualitas laba", a1:"turun", a2:"naik",
+  e:"Bila cadangan BELUM cukup, hapusbuku memaksa beban ECL tambahan → EPS turun sekali, tapi angka jadi jujur. Bila piutang sudah dicadangkan penuh (PSAK 109, allowance 4.100 di M7/M11), hapusbuku hanya Dr allowance / Cr piutang bruto — EPS TIDAK bergerak saat itu."},
 ];
 var OPTS3 = ["naik","turun","tetap"];
 var pgScore = 0, pgDone = 0, pgCards = [];
@@ -181,12 +181,12 @@ function parseIDNumber(str, isDecimal){
 var RATIOS = [
  {q:"EPS dasar 2025", hint:"Laba bersih ÷ saham: 45.240 ÷ 100", ans:452.4, tol:0.5,
   why:"452,4 — headline. Tapi 62,4-nya one-off."},
- {q:"Continuing EPS", hint:"(45.240 − 8.000×0,78) ÷ 100", ans:390.0, dec:false, tol:0.5,
-  why:"390,0 — laba berulang per saham. Ini yang dipakai valuasi."},
+ {q:"Adjusted EPS", hint:"(45.240 − 8.000×0,78) ÷ 100", ans:390.0, dec:false, tol:0.5,
+  why:"390,0 — laba berulang per saham (adjusted, setelah pajak 22%). Ini yang dipakai valuasi."},
  {q:"Porsi one-off (%)", hint:"6.240 ÷ 45.240 × 100", ans:13.8, tol:0.3,
   why:"13,8% — hampir seperenam EPS = sekali lewat."},
  {q:"Payout ratio (%)", hint:"Dividen ÷ laba: 6.000 ÷ 45.240 × 100", ans:13.3, tol:0.3,
-  why:"13,3% — kecil. Tapi dibayar dari utang (FCFE negatif)."},
+  why:"13,3% — kecil. Tapi ditutup campuran utang neto + penurunan kas (FCFE negatif)."},
 ];
 (function(){
   var h = "";
@@ -242,10 +242,10 @@ setLens("invest");
 /* ---------- QUIZ + GATE ---------- */
 var QUIZ = [
  {q:"EPS dasar 2025?", o:["390,0","514,8","452,4","296,4"], a:2},
- {q:"Continuing EPS lebih rendah karena…", o:["Saham beredar bertambah sehingga EPS terencer", "Dividen yang dibagikan tahun ini lebih besar", "Mengeluarkan one-off jual aset 8.000", "Beban pajak tahun ini naik cukup besar"], a:2},
- {q:"Piutang +89% vs penjualan +30% → kualitas…", o:["Memburuk","Membaik","Normal saja","Pasti fraud"], a:0},
+ {q:"Adjusted EPS lebih rendah karena…", o:["Saham beredar bertambah sehingga EPS terencer", "Dividen yang dibagikan tahun ini lebih besar", "Mengeluarkan one-off jual aset 8.000", "Beban pajak tahun ini naik cukup besar"], a:2},
+ {q:"Piutang +89% vs penjualan +30% — kesimpulan yang tepat?", o:["Waspada — uji dulu","Memburuk","Membaik","Pasti fraud"], a:0},
  {q:"EPS dilusian = EPS dasar karena…", o:["Stock split menambah jumlah saham", "Tak ada opsi/saham konversi", "Rugi membuat efek dilusi diabaikan", "Saham beredar sudah terlalu banyak"], a:1},
- {q:"Continuing EPS dipakai untuk…", o:["Dasar pembagian dividen","Mengganti opini audit","Menghitung pajak penghasilan","Valuasi laba berulang"], a:3},
+ {q:"Adjusted EPS dipakai untuk…", o:["Dasar pembagian dividen","Mengganti opini audit","Menghitung pajak penghasilan","Valuasi laba berulang"], a:3},
 ];
 (function(){
   var h = "";

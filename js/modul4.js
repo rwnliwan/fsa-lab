@@ -10,7 +10,10 @@ wc:{ title:"Modal Kerja 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Piutang usaha", v:"104.000", v2:"55.000", d:"+89% YoY — komponen WC terbesar yang memburuk.", psak:"PSAK 109 (dulu 71) — ECL", f:"Piutang = kas yang dipinjamkan ke pelanggan. +89% = pelanggan makin lama bayar atau penjualan fiktif."},
   {l:"Persediaan", v:"96.000", v2:"80.000", d:"+20% — sejalan dengan penjualan +30%.", psak:"PSAK 202 (dulu 14)", f:"Persediaan usang disembunyikan di sini; cek perputaran vs industri."},
   {l:"Utang usaha", v:"62.000", v2:"50.000", d:"+24% — pembiayaan gratis dari supplier.", psak:"—", f:"Utang usaha yang tumbuh LEBIH CEPAT dari pembelian = stretch payables."},
-  {l:"Modal kerja (WC)", v:"119.440", v2:"88.200", d:"Aset lancar − liabilitas lancar. Naik 35% — kas terikat makin besar.", psak:"—", f:"WC yang tumbuh lebih cepat dari penjualan = efisiensi operasi memburuk."}
+  {l:"Kas dan setara kas", v:"21.440", v2:"33.200", d:"Bagian aset lancar (rincian lengkap di M5).", psak:"—", f:"—"},
+  {l:"Utang bank jangka pendek", v:"31.440", v2:"—", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
+  {l:"Akrual", v:"8.560", v2:"—", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
+  {l:"Modal kerja (WC)", v:"119.440", v2:"88.200", d:"Aset lancar − liabilitas lancar: 221.440 − 102.000 = 119.440 (2024: 168.200 − 80.000 = 88.200). Naik 35,4% — kas terikat makin besar.", psak:"—", f:"WC yang tumbuh lebih cepat dari penjualan = efisiensi operasi memburuk."}
  ]},
 cyc:{ title:"Siklus operasi 2025 (hari)", cols:["Ukuran","2025","2024"],
  rows:[
@@ -177,7 +180,7 @@ var RATIOS = [
  {q:"DPO 2025 (hari)", hint:"Utang usaha ÷ HPP × 365: 62.000 ÷ 338.000 × 365", ans:67.0, dec:true, tol:0.5,
   why:"67,0 hari — turun tipis dari 69,1. Bayar supplier sedikit lebih cepat."},
  {q:"Cash conversion cycle 2025 (hari)", hint:"DSO + DIO − DPO: 73,0 + 103,7 − 67,0", ans:109.7, tol:0.5,
-  why:"109,7 hari — naik dari 91,7. Kas terikat 18 hari lebih lama. Inilah kenapa laba +53% tapi kas −30%."}
+  why:"109,7 hari — naik dari 91,7. Kas terikat 18 hari lebih lama. Inilah kenapa laba +53% tapi kas −35% (kas 33.200 → 21.440)."}
 ];
 (function(){
   var h = "";
