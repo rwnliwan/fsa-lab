@@ -16,7 +16,7 @@ inv:{ title:"Arus kas investasi 2025 (Rp juta)", cols:["Pos","2025","2024"],
  ]},
 fin:{ title:"Arus kas pendanaan 2025 (Rp juta)", cols:["Pos","2025","2024"],
  rows:[
-  {l:"Perubahan utang neto", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang baru dikurangi pelunasan (bukan saldo utang neto).", psak:"—", f:"—"},
+  {l:"Pinjaman neto (net borrowing)", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang baru dikurangi pelunasan (bukan saldo utang bersih).", psak:"—", f:"—"},
   {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Kas keluar untuk pemegang saham — saat FCFE negatif.", psak:"—", f:"Dividen dari utang = tidak sustainable."},
   {l:"Arus kas pendanaan (CFF)", v:"5.440", v2:"(5.000)", d:"11.440 − 6.000. Positif = perusahaan net meminjam.", psak:"PSAK 207", f:"CFF positif + dividen = gali lubang tutup lubang."},
   {l:"Kas dari pelanggan (langsung)", v:"471.000", v2:"—", d:"Ilustrasi metode langsung: 520.000 − 49.000 (Δ piutang NETO) — asumsi: tidak ada perubahan ECL/hapusbuku, jadi Δ neto = Δ bruto. Lebih transparan dari metode tidak langsung.", psak:"PSAK 207", f:"Metode langsung menyulitkan manipulasi klasifikasi."},
@@ -237,7 +237,7 @@ var QUIZ = [
  {q:"Bedanya metode langsung vs tidak langsung?", o:["Mulai dari laba bersih vs mulai dari kas","Direct = kas masuk, indirect = kas keluar","Mulai dari kas vs mulai dari laba","Keduanya mulai dari laba bersih"], a:2},
  {q:"Kas dari pelanggan 2025?", o:["30.800","520.000","104.000","471.000"], a:3},
  {q:"Capex 156% dari CFO artinya…", o:["Capex dibiayai penuh dari kas operasi","Investasi melebihi kas operasi","Arus kas operasi sangat kuat","Perusahaan kelebihan kas"], a:1},
- {q:"CFF +5.440 terutama karena…", o:["Dividen 6.000 > utang neto 11.440","Utang neto 11.440 > dividen 6.000","Penerbitan saham baru 11.440","Penjualan aset tetap 5.440"], a:1},
+ {q:"CFF +5.440 terutama karena…", o:["Dividen 6.000 > pinjaman neto 11.440","Pinjaman neto 11.440 > dividen 6.000","Penerbitan saham baru 11.440","Penjualan aset tetap 5.440"], a:1},
  {q:"Dividen 6.000 ditutup dari… (FCFE 2025 negatif Rp−5.760 jt = defisit agregat)", o:["Campuran CFO + utang + penurunan kas","Kas operasi murni — CFO 2025 masih positif 30.800","FCFE 2025 positif Rp5.760 jt","Penerbitan saham baru 6.000"], a:0},
 ];
 (function(){

@@ -11,19 +11,19 @@ fc:{ title:"Jembatan kas bebas 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Bunga setelah pajak", v:"10.920", v2:"7.800", d:"14.000 × (1−22%) = 10.920. Ditambahkan kembali — FCFF dihitung SEBELUM bunga.", psak:"—", f:"Lupa menambahkan bunga kembali = double-count saat menghitung FCFE. Kesalahan klasik."},
   {l:"Belanja modal (capex)", v:"(48.000)", v2:"(40.000)", d:"Investasi aset tetap — wajib dibayar sebelum bicara 'bebas'.", psak:"—", f:"Capex yang dikapitalisasi berlebihan = laba semu (ingat WorldCom)."},
   {l:"FCFF", v:"(6.280)", v2:"11.800", d:"30.800 + 10.920 − 48.000. Kas bebas untuk SEMUA penyandang dana (sebelum bunga).", psak:"—", f:"FCFF negatif saat ekspansi = wajar; FCFF negatif saat stagnan = bahaya."},
-  {l:"Bunga setelah pajak", v:"(10.920)", v2:"(7.800)", d:"14.000 × (1−22%). Bagian kreditur — dikurangkan untuk sampai ke FCFE.", psak:"—", f:"—"},
-  {l:"Perubahan utang neto", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang − bayar utang (bukan saldo — saldo utang neto di M5 = 180.000.", psak:"—", f:"—"},
-  {l:"FCFE", v:"(5.760)", v2:"4.000", d:"−6.280 − 10.920 + 11.440. Kas bebas untuk PEMEGANG SAHAM.", psak:"—", f:"FCFE 2025 negatif = defisit agregat — dividen 6.000 ditutup campuran CFO, utang neto, dan penurunan kas, bukan dividen tertentu 'dari utang'. 2024 positif 4.000 — bukan dua tahun struktural."},
-  {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Dibayar saat FCFE −5.760 — ditutup campuran utang neto + penurunan kas (defisit agregat), bukan dividen tertentu 'dari utang'.", psak:"—", f:"Dividen > FCFE = tidak sustainable."},
+  {l:"Bunga setelah pajak (dikurangkan)", v:"(10.920)", v2:"(7.800)", d:"14.000 × (1−22%). Bagian kreditur — dikurangkan untuk sampai ke FCFE.", psak:"—", f:"—"},
+  {l:"Pinjaman neto (net borrowing)", v:"11.440", v2:"0", d:"Arus periode berjalan: tambah utang − bayar utang (bukan saldo — Δ utang bersih M5 = 180.000 − 154.800 = +25.200).", psak:"—", f:"—"},
+  {l:"FCFE", v:"(5.760)", v2:"4.000", d:"−6.280 − 10.920 + 11.440. Kas bebas untuk PEMEGANG SAHAM.", psak:"—", f:"FCFE 2025 negatif = defisit agregat — dividen 6.000 ditutup campuran CFO, pinjaman neto, dan penurunan kas, bukan dividen tertentu 'dari utang'. 2024 positif 4.000 — bukan dua tahun struktural."},
+  {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Dibayar saat FCFE −5.760 — ditutup campuran pinjaman neto + penurunan kas (defisit agregat), bukan dividen tertentu 'dari utang'.", psak:"—", f:"Dividen > FCFE = tidak sustainable."},
   {l:"Rekonsiliasi: jual anak perusahaan 60.000 (skenario)", v:"+12.000", v2:"—", d:"Bila anak perusahaan dijual 60.000: CFI menjadi (48.000) + 60.000 = +12.000, tapi FCFF TETAP (6.280) dan FCFE TETAP (5.760) menurut definisi modul (FCFF = CFO + bunga setelah pajak − capex) — hasil pelepasan masuk CFI, bukan CFO/capex. 'FCFF' yang memasukkan proceeds = (6.280) + 60.000 = 53.720 adalah angka sekali lewat; perubahan kas skenario = (11.760) + 60.000 = +48.240. Bila ada gain akuntansi dari pelepasan, gain itu dikeluarkan kembali saat menyusun CFO (metode tidak langsung) — CFO tetap 30.800. Jangan diannualkan.", psak:"—", f:"Anak perusahaan yang dijual tidak menghasilkan kas tahun depan — valuasi recurring harus mengeluarkannya."}
  ]},
 use:{ title:"Ke mana perginya kas 2025 (Rp juta)", cols:["Pos","2025","% CFO"],
  rows:[
   {l:"CFO masuk", v:"30.800", v2:"100%", d:"Kas dari operasi.", psak:"—", f:"—"},
   {l:"Capex", v:"(48.000)", v2:"−156%", d:"156% dari CFO — ekspansi menelan semua kas operasi.", psak:"—", f:"Capex intensity 9,2% dari penjualan."},
-  {l:"Dividen", v:"(6.000)", v2:"−19%", d:"Dibayar saat FCFE negatif — ditutup campuran utang neto + penurunan kas, bukan dari kas bebas.", psak:"—", f:"—"},
-  {l:"Perubahan utang neto menutup", v:"11.440", v2:"+37%", d:"Lubang kas ditutup dengan tambah utang.", psak:"—", f:"Pola: operasi − investasi − dividen + utang = gali lubang tutup lubang."},
-  {l:"Perubahan kas", v:"(11.760)", v2:"−35% YoY", d:"30.800 − 48.000 − 6.000 + 11.440 ✓; kas 33.200 → 21.440 = −35,4% YoY (basis: saldo kas 2024, bukan CFO).", psak:"—", f:"—"}
+  {l:"Dividen", v:"(6.000)", v2:"−19%", d:"Dibayar saat FCFE negatif — ditutup campuran pinjaman neto + penurunan kas, bukan dari kas bebas.", psak:"—", f:"—"},
+  {l:"Pinjaman neto menutup", v:"11.440", v2:"+37%", d:"Lubang kas ditutup dengan tambah utang.", psak:"—", f:"Pola: operasi − investasi − dividen + utang = gali lubang tutup lubang."},
+  {l:"Perubahan kas", v:"(11.760)", v2:"−38%", d:"30.800 − 48.000 − 6.000 + 11.440 ✓; kas 33.200 → 21.440 = −35,4% YoY (basis: saldo kas 2024, bukan CFO). Sel ini % terhadap CFO; −35,4% adalah YoY saldo kas.", psak:"—", f:"—"}
  ]}
 };
 
@@ -178,8 +178,8 @@ function parseIDNumber(str, isDecimal){
 var RATIOS = [
  {q:"FCFF 2025 (Rp juta)", hint:"CFO + bunga(1−pajak) − capex: 30.800 + 10.920 − 48.000", ans:-6280, dec:false, tol:100,
   why:"−6.280 — kas bebas sebelum bunga; ekspansi menelan kas operasi."},
- {q:"FCFE 2025 (Rp juta)", hint:"FCFF − bunga(1−pajak) + utang neto: −6.280 − 10.920 + 11.440", ans:-5760, dec:false, tol:100,
-  why:"−5.760 — untuk pemegang saham tidak tersisa kas; dividen 6.000 ditutup campuran utang neto + penurunan kas (defisit agregat)."},
+ {q:"FCFE 2025 (Rp juta)", hint:"FCFF − bunga(1−pajak) + pinjaman neto: −6.280 − 10.920 + 11.440", ans:-5760, dec:false, tol:100,
+  why:"−5.760 — untuk pemegang saham tidak tersisa kas; dividen 6.000 ditutup campuran pinjaman neto + penurunan kas (defisit agregat)."},
  {q:"FCFF margin 2025 (%)", hint:"FCFF ÷ penjualan × 100: −6.280 ÷ 520.000 × 100", ans:-1.2, tol:0.3,
   why:"−1,2% — tiap Rp100 penjualan, kas bebas MINUS Rp1,2."},
  {q:"Capex intensity 2025 (%)", hint:"Capex ÷ penjualan × 100: 48.000 ÷ 520.000 × 100", ans:9.2, tol:0.3,
@@ -210,7 +210,7 @@ var RATIOS = [
 /* ---------- JOURNAL ---------- */
 var LENSES = {
  invest:"Lensa investasi — FCFF −6.280, FCFE −5.760, tapi laba +53%. Apakah ini growth story atau value trap? Tulis 3 baris.",
- credit:"Lensa kredit — Dividen naik 50% saat FCFE negatif dan utang neto +11.440. Setujui? Covenant apa yang kamu pasang?",
+ credit:"Lensa kredit — Dividen naik 50% saat FCFE negatif dan pinjaman neto +11.440. Setujui? Covenant apa yang kamu pasang?",
  forensic:"Lensa forensik — FCFF 2025 negatif (6.280) setelah +11.800 di 2024 + dividen dari utang + capex 156% dari CFO. Tulis 3 cek sebelum percaya narasi 'ekspansi'."
 };
 var curLens = "invest";

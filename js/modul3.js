@@ -12,21 +12,22 @@ is:{ title:"Income Statement 2025 (Rp juta) — kolom % = common-size dari penju
   {l:"Laba kotor", v:"182.000", v2:"136.000", pct:"35,0%", d:"Gross margin 35,0% (2024: 34,0%).", psak:"—", f:"—"},
   {l:"Beban operasi", v:"(110.000)", v2:"(88.000)", pct:"21,2%", d:"2024: 22,0%. Skala ekonomi: beban tumbuh 25% < penjualan 30%.", psak:"—", f:"Beban operasi common-size yang turun = cek klasifikasi biaya."},
   {l:"Laba operasi", v:"72.000", v2:"48.000", pct:"13,8%", d:"Operating margin 13,8% (2024: 12,0%).", psak:"—", f:"—"},
+  {l:"Laba sebelum pajak", v:"58.000", v2:"38.000", pct:"11,2%", d:"58.000/520.000 = 11,2% — titik transisi: setelah baris ini hanya pajak yang memisahkan dari laba bersih.", psak:"—", f:"—"},
   {l:"Beban bunga", v:"(14.000)", v2:"(10.000)", pct:"2,7%", d:"Coverage 5,14x.", psak:"—", f:"—"},
   {l:"Beban pajak", v:"(12.760)", v2:"(8.360)", pct:"2,5%", d:"Tarif efektif 22% konsisten.", psak:"PSAK 212 (dulu 46)", f:"—"},
-  {l:"LABA BERSIH", v:"45.240", v2:"29.640", pct:"8,7%", d:"Net margin 8,7% (2024: 7,4%).", psak:"—", f:"Margin naik — tapi ingat Modul 2: laba akrual vs kas."}
+  {l:"LABA BERSIH", v:"45.240", v2:"29.640", pct:"8,7%", d:"Net margin 8,7% (2024: 7,4%). Catatan pembulatan: kolom % yang dibulatkan tidak selalu 'footing' persis — 13,8 − 2,7 − 2,5 = 8,6, sedangkan nilai eksaknya 13,846 − 2,692 − 2,454 = 8,700 → 8,7%. Selisih 0,1 poin adalah efek pembulatan, bukan kesalahan hitung.", psak:"—", f:"Margin naik — tapi ingat Modul 2: laba akrual vs kas."}
  ]},
-bs:{ title:"Balance Sheet & Return 2025 (Rp juta)", cols:["Pos","2025","2024"],
+bs:{ title:"Balance Sheet & Return 2025 (Rp juta) — kolom % = common-size dari total aset", cols:["Pos","2025","2024","%"],
  rows:[
-  {l:"Total aset", v:"451.440", v2:"378.200", d:"Basis BS common-size.", psak:"—", f:"—"},
-  {l:"Ekuitas", v:"179.440", v2:"140.200", d:"39,7% dari aset.", psak:"—", f:"—"},
-  {l:"Utang berbunga", v:"201.440", v2:"188.000", d:"Bank pendek 31.440 + panjang 110.000 + sewa 60.000.", psak:"—", f:"—"},
-  {l:"Modal investasian (rata-rata)", v:"354.540", v2:"—", d:"(380.880 + 328.200)/2 = ekuitas + utang berbunga.", psak:"—", f:"—"},
-  {l:"Perputaran aset", v:"1,25x", v2:"1,06x", d:"520.000/414.820. Setiap Rp1 aset menghasilkan Rp1,25 penjualan.", psak:"—", f:"—"},
-  {l:"Leverage (A/E)", v:"2,60x", v2:"—", d:"414.820/159.820. Setiap Rp1 ekuitas menopang Rp2,60 aset.", psak:"—", f:"Leverage = pengungkit ROE sekaligus pengungkit risiko."},
-  {l:"ROE", v:"28,3%", v2:"—", d:"DuPont: 8,7% × 1,25 × 2,60 = 28,3% ✓", psak:"—", f:"ROE tinggi dari leverage ≠ ROE dari operasi. Selalu urai DuPont."},
-  {l:"ROA", v:"10,9%", v2:"—", d:"45.240/414.820 — return atas SELURUH aset.", psak:"—", f:"—"},
-  {l:"ROIC", v:"15,8%", v2:"—", d:"NOPAT 56.160/354.540. Di atas WACC 12% = mencipta nilai.", psak:"—", f:"ROIC < WACC bertahun-tahun = bisnis menghancurkan nilai."}
+  {l:"Total aset", v:"451.440", v2:"378.200", pct:"100%", d:"Basis BS common-size.", psak:"—", f:"—"},
+  {l:"Ekuitas", v:"179.440", v2:"140.200", pct:"39,7%", d:"39,7% dari aset (eksak 39,75%).", psak:"—", f:"—"},
+  {l:"Utang berbunga", v:"201.440", v2:"188.000", pct:"44,6%", d:"Bank pendek 31.440 + panjang 110.000 + sewa 60.000.", psak:"—", f:"—"},
+  {l:"Modal investasian (rata-rata)", v:"354.540", v2:"—", pct:"—", d:"(380.880 + 328.200)/2 = ekuitas + utang berbunga. Rata-rata — bukan saldo 2025, jadi tanpa % common-size.", psak:"—", f:"—"},
+  {l:"Perputaran aset", v:"1,25x", v2:"1,06x", pct:"—", d:"520.000/414.820. Setiap Rp1 aset menghasilkan Rp1,25 penjualan.", psak:"—", f:"—"},
+  {l:"Leverage (A/E)", v:"2,60x", v2:"—", pct:"—", d:"414.820/159.820. Setiap Rp1 ekuitas menopang Rp2,60 aset.", psak:"—", f:"Leverage = pengungkit ROE sekaligus pengungkit risiko."},
+  {l:"ROE", v:"28,3%", v2:"—", pct:"—", d:"DuPont: 8,7% × 1,25 × 2,60 = 28,3% ✓", psak:"—", f:"ROE tinggi dari leverage ≠ ROE dari operasi. Selalu urai DuPont."},
+  {l:"ROA", v:"10,9%", v2:"—", pct:"—", d:"45.240/414.820 — return atas SELURUH aset.", psak:"—", f:"—"},
+  {l:"ROIC", v:"15,8%", v2:"—", pct:"—", d:"NOPAT 56.160/354.540. Di atas WACC 12% = mencipta nilai.", psak:"—", f:"ROIC < WACC bertahun-tahun = bisnis menghancurkan nilai."}
  ]}
 };
 
@@ -190,7 +191,9 @@ var RATIOS = [
  {q:"ROA 2025 (%)", hint:"Laba bersih ÷ rata-rata total aset: 45.240 ÷ 414.820 × 100", ans:10.9, tol:0.3,
   why:"10,9% — return atas seluruh aset, tanpa bantuan leverage di pembilang."},
  {q:"ROIC 2025 (%)", hint:"NOPAT ÷ rata-rata modal investasian: 56.160 ÷ 354.540 × 100", ans:15.8, tol:0.5,
-  why:"15,8% > WACC 12% = mencipta nilai. ROIC < WACC bertahun-tahun = hancurkan nilai."}
+  why:"15,8% > WACC 12% = mencipta nilai. ROIC < WACC bertahun-tahun = hancurkan nilai."},
+ {q:"Ekuitas sebagai % total aset 2025 (%)", hint:"Ekuitas ÷ total aset: 179.440 ÷ 451.440 × 100", ans:39.7, tol:0.5,
+  why:"39,7% (eksak 39,75%) — dari kolom % common-size neraca: ekuitas 179.440 dari total aset 451.440. Bandingkan: 60,3% aset didanai utang."}
 ];
 (function(){
   var h = "";

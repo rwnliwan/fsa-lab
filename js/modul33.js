@@ -124,7 +124,7 @@ pkpu:{ title:"PKPU lebih operasional — klaim, kelas kreditor, valuasi, dan car
    tag:"Praktik restrukturisasi",
    k:"Kreditur: hitung best interest test untuk kelasmu sendiri — jangan percaya klaim 'semua kelas diuntungkan' tanpa angka per kelas."},
   {l:"Uji arus kas proposal — DSCR proyeksi", v:"1,20x", v2:"batas covenant",
-   d:"Uji kedua: apakah jadwal bayar baru realistis? Proyeksi CFADS 120.000 ÷ debt service 100.000 = DSCR 1,20x (ilustratif, pada batas covenant umum). Di bawah 1,0x, proposal hanya menunda pailit — minta skenario downside (CFADS −20% → 96.000 ÷ 100.000 = 0,96x) sebelum menyetujui.",
+   d:"Uji kedua: apakah jadwal bayar baru realistis? Proyeksi CFADS 120.000 ÷ debt service 100.000 = DSCR 1,20x (ilustratif, pada batas covenant umum). Di bawah 1,0x (ambang kecukupan kas), CFADS tidak menutup cicilan — proposal dapat hanya menunda pailit bila tidak ada reserve, injeksi ekuitas, atau perubahan syarat; minta skenario downside (CFADS −20% → 96.000 ÷ 100.000 = 0,96x) sebelum menyetujui.",
    tag:"Hitungan modul (angka ilustratif)",
    k:"Kreditur: proposal dengan DSCR proyeksi di bawah 1,20x tanpa reserve yang tebal = restrukturisasi jilid dua yang menunggu waktu."},
   {l:"Persetujuan & pengesahan (homologasi)", v:"mengikat semua", v2:"termasuk yang menolak",

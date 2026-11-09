@@ -51,7 +51,7 @@ risiko:{ title:"Langkah 4 — Risk factors & going concern: faktor risiko, opini
    psak:"Rujuk M7", f:"Kredit: opini selain WTP = fasilitas ditahan sampai alasan pengecualian dipahami. Investasi: emphasis of matter atas ketidakpastian = diskon valuasi, bukan catatan kaki. Forensik: opini yang berubah dari WTP ke pengecualian adalah sinyal paling keras di seluruh annual report — lebih keras dari angka laba mana pun."},
   {l:"Going concern — bisakah perusahaan bertahan?", v:"2,64", v2:"Altman Z grey zone (hibrida ilustratif)",
    d:"Going concern tidak dibuktikan satu angka: kas 21.440 (turun dari 33.200), CFO 30.800 < capex 48.000, FCFF −6.280, D/E 1,52x, coverage 5,14x, Altman Z 2,64 (hibrida ilustratif, bukan varian resmi — lihat M25). Gabungkan likuiditas, arus kas, utang jatuh tempo, dan pernyataan auditor — lalu tanya: bila pola kas 2025 berulang dua tahun, dari mana perusahaan membayar utang bank 141.440?",
-   psak:"Rujuk M25 (Altman Z)", f:"Kredit: going concern adalah pertanyaan pertama kreditur — FCFF negatif dan kas menipis adalah jawaban yang harus dijelaskan manajemen. Investasi: perusahaan yang hidup dari utang baru (utang neto +11.440) bukan dari kas operasi dinilai berbeda. Forensik: MD&A yang tidak menyebut going concern sama sekali sementara Z di grey zone = kelalaian yang dicatat."}
+   psak:"Rujuk M25 (Altman Z)", f:"Kredit: going concern adalah pertanyaan pertama kreditur — FCFF negatif dan kas menipis adalah jawaban yang harus dijelaskan manajemen. Investasi: perusahaan yang hidup dari utang baru (pinjaman neto +11.440) bukan dari kas operasi dinilai berbeda. Forensik: MD&A yang tidak menyebut going concern sama sekali sementara Z di grey zone = kelalaian yang dicatat."}
  ]},
 checklist:{ title:"Langkah 5 — Checklist penutup: 10 cek analis sebelum memberi verdict", cols:["Pos","Angka","Konteks"],
  rows:[
@@ -111,7 +111,7 @@ var CARDS = [
  {t:"MD&A (ilustratif): \u201CSegmen Ritel adalah mesin laba kami.\u201D", q1:"Klaim ini didukung angka laporan?", o1:["ya","sebagian","tidak"], a1:"ya", q2:"Tindakan analis", o2:["percaya","cek catatan","tolak"], a2:"percaya",
   e:"Klaim ini didukung penuh: Ritel menyumbang 46.800 dari 72.000 laba operasi (65,0%) dengan margin 15,0% vs 12,1% Distribusi dan ROA 17,3% vs 14,0%. Inilah klaim MD&A yang lolos uji angka \u2014 bedakan dari klaim yang hanya terdengar meyakinkan."},
  {t:"MD&A (ilustratif): \u201CPosisi kas kami aman: kas Rp21.440 juta.\u201D", q1:"Klaim ini didukung angka laporan?", o1:["ya","sebagian","tidak"], a1:"sebagian", q2:"Tindakan analis", o2:["percaya","cek catatan","tolak"], a2:"cek catatan",
-  e:"Kas 21.440 memang cukup untuk liabilitas lancar (CR 2,17x, QR 1,23x), tapi kas turun 11.760 dari 33.200 dan FCFF negatif (6.280) \u2014 CFO 30.800 tidak menutup capex 48.000, selisihnya ditutup utang neto 11.440. Aman hari ini, menipis bila pola ini berulang."}
+  e:"Kas 21.440 memang cukup untuk liabilitas lancar (CR 2,17x, QR 1,23x), tapi kas turun 11.760 dari 33.200 dan FCFF negatif (6.280) \u2014 CFO 30.800 tidak menutup capex 48.000, selisihnya ditutup pinjaman neto 11.440. Aman hari ini, menipis bila pola ini berulang."}
 ];
 var pgScore = 0, pgDone = 0, pgCards = [];
 function renderPg(){

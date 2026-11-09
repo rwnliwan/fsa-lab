@@ -188,7 +188,7 @@ var RATIOS = [
  {q:"Porsi one-off (%)", hint:"6.240 ÷ 45.240 × 100", ans:13.8, tol:0.3,
   why:"13,8% — hampir seperenam EPS = sekali lewat."},
  {q:"Payout ratio (%)", hint:"Dividen ÷ laba: 6.000 ÷ 45.240 × 100", ans:13.3, tol:0.3,
-  why:"13,3% — kecil. Tapi ditutup campuran utang neto + penurunan kas (FCFE negatif)."},
+  why:"13,3% — kecil. Tapi ditutup campuran pinjaman neto + penurunan kas (FCFE negatif)."},
  {q:"EPS dasar bila buyback 10 juta saham per 1 Juli", hint:"Laba ÷ rata-rata tertimbang: 45.240 ÷ 95", ans:476.2, tol:0.5,
   why:"476,2 — pembagi 95 juta (100 − 10 × 6/12), bukan saldo akhir 90 juta yang memberi 502,7."}
 ];

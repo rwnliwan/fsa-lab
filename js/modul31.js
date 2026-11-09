@@ -107,7 +107,7 @@ bscf:{ title:"Neraca & arus kas 2026 (forecast ILUSTRATIF) vs 2025 (KANONIS) —
    d:"Capex 50.000 — kas keluar investasi. Tahun 2025 kanonis: 48.000.",
    psak:"—", lens:"Lensa investasi", f:"Capex di atas depresiasi dua tahun beruntun = siklus ekspansi."},
   {l:"CFF — dividen", v:"(6.000)", v2:"5.440",
-   d:"Satu-satunya arus pendanaan 2026: dividen 6.000. Utang tetap sehingga tidak ada arus utang. Tahun 2025 kanonis: CFF +5.440 (utang neto 11.440 − dividen 6.000).",
+   d:"Satu-satunya arus pendanaan 2026: dividen 6.000. Utang tetap sehingga tidak ada arus utang. Tahun 2025 kanonis: CFF +5.440 (pinjaman neto 11.440 − dividen 6.000).",
    psak:"—", lens:"Lensa kredit", f:"Perusahaan yang tumbuh tanpa utang baru = tumbuh dari kas internal."},
   {l:"ΔKas", v:"14.735", v2:"(11.760)",
    d:"70.735 − 50.000 − 6.000 = 14.735. Tahun 2025 kanonis: Δkas (11.760).",

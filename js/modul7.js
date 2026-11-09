@@ -183,7 +183,7 @@ var RATIOS = [
  {q:"Tarif pajak efektif (%)", hint:"Beban pajak ÷ PBT: 12.760 ÷ 58.000 × 100", ans:22.0, dec:true, tol:0.3,
   why:"22,0% — sama dengan tarif statutori. Tarif efektif yang jauh di bawah statutori = cek insentif atau rugi fiskal."},
  {q:"Payout ratio (%)", hint:"Dividen ÷ laba bersih: 6.000 ÷ 45.240 × 100", ans:13.3, tol:0.3,
-  why:"13,3% — dividen kecil dari laba. Tapi ingat Modul 6: FCFE negatif, jadi dividen ini ditutup campuran utang neto + penurunan kas (defisit agregat)."},
+  why:"13,3% — dividen kecil dari laba. Tapi ingat Modul 6: FCFE negatif, jadi dividen ini ditutup campuran pinjaman neto + penurunan kas (defisit agregat)."},
  {q:"ECL rate (%)", hint:"Allowance ÷ piutang bruto: 4.100 ÷ 108.100 × 100", ans:3.8, tol:0.3,
   why:"3,8% — belum dapat dinilai 'tipis' atau 'wajar' dari DSO 73 hari saja; butuh umur piutang & data kerugian. Selidiki sebelum memberi vonis."},
  {q:"Sewa terhadap liabilitas (%)", hint:"Liabilitas sewa ÷ total liabilitas: 60.000 ÷ 272.000 × 100", ans:22.1, tol:0.3,

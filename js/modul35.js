@@ -123,9 +123,9 @@ akuisisi:{ title:"Metode akuisisi langkah demi langkah (PSAK 103) — dari tangg
    tag:"Hitungan modul (angka ilustratif)",
    k:"Lensa investasi: partial goodwill menyembunyikan goodwill milik NCI — total goodwill ekonomi grup lebih besar dari yang tercatat."},
   {l:"Full goodwill", v:"12.000", v2:"88.000 + 24.000 − 100.000",
-   d:"Goodwill penuh = (consideration 88.000 + NCI pada nilai wajar 24.000) − aset neto 100.000 = 12.000. NCI pada nilai wajar (24.000, ilustratif — di atas proporsional 20.000 karena premi pengendalian) membuat goodwill lebih besar 4.000. Pilihan full vs partial adalah kebijakan yang ditetapkan sekali saat akuisisi dan dipakai konsisten setelahnya — pilihan ini mengubah goodwill DAN ekuitas NCI.",
+   d:"Goodwill penuh = (consideration 88.000 + NCI pada nilai wajar 24.000) − aset neto 100.000 = 12.000. NCI pada nilai wajar (24.000, ilustratif — di atas proporsional 20.000; selisih 4.000 adalah asumsi nilai wajar ilustratif, bukan bukti premi pengendalian yang melekat pada NCI) membuat goodwill lebih besar 4.000. Pilihan full vs partial adalah kebijakan yang ditetapkan sekali saat akuisisi dan dipakai konsisten setelahnya — pilihan ini mengubah goodwill DAN ekuitas NCI.",
    tag:"Hitungan modul (angka ilustratif)",
-   k:"Lensa kredit: full goodwill menggelembungkan aset dengan 2.400 yang bukan milik induk — kreditur yang menghitung tangible net worth mengeluarkannya."},
+   k:"Lensa kredit: full goodwill menggelembungkan aset dengan 4.000 yang bukan milik induk — kreditur yang menghitung tangible net worth mengeluarkannya."},
   {l:"Bargain purchase", v:"gain 5.000", v2:"setelah reassessment",
    d:"Bila consideration LEBIH KECIL dari bagian aset neto (mis. kas 75.000 vs 80% × 100.000 = 80.000), selisih 5.000 adalah bargain purchase gain — diakui di P&L SETELAH reassessment (periksa ulang apakah semua aset/liabilitas sudah teridentifikasi dan terukur benar). Gain yang muncul tanpa reassessment patut dicurigai.",
    tag:"PSAK 103 · IFRS 3",
@@ -318,7 +318,7 @@ var RATIOS = [
  {q:"Goodwill saat akuisisi (Rp juta)", hint:"Harga 88.000 − 80% × aset neto teridentifikasi 100.000 (ilustratif)", ans:8000, dec:false, tol:1,
   why:"8.000 — premi di atas 80% aset neto; diuji impairment tiap tahun, tidak diamortisasi. Contoh ini memakai metode partial goodwill (NCI at proportionate share) — IFRS 3 (PSAK 103) juga mengizinkan full goodwill method (NCI at fair value); pilihan metode mengubah goodwill dan ekuitas NCI."},
  {q:"Full goodwill — NCI pada nilai wajar 24.000 (Rp juta)", hint:"(Consideration 88.000 + NCI 24.000) − aset neto teridentifikasi 100.000 (ilustratif)", ans:12000, dec:false, tol:5,
-  why:"12.000 — vs partial goodwill 8.000; selisih 4.000 = premi pengendalian pada NCI."},
+  why:"12.000 — vs partial goodwill 8.000; selisih 4.000 = NCI pada nilai wajar 24.000 − proporsional 20.000 (asumsi ilustratif)."},
  {q:"Selisih translasi anak luar negeri ke OCI (Rp juta)", hint:"Aset neto 160.000 (kurs penutup) − modal historis 120.000 − laba 31.000 (kurs rata-rata)", ans:9000, dec:false, tol:5,
   why:"9.000 — selisih translasi masuk OCI, bukan P&L; goodwill anak luar negeri ikut ditranslasi kurs penutup."}
 ];

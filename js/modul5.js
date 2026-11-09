@@ -17,6 +17,7 @@ sol:{ title:"Solvabilitas 2025 (Rp juta) — selamat dari utang jangka panjang?"
  rows:[
   {l:"Total liabilitas", v:"272.000", v2:"238.000", d:"60,3% dari aset didanai utang.", psak:"—", f:"—"},
   {l:"Ekuitas", v:"179.440", v2:"140.200", d:"39,7% dari aset.", psak:"—", f:"—"},
+  {l:"Total aset", v:"451.440", v2:"378.200", d:"272.000 + 179.440 = 451.440 — penyebut bagi '60,3% dari aset didanai utang' dan '39,7% dari aset' di atas; rinciannya di M3.", psak:"—", f:"—"},
   {l:"D/E ratio", v:"1,52x", v2:"1,70x", d:"272.000/179.440. Membaik dari 1,70x.", psak:"—", f:"Membaik karena ekuitas naik dari laba akrual — bukan dari bayar utang."},
   {l:"Utang berbunga", v:"201.440", v2:"188.000", d:"74% dari total liabilitas.", psak:"—", f:"—"},
   {l:"Net debt / EBITDA", v:"1,76x", v2:"—", d:"EBITDA = EBIT + depresiasi = 72.000 + 30.000 = 102.000; (201.440−21.440)/102.000. Utang bersih lunas ~1,8 tahun dari EBITDA — ingat, EBITDA bukan arus kas aktual.", psak:"—", f:"Di atas 4x = zona merah kredit."},
@@ -24,7 +25,7 @@ sol:{ title:"Solvabilitas 2025 (Rp juta) — selamat dari utang jangka panjang?"
  ]}
 };
 
-var NOTE_SOL = '<div class="explain" style="margin-bottom:1rem"><h3>EBITDA &mdash; baca dulu sebelum tabel solvabilitas</h3><p><strong>EBITDA</strong> = <em>earnings before interest, taxes, depreciation, and amortisation</em>: laba operasi sebelum dikurangi beban bunga, pajak, depresiasi, dan amortisasi. Turunannya dari angka modul ini: EBIT 72.000 + depresiasi 30.000 = <strong>102.000</strong> (Rp juta). Karena itu net debt / EBITDA = (201.440 &minus; 21.440) &divide; 102.000 = 180.000 &divide; 102.000 = <strong>1,76x</strong> &mdash; utang bersih lunas kira-kira 1,8 tahun dari EBITDA.</p><p><strong>Batasnya:</strong> EBITDA BUKAN arus kas. Ia mengabaikan capex (di sini 48.000 &mdash; hampir setengah EBITDA), perubahan modal kerja, pajak, dan bunga &mdash; semuanya kas keluar beneran. Perusahaan bisa punya EBITDA besar sambil kehabisan kas. Jadi net debt / EBITDA hanya proksi kasar kapasitas bayar utang, bukan vonis. Sandingkan selalu dengan CFO (30.800) dan FCFF ((6.280)).</p></div>';
+var NOTE_SOL = '<div class="explain" style="margin-bottom:1rem"><h3>EBITDA &mdash; baca dulu sebelum tabel solvabilitas</h3><p><strong>EBITDA</strong> = <em>earnings before interest, taxes, depreciation, and amortisation</em>: laba operasi sebelum dikurangi beban bunga, pajak, depresiasi, dan amortisasi. Turunannya dari angka modul ini: EBIT 72.000 + depresiasi 30.000 = <strong>102.000</strong> (Rp juta). Karena itu net debt / EBITDA = (201.440 &minus; 21.440) &divide; 102.000 = 180.000 &divide; 102.000 = <strong>1,76x</strong> &mdash; utang bersih lunas kira-kira 1,8 tahun dari EBITDA.</p><p><strong>Batasnya:</strong> EBITDA BUKAN arus kas. Ia mengabaikan capex (di sini 48.000 &mdash; hampir setengah EBITDA), perubahan modal kerja, pajak, dan bunga &mdash; semuanya kas keluar beneran. Perusahaan bisa punya EBITDA besar sambil kehabisan kas. Jadi net debt / EBITDA hanya proksi kasar kapasitas bayar utang, bukan vonis. Sandingkan selalu dengan CFO (30.800) dan FCFF −6.280.</p></div>';
 function fmtStmt(key){
   var s = STMTS[key], h = '<table class="stmt"><tr><th>'+s.cols[0]+'</th><th style="text-align:right">'+s.cols[1]+'</th><th style="text-align:right">'+s.cols[2]+'</th></tr>';
   s.rows.forEach(function(r,i){
@@ -210,7 +211,7 @@ var RATIOS = [
 
 /* ---------- JOURNAL ---------- */
 var LENSES = {
- invest:"Lensa investasi — D/E 1,52x, ROE 28,3%. Apakah leverage ini menguntungkan pemegang saham atau bom waktu? Tulis 3 baris.",
+ invest:"Lensa investasi — D/E 1,52x, ROE 28,3% (laba bersih 45.240 ÷ ekuitas rata-rata 159.820 — basis di M3). Apakah leverage ini menguntungkan pemegang saham atau bom waktu? Tulis 3 baris.",
  credit:"Lensa kredit — Kredit investasi Rp100 miliar. Coverage 5,14x, net debt/EBITDA 1,76x, tren DSO memburuk. Keputusan + covenant apa?",
  forensic:"Lensa forensik — Perusahaan berleverage + laba akrual + dividen sambil tambah utang. Tulis 3 red flag yang kamu cek dulu."
 };
@@ -241,7 +242,7 @@ setLens("invest");
 var QUIZ = [
  {q:"Current ratio 2,17x artinya…", o:["Aset lancar 2,17x liabilitas lancar", "Total utang 2,17x ekuitas perusahaan", "Laba operasi 2,17x beban bunga", "Kas 2,17x utang jangka pendek"], a:0},
  {q:"Quick ratio mengecualikan…", o:["Kas di bank", "Piutang usaha", "Persediaan", "Utang usaha"], a:2},
- {q:"D/E naik 1,2x → 1,8x dalam setahun. Artinya…", o:["Leverage naik — risiko kredit naik", "Perusahaan makin aman bagi kreditur", "Ekuitas tumbuh lebih cepat daripada utang", "Aset tumbuh seiring utang"], a:0},
+ {q:"D/E naik 1,2x → 1,8x dalam setahun (skenario). Artinya…", o:["Leverage naik — risiko kredit naik", "Perusahaan makin aman bagi kreditur", "Ekuitas tumbuh lebih cepat daripada utang", "Aset tumbuh seiring utang"], a:0},
  {q:"Interest coverage di bawah 2x = …", o:["Kondisi keuangan sangat aman", "Zona bahaya — laba hampir habis untuk bunga", "Masih wajar untuk startup yang agresif bertumbuh", "Aman selama arus kas positif"], a:1},
  {q:"Net debt/EBITDA 1,76x artinya…", o:["Beban bunga 1,76x laba operasi tahunan", "Dividen 1,76x laba bersih", "Kerugian 1,76x ekuitas", "Utang lunas ~1,8 tahun dari EBITDA"], a:3}
 ];

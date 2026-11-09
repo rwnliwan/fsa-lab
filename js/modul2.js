@@ -15,7 +15,7 @@ is:{ title:"Income Statement 2025 (Rp juta) — 2024 sebagai pembanding", cols:[
   {l:"Beban bunga", v:"(14.000)", v2:"(10.000)", d:"Coverage 5,14x — masih aman.", psak:"—", f:"—"},
   {l:"Laba sebelum pajak", v:"58.000", v2:"38.000", d:"Titik transisi: setelah baris ini hanya pajak yang memisahkan dari laba bersih.", psak:"—", f:"—"},
   {l:"Beban pajak", v:"(12.760)", v2:"(8.360)", d:"Tarif efektif 22% — konsisten.", psak:"PSAK 212 (dulu 46)", f:"—"},
-  {l:"LABA BERSIH", v:"45.240", v2:"29.640", d:"+53% YoY. Net margin 8,7%.", psak:"—", f:"Laba +53% tapi CFO −30%. Inilah inti modul: laba akrual vs kas."}
+  {l:"LABA BERSIH", v:"45.240", v2:"29.640", d:"+53% YoY. Net margin 8,7%.", psak:"—", f:"Laba +53% tapi CFO −30%. Inilah inti modul: laba akrual vs kas. Alat forensik untuk menguji manipulasi laba adalah Beneish M-score — 8 rasio (DSRI, GMI, AQI, SGI, DEPI, SGAI, TATA, LVGI); skor di atas −1,78 = flag manipulator. Replikasi lengkapnya di M13."}
  ]},
 bs:{ title:"Balance Sheet 31 Des 2025 (Rp juta)", cols:["Pos","2025","2024"],
  rows:[
@@ -36,7 +36,7 @@ bs:{ title:"Balance Sheet 31 Des 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Laba ditahan", v:"79.440", v2:"40.200", d:"40.200 + 45.240 − 6.000 = 79.440 ✓", psak:"—", f:"—"},
   {l:"TOTAL EKUITAS", v:"179.440", v2:"140.200", d:"Naik dari laba akrual, bukan dari kas. Kualitas ekuitas = kualitas laba.", psak:"—", f:"—"},
   {l:"Laporan perubahan ekuitas (ringkas)", v:"40.200 → 79.440", v2:"—", d:"40.200 + 45.240 − 6.000 = 79.440 ✓. Laba ditahan naik dari laba akrual — bukan dari kas.", psak:"PSAK 201 (dulu 1)", f:"Cek OCI: kerugian yang diparkir di ekuitas tanpa lewat laba rugi."},
-  {l:"Paket laporan lengkap (2.4)", v:"7 komponen", v2:"—", d:"IS + BS + arus kas + perubahan ekuitas + CALK + MD&A + opini auditor. Catatan (CALK) memuat jadwal utang, covenant, dan pihak berelasi — dokumen utama analis kredit.", psak:"PSAK 201 (dulu 1)", f:"Opini going-concern = sinyal kredit langsung; auditor mengundurkan diri = alarm forensik."}
+  {l:"Paket laporan lengkap (2.4)", v:"5 komponen (+2 pendamping)", v2:"—", d:"IS + BS + arus kas + perubahan ekuitas + CALK (PSAK 201). MD&A (tinjauan manajemen) dan laporan/opini auditor adalah dokumen pendamping yang dibaca bersama — bukan komponen laporan keuangan. Catatan (CALK) memuat jadwal utang, covenant, dan pihak berelasi — dokumen utama analis kredit.", psak:"PSAK 201 (dulu 1)", f:"Opini going-concern = sinyal kredit langsung; auditor mengundurkan diri = alarm forensik."}
  ]},
 cf:{ title:"Cash Flow 2025 (Rp juta)", cols:["Pos","2025","2024"],
  rows:[
@@ -44,11 +44,11 @@ cf:{ title:"Cash Flow 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Depresiasi", v:"30.000", v2:"26.000", d:"Non-kas, ditambah kembali.", psak:"—", f:"—"},
   {l:"Perubahan modal kerja", v:"(44.440)", v2:"(11.640)", d:"Piutang +49.000 & persediaan +16.000, diimbangi utang & akrual +20.560.", psak:"—", f:"Inilah pembunuhnya: pertumbuhan semu yang dibiayai piutang."},
   {l:"Arus kas operasi (CFO)", v:"30.800", v2:"44.000", d:"−30% YoY. CFO/NI = 0,68x (< 1 = warning).", psak:"PSAK 207", f:"CFO/NI 0,68x — turun dari 1,48x di 2024. Pelemahan kualitas, bukan dua tahun struktural."},
-  {l:"Belanja modal (capex)", v:"(48.000)", v2:"(40.000)", d:"Termasuk aset hak-guna baru Rp2.000 (non-kas) — capex kas 48.000.", psak:"—", f:"—"},
+  {l:"Belanja modal (capex)", v:"(48.000)", v2:"(40.000)", d:"Di luar itu terdapat penambahan aset hak-guna Rp2.000 (non-kas) — capex kas 48.000.", psak:"—", f:"—"},
   {l:"Arus kas investasi (CFI)", v:"(48.000)", v2:"(40.000)", d:"Arus dari investasi aset jangka panjang (di sini: capex).", psak:"—", f:"—"},
-  {l:"Utang bank (neto)", v:"11.440", v2:"0", d:"Neto +11.440 — tambah utang untuk tutup lubang kas.", psak:"—", f:"—"},
+  {l:"Pinjaman neto (utang bank)", v:"11.440", v2:"0", d:"Neto +11.440 — tambah utang untuk tutup lubang kas.", psak:"—", f:"—"},
   {l:"Dividen dibayar", v:"(6.000)", v2:"(5.000)", d:"Kas keluar via pendanaan — sambil tambah utang 11.440.", psak:"—", f:"Bayar dividen sambil tambah utang = sinyal prioritas pemegang saham di atas kesehatan."},
-  {l:"Arus kas pendanaan (CFF)", v:"5.440", v2:"(5.000)", d:"2025: utang neto +11.440 − dividen 6.000. Kas pendanaan menutup lubang operasi.", psak:"—", f:"—"},
+  {l:"Arus kas pendanaan (CFF)", v:"5.440", v2:"(5.000)", d:"2025: pinjaman neto +11.440 − dividen 6.000. Kas pendanaan menutup lubang operasi.", psak:"—", f:"—"},
   {l:"Perubahan kas", v:"(11.760)", v2:"(1.000)", d:"30.800 − 48.000 + 5.440 = (11.760) ✓", psak:"—", f:"—"},
   {l:"Kas awal → akhir", v:"33.200 → 21.440", v2:"34.200 → 33.200", d:"Berartikulasi ✓", psak:"—", f:"—"}
  ]}
@@ -90,8 +90,8 @@ var TXS = [
   e:"Beban hilang dari laba rugi, muncul sebagai aset. Laba & aset naik, kas tetap. Trik inti WorldCom."},
  {t:"Perpanjang umur aset: depresiasi turun Rp5.000", a:{laba:"naik",aset:"naik",liab:"tetap",kas:"tetap"},
   e:"Beban susut lebih kecil → laba naik; akumulasi depresiasi lebih kecil → aset neto naik. Kas tidak bergerak. Legal-adjacent, tapi perubahan tiba-tiba = flag."},
- {t:"Jual piutang Rp30.000 ke bank (factoring)", a:{laba:"tetap",aset:"tetap",liab:"tetap",kas:"naik"},
-  e:"Kas +30.000, piutang −30.000 → total aset tetap. CFO naik — tapi ini kas dari 'menjual masa depan', bukan operasi sehat."},
+ {t:"Jual piutang Rp30.000 ke bank (factoring tanpa recourse — bila derecognition terpenuhi)", a:{laba:"tetap",aset:"tetap",liab:"tetap",kas:"naik"},
+  e:"Kas +30.000, piutang −30.000 → total aset tetap — HANYA bila pengalihan memenuhi syarat penghentian pengakuan (derecognition) dan tanpa fee/keuntungan atau liabilitas tambahan; dengan recourse (atau bila syarat tidak terpenuhi) muncul liabilitas ~30.000. CFO naik bergantung pada perlakuan dan klasifikasi transaksi — ini kas dari 'menjual masa depan', bukan operasi sehat."},
  {t:"Terima uang muka pelanggan Rp25.000", a:{laba:"tetap",aset:"naik",liab:"naik",kas:"naik"},
   e:"Kas +25.000, liabilitas (pendapatan diterima di muka) +25.000. Laba BELUM boleh diakui — PSAK 115."},
  {t:"Bayar utang usaha Rp18.000", a:{laba:"tetap",aset:"turun",liab:"turun",kas:"turun"},

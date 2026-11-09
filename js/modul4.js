@@ -11,8 +11,8 @@ wc:{ title:"Modal Kerja 2025 (Rp juta)", cols:["Pos","2025","2024"],
   {l:"Persediaan", v:"96.000", v2:"80.000", d:"+20% — sejalan dengan penjualan +30%.", psak:"PSAK 202 (dulu 14)", f:"Persediaan usang disembunyikan di sini; cek perputaran vs industri."},
   {l:"Utang usaha", v:"62.000", v2:"50.000", d:"+24% — pembiayaan gratis dari supplier.", psak:"—", f:"Utang usaha yang tumbuh LEBIH CEPAT dari pembelian = stretch payables."},
   {l:"Kas dan setara kas", v:"21.440", v2:"33.200", d:"Bagian aset lancar (rincian lengkap di M5).", psak:"—", f:"—"},
-  {l:"Utang bank jangka pendek", v:"31.440", v2:"—", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
-  {l:"Akrual", v:"8.560", v2:"—", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
+  {l:"Utang bank jangka pendek", v:"31.440", v2:"30.000", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
+  {l:"Akrual", v:"8.560", v2:"0", d:"Bagian liabilitas lancar (rincian lengkap di M5).", psak:"—", f:"—"},
   {l:"Modal kerja (WC)", v:"119.440", v2:"88.200", d:"Aset lancar − liabilitas lancar: 221.440 − 102.000 = 119.440 (2024: 168.200 − 80.000 = 88.200). Naik 35,4% — kas terikat makin besar.", psak:"—", f:"WC yang tumbuh lebih cepat dari penjualan = efisiensi operasi memburuk."}
  ]},
 cyc:{ title:"Siklus operasi 2025 (hari)", cols:["Ukuran","2025","2024"],
@@ -20,7 +20,8 @@ cyc:{ title:"Siklus operasi 2025 (hari)", cols:["Ukuran","2025","2024"],
   {l:"DSO (piutang)", v:"73,0 hari", v2:"50,2 hari", d:"104.000/520.000×365. Kas tertagih 23 hari lebih lambat.", psak:"—", f:"DSO melar = screen #1 revenue fraud (channel stuffing)."},
   {l:"DIO (persediaan)", v:"103,7 hari", v2:"110,6 hari", d:"96.000/338.000×365. Membaik 7 hari.", psak:"—", f:"—"},
   {l:"DPO (utang usaha)", v:"67,0 hari", v2:"69,1 hari", d:"62.000/338.000×365. Bayar sedikit lebih cepat.", psak:"—", f:"DPO yang melonjak tiba-tiba = tunda bayar agar CFO terlihat bagus."},
-  {l:"Cash conversion cycle", v:"109,7 hari", v2:"91,7 hari", d:"73,0 + 103,7 − 67,0. Naik 18 hari — kas terikat hampir 4 bulan.", psak:"—", f:"CCC yang memburuk = alarm dini sebelum krisis likuiditas."}
+  {l:"Cash conversion cycle", v:"109,7 hari", v2:"91,7 hari", d:"73,0 + 103,7 − 67,0. Naik 18 hari — kas terikat hampir 4 bulan.", psak:"—", f:"CCC yang memburuk = alarm dini sebelum krisis likuiditas."},
+  {l:"CCC negatif — contoh ritel (skenario)", v:"−30 hari", v2:"—", d:"Bila DSO 0 + DIO 30 − DPO 60 = −30 hari: pelanggan bayar tunai, stok berputar 30 hari, supplier dibayar 60 hari kemudian — supplier yang membiayai operasi, bukan sebaliknya. Modal kerja bisa negatif: kas masuk sebelum kas keluar. Model ritel–dagang hidup dari CCC negatif; risikonya bila supplier menarik tempo, kas menguap seketika.", psak:"—", f:"CCC negatif bukan 'lebih baik' otomatis — ia berarti perusahaan hidup dari tempo supplier. Cek: apakah tempo itu kontraktual dan stabil?"}
  ]}
 };
 

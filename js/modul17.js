@@ -10,7 +10,7 @@ sloan:{ title:"Toolkit forensik — Cemerlang 2025", cols:["Ukuran","2025","Arti
   {l:"Akrual (NI - CFO)", v:"14.440", v2:"Rp juta", d:"45.240 - 30.800 = 14.440. Bagian laba yang belum menjadi kas.", psak:"—", f:"Akrual = tempat manajemen 'menyimpan' laba. Naik terus = curiga."},
   {l:"Sloan ratio", v:"3,2%", v2:"akrual moderat", d:"14.440 ÷ 451.440 = 3,2%. Di atas 10% persisten = kualitas laba rendah — RULE OF THUMB ilustratif, bukan ambang diagnostik (tergantung definisi akrual, denominator, industri & periode).", psak:"—", f:"Sloan tinggi persisten = perusahaan hidup dari akuntansi, bukan kas."},
   {l:"CFO / NI", v:"0,68x", v2:"di bawah 1", d:"30.800 ÷ 45.240 = 0,68. Laba tidak sepenuhnya didukung kas operasi.", psak:"—", f:"CFO/NI < 1 lima tahun beruntun = pola manipulasi klasik."},
-  {l:"Beneish M-score", v:"-1,65", v2:"di atas -1,78", d:"Model 8 variabel (DSRI 1,45; GMI 0,97; LVGI 0,96). Di atas batas -1,78 = flag manipulator.", psak:"—", f:"M-score = probabilitas, bukan vonis. Flag = alasan menggali, bukan alasan menuduh."}
+  {l:"Beneish M-score", v:"−1,65", v2:"di atas −1,78", d:"Model 8 variabel (DSRI 1,45; GMI 0,97; LVGI 0,96). Di atas batas −1,78 = flag manipulator.", psak:"—", f:"M-score = probabilitas, bukan vonis. Flag = alasan menggali, bukan alasan menuduh."}
  ]},
 cases:{ title:"Kasus fraud nyata — polanya", cols:["Kasus","Tahun","Pola"],
  rows:[
@@ -176,7 +176,7 @@ var RATIOS = [
  {q:"CFO / NI 2025 (x)", hint:"CFO ÷ laba bersih: 30.800 ÷ 45.240", ans:0.68, tol:0.02,
   why:"0,68x — di bawah 1 = waspada."},
  {q:"Beneish M-score", hint:"Model 8 variabel (DSRI 1,45; LVGI 0,96)", ans:-1.65, tol:0.05,
-  why:"-1,65 > -1,78 = flag. Bukan vonis, tapi alasan menggali."}
+  why:"−1,65 > −1,78 = flag. Bukan vonis, tapi alasan menggali."}
 ];
 (function(){
   var h = "";
