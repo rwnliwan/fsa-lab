@@ -23,6 +23,15 @@ prov:{ title:"Anatomi provisi — PSAK 237 (3 syarat + contoh)", cols:["Unsur","
   {l:"Diakui → provisi 7.800", v:"520.000 × 1,5%", v2:"beban (D) / provisi (K)", d:"Jurnal: beban garansi Rp7.800 pada provisi garansi Rp7.800. Laba turun, kas belum keluar.", psak:"PSAK 237 (dulu 57)", f:"Provisi membengkak tiap Q4 lalu dibalik Q1 = cookie-jar reserve."},
   {l:"Tidak diakui → kontinjensi", v:"Possible, tak probable", v2:"hanya diungkap", d:"Kewajiban yang possible tapi tidak probable = liabilitas kontinjensi: DIUNGKAP di catatan, tidak dicatat.", psak:"PSAK 237 (dulu 57)", f:"Kontinjensi yang 'tiba-tiba' jadi probable = baca lagi disclosure 3 tahun ke belakang."},
   {l:"Aset kontinjensi", v:"Tidak diakui", v2:"diungkap bila probable", d:"Klaim ganti rugi yang mungkin menang = tidak boleh diakui sebagai aset; hanya diungkap bila inflow probable.", psak:"PSAK 237 (dulu 57)", f:"Aset kontinjensi yang sudah 'diakui' diam-diam = pelanggaran."}
+ ]},
+ukur:{ title:"Mengukur provisi — nilai kini, probabilitas tertimbang & perubahan estimasi (ilustratif Rp juta)", cols:["Pengukuran","Contoh","Keterangan"],
+ rows:[
+  {l:"Nilai kini — kewajiban jangka panjang", v:"PV 9.526", v2:"12.000 ÷ 1,08³", d:"Provisi 12.000 yang jatuh tempo 3 tahun, diskonto 8% → nilai kini 12.000 ÷ 1,08³ = 9.526. Provisi jangka panjang diakui sebesar NILAI KINI, bukan nominal — bila efek diskonto material.", psak:"PSAK 237 (dulu 57)", f:"Provisi jangka panjang yang dicatat sebesar nominal = laba hari ini digelembungkan."},
+  {l:"Unwinding — beban keuangan tahun 1", v:"762", v2:"9.526 × 8%", d:"Tahun 1: 9.526 × 8% = 762 diakui sebagai BEBAN KEUANGAN (bukan beban provisi lagi); nilai kini naik bertahap menuju 12.000 saat jatuh tempo.", psak:"PSAK 237 (dulu 57)", f:"Unwinding yang 'lupa' dicatat = provisi tak pernah mencapai nominalnya."},
+  {l:"Probabilitas tertimbang — populasi besar", v:"7.500", v2:"expected value", d:"Ribuan klaim garansi: 70% × 6.000 + 20% × 9.000 + 10% × 15.000 = 4.200 + 1.800 + 1.500 = 7.500. Untuk populasi besar dipakai nilai harapan tertimbang probabilitas — bukan satu skenario tunggal.", psak:"PSAK 237 (dulu 57)", f:"Skenario tunggal untuk populasi besar = estimasi yang rapuh; minta distribusinya."},
+  {l:"Perubahan estimasi", v:"+1.500 beban", v2:"7.500 → 9.000", d:"Estimasi naik 7.500 → 9.000 = tambahan beban 1.500 pada PERIODE BERJALAN (prospektif) — bukan restatement periode lalu. Estimasi berubah ≠ kesalahan lalu.", psak:"PSAK 237 (dulu 57)", f:"Perubahan estimasi tiap Q4 yang selalu searah = cek motif cookie-jar."},
+  {l:"Info setelah periode pelaporan", v:"adjusting vs non-adjusting", v2:"sesuaikan atau ungkap", d:"Gugatan diputus setelah 31 Des padahal kondisinya sudah ada → SESUAIKAN provisi (adjusting event). Kebakaran gudang setelah 31 Des → UNGKAP saja, jangan sesuaikan (non-adjusting).", psak:"PSAK 205 (dulu 8)", f:"Peristiwa setelah tanggal neraca adalah tempat 'kejutan' disembunyikan — baca catatan ini dulu."},
+  {l:"Reimbursement — penggantian terpisah", v:"diakui terpisah", v2:"bila virtually certain", d:"Klaim penggantian ke asuransi diakui sebagai ASET TERPISAH hanya bila virtually certain — tidak boleh di-netting dari provisi.", psak:"PSAK 237 (dulu 57)", f:"Provisi yang sudah di-netting reimbursement = kewajiban terlihat lebih kecil dari aslinya."}
  ]}
 };
 
@@ -182,7 +191,11 @@ var RATIOS = [
  {q:"Tambahan provisi bila estimasi 1,5% → 2,0% (Rp juta)", hint:"520.000 × 0,5%", ans:2600, dec:false, tol:100,
   why:"2.600 — setengah persen dari penjualan = Rp2,6 miliar beban. Asumsi kecil, dampak tidak kecil."},
  {q:"Provisi kontrak memberatkan (Rp juta)", hint:"Biaya tak terhindarkan 5.000 − manfaat 3.500", ans:1500, dec:false, tol:100,
-  why:"1.500 — kontrak yang biaya memenuhinya melebihi manfaatnya wajib diprovisikan sebesar selisihnya."}
+  why:"1.500 — kontrak yang biaya memenuhinya melebihi manfaatnya wajib diprovisikan sebesar selisihnya."},
+ {q:"Nilai kini provisi 12.000, 3 tahun, diskonto 8% (Rp juta)", hint:"12.000 ÷ 1,08³", ans:9526, dec:false, tol:10,
+  why:"9.526 — provisi jangka panjang diakui sebesar nilai kini; selisih 2.474 muncul bertahap sebagai beban keuangan (unwinding)."},
+ {q:"Expected value klaim garansi (Rp juta)", hint:"70%×6.000 + 20%×9.000 + 10%×15.000", ans:7500, dec:false, tol:50,
+  why:"7.500 — populasi besar diukur dengan probabilitas tertimbang, bukan satu skenario tunggal."}
 ];
 (function(){
   var h = "";

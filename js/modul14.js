@@ -20,6 +20,18 @@ dampak:{ title:"Dampak ke angka Cemerlang bila pakai US GAAP (ilustratif Rp juta
   {l:"Laba bersih GAAP", v:"35.880", v2:"ilustratif", d:"45.240 − 9.360. 20,7% lebih rendah dari versi PSAK.", psak:"—", f:"Selisih 20% hanya dari beda aturan — tanpa beda bisnis."},
   {l:"Selisih laba bersih", v:"(9.360)", v2:"45.240 − 35.880", d:"Dampak gabungan penyesuaian LIFO & lainnya.", psak:"—", f:"Inilah kenapa analis menyesuaikan dulu sebelum membandingkan lintas negara."},
   {l:"Pelajaran", v:"samakan dulu", v2:"baru bandingkan", d:"Jangan bandingkan ROE/margin lintas GAAP tanpa penyesuaian.", psak:"—", f:"—"}
+ ]},
+jemb:{ title:"Jembatan laba PSAK → US GAAP — rekonsiliasi bertahap (ilustratif Rp juta, tarif pajak 22%)", cols:["Langkah jembatan","Dampak","Keterangan"],
+ rows:[
+  {l:"Laba bersih PSAK (titik awal)", v:"45.240", v2:"—", d:"Titik awal jembatan — laba versi PSAK Cemerlang.", psak:"—", f:"—"},
+  {l:"1 · LIFO — HPP naik sebesar Δreserve", v:"(1.872)", v2:"neto setelah pajak", d:"LIFO reserve naik 9.600 → 12.000 (ilustratif): perubahan 2.400 = HPP LIFO lebih tinggi 2.400 sebelum pajak; pajak berkurang 2.400 × 22% = 528 → dampak neto (1.872). Yang menggerakkan laba adalah PERUBAHAN reserve, bukan saldonya (lihat SF-14 M24).", psak:"—", f:"Saldo reserve 12.000 saja tidak menentukan selisih laba periode mana pun."},
+  {l:"2 · Development cost dibebankan", v:"(3.120)", v2:"neto setelah pajak", d:"Biaya development 4.000 yang dikapitalisasi di PSAK langsung dibebankan di GAAP (di luar pengecualian software): −4.000 sebelum pajak + 880 pajak = (3.120).", psak:"PSAK 238", f:"—"},
+  {l:"3 · Reversal impairment dibatalkan", v:"(2.340)", v2:"neto setelah pajak", d:"Pembalikan impairment 3.000 yang diakui di PSAK dibatalkan di GAAP (GAAP melarang reversal): −3.000 sebelum pajak + 660 pajak = (2.340).", psak:"PSAK 236", f:"—"},
+  {l:"4 · Writedown persediaan tak bisa dibalik", v:"(2.028)", v2:"neto setelah pajak", d:"Penurunan nilai persediaan 2.600 yang di PSAK bisa dibalik saat pulih, di GAAP bersifat final: −2.600 sebelum pajak + 572 pajak = (2.028).", psak:"—", f:"—"},
+  {l:"Total sebelum pajak", v:"(12.000)", v2:"−2.400−4.000−3.000−2.600", d:"Jumlah empat penyesuaian sebelum pajak.", psak:"—", f:"—"},
+  {l:"Total efek pajak (22%)", v:"+2.640", v2:"12.000 × 22%", d:"Pajak mengembalikan 22% dari penyesuaian sebelum pajak.", psak:"—", f:"Tanpa efek pajak, jembatan melebih-lebihkan selisih laba."},
+  {l:"Laba bersih GAAP", v:"35.880", v2:"45.240 − 9.360", d:"45.240 − 12.000 + 2.640 = 35.880 — menutup ke angka di tabel Dampak. Selisih neto 9.360 = 20,7% dari laba PSAK.", psak:"—", f:"Jembatan yang menutup = analis bisa menjelaskan SETIAP rupiah selisihnya."},
+  {l:"Pelajaran", v:"jembatan, bukan saldo", v2:"per pos + pajak", d:"Normalisasi lintas-GAAP = rekonsiliasi per pos (perubahan reserve antarperiode + efek pajak), bukan satu angka gabungan.", psak:"—", f:"—"}
  ]}
 };
 
@@ -179,7 +191,11 @@ var RATIOS = [
  {q:"Selisih laba bersih (Rp juta)", hint:"45.240 − 35.880", ans:9360, dec:false, tol:100,
   why:"9.360 — magnitude penyesuaian yang wajib dibuat analis lintas negara."},
  {q:"Persediaan GAAP (Rp juta)", hint:"96.000 − 12.000 (ilustratif)", ans:84000, dec:false, tol:100,
-  why:"84.000 — persediaan versi LIFO lebih rendah saat harga naik."}
+  why:"84.000 — persediaan versi LIFO lebih rendah saat harga naik."},
+ {q:"Kenaikan LIFO reserve 2025 (Rp juta)", hint:"12.000 − 9.600 (ilustratif)", ans:2400, dec:false, tol:100,
+  why:"2.400 — inilah yang menggerakkan laba, BUKAN saldo 12.000. Saldo tanpa perubahan antarperiode tak menjelaskan selisih laba."},
+ {q:"Efek pajak total penyesuaian (Rp juta)", hint:"22% × 12.000 (ilustratif)", ans:2640, dec:false, tol:50,
+  why:"2.640 — pajak mengembalikan 22% dari penyesuaian sebelum pajak 12.000; selisih neto jadi 9.360."}
 ];
 (function(){
   var h = "";

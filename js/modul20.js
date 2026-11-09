@@ -20,6 +20,16 @@ rule:{ title:"Amortisasi vs impairment — dua nasib berbeda", cols:["Aturan","U
   {l:"Uji penurunan nilai", v:"Bila ada indikasi", v2:"Wajib tiap tahun", d:"Goodwill + intangible umur tak terbatas diuji impairment minimal setahun sekali, tanpa menunggu indikasi.", psak:"PSAK 236 (dulu 48)", f:"Asumsi nilai pakai (discount rate, proyeksi) = tempat manipulasi."},
   {l:"Reversal", v:"Boleh (non-goodwill)", v2:"Dilarang", d:"PSAK membolehkan pembalikan impairment selain goodwill; US GAAP melarang semua reversal.", psak:"PSAK 236 (dulu 48)", f:"Reversal besar = cek apakah pemulihan beneran atau manajemen laba."},
   {l:"Lensa kredit", v:"Aset bernilai ekonomi", v2:"Dianggap NOL", d:"Kreditur mencoret goodwill dari tangible net worth — tak ada nilainya saat likuidasi.", psak:"—", f:"Goodwill > 30% ekuitas = neraca rapuh di mata kreditur."}
+ ]},
+upk:{ title:"Goodwill ke UPK & sensitivitas impairment — ilustratif (Rp juta)", cols:["Langkah","Angka","Keterangan"],
+ rows:[
+  {l:"Alokasi goodwill ke UPK", v:"Ritel 12.000 + Grosir 8.000", v2:"= 20.000", d:"Goodwill 20.000 dialokasikan ke unit penghasil kas (UPK/CGU) yang menikmati sinergi akuisisi — pada level terendah yang dimonitor manajemen. Tanpa alokasi, uji impairment tak bisa dijalankan.", psak:"PSAK 236 (dulu 48)", f:"Alokasi yang 'lupa' ditulis = goodwill tak pernah diuji sungguhan."},
+  {l:"Uji impairment UPK Ritel", v:"rugi 8.000", v2:"50.000 − 42.000", d:"Carrying UPK Ritel 50.000 vs nilai terpulihkan 42.000 → rugi 8.000 (soal lab modul ini). Dialokasikan DULU ke goodwill UPK.", psak:"PSAK 236 (dulu 48)", f:"—"},
+  {l:"Goodwill Ritel setelah impairment", v:"4.000", v2:"12.000 − 8.000", d:"Goodwill UPK Ritel turun 12.000 → 4.000. Aset lain di UPK belum tersentuh selama goodwill masih tersisa.", psak:"PSAK 236 (dulu 48)", f:"Bila rugi melebihi goodwill UPK, sisanya dialokasikan pro-rata ke aset lain (tak boleh di bawah nilai terpulihkan masing-masing)."},
+  {l:"Sensitivitas: discount rate +1pp", v:"rugi 10.500", v2:"recoverable 39.500", d:"Discount rate 10% → 11% (ilustratif): nilai pakai turun 2.500 ke 39.500 → rugi naik 2.500 (50.000 − 39.500). Asumsi discount rate = tempat manipulasi impairment.", psak:"—", f:"Manajemen yang menaikkan discount rate 'hanya' 1pp bisa menghapus impairment — baca pengungkapan sensitivitasnya."},
+  {l:"Sensitivitas: growth terminal −1pp", v:"rugi 10.000", v2:"recoverable 40.000", d:"Pertumbuhan terminal lebih rendah 1pp (ilustratif): nilai pakai turun 2.000 ke 40.000 → rugi naik 2.000 (50.000 − 40.000).", psak:"—", f:"—"},
+  {l:"Indikator impairment aset lain", v:"eksternal vs internal", v2:"uji bila ada indikasi", d:"Eksternal: harga pasar jatuh, suku bunga naik, regulasi/teknologi berubah. Internal: aset usang/rusak, kinerja di bawah anggaran, rencana hentikan pakai/divestasi. Aset umur terbatas diuji BILA ada indikasi — berbeda dengan goodwill yang wajib tiap tahun.", psak:"PSAK 236 (dulu 48)", f:"Daftar indikator ini = daftar cek sebelum percaya 'tidak ada impairment tahun ini'."},
+  {l:"Urutan alokasi rugi impairment", v:"goodwill dulu, lalu pro-rata", v2:"—", d:"Rugi UPK dialokasikan pertama ke goodwill, lalu pro-rata ke aset lain di UPK berdasarkan carrying amount-nya.", psak:"PSAK 236 (dulu 48)", f:"—"}
  ]}
 };
 
@@ -179,7 +189,11 @@ var RATIOS = [
  {q:"Rugi impairment UPK (Rp juta)", hint:"Carrying 50.000 − recoverable 42.000", ans:8000, dec:false, tol:100,
   why:"8.000 — dialokasikan dulu ke goodwill (20.000 → 12.000), sisanya ke aset lain."},
  {q:"Goodwill ÷ ekuitas 2025 (%)", hint:"20.000 ÷ 179.440 × 100", ans:11.1, tol:0.3,
-  why:"11,1% — masih moderat. Di atas 30% = neraca rapuh di mata kreditur."}
+  why:"11,1% — masih moderat. Di atas 30% = neraca rapuh di mata kreditur."},
+ {q:"Goodwill UPK Ritel setelah impairment (Rp juta)", hint:"12.000 − 8.000 (alokasi UPK ilustratif)", ans:4000, dec:false, tol:100,
+  why:"4.000 — rugi impairment memakan goodwill dulu; aset lain UPK Ritel belum tersentuh."},
+ {q:"Rugi impairment UPK bila recoverable 39.500 (Rp juta)", hint:"50.000 − 39.500 (sensitivitas discount rate +1pp)", ans:10500, dec:false, tol:100,
+  why:"10.500 — naik 2.500 dari skenario dasar 8.000. Inilah gunanya pengungkapan sensitivitas asumsi."}
 ];
 (function(){
   var h = "";

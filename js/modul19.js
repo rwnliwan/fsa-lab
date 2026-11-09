@@ -22,6 +22,25 @@ src:{ title:"EDGAR vs IDX — dua gerbang filing", cols:["Aspek","EDGAR (AS)","I
   {l:"Data mesin", v:"XBRL → data.sec.gov (JSON)", v2:"PDF (bisa di-scrape)", d:"EDGAR punya API terstruktur gratis tanpa key; IDX berupa PDF laporan.", psak:"—", f:"Angka yang bisa di-query > angka yang harus diketik ulang."},
   {l:"Cakupan", v:"Perusahaan tercatat AS", v2:"Emiten BEI", d:"Pilih gerbang sesuai domisili perusahaan yang dianalisis.", psak:"—", f:"—"},
   {l:"Regulator", v:"SEC", v2:"OJK", d:"SEC mengatur format filing AS; OJK menambah kewajiban disclosure untuk emiten Indonesia.", psak:"—", f:"—"}
+ ]},
+cek:{ title:"Checklist verifikasi filing — sebelum SATU angka pun dipakai", cols:["Cek","Yang diperiksa","Kenapa penting"],
+ rows:[
+  {l:"1 · Periode", v:"tahun/bulan filing vs pertanyaan", v2:"FY vs kuartal", d:"10-K FY2025 ≠ 10-Q Q3 2025. Angka kuartalan yang dipakai sebagai angka tahunan = analisis salah total.", psak:"—", f:"Cek cover page dulu: periode & tanggal filing."},
+  {l:"2 · Versi / amendment", v:"ada 10-K/A sesudahnya?", v2:"pakai versi terbaru", d:"Amendment (/A) memperbaiki angka filing sebelumnya. Pakai versi terbaru dan catat tanggal filingnya.", psak:"—", f:"Filing 'terbaru diunduh' belum tentu versi terbaru yang difile."},
+  {l:"3 · Restatement", v:"8-K Item 4.02 / kata 'restated'?", v2:"angka lama tak bisa diandalkan", d:"Bila laporan lama disajikan kembali (restatement), angka versi lama TIDAK BOLEH dipakai — pakai angka penyajian kembali.", psak:"—", f:"Restatement yang tak ketahuan = seluruh rasio ikut salah."},
+  {l:"4 · Konsolidasian vs tersendiri", v:"LK konsolidasian atau parent-only?", v2:"induk ≠ grup", d:"Angka induk saja ≠ grup: aset/utang anak perusahaan hanya ada di laporan KONSOLIDASIAN. Pastikan basis penyajiannya sama dengan yang dibandingkan.", psak:"—", f:"Bandingkan konsolidasian dengan tersendiri = apel vs jeruk."},
+  {l:"5 · Auditor & opini", v:"opini wajar tanpa pengecualian?", v2:"bila tidak → flag", d:"Opini selain wajar (atau disclaimer) = angka boleh diragukan sebelum dipakai — baca paragraf opini di Item 8.", psak:"—", f:"—"},
+  {l:"6 · Mata uang & satuan", v:"USD ribu vs juta; Rp juta?", v2:"salah skala = hancur", d:"Salah skala 1.000× menghancurkan analisis. Cek cover page dan satuan di kepala setiap tabel.", psak:"—", f:"—"}
+ ]},
+xbrl:{ title:"Rekonsiliasi XBRL — satu angka, dari tag ke Item 8 (ilustratif Rp juta)", cols:["Langkah","XBRL (data.sec.gov)","Item 8 / catatan"],
+ rows:[
+  {l:"Tag", v:"us-gaap:Revenues", v2:"pendapatan usaha", d:"Tag XBRL yang dipetakan ke pos 'Pendapatan usaha' di Item 8. Tag salah = angka salah, meski nilainya 'kelihatan benar'.", psak:"—", f:"Tag yang mirip belum tentu sama: cek definisi tag di taxonomy."},
+  {l:"Nilai", v:"520.000", v2:"sama dengan Item 8", d:"Nilai XBRL 520.000 = laba rugi Item 8 520.000. Titik awal rekonsiliasi.", psak:"—", f:"—"},
+  {l:"Unit", v:"Rp juta (unitRef disamakan)", v2:"cek skala dulu", d:"Skala tabel Item 8 juga Rp juta. Bila XBRL dalam ribuan, kalikan 1.000 dulu — jangan bandingkan mentah.", psak:"—", f:"Kesalahan unit adalah kesalahan rekonsiliasi paling bodoh sekaligus paling sering."},
+  {l:"Periode", v:"FY2025 (duration)", v2:"2025-01-01 s.d. 2025-12-31", d:"Tahun buku sama dengan Item 8. Jangan campur duration (arus, mis. pendapatan) dengan instant (saldo neraca per tanggal).", psak:"—", f:"Pendapatan Q4 yang dibaca sebagai FY = seperempat angka sebenarnya."},
+  {l:"Sign convention", v:"pendapatan +, beban −", v2:"minus = pengurang", d:"Tanda minus di XBRL = pengurang, bukan 'negatif' secara ekonomi. Beban yang tampil positif tanpa tanda = waspadai pembalikan tanda.", psak:"—", f:"—"},
+  {l:"Catatan — disaggregasi segmen", v:"312.000 + 208.000", v2:"= 520.000 ✓", d:"Jumlah segmen di catatan kaki harus tie ke angka Item 8: 312.000 + 208.000 = 520.000.", psak:"—", f:"Segmen yang tak tie = minta rekonsiliasi dulu."},
+  {l:"Hasil rekonsiliasi", v:"COCOK — selisih 0", v2:"siap dipakai", d:"Selisih 0 = angka XBRL siap diolah. Bila selisih ≠ 0: cek tag, unit, periode, atau dimensi segmen — jangan 'dibulatkan' diam-diam.", psak:"—", f:"JSON XBRL bukan otomatis siap pakai — rekonsiliasi adalah buktinya."}
  ]}
 };
 
@@ -180,7 +199,9 @@ var RATIOS = [
  {q:"Akuisisi Rp60.000 (dari 8-K) ÷ ekuitas (%)", hint:"60.000 ÷ 179.440 × 100", ans:33.4, tol:0.5,
   why:"33,4% — akuisisi sebesar sepertiga ekuitas = peristiwa material, wajar masuk 8-K."},
  {q:"CFO 9 bulan 23.100 (10-Q) → run-rate tahunan (Rp juta)", hint:"23.100 × 4 ÷ 3", ans:30800, dec:false, tol:100,
-  why:"30.800 — sama dengan CFO auditan 2025. Annualisasi 10-Q = cara baca kuartalan yang benar."}
+  why:"30.800 — sama dengan CFO auditan 2025. Annualisasi 10-Q = cara baca kuartalan yang benar."},
+ {q:"Selisih rekonsiliasi XBRL vs Item 8 (Rp juta)", hint:"520.000 (XBRL) − 520.000 (Item 8)", ans:0, dec:false, tol:0,
+  why:"0 — cocok. Selisih ≠ 0 berarti tag, unit, atau periode yang dipakai salah — jangan dibulatkan diam-diam."}
 ];
 (function(){
   var h = "";

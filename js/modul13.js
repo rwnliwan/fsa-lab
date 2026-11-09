@@ -18,6 +18,20 @@ ben:{ title:"Beneish M-score Cemerlang (ilustratif)", cols:["Komponen","Nilai","
   {l:"GMI", v:"0,97", v2:"netral", d:"Margin kotor relatif stabil — bukan sumber flag utama.", psak:"—", f:"—"},
   {l:"LVGI", v:"0,96", v2:"netral", d:"Leverage relatif stabil — bukan pendorong skor.", psak:"—", f:"—"},
   {l:"Batas", v:"−1,78", v2:"cutoff", d:"Skor di atas (kurang negatif dari) −1,78 = flag manipulator.", psak:"—", f:"Cutoff statistik — selalu gabungkan dengan analisis kualitatif."}
+ ]},
+repl:{ title:"Replikasi M-score — 8 variabel + bobot Beneish (1999), ilustratif", cols:["Komponen","Nilai","Kontribusi"],
+ rows:[
+  {l:"Konstanta", v:"−4,84", v2:"−4,840", d:"Intersep model Beneish (1999) — titik awal sebelum 8 variabel.", psak:"Beneish 1999", f:"Bobot di bawah adalah koefisien asli model — bukan tebakan."},
+  {l:"DSRI × 0,92", v:"1,45", v2:"+1,334", d:"0,92 × 1,45 = 1,334. Piutang tumbuh jauh lebih cepat dari penjualan — pendorong flag #1.", psak:"—", f:"—"},
+  {l:"GMI × 0,528", v:"0,97", v2:"+0,512", d:"0,528 × 0,97 = 0,512. Margin kotor relatif stabil.", psak:"—", f:"—"},
+  {l:"AQI × 0,404", v:"1,00", v2:"+0,404", d:"0,404 × 1,00 = 0,404. Kualitas aset netral (ilustratif — porsi aset tak teridentifikasi stabil).", psak:"—", f:"—"},
+  {l:"SGI × 0,892", v:"1,30", v2:"+1,160", d:"0,892 × 1,30 = 1,160. Penjualan 520.000 ÷ 400.000 = 1,30 — pertumbuhan 30% (M19) ikut menaikkan skor.", psak:"—", f:"Growth cepat menaikkan SGI & DSRI — flag pada perusahaan tumbuh belum tentu fraud."},
+  {l:"DEPI × 0,115", v:"1,00", v2:"+0,115", d:"0,115 × 1,00 = 0,115. Laju depresiasi netral (ilustratif).", psak:"—", f:"—"},
+  {l:"SGAI × −0,172", v:"1,00", v2:"−0,172", d:"−0,172 × 1,00 = −0,172. Beban SG&A relatif terhadap penjualan netral (ilustratif).", psak:"—", f:"—"},
+  {l:"TATA × 4,679", v:"0,032", v2:"+0,150", d:"4,679 × 0,032 = 0,150. Akrual total 14.440 ÷ total aset 451.440 = 0,032 (Sloan, M17) — bobot TERBESAR model (4,679×).", psak:"—", f:"Akrual adalah tuas terbesar M-score: manipulasi akrual langsung menggerakkan skor."},
+  {l:"LVGI × −0,327", v:"0,96", v2:"−0,314", d:"−0,327 × 0,96 = −0,314. Leverage relatif stabil.", psak:"—", f:"—"},
+  {l:"M-score (jumlah)", v:"−1,65", v2:"FLAG", d:"−4,84 + 1,334 + 0,512 + 0,404 + 1,160 + 0,115 − 0,172 + 0,150 − 0,314 = −1,65 (pembulatan). Di atas batas −1,78 → FLAG — sama dengan skor jadi di tabel Beneish.", psak:"—", f:"Replikasi menutup ke skor jadi: model ini bisa dihitung ulang, bukan angka sulap."},
+  {l:"Keterbatasan", v:"screen", v2:"bukan bukti", d:"M-score = screen statistik dari 8 rasio: bisa false positive (growth cepat menaikkan SGI/DSRI) dan false negative (manipulasi yang tak menyentuh ke-8 variabel lolos). Selalu gabungkan dengan segitiga fraud + bukti dokumen.", psak:"—", f:"Skor tinggi tanpa motif & kesempatan = gali dulu; skor rendah bukan jaminan bersih."}
  ]}
 };
 
@@ -177,7 +191,11 @@ var RATIOS = [
  {q:"GMI", hint:"Gross margin index (ilustratif)", ans:0.97, tol:0.05,
   why:"0,97 — margin relatif stabil, bukan sumber flag."},
  {q:"LVGI", hint:"Leverage index (ilustratif)", ans:0.96, tol:0.05,
-  why:"0,96 — leverage relatif stabil, bukan pendorong skor."}
+  why:"0,96 — leverage relatif stabil, bukan pendorong skor."},
+ {q:"Kontribusi SGI ke M-score", hint:"0,892 × 1,30 (SGI = 520.000 ÷ 400.000)", ans:1.16, dec:true, tol:0.02,
+  why:"1,16 — kontribusi tunggal terbesar kedua setelah DSRI. Growth 30% ikut menaikkan skor — flag belum tentu fraud."},
+ {q:"TATA Cemerlang (akrual ÷ total aset)", hint:"14.440 ÷ 451.440 (Sloan, M17)", ans:0.032, dec:true, tol:0.002,
+  why:"0,032 — dikali bobot 4,679 = +0,150 ke M-score. Akrual adalah tuas terbesar model ini."}
 ];
 (function(){
   var h = "";

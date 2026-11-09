@@ -13,6 +13,15 @@ test:{ title:"Uji covenant 2025 — definisi perjanjian (Rp juta)", cols:["Uji",
   {l:"Batas dividen: dividen ÷ laba bersih", v:"13,3%", v2:"≤ 50% ✓", d:"6.000 ÷ 45.240. Masih jauh dari batas — ruang menaikkan dividen 16.620 sebelum menyentuh covenant.", psak:"—", f:"Dividen yang dibatasi covenant = dividen dibayar dari kas beneran, bukan dari utang baru."},
   {l:"Status keseluruhan", v:"1 dari 4 DILANGGAR", v2:"technical default", d:"Satu breach cukup: kreditur berhak meminta pelunasan dipercepat (acceleration) — atau menawarkan waiver dengan harga.", psak:"—", f:"Bank tidak butuh 4 pelanggaran. Satu saja = seluruh fasilitas bisa ditagih sekaligus."}
  ]},
+reklas:{ title:"Reklasifikasi utang pasca-pelanggaran covenant — kapan waiver menyelamatkan klasifikasi (Rp juta)", cols:["Situasi","Klasifikasi utang","Dampak"],
+ rows:[
+  {l:"Aturan", v:"breach pada tanggal pelaporan", v2:"lancar, kecuali…", d:"Bila covenant dilanggar PADA tanggal pelaporan, utang jangka panjang direklasifikasi menjadi LANCAR — kecuali waiver diperoleh SEBELUM tanggal pelaporan, atau debitur punya hak tanpa syarat menunda pembayaran > 12 bulan.", psak:"PSAK 201 (dulu 1)", f:"Klasifikasi neraca mengikuti hak yang ADA pada tanggal pelaporan — bukan harapan negosiasi."},
+  {l:"Waiver SEBELUM tanggal pelaporan", v:"15 Des 2025", v2:"tetap tidak lancar", d:"Waiver atas breach DSCR diperoleh 15 Des 2025 (sebelum 31 Des 2025): utang bank jangka panjang 110.000 TETAP tidak lancar. Current ratio tetap 2,17×.", psak:"PSAK 201 (dulu 1)", f:"Waiver dini = satu-satunya jalan klasifikasi selamat."},
+  {l:"Waiver SETELAH tanggal pelaporan", v:"20 Jan 2026", v2:"direklas ke lancar", d:"Waiver diperoleh 20 Jan 2026 — setelah 31 Des 2025 tapi sebelum LK terbit: utang 110.000 DIREKLAS ke lancar. Ini peristiwa setelah periode pelaporan yang non-penyesuai untuk klasifikasi menurut PSAK 205 — tapi diungkap di catatan.", psak:"PSAK 205 (dulu 8)", f:"Waiver telat menenangkan bank, tapi tidak memperbaiki neraca tanggal pelaporan."},
+  {l:"Dampak current ratio", v:"2,17× → 1,04×", v2:"di bawah batas 1,5×", d:"221.440 ÷ (102.000 + 110.000) = 221.440 ÷ 212.000 = 1,04× — jatuh di bawah batas covenant 1,5×: breach beranak breach.", psak:"—", f:"Satu reklasifikasi bisa memicu pelanggaran covenant kedua — baca cross-default."},
+  {l:"Grace period / cure right", v:"belum dieksekusi", v2:"tetap lancar", d:"Masa tenggang yang berakhir setelah tanggal pelaporan, atau cure right yang belum dipakai (mis. setor modal 15.000 belum masuk), TIDAK menyelamatkan klasifikasi tanpa waiver sebelum tanggal pelaporan.", psak:"—", f:"Hak memperbaiki ≠ sudah diperbaiki — klasifikasi butuh fakta, bukan janji."},
+  {l:"Kenapa analis peduli", v:"neraca ≠ perjanjian", v2:"baca catatan pasca-neraca", d:"Neraca bisa tetap menampilkan 'jangka panjang' sementara bank sudah berhak menagih sekaligus — selalu baca catatan peristiwa setelah tanggal neraca sebelum percaya klasifikasi.", psak:"—", f:"—"}
+ ]},
 anat:{ title:"Anatomi perjanjian kredit — tiga jenis janji", cols:["Jenis","Contoh di Cemerlang","Dil langgar jika…"],
  rows:[
   {l:"Affirmative — janji MELAKUKAN", v:"Serahkan LK audited tiap kuartal; bayar pajak tepat waktu", v2:"telat lapor > 30 hari", d:"Kewajiban aktif. Paling ringan — tapi keterlambatan lapor adalah sinyal klasik ada yang disembunyikan.", psak:"—", f:"LK audited yang telat terbit = cek forensik pertama, gratis."},
@@ -179,7 +188,9 @@ var RATIOS = [
  {q:"Ruang tambah utang sebelum breach leverage (Rp juta)", hint:"Batas × EBITDA − utang kini: 3,0 × 102.000 − 201.440", ans:104560, dec:false, tol:1000,
   why:"104.560 — headroom besar di leverage. Masalahnya bukan di sini, melainkan di DSCR."},
  {q:"Biaya repricing +150bps per tahun (Rp juta)", hint:"Kenaikan × utang bank: 1,5% × 141.440", ans:2122, dec:false, tol:50,
-  why:"2.122/th — harga waiver: bank memaafkan breach dengan menaikkan bunga."}
+  why:"2.122/th — harga waiver: bank memaafkan breach dengan menaikkan bunga."},
+ {q:"Current ratio setelah reklasifikasi utang 110.000 (×)", hint:"221.440 ÷ (102.000 + 110.000)", ans:1.04, dec:true, tol:0.03,
+  why:"1,04× — dari 2,17× yang 'aman' menjadi di bawah batas covenant 1,5×. Waktu perolehan waiver mengubah segalanya."}
 ];
 (function(){
   var h = "";
